@@ -42,6 +42,11 @@ func main() {
 	if Version == "" {
 		Version = "development"
 	}
+
+	if !initWindows() {
+		os.Exit(0)
+	}
+
 	var useFS = flag.Bool("usefs", false, "Use local file system for client files. Set to true during development.")
 	var wasm = flag.Bool("wasm", false, "Use wasm for sim instead of web server apis. Can only be used with usefs=true")
 	var simName = flag.String("sim", "", "Name of simulator to launch (ex: balance_druid, elemental_shaman, etc)")

@@ -50,6 +50,13 @@ $(OUT_DIR)/.dirstamp: \
   $(OUT_DIR)/bundle/.dirstamp
 	touch $@
 
+$(OUT_DIR)/.dirstamp.standalone: \
+  $(OUT_DIR)/lib.wasm \
+  ui/core/proto/api.ts \
+  $(ASSETS) \
+  $(OUT_DIR)/bundle/.dirstamp.standalone
+	touch $@
+
 $(OUT_DIR)/bundle/.dirstamp: \
   $(UI_SRC) \
   $(PAGE_INDECES) \
@@ -62,6 +69,20 @@ $(OUT_DIR)/bundle/.dirstamp: \
 	npx tsc --noEmit
 	npx tsx vite.build-workers.mts
 	npx vite build
+	touch $@
+
+$(OUT_DIR)/bundle/.dirstamp.standalone: \
+  $(UI_SRC) \
+  $(PAGE_INDECES) \
+  vite.config.mts \
+  vite.build-workers.mts \
+  node_modules \
+  tsconfig.json \
+  ui/core/index.ts \
+  ui/core/proto/api.ts
+	npx tsc --noEmit
+	npx tsx vite.build-workers.mts
+	VITE_STANDALONE_BUILD=true npx vite build
 	touch $@
 
 ui/core/index.ts: $(TS_CORE_SRC)
@@ -165,6 +186,15 @@ binary_dist: $(OUT_DIR)/.dirstamp
 	rm binary_dist/mop/assets/database/db.bin
 	rm binary_dist/mop/assets/database/leftover_db.bin
 
+binary_dist_standalone: $(OUT_DIR)/.dirstamp.standalone
+	rm -rf binary_dist
+	mkdir -p binary_dist
+	cp -r $(OUT_DIR) binary_dist/
+	rm binary_dist/mop/lib.wasm
+	rm -rf binary_dist/mop/assets/db_inputs
+	rm binary_dist/mop/assets/database/db.bin
+	rm binary_dist/mop/assets/database/leftover_db.bin
+
 # Rebuild the protobuf generated code.
 .PHONY: proto
 proto: sim/core/proto/api.pb.go ui/core/proto/api.ts
@@ -174,7 +204,7 @@ proto: sim/core/proto/api.pb.go ui/core/proto/api.ts
 wowsimmop: binary_dist devserver
 
 .PHONY: devserver
-devserver: sim/core/proto/api.pb.go sim/web/main.go binary_dist/dist.go
+devserver: sim/core/proto/api.pb.go sim/web binary_dist/dist.go
 	@echo "Starting server compile now..."
 	@if go build -o wowsimmop ./sim/web/main.go ; then \
 		printf "\033[1;32mBuild Completed Successfully\033[0m\n"; \
@@ -200,7 +230,7 @@ else
 	./wowsimmop --usefs=true --launch=false --host=":3333"
 endif
 
-wowsimmop-windows.exe: wowsimmop
+wowsimmop-windows.exe: binary_dist_standalone binary_dist/dist.go
 # go build only considers syso files when invoked without specifying .go files: https://github.com/golang/go/issues/16090
 	cp ./assets/favicon_io/icon-windows_amd64.syso ./sim/web/icon-windows_amd64.syso
 	cd ./sim/web/ && GOOS=windows GOARCH=amd64 GOAMD64=v2 go build -o wowsimmop-windows.exe -ldflags="-X 'main.Version=$(VERSION)' -s -w"

@@ -1,0 +1,86 @@
+{
+  "name": "wowsims-mop-standalone",
+  "version": "1.2.1",
+  "description": "WoWSims - Mists of Pandaria Simulation Desktop App",
+  "author": "WoWSims",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "npm run compile && electron .",
+    "dev": "npm run compile && electron . --dev",
+    "compile": "tsc --project . --outDir dist --rootDir src",
+    "compile:watch": "tsc --watch",
+    "clean": "rimraf release build dist",
+    "prerelease": "node scripts/prerelease-check.js",
+    "release": "npm run clean && npm run compile && npm run prerelease && electron-builder --win dir --publish=never",
+    "build": "npm run compile && electron-builder",
+    "build:win": "npm run compile && electron-builder --win",
+    "build:mac": "npm run compile && electron-builder --mac",
+    "build:linux": "npm run compile && electron-builder --linux"
+  },
+  "build": {
+    "appId": "com.wowsims.mop.standalone",
+    "productName": "WoWSims",
+    "copyright": "Copyright © 2025 WoWSims",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "extraFiles": [
+      {
+        "from": "../wowsimmop-windows.exe",
+        "to": "server.exe"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "dir",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/WoW-Simulator-Icon.png",
+      "publisherName": "WoWSims",
+      "verifyUpdateCodeSignature": false,
+      "signAndEditExecutable": false,
+      "signDlls": false
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/WoW-Simulator-Icon.png",
+      "category": "public.app-category.games"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/WoW-Simulator-Icon.png",
+      "category": "Game"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "displayLanguageSelector": false,
+      "installerIcon": "assets/WoW-Simulator-Icon.png",
+      "uninstallerIcon": "assets/WoW-Simulator-Icon.png",
+      "installerHeaderIcon": "assets/WoW-Simulator-Icon.png",
+      "deleteAppDataOnUninstall": false
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.5.0"
+  }
+}
