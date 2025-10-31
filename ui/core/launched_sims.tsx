@@ -125,16 +125,16 @@ export const simLaunchStatuses: Record<Spec, SimStatus> = {
 	},
 	// Rogue
 	[Spec.SpecAssassinationRogue]: {
-		phase: Phase.Phase1,
-		status: LaunchStatus.Alpha,
+		phase: Phase.Phase2,
+		status: LaunchStatus.Launched,
 	},
 	[Spec.SpecCombatRogue]: {
-		phase: Phase.Phase1,
-		status: LaunchStatus.Alpha,
+		phase: Phase.Phase2,
+		status: LaunchStatus.Launched,
 	},
 	[Spec.SpecSubtletyRogue]: {
-		phase: Phase.Phase1,
-		status: LaunchStatus.Alpha,
+		phase: Phase.Phase2,
+		status: LaunchStatus.Launched,
 	},
 	// Shaman
 	[Spec.SpecElementalShaman]: {
