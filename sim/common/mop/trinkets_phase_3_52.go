@@ -41,7 +41,7 @@ func init() {
 				TickImmediately:      true,
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 				Name: label,
 				ICD:  time.Second * 10,
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskDirect|core.ProcMaskProc, core.RPPMConfig{
@@ -106,7 +106,7 @@ func init() {
 				},
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 				Name: label,
 				ICD:  time.Second * 3,
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskSpellHealing, core.RPPMConfig{
@@ -155,7 +155,7 @@ func init() {
 				TickImmediately:      true,
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 				Name: label,
 				ICD:  time.Second * 10,
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskSpellOrSpellProc, core.RPPMConfig{
@@ -202,7 +202,7 @@ func init() {
 				TickImmediately:      true,
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 				Name: label,
 				ICD:  time.Second * 10,
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskDirect|core.ProcMaskProc, core.RPPMConfig{
@@ -244,7 +244,7 @@ func init() {
 				StackingAuraLabel:    fmt.Sprintf("Blood of Power %s", versionLabel),
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 				Name:       label,
 				ProcChance: 0.04,
 				Outcome:    core.OutcomeDodge,
@@ -285,7 +285,7 @@ func init() {
 				StackingAuraLabel:    fmt.Sprintf("Rampage %s", versionLabel),
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 				Name: label,
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskDirect|core.ProcMaskProc, core.RPPMConfig{
 					PPM: 3.5,
@@ -333,7 +333,7 @@ func init() {
 				},
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 				Name: label,
 				ICD:  time.Second * 17,
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskSpellHealing, core.RPPMConfig{
@@ -380,15 +380,18 @@ func init() {
 				},
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 				Name:               label,
 				RequireDamageDealt: true,
 				ICD:                time.Second * 30,
 				Outcome:            core.OutcomeLanded,
 				Callback:           core.CallbackOnSpellHitTaken,
+				TriggerImmediately: true,
+
 				ExtraCondition: func(sim *core.Simulation, _ *core.Spell, result *core.SpellResult) bool {
 					return character.CurrentHealthPercent() < 0.35 && character.CurrentHealth() > 0
 				},
+
 				Handler: func(sim *core.Simulation, _ *core.Spell, _ *core.SpellResult) {
 					spell.Cast(sim, &character.Unit)
 				},
@@ -422,7 +425,7 @@ func init() {
 				StackingAuraLabel:    fmt.Sprintf("Frenzy %s", versionLabel),
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 				Name: label,
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskDirect|core.ProcMaskProc, core.RPPMConfig{
 					PPM: 3.5,
@@ -466,7 +469,7 @@ func init() {
 				StackingAuraLabel:    fmt.Sprintf("Eye of Brutality %s", versionLabel),
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 				Name: label,
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskDirect|core.ProcMaskProc, core.RPPMConfig{
 					PPM: 0.72000002861,
@@ -522,7 +525,7 @@ func init() {
 			// Manually override Crit % to Crit Rating
 			statBuffAura.BuffedStatTypes = []stats.Stat{stats.CritRating}
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 				Name: label,
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskSpellOrSpellProc, core.RPPMConfig{
 					PPM: 0.57999998331,
@@ -609,7 +612,7 @@ func init() {
 			buffAuras[stats.HasteRating] = createStatBuffAura("Haste", 139121)
 			buffAuras[stats.MasteryRating] = createStatBuffAura("Mastery", 139120)
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 				Name: label,
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskDirect|core.ProcMaskProc, core.RPPMConfig{
 					PPM: 1.10000002384,
@@ -757,7 +760,7 @@ func init() {
 				},
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 				ActionID: core.ActionID{SpellID: 138957},
 				Name:     label,
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskDirect|core.ProcMaskProc, core.RPPMConfig{

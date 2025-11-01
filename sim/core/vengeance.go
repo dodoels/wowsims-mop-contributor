@@ -26,8 +26,9 @@ func (character *Character) RegisterVengeance(spellID int32, requiredAura *Aura)
 
 	// Then set up the proc trigger.
 	vengeanceTrigger := ProcTrigger{
-		Name:     "Vengeance Trigger",
-		Callback: CallbackOnSpellHitTaken,
+		Name:               "Vengeance Trigger",
+		Callback:           CallbackOnSpellHitTaken,
+		TriggerImmediately: true,
 
 		Handler: func(sim *Simulation, spell *Spell, result *SpellResult) {
 			// Check that the caster is an NPC.
@@ -109,7 +110,7 @@ func (character *Character) RegisterVengeance(spellID int32, requiredAura *Aura)
 	// or attach it to the supplied parent Aura (Bear Form for Druids,
 	// Defensive Stance for Warriors).
 	if requiredAura == nil {
-		MakeProcTriggerAura(&character.Unit, vengeanceTrigger)
+		character.MakeProcTriggerAura(vengeanceTrigger)
 	} else {
 		requiredAura.AttachProcTrigger(vengeanceTrigger)
 	}

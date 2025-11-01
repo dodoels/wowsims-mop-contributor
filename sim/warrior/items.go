@@ -189,10 +189,12 @@ var ItemSetBattleplateOfThePrehistoricMarauder = core.NewItemSet(core.ItemSet{
 				costMod.Deactivate()
 			})
 
-			core.MakeProcTriggerAura(&war.Unit, core.ProcTrigger{
-				Name:           "Death Sentence - Consume",
-				ClassSpellMask: SpellMaskExecute,
-				Callback:       core.CallbackOnCastComplete,
+			war.MakeProcTriggerAura(core.ProcTrigger{
+				Name:               "Death Sentence - Consume",
+				ClassSpellMask:     SpellMaskExecute,
+				Callback:           core.CallbackOnCastComplete,
+				TriggerImmediately: true,
+
 				Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 					war.T16Dps4P.Deactivate(sim)
 				},

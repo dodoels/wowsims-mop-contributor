@@ -51,7 +51,7 @@ func init() {
 					config.buffDuration,
 				)
 
-				triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+				triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 					Name:       config.baseTrinketLabel,
 					ProcChance: 0.15,
 					ICD:        config.icd,
@@ -205,7 +205,7 @@ func init() {
 				time.Second*20,
 			)
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 				Name:       label,
 				ICD:        time.Second * 115,
 				ProcChance: 0.15,

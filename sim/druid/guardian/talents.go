@@ -228,7 +228,7 @@ func (bear *GuardianDruid) registerDreamOfCenarius() {
 		},
 	})
 
-	core.MakeProcTriggerAura(&bear.Unit, core.ProcTrigger{
+	bear.MakeProcTriggerAura(core.ProcTrigger{
 		Name:           "Dream of Cenarius Trigger",
 		Callback:       core.CallbackOnSpellHitDealt,
 		ClassSpellMask: druid.DruidSpellMangleBear,
