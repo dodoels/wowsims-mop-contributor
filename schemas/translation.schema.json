@@ -2263,7 +2263,7 @@
                 "tooltip"
               ]
             },
-            "shaman_disable_immolate" : {
+            "shaman_disable_immolate": {
               "type": "object",
               "properties": {
                 "label": {
@@ -2279,7 +2279,7 @@
                 "tooltip"
               ]
             },
-            "shaman_disable_immolate_duration" : {
+            "shaman_disable_immolate_duration": {
               "type": "object",
               "properties": {
                 "label": {
@@ -2327,7 +2327,9 @@
             "enable_item_swap",
             "item_swap",
             "assume_prepull_mastery_elixir",
-            "blessings"
+            "blessings",
+            "shaman_disable_immolate",
+            "shaman_disable_immolate_duration"
           ]
         },
         "consumables": {
@@ -4006,7 +4008,7 @@
                     "tooltip": {
                       "type": "string"
                     },
-                    "full": {
+                    "full_description": {
                       "type": "string"
                     },
                     "interrupt_if": {
@@ -4046,7 +4048,7 @@
                   "required": [
                     "label",
                     "tooltip",
-                    "full",
+                    "full_description",
                     "interrupt_if",
                     "recast"
                   ]
@@ -4060,7 +4062,7 @@
                     "tooltip": {
                       "type": "string"
                     },
-                    "full": {
+                    "full_description": {
                       "type": "string"
                     }
                   },
@@ -4068,7 +4070,7 @@
                   "required": [
                     "label",
                     "tooltip",
-                    "full"
+                    "full_description"
                   ]
                 },
                 "autocast_other_cooldowns": {
@@ -4080,7 +4082,7 @@
                     "tooltip": {
                       "type": "string"
                     },
-                    "full": {
+                    "full_description": {
                       "type": "string"
                     }
                   },
@@ -4088,7 +4090,7 @@
                   "required": [
                     "label",
                     "tooltip",
-                    "full"
+                    "full_description"
                   ]
                 },
                 "wait": {
@@ -4181,7 +4183,7 @@
                     "tooltip": {
                       "type": "string"
                     },
-                    "full": {
+                    "full_description": {
                       "type": "string"
                     }
                   },
@@ -4189,7 +4191,7 @@
                   "required": [
                     "label",
                     "tooltip",
-                    "full"
+                    "full_description"
                   ]
                 },
                 "reset_sequence": {
@@ -4201,7 +4203,7 @@
                     "tooltip": {
                       "type": "string"
                     },
-                    "full": {
+                    "full_description": {
                       "type": "string"
                     }
                   },
@@ -4209,7 +4211,7 @@
                   "required": [
                     "label",
                     "tooltip",
-                    "full"
+                    "full_description"
                   ]
                 },
                 "strict_sequence": {
@@ -4221,7 +4223,7 @@
                     "tooltip": {
                       "type": "string"
                     },
-                    "full": {
+                    "full_description": {
                       "type": "string"
                     }
                   },
@@ -4229,7 +4231,7 @@
                   "required": [
                     "label",
                     "tooltip",
-                    "full"
+                    "full_description"
                   ]
                 },
                 "change_target": {
@@ -5369,7 +5371,7 @@
                     "tooltip"
                   ]
                 },
-				"full_rune_cooldown": {
+                "full_rune_cooldown": {
                   "type": "object",
                   "properties": {
                     "label": {
@@ -5473,12 +5475,16 @@
                     },
                     "tooltip": {
                       "type": "string"
+                    },
+                    "full_description": {
+                      "type": "string"
                     }
                   },
                   "additionalProperties": false,
                   "required": [
                     "label",
-                    "tooltip"
+                    "tooltip",
+                    "full_description"
                   ]
                 },
                 "is_ready": {
@@ -5825,12 +5831,16 @@
                     },
                     "tooltip": {
                       "type": "string"
+                    },
+                    "full_description": {
+                      "type": "string"
                     }
                   },
                   "additionalProperties": false,
                   "required": [
                     "label",
-                    "tooltip"
+                    "tooltip",
+                    "full_description"
                   ]
                 },
                 "all_trinket_stat_procs_active": {
@@ -5841,12 +5851,16 @@
                     },
                     "tooltip": {
                       "type": "string"
+                    },
+                    "full_description": {
+                      "type": "string"
                     }
                   },
                   "additionalProperties": false,
                   "required": [
                     "label",
-                    "tooltip"
+                    "tooltip",
+                    "full_description"
                   ]
                 },
                 "any_trinket_stat_procs_active": {
@@ -5857,12 +5871,16 @@
                     },
                     "tooltip": {
                       "type": "string"
+                    },
+                    "full_description": {
+                      "type": "string"
                     }
                   },
                   "additionalProperties": false,
                   "required": [
                     "label",
-                    "tooltip"
+                    "tooltip",
+                    "full_description"
                   ]
                 },
                 "trinket_procs_min_remaining_time": {
@@ -5921,12 +5939,16 @@
                     },
                     "tooltip": {
                       "type": "string"
+                    },
+                    "full_description": {
+                      "type": "string"
                     }
                   },
                   "additionalProperties": false,
                   "required": [
                     "label",
-                    "tooltip"
+                    "tooltip",
+                    "full_description"
                   ]
                 },
                 "any_stat_buff_cooldowns_active": {
@@ -5937,12 +5959,16 @@
                     },
                     "tooltip": {
                       "type": "string"
+                    },
+                    "full_description": {
+                      "type": "string"
                     }
                   },
                   "additionalProperties": false,
                   "required": [
                     "label",
-                    "tooltip"
+                    "tooltip",
+                    "full_description"
                   ]
                 },
                 "dot_is_active": {
@@ -6372,7 +6398,7 @@
                 "rune_cooldown",
                 "next_rune_cooldown",
                 "rune_slot_cooldown",
-				"full_rune_cooldown",
+                "full_rune_cooldown",
                 "gcd_is_ready",
                 "gcd_time_to_ready",
                 "time_to_next_auto",
