@@ -410,7 +410,7 @@ func (ai *HorridonAI) Reset(sim *core.Simulation) {
 		ai.TriplePuncture.CD.Set(core.DurationFromSeconds(sim.RandomFloat("Triple Puncture Timing") * ai.TriplePuncture.CD.Duration.Seconds()))
 		ai.DireCall.CD.Set(core.DurationFromSeconds(sim.RandomFloat("Dire Call Timing") * ai.DireCall.CD.Duration.Seconds()))
 	} else {
-		ai.BestialCry.CD.Set(core.DurationFromSeconds(sim.RandomFloat("Bestial Cry Timing") * ai.BestialCry.CD.Duration.Seconds()))
+		ai.BestialCry.CD.Set(core.DurationFromSeconds(sim.RandomFloat("Bestial Cry Timing") * 0.5 * ai.BestialCry.CD.Duration.Seconds()))
 	}
 
 	ai.lastTankSwap = -core.NeverExpires

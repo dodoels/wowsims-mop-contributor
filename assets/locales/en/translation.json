@@ -596,6 +596,14 @@
 					"label": "Spiritual Grasp frequency",
 					"tooltip": "Average time (in seconds) between Spiritual Grasp hits, following an exponential distribution"
 				},
+				"jalak_death_time": {
+					"label": "Jalak death time",
+					"tooltip": "Simulation time (in seconds) at which to disable War-God Jalak and trigger the Rampage buff on Horridon. If set longer than the simulated fight length, then Jalak will be tanked the entire time and Rampage will never be triggered."
+				},
+				"taunt_swap_for_triple_puncture": {
+					"label": "Taunt swap for Triple Puncture",
+					"tooltip": "If checked, taunt swap upon Jalak's death and on every other Triple Puncture application afterwards in order to limit stack accumulation on a single tank."
+				},
 				"movement_interval": {
 					"label": "Movement Interval",
 					"tooltip": "How often the player will move in seconds"
