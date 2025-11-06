@@ -125,14 +125,8 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWindwalkerMonk, {
 		// Preset rotations that the user can quickly select.
 		rotations: [Presets.ROTATION_PRESET],
 		// Preset gear configurations that the user can quickly select.
-		gear: [
-			Presets.P1_PREBIS_GEAR_PRESET,
-			Presets.P1_PREHOF_GEAR_PRESET,
-			Presets.P1_PRETOES_GEAR_PRESET,
-			Presets.P1_BIS_GEAR_PRESET,
-			Presets.P2_BIS_GEAR_PRESET,
-			Presets.P3_BIS_GEAR_PRESET,
-		],
+		gear: [Presets.P1_PREBIS_GEAR_PRESET, Presets.P2_BIS_GEAR_PRESET, Presets.P3_BIS_GEAR_PRESET],
+		builds: [Presets.P2_BUILD_PRESET, Presets.P3_BUILD_PRESET],
 	},
 
 	autoRotation: (_: Player<Spec.SpecWindwalkerMonk>): APLRotation => {
