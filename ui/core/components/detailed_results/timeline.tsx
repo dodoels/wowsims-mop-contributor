@@ -77,9 +77,7 @@ export class Timeline extends ResultComponent {
 						<i className="warning fa fa-exclamation-triangle fa-xl me-2"></i>
 						{i18n.t('results_tab.details.timeline.disclaimer')}
 					</p>
-					<p>
-						{i18n.t('results_tab.details.timeline.note')}
-					</p>
+					<p>{i18n.t('results_tab.details.timeline.note')}</p>
 				</div>
 				<select className="timeline-chart-picker form-select">
 					<option className="rotation-option" value="rotation">
@@ -559,7 +557,6 @@ export class Timeline extends ResultComponent {
 		if (targets.length == 0) {
 			return;
 		}
-		const target = targets[0];
 
 		this.clearRotationChart();
 
@@ -573,9 +570,16 @@ export class Timeline extends ResultComponent {
 
 		const buffsById = Object.values(bucket(player.auraUptimeLogs, log => log.actionId!.toString()));
 		buffsById.sort((a, b) => stringComparator(a[0].actionId!.name, b[0].actionId!.name));
-		const debuffsById = Object.values(bucket(target.auraUptimeLogs, log => log.actionId!.toString()));
-		debuffsById.sort((a, b) => stringComparator(a[0].actionId!.name, b[0].actionId!.name));
-		const buffsAndDebuffsById = buffsById.concat(debuffsById);
+		const debuffsByTargetById = targets.map(target =>
+			Object.values(bucket(target.auraUptimeLogs, log => log.actionId!.toString())).sort((a, b) =>
+				stringComparator(a[0].actionId!.name, b[0].actionId!.name),
+			),
+		);
+
+		const buffsAndDebuffsById = buffsById.concat(
+			// Only pick target 0 to prevent overlapping cast rows
+			debuffsByTargetById[0]
+		);
 
 		auraAsResource.forEach(auraId => {
 			const auraIndex = buffsById.findIndex(auraUptimeLogs => auraUptimeLogs?.[0].actionId!.spellId === auraId);
@@ -624,18 +628,23 @@ export class Timeline extends ResultComponent {
 			buffsToShow.forEach(auraUptimeLogs => this.addAuraRow(auraUptimeLogs, duration));
 		}
 
-		const targetCastsByAbility = this.getSortedCastsByAbility(target);
-		if (targetCastsByAbility.length > 0) {
-			this.addSeparatorRow(duration);
-			targetCastsByAbility.forEach(castLogs => this.addCastRow(castLogs, buffsAndDebuffsById, duration));
-		}
+		targets.forEach(target => {
+			const targetCastsByAbility = this.getSortedCastsByAbility(target);
+			if (targetCastsByAbility.length > 0) {
+				this.addSeparatorRow(duration);
+				this.addTargetRow(target.label, duration);
+				targetCastsByAbility.forEach(castLogs => this.addCastRow(castLogs, buffsAndDebuffsById, duration));
+			}
+		});
 
 		// Add a row for all debuffs, even those which have already been visualized in a cast row.
-		const debuffsToShow = debuffsById;
-		if (debuffsToShow.length > 0) {
-			this.addSeparatorRow(duration);
-			debuffsToShow.forEach(auraUptimeLogs => this.addAuraRow(auraUptimeLogs, duration));
-		}
+		debuffsByTargetById.forEach((debuffsToShow, index) => {
+			if (debuffsToShow.length > 0) {
+				this.addSeparatorRow(duration);
+				this.addTargetRow(targets?.[index]?.label, duration);
+				debuffsToShow.forEach(auraUptimeLogs => this.addAuraRow(auraUptimeLogs, duration));
+			}
+		});
 	}
 
 	private getSortedCastsByAbility(player: UnitMetrics): Array<Array<CastLog>> {
@@ -771,6 +780,18 @@ export class Timeline extends ResultComponent {
 			iconElem.appendChild(labelElem);
 		});
 
+		this.rotationTimeline.appendChild(rowElem);
+	}
+
+	private addTargetRow(targetName: string, duration: number) {
+		const rowElem = this.makeRowElem(ActionId.fromEmpty(), duration);
+		this.rotationLabels.appendChild(
+			<div>
+				<div className="rotation-label rotation-row">
+					<span className="rotation-label-text">{targetName}</span>
+				</div>
+			</div>,
+		);
 		this.rotationTimeline.appendChild(rowElem);
 	}
 
@@ -938,7 +959,12 @@ export class Timeline extends ResultComponent {
 									<span>
 										{ddl.timestamp.toFixed(2)}s - {ddl.result()}
 									</span>
-																{ddl.source?.isTarget && <span className="threat-metrics"> ({ddl.threat.toFixed(1)} {i18n.t('results_tab.details.timeline.tooltips.threat')})</span>}
+									{ddl.source?.isTarget && (
+										<span className="threat-metrics">
+											{' '}
+											({ddl.threat.toFixed(1)} {i18n.t('results_tab.details.timeline.tooltips.threat')})
+										</span>
+									)}
 								</li>
 							))}
 						</ul>
@@ -970,7 +996,12 @@ export class Timeline extends ResultComponent {
 							<span>
 								{ddl.timestamp.toFixed(2)}s - {ddl.actionId!.name} {ddl.result()}
 							</span>
-							{ddl.source?.isTarget && <span className="threat-metrics"> ({ddl.threat.toFixed(1)} {i18n.t('results_tab.details.timeline.tooltips.threat')})</span>}
+							{ddl.source?.isTarget && (
+								<span className="threat-metrics">
+									{' '}
+									({ddl.threat.toFixed(1)} {i18n.t('results_tab.details.timeline.tooltips.threat')})
+								</span>
+							)}
 						</div>
 					);
 
@@ -1126,7 +1157,9 @@ export class Timeline extends ResultComponent {
 				<div className="timeline-tooltip-body">
 					<ul className="timeline-dps-events">{log.damageLogs.map(damageLog => this.tooltipLogItem(damageLog, damageLog.result()))}</ul>
 					<div className="timeline-tooltip-body-row">
-						<span className="series-color">{i18n.t('results_tab.details.timeline.tooltips.dps')}: {log.dps.toFixed(2)}</span>
+						<span className="series-color">
+							{i18n.t('results_tab.details.timeline.tooltips.dps')}: {log.dps.toFixed(2)}
+						</span>
 					</div>
 				</div>
 				{this.tooltipAurasSection(log)}
@@ -1152,11 +1185,24 @@ export class Timeline extends ResultComponent {
 				</div>
 				<div className="timeline-tooltip-body">
 					<div className="timeline-tooltip-body-row">
-						<span className="series-color">{i18n.t('results_tab.details.timeline.tooltips.before')}: {log.threatBefore.toFixed(1)}</span>
+						<span className="series-color">
+							{i18n.t('results_tab.details.timeline.tooltips.before')}: {log.threatBefore.toFixed(1)}
+						</span>
 					</div>
-					<ul className="timeline-threat-events">{log.logs.map(log => this.tooltipLogItem(log, <>{log.threat.toFixed(1)} {i18n.t('results_tab.details.timeline.tooltips.threat')}</>))}</ul>
+					<ul className="timeline-threat-events">
+						{log.logs.map(log =>
+							this.tooltipLogItem(
+								log,
+								<>
+									{log.threat.toFixed(1)} {i18n.t('results_tab.details.timeline.tooltips.threat')}
+								</>,
+							),
+						)}
+					</ul>
 					<div className="timeline-tooltip-body-row">
-						<span className="series-color">{i18n.t('results_tab.details.timeline.tooltips.after')}: {log.threatAfter.toFixed(1)}</span>
+						<span className="series-color">
+							{i18n.t('results_tab.details.timeline.tooltips.after')}: {log.threatAfter.toFixed(1)}
+						</span>
 					</div>
 				</div>
 				{includeAuras ? this.tooltipAurasSection(log) : null}
@@ -1176,13 +1222,17 @@ export class Timeline extends ResultComponent {
 				</div>
 				<div className="timeline-tooltip-body">
 					<div className="timeline-tooltip-body-row">
-						<span className="series-color">{i18n.t('results_tab.details.timeline.tooltips.before')}: {valToDisplayString(log.valueBefore)}</span>
+						<span className="series-color">
+							{i18n.t('results_tab.details.timeline.tooltips.before')}: {valToDisplayString(log.valueBefore)}
+						</span>
 					</div>
 					<ul className="timeline-mana-events">
 						{log.logs.map(manaChangedLog => this.tooltipLogItemElem(manaChangedLog, <>{manaChangedLog.resultString()}</>))}
 					</ul>
 					<div className="timeline-tooltip-body-row">
-						<span className="series-color">{i18n.t('results_tab.details.timeline.tooltips.after')}: {valToDisplayString(log.valueAfter)}</span>
+						<span className="series-color">
+							{i18n.t('results_tab.details.timeline.tooltips.after')}: {valToDisplayString(log.valueAfter)}
+						</span>
 					</div>
 				</div>
 				{includeAuras && this.tooltipAurasSectionElem(log)}
