@@ -1531,6 +1531,10 @@
 					"label": "Existing Raw Snapshot %",
 					"tooltip": "How much stronger your existing snapshot is relative to baseline. Ignores Haste and Crit. Not recommended to use unless you know what you're doing."
 				},
+				"affliction_exhale_window": {
+					"label": "Exhale Window",
+					"tooltip": "Configured leeway for exhaling inhaled DoTs."
+				},
 				"mage_current_combustion_dot_estimate": {
 					"label": "Combustion Dot Value",
 					"tooltip": "Returns the current estimated size of your Combustion Dot."
@@ -1542,10 +1546,6 @@
 				"protection_paladin_damage_taken_last_global": {
 					"label": "Damage Taken Last Global",
 					"tooltip": "Amount of damage taken in the last 1.5s."
-				},
-				"affliction_exhale_window": {
-					"label": "Exhale Window",
-					"tooltip": "Configured leeway for exhaling inhaled DoTs."
 				},
 				"aura_remaining_icd": {
 					"label": "Aura Remaining ICD",
