@@ -6,25 +6,25 @@ import (
 	"github.com/wowsims/mop/sim/core"
 )
 
-func (warlock *AfflictionWarlock) registerSoulSwap() {
+func (affliction *AfflictionWarlock) registerSoulSwap() {
 	var debuffState map[int32]core.DotState
-	dotRefs := []**core.Spell{&warlock.Corruption, &warlock.Agony, &warlock.Seed, &warlock.UnstableAffliction}
+	dotRefs := []**core.Spell{&affliction.Corruption, &affliction.Agony, &affliction.Seed, &affliction.UnstableAffliction}
 
-	inhaleBuff := core.BlockPrepull(warlock.RegisterAura(core.Aura{
+	inhaleBuff := core.BlockPrepull(affliction.RegisterAura(core.Aura{
 		ActionID: core.ActionID{SpellID: 86211},
 		Label:    "Soul Swap",
 		Duration: time.Second * 3,
 	}))
 
 	// Exhale
-	warlock.RegisterSpell(core.SpellConfig{
+	affliction.RegisterSpell(core.SpellConfig{
 		ActionID:    core.ActionID{SpellID: 86213},
 		Flags:       core.SpellFlagAPL,
 		ProcMask:    core.ProcMaskEmpty,
 		SpellSchool: core.SpellSchoolShadow,
 
 		ThreatMultiplier: 1,
-		CritMultiplier:   warlock.DefaultCritMultiplier(),
+		CritMultiplier:   affliction.DefaultCritMultiplier(),
 		DamageMultiplier: 1,
 
 		Cast: core.CastConfig{
@@ -34,7 +34,7 @@ func (warlock *AfflictionWarlock) registerSoulSwap() {
 		},
 
 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
-			return inhaleBuff.IsActive() && target != warlock.LastInhaleTarget && !warlock.SoulBurnAura.IsActive()
+			return inhaleBuff.IsActive() && target != affliction.LastInhaleTarget && !affliction.SoulBurnAura.IsActive()
 		},
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
@@ -59,17 +59,17 @@ func (warlock *AfflictionWarlock) registerSoulSwap() {
 	expectedDamage := &core.SpellResult{}
 
 	// we dont use seed in the expected calculations as it's not applied by exhale
-	expectedDotRefs := []**core.Spell{&warlock.Corruption, &warlock.Agony, &warlock.UnstableAffliction}
+	expectedDotRefs := []**core.Spell{&affliction.Corruption, &affliction.Agony, &affliction.UnstableAffliction}
 
 	// Inhale
-	warlock.RegisterSpell(core.SpellConfig{
+	affliction.RegisterSpell(core.SpellConfig{
 		ActionID:    core.ActionID{SpellID: 86121}.WithTag(1),
 		Flags:       core.SpellFlagAPL,
 		ProcMask:    core.ProcMaskEmpty,
 		SpellSchool: core.SpellSchoolShadow,
 
 		ThreatMultiplier: 1,
-		CritMultiplier:   warlock.DefaultCritMultiplier(),
+		CritMultiplier:   affliction.DefaultCritMultiplier(),
 		DamageMultiplier: 1,
 
 		Cast: core.CastConfig{
@@ -79,11 +79,11 @@ func (warlock *AfflictionWarlock) registerSoulSwap() {
 		},
 
 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
-			return anyDoTActive(dotRefs, target) && !inhaleBuff.IsActive() && !warlock.SoulBurnAura.IsActive()
+			return anyDoTActive(dotRefs, target) && !inhaleBuff.IsActive() && !affliction.SoulBurnAura.IsActive()
 		},
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			warlock.LastInhaleTarget = target
+			affliction.LastInhaleTarget = target
 			debuffState = map[int32]core.DotState{}
 
 			// store states
@@ -118,14 +118,14 @@ func (warlock *AfflictionWarlock) registerSoulSwap() {
 	})
 
 	// Soulswap: Soulburn
-	warlock.RegisterSpell(core.SpellConfig{
+	affliction.RegisterSpell(core.SpellConfig{
 		ActionID:    core.ActionID{SpellID: 86121}.WithTag(2),
 		Flags:       core.SpellFlagAPL,
 		ProcMask:    core.ProcMaskEmpty,
 		SpellSchool: core.SpellSchoolShadow,
 
 		ThreatMultiplier: 1,
-		CritMultiplier:   warlock.DefaultCritMultiplier(),
+		CritMultiplier:   affliction.DefaultCritMultiplier(),
 		DamageMultiplier: 1,
 
 		Cast: core.CastConfig{
@@ -135,14 +135,14 @@ func (warlock *AfflictionWarlock) registerSoulSwap() {
 		},
 
 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
-			return warlock.SoulBurnAura.IsActive()
+			return affliction.SoulBurnAura.IsActive()
 		},
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			warlock.Agony.Proc(sim, target)
-			warlock.Corruption.Proc(sim, target)
-			warlock.UnstableAffliction.Proc(sim, target)
-			warlock.SoulBurnAura.Deactivate(sim)
+			affliction.Agony.Proc(sim, target)
+			affliction.Corruption.Proc(sim, target)
+			affliction.UnstableAffliction.Proc(sim, target)
+			affliction.SoulBurnAura.Deactivate(sim)
 		},
 
 		ExpectedTickDamage: func(sim *core.Simulation, target *core.Unit, spell *core.Spell, useSnapshot bool) *core.SpellResult {

@@ -59,71 +59,71 @@ type AfflictionWarlock struct {
 	ExhaleWindow time.Duration
 }
 
-func (warlock AfflictionWarlock) getMasteryBonus() float64 {
-	return (8 + warlock.GetMasteryPoints()) * 3.1
+func (affliction AfflictionWarlock) getMasteryBonus() float64 {
+	return (8 + affliction.GetMasteryPoints()) * 3.1
 }
 
-func (warlock *AfflictionWarlock) GetWarlock() *warlock.Warlock {
-	return warlock.Warlock
+func (affliction *AfflictionWarlock) GetWarlock() *warlock.Warlock {
+	return affliction.Warlock
 }
 
 const MaxSoulShards = int32(4)
 
-func (warlock *AfflictionWarlock) Initialize() {
-	warlock.Warlock.Initialize()
+func (affliction *AfflictionWarlock) Initialize() {
+	affliction.Warlock.Initialize()
 
-	warlock.SoulShards = warlock.RegisterNewDefaultSecondaryResourceBar(core.SecondaryResourceConfig{
+	affliction.SoulShards = affliction.RegisterNewDefaultSecondaryResourceBar(core.SecondaryResourceConfig{
 		Type:    proto.SecondaryResourceType_SecondaryResourceTypeSoulShards,
 		Max:     MaxSoulShards,
 		Default: MaxSoulShards,
 	})
 
-	warlock.registerPotentAffliction()
-	warlock.registerHaunt()
-	warlock.RegisterCorruption(func(resultList core.SpellResultSlice, spell *core.Spell, sim *core.Simulation) {
+	affliction.registerPotentAffliction()
+	affliction.registerHaunt()
+	affliction.RegisterCorruption(func(resultList core.SpellResultSlice, spell *core.Spell, sim *core.Simulation) {
 		if resultList[0].Landed() {
-			warlock.LastCorruptionTarget = resultList[0].Target
+			affliction.LastCorruptionTarget = resultList[0].Target
 		}
 	}, nil)
 
-	warlock.registerAgony()
-	warlock.registerNightfall()
-	warlock.registerUnstableAffliction()
-	warlock.registerMaleficEffect()
-	warlock.registerMaleficGrasp()
-	warlock.registerDrainSoul()
-	warlock.registerDarkSoulMisery()
-	warlock.registerSoulburn()
-	warlock.registerSeed()
-	warlock.registerSoulSwap()
+	affliction.registerAgony()
+	affliction.registerNightfall()
+	affliction.registerUnstableAffliction()
+	affliction.registerMaleficEffect()
+	affliction.registerMaleficGrasp()
+	affliction.registerDrainSoul()
+	affliction.registerDarkSoulMisery()
+	affliction.registerSoulburn()
+	affliction.registerSeed()
+	affliction.registerSoulSwap()
 
-	warlock.registerGlyphs()
+	affliction.registerGlyphs()
 
-	warlock.registerHotfixes()
+	affliction.registerHotfixes()
 }
 
-func (warlock *AfflictionWarlock) ApplyTalents() {
-	warlock.Warlock.ApplyTalents()
+func (affliction *AfflictionWarlock) ApplyTalents() {
+	affliction.Warlock.ApplyTalents()
 }
 
-func (warlock *AfflictionWarlock) Reset(sim *core.Simulation) {
-	warlock.Warlock.Reset(sim)
+func (affliction *AfflictionWarlock) Reset(sim *core.Simulation) {
+	affliction.Warlock.Reset(sim)
 
-	warlock.LastCorruptionTarget = nil
+	affliction.LastCorruptionTarget = nil
 }
 
-func (warlock *AfflictionWarlock) OnEncounterStart(sim *core.Simulation) {
+func (affliction *AfflictionWarlock) OnEncounterStart(sim *core.Simulation) {
 	defaultShards := MaxSoulShards
-	if warlock.SoulBurnAura.IsActive() {
+	if affliction.SoulBurnAura.IsActive() {
 		defaultShards -= 1
 	}
 
-	haunt := warlock.GetSpell(core.ActionID{SpellID: HauntSpellID})
-	count := warlock.SpellsInFlight[haunt]
+	haunt := affliction.GetSpell(core.ActionID{SpellID: HauntSpellID})
+	count := affliction.SpellsInFlight[haunt]
 	defaultShards -= count
 
-	warlock.SoulShards.ResetBarTo(sim, defaultShards)
-	warlock.Warlock.OnEncounterStart(sim)
+	affliction.SoulShards.ResetBarTo(sim, defaultShards)
+	affliction.Warlock.OnEncounterStart(sim)
 }
 
 func calculateDoTBaseTickDamage(dot *core.Dot) float64 {
