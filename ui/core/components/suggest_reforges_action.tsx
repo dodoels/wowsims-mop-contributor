@@ -373,6 +373,10 @@ export class ReforgeOptimizer {
 				this.setUseSoftCapBreakpoints(eventID, false);
 			}
 		});
+
+		this.player.gearChangeEmitter.on(eventID => {
+			this.setRelativeStatCap(eventID, this.relativeStatCapStat);
+		});
 	}
 
 	private bindToggleExperimental(element: Element) {
@@ -595,7 +599,7 @@ export class ReforgeOptimizer {
 	}
 	setRelativeStatCap(eventID: EventID, newValue: number) {
 		this.relativeStatCapStat = newValue;
-		if (this.relativeStatCapStat === -1) {
+		if ((this.relativeStatCapStat === -1) || !RelativeStatCap.hasRoRo(this.player)) {
 			this.relativeStatCap = null;
 		} else {
 			this.relativeStatCap = new RelativeStatCap(this.relativeStatCapStat, this.player, this.playerClass);
