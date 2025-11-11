@@ -1169,6 +1169,10 @@
 					"label": "Temps jusqu'à boss prêt",
 					"tooltip": "Temps jusqu'à ce que le sort du boss soit prêt"
 				},
+				"boss_current_target": {
+					"label": "Est en train de tanker",
+					"tooltip": "Vrai si le joueur est actuellement en train de tanker"
+				},
 				"unit_is_moving": {
 					"label": "Unité en mouvement",
 					"tooltip": "Vrai si l'unité se déplace"

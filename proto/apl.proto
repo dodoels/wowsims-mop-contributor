@@ -99,7 +99,7 @@ message APLAction {
 }
 
 
-// NextIndex: 120
+// NextIndex: 121
 message APLValue {
 	UUID uuid = 85;
 
@@ -125,6 +125,7 @@ message APLValue {
         // Boss values
         APLValueBossSpellTimeToReady boss_spell_time_to_ready = 64;
         APLValueBossSpellIsCasting boss_spell_is_casting = 65;
+        APLValueBossCurrentTarget boss_current_target = 120;
 
         // Resource values
         APLValueCurrentHealth current_health = 26;
@@ -497,10 +498,12 @@ message APLValueBossSpellTimeToReady {
     UnitReference target_unit = 1;
     ActionID spell_id = 2;
 }
-
 message APLValueBossSpellIsCasting {
     UnitReference target_unit = 1;
     ActionID spell_id = 2;
+}
+message APLValueBossCurrentTarget {
+    UnitReference target_unit = 1;
 }
 message APLValueUnitIsMoving {
     UnitReference source_unit = 1;

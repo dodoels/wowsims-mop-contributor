@@ -113,6 +113,7 @@ import {
 	APLValueSpellFullCooldown,
 	APLValueDotTimeToNextTick,
 	APLValueSpellInFlight,
+	APLValueBossCurrentTarget,
 } from '../../proto/apl.js';
 import { Class, Spec } from '../../proto/common.js';
 import { ShamanTotems_TotemType as TotemType } from '../../proto/shaman.js';
@@ -663,6 +664,13 @@ const valueKindFactories: { [f in ValidAPLValueKind]: ValueKindConfig<APLValueIm
 		shortDescription: i18n.t('rotation_tab.apl.values.spell_time_to_ready.tooltip'),
 		newValue: APLValueBossSpellTimeToReady.create,
 		fields: [AplHelpers.unitFieldConfig('targetUnit', 'targets'), AplHelpers.actionIdFieldConfig('spellId', 'spells', 'targetUnit', 'currentTarget')],
+	}),
+	bossCurrentTarget: inputBuilder({
+		label: i18n.t('rotation_tab.apl.values.boss_current_target.label'),
+		submenu: ['boss'],
+		shortDescription: i18n.t('rotation_tab.apl.values.boss_current_target.tooltip'),
+		newValue: APLValueBossCurrentTarget.create,
+		fields: [AplHelpers.unitFieldConfig('targetUnit', 'targets')],
 	}),
 
 	// Unit

@@ -4861,6 +4861,22 @@
                     "tooltip"
                   ]
                 },
+                "boss_current_target": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "tooltip": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "tooltip"
+                  ]
+                },
                 "unit_is_moving": {
                   "type": "object",
                   "properties": {
@@ -6398,6 +6414,7 @@
                 "in_front_of_target",
                 "boss_cast",
                 "boss_cast_time_to_ready",
+                "boss_current_target",
                 "unit_is_moving",
                 "distance_to_unit",
                 "current_health",

@@ -6,13 +6,13 @@ import { Stats } from '../../core/proto_utils/stats';
 import GenericApl from './apls/default.apl.json';
 import GarajalApl from './apls/garajal.apl.json';
 import ShaApl from './apls/sha.apl.json';
-import GarajalBuild from './builds/garajal_default.build.json';
-import ShaBuild from './builds/sha_default.build.json';
-import P1BISGear from './gear_sets/p1_bis.gear.json';
+import GarajalBuild from './builds/garajal_encounter_only.build.json';
+import ShaBuild from './builds/sha_encounter_only.build.json';
+import HorridonBuild from './builds/horridon_encounter_only.build.json';
 import P2BISGear from './gear_sets/p2_bis.gear.json';
+import P3ProgGear from './gear_sets/p3_prog.gear.json';
 import P3BISGear from './gear_sets/p3_bis.gear.json';
 import P3BISOffensiveGear from './gear_sets/p3_bis_offensive.gear.json';
-import P1BISItemSwapGear from './gear_sets/p1_bis_item_swap.gear.json';
 import P2BISItemSwapGear from './gear_sets/p2_bis_item_swap.gear.json';
 import P2BISOffensiveGear from './gear_sets/p2_bis_offensive.gear.json';
 import PreRaidItemSwapGear from './gear_sets/p1_preraid_item_swap.gear.json';
@@ -23,14 +23,13 @@ import PreraidBISGear from './gear_sets/preraid.gear.json';
 // keep them in a separate file.
 
 export const PRERAID_BALANCED_PRESET = PresetUtils.makePresetGear('Pre-raid', PreraidBISGear);
-export const P1_BALANCED_PRESET = PresetUtils.makePresetGear('P1 - BIS', P1BISGear);
 export const P2_BALANCED_PRESET = PresetUtils.makePresetGear('P2 - BIS', P2BISGear);
 export const P2_OFFENSIVE_PRESET = PresetUtils.makePresetGear('P2 - BIS (Offensive)', P2BISOffensiveGear);
-export const P3_BALANCED_PRESET = PresetUtils.makePresetGear('P3 - BIS (TBD)', P3BISGear);
-export const P3_OFFENSIVE_PRESET = PresetUtils.makePresetGear('P3 - BIS (TBD - Offensive)', P3BISOffensiveGear);
+export const P3_PROG_PRESET = PresetUtils.makePresetGear('Tentative - P3 - Prog (Balanced)', P3ProgGear);
+export const P3_BALANCED_PRESET = PresetUtils.makePresetGear('Tentative - P3 - BIS (Balanced)', P3BISGear);
+export const P3_OFFENSIVE_PRESET = PresetUtils.makePresetGear('Tentative - P3 - BIS (Offensive)', P3BISOffensiveGear);
 
 export const PRERAID_ITEM_SWAP = PresetUtils.makePresetItemSwapGear('Pre-raid - Item Swap', PreRaidItemSwapGear);
-export const P1_ITEM_SWAP = PresetUtils.makePresetItemSwapGear('P1 - Item Swap', P1BISItemSwapGear);
 export const P2_ITEM_SWAP = PresetUtils.makePresetItemSwapGear('P2 - Item Swap', P2BISItemSwapGear);
 
 export const ROTATION_GENERIC = PresetUtils.makePresetAPLRotation('Generic', GenericApl);
@@ -84,51 +83,51 @@ export const P2_OFFENSIVE_EP_PRESET = PresetUtils.makePresetEpWeights(
 	),
 );
 
-// export const P3_EP_PRESET = PresetUtils.makePresetEpWeights(
-// 	'P3 - Balanced',
-// 	Stats.fromMap(
-// 		{
-// 			[Stat.StatStrength]: 1,
-// 			[Stat.StatStamina]: 0.66,
-// 			[Stat.StatHitRating]: 3.66,
-// 			[Stat.StatCritRating]: 1.07,
-// 			[Stat.StatHasteRating]: 0.04,
-// 			[Stat.StatExpertiseRating]: 3.57,
-// 			[Stat.StatDodgeRating]: 1.42,
-// 			[Stat.StatParryRating]: 1.43,
-// 			[Stat.StatMasteryRating]: 0.29,
-// 			[Stat.StatAttackPower]: 0.32,
-// 			[Stat.StatArmor]: 0.55,
-// 			[Stat.StatBonusArmor]: 0.55,
-// 		},
-// 		{
-// 			[PseudoStat.PseudoStatMainHandDps]: 0.57,
-// 		},
-// 	),
-// );
+export const P3_EP_PRESET = PresetUtils.makePresetEpWeights(
+	'P3 - Balanced',
+	Stats.fromMap(
+		{
+			[Stat.StatStrength]: 1.00,
+			[Stat.StatStamina]: 0.83,
+			[Stat.StatHitRating]: 2.40,
+			[Stat.StatCritRating]: 0.82,
+			[Stat.StatHasteRating]: 0.15,
+			[Stat.StatExpertiseRating]: 2.44,
+			[Stat.StatDodgeRating]: 1.04,
+			[Stat.StatParryRating]: 1.12,
+			[Stat.StatMasteryRating]: 0.23,
+			[Stat.StatAttackPower]: 0.24,
+			[Stat.StatArmor]: 0.64,
+			[Stat.StatBonusArmor]: 0.64,
+		},
+		{
+			[PseudoStat.PseudoStatMainHandDps]: 0.97,
+		},
+	),
+);
 
-// export const P3_OFFENSIVE_EP_PRESET = PresetUtils.makePresetEpWeights(
-// 	'P3 - Offensive',
-// 	Stats.fromMap(
-// 		{
-// 			[Stat.StatStrength]: 1,
-// 			[Stat.StatStamina]: 0.37,
-// 			[Stat.StatHitRating]: 3.56,
-// 			[Stat.StatCritRating]: 1.41,
-// 			[Stat.StatHasteRating]: 0.11,
-// 			[Stat.StatExpertiseRating]: 3.46,
-// 			[Stat.StatDodgeRating]: 1.38,
-// 			[Stat.StatParryRating]: 1.39,
-// 			[Stat.StatMasteryRating]: 0.2,
-// 			[Stat.StatAttackPower]: 0.34,
-// 			[Stat.StatArmor]: 0.38,
-// 			[Stat.StatBonusArmor]: 0.38,
-// 		},
-// 		{
-// 			[PseudoStat.PseudoStatMainHandDps]: 0.78,
-// 		},
-// 	),
-// );
+export const P3_OFFENSIVE_EP_PRESET = PresetUtils.makePresetEpWeights(
+	'P3 - Offensive',
+	Stats.fromMap(
+		{
+			[Stat.StatStrength]: 1.00,
+			[Stat.StatStamina]: 0.37,
+			[Stat.StatHitRating]: 2.51,
+			[Stat.StatCritRating]: 1.12,
+			[Stat.StatHasteRating]: 0.27,
+			[Stat.StatExpertiseRating]: 2.54,
+			[Stat.StatDodgeRating]: 0.99,
+			[Stat.StatParryRating]: 1.11,
+			[Stat.StatMasteryRating]: 0.11,
+			[Stat.StatAttackPower]: 0.30,
+			[Stat.StatArmor]: 0.27,
+			[Stat.StatBonusArmor]: 0.27,
+		},
+		{
+			[PseudoStat.PseudoStatMainHandDps]: 1.08,
+		},
+	),
+);
 
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/mop-classic/talent-calc and copy the numbers in the url.
@@ -162,10 +161,11 @@ export const OtherDefaults = {
 	distanceFromTarget: 15,
 };
 
-export const PRESET_BUILD_GARAJAL = PresetUtils.makePresetBuildFromJSON("Pre-Raid - Gara'jal", Spec.SpecProtectionWarrior, GarajalBuild);
-export const PRESET_BUILD_SHA = PresetUtils.makePresetBuildFromJSON('P2 - Sha of Fear', Spec.SpecProtectionWarrior, ShaBuild);
+export const PRESET_BUILD_GARAJAL = PresetUtils.makePresetBuildFromJSON("Gara'jal", Spec.SpecProtectionWarrior, GarajalBuild);
+export const PRESET_BUILD_SHA = PresetUtils.makePresetBuildFromJSON('Sha of Fear P2', Spec.SpecProtectionWarrior, ShaBuild);
+export const PRESET_BUILD_HORRIDON = PresetUtils.makePresetBuildFromJSON('Horridon P2', Spec.SpecProtectionWarrior, HorridonBuild);
 
-// const TEMP_P3_STATIC_ENCOUNTER = PresetUtils.makePresetEncounter('P3 (TBD)', {
+// const TEMP_P3_STATIC_ENCOUNTER = PresetUtils.makePresetEncounter('P3', {
 // 	...Encounter.defaultEncounterProto(),
 // 	targets: [
 // 		{

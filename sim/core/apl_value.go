@@ -106,6 +106,8 @@ func (rot *APLRotation) newAPLValueWithContext(config *proto.APLValue, groupVari
 		value = rot.newValueBossSpellIsCasting(config.GetBossSpellIsCasting(), config.Uuid)
 	case *proto.APLValue_BossSpellTimeToReady:
 		value = rot.newValueBossSpellTimeToReady(config.GetBossSpellTimeToReady(), config.Uuid)
+	case *proto.APLValue_BossCurrentTarget:
+		value = rot.newValueBossCurrentTarget(config.GetBossCurrentTarget(), config.Uuid)
 
 	// Resources
 	case *proto.APLValue_CurrentHealth:

@@ -1169,6 +1169,10 @@
 					"label": "Boss Cast Time to Ready",
 					"tooltip": "Time until the boss spell will be ready"
 				},
+				"boss_current_target": {
+					"label": "Is Tanking",
+					"tooltip": "True if the player is currently tanking"
+				},
 				"unit_is_moving": {
 					"label": "Unit Is Moving",
 					"tooltip": "True if the unit is moving"

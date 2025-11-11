@@ -65,8 +65,8 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionWarrior, {
 
 	defaults: {
 		// Default equipped gear.
-		gear: Presets.P1_BALANCED_PRESET.gear,
-		itemSwap: Presets.P1_ITEM_SWAP.itemSwap,
+		gear: Presets.P2_BALANCED_PRESET.gear,
+		itemSwap: Presets.P2_ITEM_SWAP.itemSwap,
 		// Default EP weights for sorting gear in the gear picker.
 		epWeights: Presets.P2_EP_PRESET.epWeights,
 		// Default stat caps for the Reforge Optimizer
@@ -132,7 +132,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionWarrior, {
 	},
 
 	presets: {
-		epWeights: [Presets.P2_EP_PRESET, Presets.P2_OFFENSIVE_EP_PRESET],
+		epWeights: [Presets.P2_EP_PRESET, Presets.P2_OFFENSIVE_EP_PRESET, Presets.P3_EP_PRESET, Presets.P3_OFFENSIVE_EP_PRESET],
 		// Preset talents that the user can quickly select.
 		talents: [Presets.StandardTalents],
 		// Preset rotations that the user can quickly select.
@@ -140,14 +140,14 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionWarrior, {
 		// Preset gear configurations that the user can quickly select.
 		gear: [
 			Presets.PRERAID_BALANCED_PRESET,
-			Presets.P1_BALANCED_PRESET,
 			Presets.P2_BALANCED_PRESET,
 			Presets.P2_OFFENSIVE_PRESET,
+			Presets.P3_PROG_PRESET,
 			Presets.P3_BALANCED_PRESET,
 			Presets.P3_OFFENSIVE_PRESET,
 		],
-		itemSwaps: [Presets.PRERAID_ITEM_SWAP, Presets.P1_ITEM_SWAP, Presets.P2_ITEM_SWAP],
-		builds: [Presets.PRESET_BUILD_GARAJAL, Presets.PRESET_BUILD_SHA],
+		itemSwaps: [Presets.PRERAID_ITEM_SWAP, Presets.P2_ITEM_SWAP],
+		builds: [Presets.PRESET_BUILD_GARAJAL, Presets.PRESET_BUILD_SHA, Presets.PRESET_BUILD_HORRIDON],
 	},
 
 	autoRotation: (_player: Player<Spec.SpecProtectionWarrior>): APLRotation => {
@@ -169,11 +169,11 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionWarrior, {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
 					1: Presets.PRERAID_BALANCED_PRESET.gear,
-					2: Presets.P1_BALANCED_PRESET.gear,
+					2: Presets.P2_BALANCED_PRESET.gear,
 				},
 				[Faction.Horde]: {
 					1: Presets.PRERAID_BALANCED_PRESET.gear,
-					2: Presets.P1_BALANCED_PRESET.gear,
+					2: Presets.P2_BALANCED_PRESET.gear,
 				},
 			},
 			otherDefaults: Presets.OtherDefaults,
