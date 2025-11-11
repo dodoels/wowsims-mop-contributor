@@ -1531,6 +1531,10 @@
 					"label": "Instantané brut existant %",
 					"tooltip": "Influence la puissance de votre snapshot actuel par rapport à la version de référence. Ignore la hâte et les coups critiques. À utiliser uniquement si vous savez ce que vous faites."
 				},
+				"affliction_exhale_window": {
+					"label": "Fenêtre d'expiration",
+					"tooltip": "Marge de manœuvre configurée pour l'expiration des DoTs inhalés."
+				},
 				"mage_current_combustion_dot_estimate": {
 					"label": "Valeur DoT de Combustion",
 					"tooltip": "Retourne la taille estimée actuelle de votre DoT de Combustion."
@@ -1542,10 +1546,6 @@
 				"protection_paladin_damage_taken_last_global": {
 					"label": "Dégâts reçus dernier global",
 					"tooltip": "Quantité de dégâts reçus dans les dernières 1.5s."
-				},
-				"affliction_exhale_window": {
-					"label": "Fenêtre d'expiration",
-					"tooltip": "Marge de manœuvre configurée pour l'expiration des DoTs inhalés."
 				},
 				"aura_remaining_icd": {
 					"label": "Aura ICD restant",

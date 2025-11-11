@@ -182,19 +182,19 @@ func (value *APLValueAfflictionCurrentSnapshot) GetFloat(sim *core.Simulation) f
 
 type APLValueExhaleWindow struct {
 	core.DefaultAPLValueImpl
-	aff *AfflictionWarlock
+	warlock *AfflictionWarlock
 }
 
-func (aff *AfflictionWarlock) newValueExhaleWindow(_ *proto.APLValueAfflictionExhaleWindow, _ *proto.UUID) core.APLValue {
+func (warlock *AfflictionWarlock) newValueExhaleWindow(_ *proto.APLValueAfflictionExhaleWindow, _ *proto.UUID) core.APLValue {
 	return &APLValueExhaleWindow{
-		aff: aff,
+		warlock: warlock,
 	}
 }
 func (value *APLValueExhaleWindow) Type() proto.APLValueType {
 	return proto.APLValueType_ValueTypeDuration
 }
 func (value *APLValueExhaleWindow) GetDuration(sim *core.Simulation) time.Duration {
-	return time.Duration(value.aff.ExhaleWindow)
+	return time.Duration(value.warlock.ExhaleWindow)
 }
 func (value *APLValueExhaleWindow) String() string {
 	return "Exhale Window()"
