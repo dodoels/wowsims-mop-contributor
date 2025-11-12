@@ -101,6 +101,7 @@ func (controller *StormEarthAndFireController) CastCopySpell(sim *core.Simulatio
 	for _, pet := range controller.activeClones {
 		if !pet.CurrentTarget.IsEnabled() {
 			pet.owner.SefController.deactivateClone(sim, pet)
+			continue
 		}
 		petSpellActionID := spell.ActionID.WithTag(SEFSpellID)
 		copySpell := pet.spells[petSpellActionID]
