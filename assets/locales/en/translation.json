@@ -1838,7 +1838,7 @@
 				"affliction": {
 					"exhale_window": {
 						"label": "Soul Swap Exhale Window",
-						"tooltip": "How long before inhaled dots expire to exhale during multitarget encounters."
+						"tooltip": "How long, in milliseconds, before inhaled dots expire to exhale during multitarget encounters."
 					}
 				}
 			},

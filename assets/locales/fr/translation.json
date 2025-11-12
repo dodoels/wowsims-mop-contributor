@@ -1838,7 +1838,7 @@
 				"affliction": {
 					"exhale_window": {
 						"label": "Fenêtre d'expiration de l'échange d'âme",
-						"tooltip": "Combien de temps faut-il pour que les DoTs inhalés expirent lors de combats avec plusieurs cibles ?"
+						"tooltip": "Combien de temps, en millisecondes, s'écoule avant que les points inhalés n'expirent lors de rencontres à cibles multiples ?"
 					}
 				}
 			},
