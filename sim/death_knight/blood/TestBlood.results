@@ -3237,10 +3237,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-Settings-Orc-p1-RC-example-build-Basic-defensive-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 4.25888456483e+06
-  tps: 2.429485791429e+07
-  dtps: 1.89265875824e+06
-  hps: 519525.64659
+  dps: 4.26060365132e+06
+  tps: 2.426773149392e+07
+  dtps: 1.89279446333e+06
+  hps: 520184.10907
  }
 }
 dps_results: {
@@ -3264,10 +3264,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-Settings-Orc-p1-RC-example-build-Basic-defensive-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 3.37261833895e+06
-  tps: 1.943361517998e+07
+  dps: 3.37428255296e+06
+  tps: 1.94465055086e+07
   dtps: 1.93551851306e+06
-  hps: 491290.54281
+  hps: 491286.97212
  }
 }
 dps_results: {
@@ -3300,8 +3300,8 @@ dps_results: {
 dps_results: {
  key: "TestBlood-Settings-Worgen-p1-DefaultTalents-Basic-defensive-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 122892.84595
-  tps: 712380.27049
+  dps: 122841.26021
+  tps: 712019.17028
   dtps: 96069.5717
   hps: 71763.69781
  }
@@ -3345,10 +3345,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-Settings-Worgen-p1-RC-example-build-Basic-defensive-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 4.27039025369e+06
-  tps: 2.447337425991e+07
-  dtps: 1.89241045596e+06
-  hps: 519784.29615
+  dps: 4.27221986484e+06
+  tps: 2.44463119123e+07
+  dtps: 1.89254616105e+06
+  hps: 520442.75963
  }
 }
 dps_results: {
@@ -3372,10 +3372,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-Settings-Worgen-p1-RC-example-build-Basic-defensive-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 3.37932980724e+06
-  tps: 1.95796850239e+07
+  dps: 3.38105652638e+06
+  tps: 1.959298828631e+07
   dtps: 1.93517573013e+06
-  hps: 491076.944
+  hps: 491073.37341
  }
 }
 dps_results: {
