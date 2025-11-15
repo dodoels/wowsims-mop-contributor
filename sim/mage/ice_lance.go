@@ -19,7 +19,7 @@ func (mage *Mage) registerIceLanceSpell() {
 			ActionID:       config.ActionID,
 			SpellSchool:    core.SpellSchoolFrost,
 			ProcMask:       core.ProcMaskSpellDamage,
-			Flags:          core.SpellFlagAPL,
+			Flags:          config.Flags,
 			ClassSpellMask: MageSpellIceLance,
 			MissileSpeed:   38,
 
@@ -37,6 +37,7 @@ func (mage *Mage) registerIceLanceSpell() {
 
 	splittingIceSpell := mage.RegisterSpell(getIceLanceSpellBaseConfig(core.SpellConfig{
 		ActionID: actionID.WithTag(1), // Real SpellID: 131080
+		Flags:    core.SpellFlagPassiveSpell,
 
 		DamageMultiplier: 0.4,
 
@@ -59,6 +60,7 @@ func (mage *Mage) registerIceLanceSpell() {
 
 	mage.RegisterSpell(getIceLanceSpellBaseConfig(core.SpellConfig{
 		ActionID: actionID,
+		Flags:    core.SpellFlagAPL,
 
 		ManaCost: core.ManaCostOptions{
 			BaseCostPercent: 1,
