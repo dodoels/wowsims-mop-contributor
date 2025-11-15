@@ -34,7 +34,6 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMarksmanshipHunter, {
 	gemStats: [
 		Stat.StatStamina,
 		Stat.StatAgility,
-		Stat.StatRangedAttackPower,
 		Stat.StatHitRating,
 		Stat.StatCritRating,
 		Stat.StatHasteRating,
@@ -64,6 +63,19 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMarksmanshipHunter, {
 				.withPseudoStat(PseudoStat.PseudoStatPhysicalHitPercent, 7.5)
 				.withStat(Stat.StatExpertiseRating, 7.5 * 4 * Mechanics.EXPERTISE_PER_QUARTER_PERCENT_REDUCTION);
 		})(),
+		// // Default breakpoint limits - set 31.1% haste as default target
+		// breakpointLimits: (() => {
+		// 	return new Stats().withPseudoStat(PseudoStat.PseudoStatRangedHastePercent, 31.1);
+		// })(),
+		// softCapBreakpoints: (() => {
+		// 	return [
+		// 		StatCap.fromPseudoStat(PseudoStat.PseudoStatRangedHastePercent, {
+		// 			breakpoints: [31.1],
+		// 			capType: StatCapType.TypeSoftCap,
+		// 			postCapEPs: [0.35 * Mechanics.HASTE_RATING_PER_HASTE_PERCENT],
+		// 		}),
+		// 	];
+		// })(),
 		other: Presets.OtherDefaults,
 		// Default consumes settings.
 		consumables: Presets.DefaultConsumables,
@@ -109,14 +121,14 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMarksmanshipHunter, {
 	},
 
 	presets: {
-		epWeights: [Presets.P2_EP_PRESET],
+		epWeights: [Presets.P2_EP_PRESET, Presets.P3_EP_PRESET],
 		// Preset talents that the user can quickly select.
 		talents: [Presets.DefaultTalents],
 		// Preset rotations that the user can quickly select.
 		rotations: [Presets.ROTATION_PRESET_MM, Presets.ROTATION_PRESET_AOE],
 		// Preset gear configurations that the user can quickly select.
-		builds: [Presets.PRERAID_PRESET, Presets.PRERAID_PRESET_CELESTIAL, Presets.P2_PRESET],
-		gear: [Presets.PRERAID_PRESET_GEAR, Presets.PRERAID_CELESTIAL_PRESET_GEAR, Presets.P2_PRESET_GEAR],
+		builds: [Presets.PRERAID_PRESET, Presets.P2_PRESET, Presets.P3_PRESET],
+		gear: [Presets.PRERAID_PRESET_GEAR, Presets.P2_PRESET_GEAR, Presets.P3_PRESET_GEAR],
 	},
 
 	autoRotation: (_: Player<Spec.SpecMarksmanshipHunter>): APLRotation => {
@@ -138,12 +150,14 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMarksmanshipHunter, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.PRERAID_CELESTIAL_PRESET_GEAR.gear,
+					1: Presets.PRERAID_PRESET_GEAR.gear,
 					2: Presets.P2_PRESET_GEAR.gear,
+					3: Presets.P3_PRESET_GEAR.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.PRERAID_CELESTIAL_PRESET_GEAR.gear,
+					1: Presets.PRERAID_PRESET_GEAR.gear,
 					2: Presets.P2_PRESET_GEAR.gear,
+					3: Presets.P3_PRESET_GEAR.gear,
 				},
 			},
 			otherDefaults: Presets.OtherDefaults,
@@ -155,6 +169,16 @@ export class MarksmanshipHunterSimUI extends IndividualSimUI<Spec.SpecMarksmansh
 	constructor(parentElem: HTMLElement, player: Player<Spec.SpecMarksmanshipHunter>) {
 		super(parentElem, player, SPEC_CONFIG);
 
-		this.reforger = new ReforgeOptimizer(this);
+		this.reforger = new ReforgeOptimizer(this, {
+			updateSoftCaps: softCaps => {
+				const hasteCap = softCaps.find(v => v.unitStat.equalsPseudoStat(PseudoStat.PseudoStatRangedHastePercent));
+				if (hasteCap) {
+					const hasteWeights = player.getEpWeights().getStat(Stat.StatHasteRating);
+					const baseEP = hasteWeights * Mechanics.HASTE_RATING_PER_HASTE_PERCENT;
+					hasteCap.postCapEPs = [baseEP * (0.35 / 0.59)];
+				}
+				return softCaps;
+			},
+		});
 	}
 }

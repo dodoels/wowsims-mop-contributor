@@ -23,7 +23,7 @@ func TestMarksmanship(t *testing.T) {
 			Race:       proto.Race_RaceOrc,
 			OtherRaces: []proto.Race{proto.Race_RaceWorgen},
 
-			GearSet:         core.GetGearSet("../../../ui/hunter/presets", "p2"),
+			GearSet:         core.GetGearSet("../../../ui/hunter/marksmanship/gear_sets", "p2"),
 			Talents:         MarksmanshipTalents,
 			OtherTalentSets: talentSets,
 			Glyphs:          MarksmanshipDefaultGlyphs,
@@ -31,7 +31,7 @@ func TestMarksmanship(t *testing.T) {
 			SpecOptions:     core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsBasic},
 			Rotation:        core.GetAplRotation("../../../ui/hunter/marksmanship/apls", "mm"),
 			Profession1:     proto.Profession_Engineering,
-			Profession2:     proto.Profession_Leatherworking,
+			Profession2:     proto.Profession_Tailoring,
 
 			ItemFilter:       ItemFilter,
 			StartingDistance: 24,
@@ -66,7 +66,7 @@ var PlayerOptionsBasic = &proto.Player_MarksmanshipHunter{
 	MarksmanshipHunter: &proto.MarksmanshipHunter{
 		Options: &proto.MarksmanshipHunter_Options{
 			ClassOptions: &proto.HunterOptions{
-				PetType:           proto.HunterOptions_Wolf,
+				PetType:           proto.HunterOptions_Tallstrider,
 				PetUptime:         1,
 				UseHuntersMark:    true,
 				GlaiveTossSuccess: 0.8,
