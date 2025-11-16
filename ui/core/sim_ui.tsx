@@ -109,6 +109,13 @@ export abstract class SimUI extends Component {
 		if (!this.isWithinRaidSim) {
 			this.rootElem.classList.add('not-within-raid-sim');
 		}
+		if (this.config.spec?.isHealingSpec) {
+			this.rootElem.classList.add('sim-type--heal');
+		} else if (this.config.spec?.isTankSpec) {
+			this.rootElem.classList.add('sim-type--tank');
+		} else if (this.config.spec?.isMeleeDpsSpec || this.config.spec?.isRangedDpsSpec) {
+			this.rootElem.classList.add('sim-type--dps', this.config.spec?.isMeleeDpsSpec ? 'sim-type--melee' : 'sim-type--ranged');
+		}
 
 		this.changeEmitter = TypedEvent.onAny([this.sim.changeEmitter], 'SimUIChange');
 

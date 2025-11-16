@@ -3,16 +3,15 @@
 	"raidBuffs": {
 		"trueshotAura": true,
 		"unholyAura": true,
-		"elementalOath": true,
 		"leaderOfThePack": true,
 		"blessingOfMight": true,
 		"blessingOfKings": true,
+		"commandingShout": true,
 		"bloodlust": true,
 		"stormlashTotemCount": 4,
 		"skullBannerCount": 2
 	},
 	"debuffs": {
-		"weakenedBlows": true,
 		"physicalVulnerability": true,
 		"weakenedArmor": true,
 		"curseOfElements": true
@@ -20,33 +19,33 @@
 	"partyBuffs": {},
 	"player": {
 		"name": "Player",
-		"race": "RaceTroll",
-		"class": "ClassDeathKnight",
+		"race": "RaceOrc",
+		"class": "ClassHunter",
 		"equipment": {
 			"items": [
-				{ "id": 96894, "gems": [95346, 76700], "reforging": 147 },
-				{ "id": 96792, "reforging": 145 },
-				{ "id": 96573, "enchant": 4803, "gems": [76674, 76700], "reforging": 160 },
-				{ "id": 95017, "enchant": 4424, "gems": [76700], "reforging": 147, "tinker": 4897 },
-				{ "id": 96569, "enchant": 4419, "gems": [76674, 76700, 76643], "reforging": 161 },
-				{ "id": 96375, "randomSuffix": -339, "enchant": 4415, "gems": [76700, 0], "upgradeStep": "UpgradeStepTwo" },
-				{ "id": 96570, "enchant": 4432, "gems": [76674, 0], "reforging": 140, "tinker": 4898 },
-				{ "id": 96745, "gems": [76674, 76700, 76700], "tinker": 4223 },
-				{ "id": 96572, "enchant": 4823, "gems": [76700, 76643], "reforging": 145 },
-				{ "id": 95012, "enchant": 4429, "gems": [76700, 76643], "reforging": 161 },
-				{ "id": 96872, "gems": [76674], "reforging": 140 },
-				{ "id": 95022, "gems": [76700], "reforging": 161 },
-				{ "id": 96842, "reforging": 140 },
-				{ "id": 94508, "reforging": 161, "upgradeStep": "UpgradeStepTwo" },
-				{ "id": 96992, "enchant": 3368, "gems": [76700, 76700], "reforging": 138 },
-				{ "id": 96992, "enchant": 3370, "gems": [76700, 76700], "reforging": 138 }
+				{ "id": 96628, "gems": [95346, 76658], "reforging": 140 },
+				{ "id": 96815, "gems": [76692], "reforging": 138 },
+				{ "id": 96630, "enchant": 4804, "gems": [76692, 76666], "reforging": 138 },
+				{ "id": 96833, "enchant": 4894, "gems": [76692], "reforging": 145, "tinker": 4897 },
+				{ "id": 96626, "enchant": 4419, "gems": [76692, 76658, 76680], "reforging": 160 },
+				{ "id": 96797, "randomSuffix": -336, "enchant": 4416, "gems": [76658, 0], "reforging": 146 },
+				{ "id": 96627, "enchant": 4433, "gems": [76692, 0], "reforging": 160, "tinker": 4898 },
+				{ "id": 96846, "gems": [76692, 76666, 76692], "reforging": 147, "tinker": 4223 },
+				{ "id": 96921, "enchant": 4822, "gems": [76692, 76692, 76692], "reforging": 147 },
+				{ "id": 95009, "enchant": 4428, "gems": [76666, 76680], "reforging": 145 },
+				{ "id": 95021, "gems": [76680], "reforging": 140 },
+				{ "id": 96885, "gems": [76692], "reforging": 151 },
+				{ "id": 96741, "reforging": 160 },
+				{ "id": 96781, "reforging": 167 },
+				{ "id": 96844, "enchant": 4699, "gems": [76692, 76692], "reforging": 147 },
+				{}
 			]
 		},
 		"consumables": {
-			"prepotId": 76095,
-			"potId": 76095,
-			"flaskId": 76088,
-			"foodId": 74646
+			"prepotId": 76089,
+			"potId": 76089,
+			"flaskId": 76084,
+			"foodId": 74648
 		},
 		"bonusStats": {
 			"apiVersion": 2,
@@ -62,26 +61,30 @@
 			}
 		},
 		"buffs": {},
-		"frostDeathKnight": {
+		"beastMasteryHunter": {
 			"options": {
-				"classOptions": {}
+				"classOptions": {
+					"petType": "Tallstrider",
+					"petUptime": 1,
+					"useHuntersMark": true,
+					"glaiveTossSuccess": 0.8
+				}
 			}
 		},
-		"talentsString": "221111",
+		"talentsString": "312213",
 		"glyphs": {
-			"major1": 68793,
-			"major2": 43548,
-			"minor1": 43672,
-			"minor2": 45806
+			"major1": 42909,
+			"major2": 42903,
+			"major3": 42911
 		},
 		"profession1": "Engineering",
-		"profession2": "Herbalism",
+		"profession2": "Tailoring",
 		"cooldowns": {},
 		"rotation": {
 			"type": "TypeAuto"
 		},
 		"reactionTimeMs": 100,
-		"distanceFromTarget": 5,
+		"distanceFromTarget": 24,
 		"healingModel": {}
 	},
 	"encounter": {

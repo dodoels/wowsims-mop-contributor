@@ -23,7 +23,7 @@ func TestBeastMastery(t *testing.T) {
 			Race:       proto.Race_RaceOrc,
 			OtherRaces: []proto.Race{proto.Race_RaceWorgen},
 
-			GearSet:         core.GetGearSet("../../../ui/hunter/presets", "p2"),
+			GearSet:         core.GetGearSet("../../../ui/hunter/beast_mastery/gear_sets", "p2"),
 			Talents:         BeastMasteryTalents,
 			OtherTalentSets: talentSets,
 			Glyphs:          BeastMasteryDefaultGlyphs,
@@ -31,7 +31,7 @@ func TestBeastMastery(t *testing.T) {
 			SpecOptions:     core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsBasic},
 			Rotation:        core.GetAplRotation("../../../ui/hunter/beast_mastery/apls", "bm"),
 			Profession1:     proto.Profession_Engineering,
-			Profession2:     proto.Profession_Leatherworking,
+			Profession2:     proto.Profession_Tailoring,
 
 			ItemFilter:       ItemFilter,
 			StartingDistance: 24,
@@ -55,7 +55,7 @@ var FullConsumesSpec = &proto.ConsumesSpec{
 	PrepotId: 76089, // Virmen's Bite
 }
 
-var BeastMasteryTalents = "312111"
+var BeastMasteryTalents = "312211"
 var BeastMasteryDefaultGlyphs = &proto.Glyphs{
 	Major1: int32(proto.HunterMajorGlyph_GlyphOfPathfinding),
 	Major2: int32(proto.HunterMajorGlyph_GlyphOfAnimalBond),
@@ -66,7 +66,7 @@ var PlayerOptionsBasic = &proto.Player_BeastMasteryHunter{
 	BeastMasteryHunter: &proto.BeastMasteryHunter{
 		Options: &proto.BeastMasteryHunter_Options{
 			ClassOptions: &proto.HunterOptions{
-				PetType:           proto.HunterOptions_Wolf,
+				PetType:           proto.HunterOptions_Tallstrider,
 				PetUptime:         1,
 				UseHuntersMark:    true,
 				GlaiveTossSuccess: 0.8,

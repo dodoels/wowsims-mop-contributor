@@ -729,8 +729,8 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-AllItems-EnchantWeapon-River'sSong-4446"
  value: {
-  dps: 190690.96252
-  tps: 1.09102764601e+06
+  dps: 190723.73976
+  tps: 1.09125708669e+06
   dtps: 20507.83126
  }
 }
@@ -1241,8 +1241,8 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-AllItems-InsigniaofKypariZar-84078"
  value: {
-  dps: 193352.5047
-  tps: 1.10785239998e+06
+  dps: 193314.15603
+  tps: 1.10784451252e+06
   dtps: 19945.47002
  }
 }
@@ -1361,8 +1361,8 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-AllItems-KnotofTenSongs-84073"
  value: {
-  dps: 193300.25953
-  tps: 1.1073996273e+06
+  dps: 193324.56128
+  tps: 1.10783029274e+06
   dtps: 19878.21706
  }
 }
@@ -2257,9 +2257,9 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-AllItems-StuffofNightmares-87160"
  value: {
-  dps: 193454.47918
-  tps: 1.10736214965e+06
-  dtps: 18884.96777
+  dps: 193199.92659
+  tps: 1.1051917976e+06
+  dtps: 18871.81652
  }
 }
 dps_results: {
@@ -2617,8 +2617,8 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-AllItems-VialofDragon'sBlood-87063"
  value: {
-  dps: 194354.77017
-  tps: 1.11376646705e+06
+  dps: 194211.51918
+  tps: 1.11302420408e+06
   dtps: 18810.51225
  }
 }
@@ -2849,17 +2849,17 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-Settings-Human-p2_bis-Basic-default-NoBuffs-15.0yards-LongMultiTarget"
  value: {
-  dps: 2.87592485584e+06
-  tps: 1.758052956604e+07
+  dps: 2.87570694728e+06
+  tps: 1.757900420615e+07
   dtps: 983163.26131
  }
 }
 dps_results: {
  key: "TestProtectionWarrior-Settings-Human-p2_bis-Basic-default-NoBuffs-15.0yards-LongSingleTarget"
  value: {
-  dps: 142915.24528
-  tps: 931341.19197
-  dtps: 26820.61148
+  dps: 142905.42207
+  tps: 931272.44614
+  dtps: 26814.0078
  }
 }
 dps_results: {
@@ -2897,17 +2897,17 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-Settings-Human-p3_bis-Basic-default-NoBuffs-15.0yards-LongMultiTarget"
  value: {
-  dps: 3.27689387679e+06
-  tps: 1.993357961406e+07
-  dtps: 654558.63911
+  dps: 3.27569433557e+06
+  tps: 1.992724453612e+07
+  dtps: 654526.1447
  }
 }
 dps_results: {
  key: "TestProtectionWarrior-Settings-Human-p3_bis-Basic-default-NoBuffs-15.0yards-LongSingleTarget"
  value: {
-  dps: 171873.99985
-  tps: 1.11815044364e+06
-  dtps: 14964.54019
+  dps: 171872.91776
+  tps: 1.11814287734e+06
+  dtps: 14958.15698
  }
 }
 dps_results: {
@@ -2929,8 +2929,8 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-Settings-Human-sha_default-sha_default-sha_default-FullBuffs-15.0yards-LongSingleTarget"
  value: {
-  dps: 161293.09601
-  tps: 1.06349583638e+06
+  dps: 161258.71166
+  tps: 1.06325514591e+06
   dtps: 22734.20826
  }
 }
@@ -2953,8 +2953,8 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-Settings-Human-sha_default-sha_default-sha_default-NoBuffs-15.0yards-LongSingleTarget"
  value: {
-  dps: 139363.13805
-  tps: 921781.5937
+  dps: 139335.12373
+  tps: 921585.49347
   dtps: 26350.69971
  }
 }

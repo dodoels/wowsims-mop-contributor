@@ -21,9 +21,9 @@ func TestSurvival(t *testing.T) {
 		{
 			Class:      proto.Class_ClassHunter,
 			Race:       proto.Race_RaceOrc,
-			OtherRaces: []proto.Race{proto.Race_RaceDwarf},
+			OtherRaces: []proto.Race{proto.Race_RaceWorgen},
 
-			GearSet:         core.GetGearSet("../../../ui/hunter/presets", "p2"),
+			GearSet:         core.GetGearSet("../../../ui/hunter/survival/gear_sets", "p2"),
 			Talents:         SurvivalTalents,
 			OtherTalentSets: talentSets,
 			Glyphs:          SurvivalDefaultGlyphs,
@@ -31,7 +31,7 @@ func TestSurvival(t *testing.T) {
 			SpecOptions:     core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsBasic},
 			Rotation:        core.GetAplRotation("../../../ui/hunter/survival/apls", "sv"),
 			Profession1:     proto.Profession_Engineering,
-			Profession2:     proto.Profession_Leatherworking,
+			Profession2:     proto.Profession_Tailoring,
 
 			ItemFilter:       ItemFilter,
 			StartingDistance: 24,
@@ -66,7 +66,7 @@ var PlayerOptionsBasic = &proto.Player_SurvivalHunter{
 	SurvivalHunter: &proto.SurvivalHunter{
 		Options: &proto.SurvivalHunter_Options{
 			ClassOptions: &proto.HunterOptions{
-				PetType:           proto.HunterOptions_Wolf,
+				PetType:           proto.HunterOptions_Tallstrider,
 				PetUptime:         1,
 				UseHuntersMark:    true,
 				GlaiveTossSuccess: 0.8,
