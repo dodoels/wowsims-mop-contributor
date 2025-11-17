@@ -14,11 +14,12 @@ func (shaman *Shaman) registerAscendanceSpell() {
 
 	var isEnh = shaman.Spec == proto.Spec_SpecEnhancementShaman
 
-	windslashMH := shaman.RegisterSpell(core.SpellConfig{
-		ActionID:    core.ActionID{SpellID: 114089, Tag: 1},
-		SpellSchool: core.SpellSchoolNature,
-		ProcMask:    core.ProcMaskMeleeMHAuto,
-		Flags:       core.SpellFlagMeleeMetrics | core.SpellFlagNoOnCastComplete | core.SpellFlagReadinessTrinket,
+	windLashMH := shaman.RegisterSpell(core.SpellConfig{
+		ActionID:       core.ActionID{SpellID: 114089, Tag: 1},
+		SpellSchool:    core.SpellSchoolNature,
+		ProcMask:       core.ProcMaskMeleeMHAuto,
+		Flags:          core.SpellFlagMeleeMetrics | core.SpellFlagNoOnCastComplete | core.SpellFlagReadinessTrinket,
+		ClassSpellMask: SpellMaskWindLash,
 
 		DamageMultiplier:         1,
 		DamageMultiplierAdditive: 1,
@@ -36,11 +37,12 @@ func (shaman *Shaman) registerAscendanceSpell() {
 		},
 	})
 
-	windslashOH := shaman.RegisterSpell(core.SpellConfig{
-		ActionID:    core.ActionID{SpellID: 114089, Tag: 2},
-		SpellSchool: core.SpellSchoolNature,
-		ProcMask:    core.ProcMaskMeleeOHAuto,
-		Flags:       core.SpellFlagMeleeMetrics | core.SpellFlagNoOnCastComplete,
+	windLashOH := shaman.RegisterSpell(core.SpellConfig{
+		ActionID:       core.ActionID{SpellID: 114089, Tag: 2},
+		SpellSchool:    core.SpellSchoolNature,
+		ProcMask:       core.ProcMaskMeleeOHAuto,
+		Flags:          core.SpellFlagMeleeMetrics | core.SpellFlagNoOnCastComplete,
+		ClassSpellMask: SpellMaskWindLash,
 
 		DamageMultiplier:         1,
 		DamageMultiplierAdditive: 1,
@@ -61,8 +63,8 @@ func (shaman *Shaman) registerAscendanceSpell() {
 			if isEnh {
 				originalMHSpell = shaman.AutoAttacks.MHAuto()
 				originalOHSpell = shaman.AutoAttacks.OHAuto()
-				shaman.AutoAttacks.SetMHSpell(windslashMH)
-				shaman.AutoAttacks.SetOHSpell(windslashOH)
+				shaman.AutoAttacks.SetMHSpell(windLashMH)
+				shaman.AutoAttacks.SetOHSpell(windLashOH)
 			} else {
 				shaman.LavaBurst.CD.Reset()
 			}
@@ -82,7 +84,7 @@ func (shaman *Shaman) registerAscendanceSpell() {
 				shaman.AutoAttacks.SetMHSpell(originalMHSpell)
 				shaman.AutoAttacks.SetOHSpell(originalOHSpell)
 				// Weapon swap can set oh crit multiplier to 0 if swapped during ascendance to a Two-Handed
-				windslashOH.CritMultiplier = shaman.DefaultCritMultiplier()
+				windLashOH.CritMultiplier = shaman.DefaultCritMultiplier()
 				originalOHSpell.CritMultiplier = shaman.DefaultCritMultiplier()
 
 			}

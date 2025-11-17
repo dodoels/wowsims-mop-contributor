@@ -18,7 +18,7 @@ Your parry chance is increased by 100% while channeling.
 var fofActionID = core.ActionID{SpellID: 113656}
 var fofDebuffActionID = core.ActionID{SpellID: 117418}
 
-func fistsOfFuryTickSpellConfig(monk *Monk, pet *StormEarthAndFirePet) core.SpellConfig {
+func fistsOfFuryTickSpellConfig(monk *Monk, pet *StormEarthAndFirePet, overrides core.SpellConfig) core.SpellConfig {
 	config := core.SpellConfig{
 		ActionID:       fofDebuffActionID,
 		SpellSchool:    core.SpellSchoolPhysical,
@@ -28,17 +28,10 @@ func fistsOfFuryTickSpellConfig(monk *Monk, pet *StormEarthAndFirePet) core.Spel
 		MaxRange:       core.MaxMeleeRange,
 
 		DamageMultiplier: 7.5 * 0.89,
+
 		ThreatMultiplier: 1,
 		CritMultiplier:   monk.DefaultCritMultiplier(),
-		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
-			baseDamage := monk.CalculateMonkStrikeDamage(sim, spell)
-
-			// Damage is split between all mobs, each hit rolls for hit/crit separately
-			baseDamage /= float64(sim.Environment.ActiveTargetCount())
-
-			spell.CalcAoeDamage(sim, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
-			spell.DealBatchedAoeDamage(sim)
-		},
+		ApplyEffects:     overrides.ApplyEffects,
 	}
 
 	if pet != nil {
@@ -87,8 +80,17 @@ func fistsOfFurySpellConfig(monk *Monk, isSEFClone bool, overrides core.SpellCon
 
 func (monk *Monk) registerFistsOfFury() {
 	chiMetrics := monk.NewChiMetrics(fofActionID)
+	snapshotDamage := 0.0
 
-	fistsOfFuryTickSpell := monk.RegisterSpell(fistsOfFuryTickSpellConfig(monk, nil))
+	fistsOfFuryTickSpell := monk.RegisterSpell(fistsOfFuryTickSpellConfig(monk, nil, core.SpellConfig{
+		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
+			// Damage is split between all mobs, each hit rolls for hit/crit separately
+			snapshotDamage /= float64(sim.Environment.ActiveTargetCount())
+
+			spell.CalcAoeDamage(sim, snapshotDamage, spell.OutcomeMeleeSpecialHitAndCrit)
+			spell.DealBatchedAoeDamage(sim)
+		},
+	}))
 
 	monk.RegisterSpell(fistsOfFurySpellConfig(monk, false, core.SpellConfig{
 		Cast: core.CastConfig{
@@ -122,6 +124,7 @@ func (monk *Monk) registerFistsOfFury() {
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			monk.SpendChi(sim, 3, chiMetrics)
 
+			snapshotDamage = monk.CalculateMonkStrikeDamage(sim, spell)
 			dot := spell.AOEDot()
 			dot.Apply(sim)
 			dot.TickOnce(sim)
@@ -133,7 +136,16 @@ func (monk *Monk) registerFistsOfFury() {
 }
 
 func (pet *StormEarthAndFirePet) registerSEFFistsOfFury() {
-	fistsOfFuryTickSpell := pet.RegisterSpell(fistsOfFuryTickSpellConfig(pet.owner, pet))
+	snapshotDamage := 0.0
+	fistsOfFuryTickSpell := pet.RegisterSpell(fistsOfFuryTickSpellConfig(pet.owner, pet, core.SpellConfig{
+		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
+			// Damage is split between all mobs, each hit rolls for hit/crit separately
+			snapshotDamage /= float64(sim.Environment.ActiveTargetCount())
+
+			spell.CalcAoeDamage(sim, snapshotDamage, spell.OutcomeMeleeSpecialHitAndCrit)
+			spell.DealBatchedAoeDamage(sim)
+		},
+	}))
 
 	pet.RegisterSpell(fistsOfFurySpellConfig(pet.owner, true, core.SpellConfig{
 		Cast: core.CastConfig{
@@ -150,6 +162,7 @@ func (pet *StormEarthAndFirePet) registerSEFFistsOfFury() {
 		},
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+			snapshotDamage = pet.owner.CalculateMonkStrikeDamage(sim, spell)
 			dot := spell.AOEDot()
 			dot.Apply(sim)
 			dot.TickOnce(sim)

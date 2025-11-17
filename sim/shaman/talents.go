@@ -216,23 +216,29 @@ func (shaman *Shaman) ApplyUnleashedFury() {
 		}).AttachDDBC(DDBC_UnleashedFury, DDBC_Total, &shaman.AttackTables, unleashedFuryDDBCHandler)
 	})
 
-	windfuryProcAura := core.MakeProcTriggerAura(&shaman.Unit, core.ProcTrigger{
-		Name:            "Unleashed Fury WF Proc Aura",
-		MetricsActionID: core.ActionID{SpellID: 118472},
-		Callback:        core.CallbackOnSpellHitDealt,
-		ProcMask:        core.ProcMaskMeleeWhiteHit,
-		Outcome:         core.OutcomeLanded,
-		Duration:        time.Second * 8,
-		ProcChance:      0.45,
+	windfuryProcAura := shaman.MakeProcTriggerAura(core.ProcTrigger{
+		Name:               "Unleashed Fury WF Proc Aura",
+		MetricsActionID:    core.ActionID{SpellID: 118472},
+		Callback:           core.CallbackOnSpellHitDealt,
+		Outcome:            core.OutcomeLanded,
+		Duration:           time.Second * 8,
+		ProcChance:         0.45,
+		RequireDamageDealt: true,
+		TriggerImmediately: true,
+
 		ExtraCondition: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) bool {
 			return shaman.SelfBuffs.Shield == proto.ShamanShield_LightningShield
 		},
+
 		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+			if spell.Matches(SpellMaskWindLash) || (!spell.Matches(SpellMaskWindfuryWeapon) && !spell.ProcMask.Matches(core.ProcMaskMeleeWhiteHit)) {
+				return
+			}
 			shaman.LightningShieldDamage.Cast(sim, result.Target)
 		},
 	})
 
-	core.MakeProcTriggerAura(&shaman.Unit, core.ProcTrigger{
+	shaman.MakeProcTriggerAura(core.ProcTrigger{
 		Name:            "Unleashed Fury",
 		MetricsActionID: core.ActionID{SpellID: 117012},
 		Callback:        core.CallbackOnApplyEffects,

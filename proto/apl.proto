@@ -99,7 +99,7 @@ message APLAction {
 }
 
 
-// NextIndex: 117
+// NextIndex: 125
 message APLValue {
 	UUID uuid = 85;
 
@@ -125,6 +125,7 @@ message APLValue {
         // Boss values
         APLValueBossSpellTimeToReady boss_spell_time_to_ready = 64;
         APLValueBossSpellIsCasting boss_spell_is_casting = 65;
+        APLValueBossCurrentTarget boss_current_target = 120;
 
         // Resource values
         APLValueCurrentHealth current_health = 26;
@@ -162,6 +163,7 @@ message APLValue {
         APLValueRuneCooldown rune_cooldown = 32;
         APLValueNextRuneCooldown next_rune_cooldown = 33;
         APLValueRuneSlotCooldown rune_slot_cooldown = 53;
+		APLValueFullRuneCooldown full_rune_cooldown = 119;
 
         // GCD values
         APLValueGCDIsReady gcd_is_ready = 17;
@@ -185,6 +187,7 @@ message APLValue {
         APLValueSpellTimeToCharge spell_time_to_charge = 97;
         APLValueSpellGCDHastedDuration spell_gcd_hasted_duration = 115;
         APLValueSpellFullCooldown spell_full_cooldown = 116;
+        APLValueSpellInFlight spell_in_flight = 118;
 
         // Aura values
         APLValueAuraIsKnown aura_is_known = 73;
@@ -202,11 +205,13 @@ message APLValue {
         // Aggregate Aura set values
         APLValueAllTrinketStatProcsActive all_trinket_stat_procs_active = 78; // TODO: Rename in MoP as it includes all item/effect procs
         APLValueAnyTrinketStatProcsActive any_trinket_stat_procs_active = 79; // TODO: Rename in MoP as it includes all item/effect procs
+		APLValueAnyTrinketStatProcsAvailable any_trinket_stat_procs_available = 121; // TODO: Rename in MoP as it includes all item/effect procs
         APLValueTrinketProcsMinRemainingTime trinket_procs_min_remaining_time = 80; // TODO: Rename in MoP as it includes all item/effect procs
         APLValueTrinketProcsMaxRemainingICD trinket_procs_max_remaining_icd = 82; // TODO: Rename in MoP as it includes all item/effect procs
         APLValueNumEquippedStatProcTrinkets num_equipped_stat_proc_trinkets = 81; // TODO: Rename in MoP as it includes all item/effect procs
         APLValueNumStatBuffCooldowns num_stat_buff_cooldowns = 84;
         APLValueAnyStatBuffCooldownsActive any_stat_buff_cooldowns_active = 106;
+		APLValueAnyStatBuffCooldownsMinDuration any_stat_buff_cooldowns_min_duration = 122;
 
         // Dot values
         APLValueDotIsActive dot_is_active = 6;
@@ -214,6 +219,7 @@ message APLValue {
         APLValueDotRemainingTime dot_remaining_time = 13;
         APLValueDotLowestRemainingTime dot_lowest_remaining_time = 104;
         APLValueDotTickFrequency dot_tick_frequency = 67;
+        APLValueDotTimeToNextTick dot_time_to_next_tick = 117;
         APLValueDotBaseDuration dot_base_duration = 114;
 		APLValueDotPercentIncrease dot_percent_increase = 101;
 		APLValueDotPercentIncrease dot_crit_percent_increase = 109;
@@ -234,7 +240,7 @@ message APLValue {
         APLValueCatExcessEnergy cat_excess_energy = 52;
         APLValueCatNewSavageRoarDuration cat_new_savage_roar_duration = 61;
         APLValueWarlockHandOfGuldanInFlight warlock_hand_of_guldan_in_flight = 59;
-        APLValueWarlockHauntInFlight warlock_haunt_in_flight = 60;
+        APLValueWarlockHauntInFlight warlock_haunt_in_flight = 60 [deprecated=true];
         APLValueCurrentEclipsePhase druid_current_eclipse_phase = 70;
 		APLValueMageCurrentCombustionDotEstimate mage_current_combustion_dot_estimate = 77;
         APLValueShamanFireElementalDuration shaman_fire_elemental_duration = 83;
@@ -242,6 +248,8 @@ message APLValue {
 		APLValueMonkMaxChi monk_max_chi = 95;
 		APLValueBrewmasterMonkCurrentStaggerPercent brewmaster_monk_current_stagger_percent = 99;
 		APLValueProtectionPaladinDamageTakenLastGlobal protection_paladin_damage_taken_last_global = 100;
+		APLValueAfflictionCurrentSnapshot affliction_current_snapshot = 123;
+		APLValueAfflictionExhaleWindow affliction_exhale_window = 124;
 
 		// Variable reference
 		APLValueVariableRef variable_ref = 111;
@@ -494,10 +502,12 @@ message APLValueBossSpellTimeToReady {
     UnitReference target_unit = 1;
     ActionID spell_id = 2;
 }
-
 message APLValueBossSpellIsCasting {
     UnitReference target_unit = 1;
     ActionID spell_id = 2;
+}
+message APLValueBossCurrentTarget {
+    UnitReference target_unit = 1;
 }
 message APLValueUnitIsMoving {
     UnitReference source_unit = 1;
@@ -578,6 +588,9 @@ message APLValueNextRuneCooldown{
 message APLValueRuneSlotCooldown{
     APLValueRuneSlot rune_slot = 1;
 }
+message APLValueFullRuneCooldown{
+	bool use_base_value = 1;
+}
 
 enum APLValueEclipsePhase {
     UnknownPhase = 0;
@@ -644,6 +657,9 @@ message APLValueSpellGCDHastedDuration{
 message APLValueSpellFullCooldown{
     ActionID spell_id = 1;
 }
+message APLValueSpellInFlight{
+	ActionID spell_id = 1;
+}
 
 message APLValueAuraIsKnown {
     UnitReference source_unit = 2;
@@ -695,6 +711,12 @@ message APLValueAnyTrinketStatProcsActive {
     int32 stat_type3 = 3;
     double min_icd_seconds = 4;
 }
+message APLValueAnyTrinketStatProcsAvailable {
+    int32 stat_type1 = 1;
+    int32 stat_type2 = 2;
+    int32 stat_type3 = 3;
+    double min_icd_seconds = 4;
+}
 message APLValueTrinketProcsMinRemainingTime {
     int32 stat_type1 = 1;
     int32 stat_type2 = 2;
@@ -723,6 +745,11 @@ message APLValueAnyStatBuffCooldownsActive {
     int32 stat_type2 = 2;
     int32 stat_type3 = 3;
 }
+message APLValueAnyStatBuffCooldownsMinDuration {
+    int32 stat_type1 = 1;
+    int32 stat_type2 = 2;
+    int32 stat_type3 = 3;
+}
 
 message APLValueDotIsActive {
     UnitReference target_unit = 2;
@@ -739,6 +766,10 @@ message APLValueDotLowestRemainingTime {
     ActionID spell_id = 1;
 }
 message APLValueDotTickFrequency {
+    UnitReference target_unit = 2;
+    ActionID spell_id = 1;
+}
+message APLValueDotTimeToNextTick {
     UnitReference target_unit = 2;
     ActionID spell_id = 1;
 }
@@ -760,6 +791,11 @@ message APLValueCatExcessEnergy {}
 message APLValueCatNewSavageRoarDuration {}
 message APLValueWarlockHandOfGuldanInFlight {}
 message APLValueWarlockHauntInFlight {}
+message APLValueAfflictionExhaleWindow {}
+message APLValueAfflictionCurrentSnapshot {
+	ActionID spell_id = 1;
+	UnitReference target_unit = 2;
+}
 message APLValueMageCurrentCombustionDotEstimate {}
 message APLValueShamanFireElementalDuration {}
 
@@ -775,6 +811,7 @@ message APLValueDotBaseDuration {
 message APLValueDotPercentIncrease {
 	ActionID spell_id = 1;
 	UnitReference target_unit = 2;
+	bool use_base_value = 3;
 }
 
 message APLActionGroupReference {

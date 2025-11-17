@@ -45,9 +45,9 @@ func (enh *EnhancementShaman) newStormstrikeHitSpellConfig(spellID int32, isMH b
 				baseDamage = spell.Unit.MHNormalizedWeaponDamage(sim, spell.MeleeAttackPower())
 			} else {
 				baseDamage = spell.Unit.OHNormalizedWeaponDamage(sim, spell.MeleeAttackPower())
+				spell.SpellMetrics[target.UnitIndex].Casts--
 			}
 			spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialBlockAndCrit)
-			spell.SpellMetrics[target.UnitIndex].Casts--
 		},
 	}
 	return stormstrikeHitSpellConfig
@@ -79,8 +79,8 @@ func (enh *EnhancementShaman) newStormstrikeSpellConfig(spellID int32, ssDebuffA
 		},
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			result := spell.CalcOutcome(sim, target, spell.OutcomeMeleeSpecialHitNoHitCounter)
-			if result.Landed() {
+			enh.StormstrikeCastResult = spell.CalcOutcome(sim, target, spell.OutcomeMeleeSpecialHitNoHitCounter)
+			if enh.StormstrikeCastResult.Landed() {
 				ssDebuffAura := ssDebuffAuras.Get(target)
 				ssDebuffAura.Activate(sim)
 
@@ -92,7 +92,7 @@ func (enh *EnhancementShaman) newStormstrikeSpellConfig(spellID int32, ssDebuffA
 					ohHit.Cast(sim, target)
 				}
 			}
-			spell.DealOutcome(sim, result)
+			spell.DisposeResult(enh.StormstrikeCastResult)
 		},
 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
 			return (enh.HasMHWeapon() || enh.HasOHWeapon()) && !enh.AscendanceAura.IsActive()

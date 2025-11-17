@@ -9,9 +9,9 @@ import (
 	"github.com/wowsims/mop/sim/mage"
 )
 
-func (mage *FrostMage) registerSummonWaterElementalSpell() {
+func (frost *FrostMage) registerSummonWaterElementalSpell() {
 
-	mage.SummonWaterElemental = mage.RegisterSpell(core.SpellConfig{
+	frost.SummonWaterElemental = frost.RegisterSpell(core.SpellConfig{
 		ActionID: core.ActionID{SpellID: 31687},
 		Flags:    core.SpellFlagNoOnCastComplete | core.SpellFlagAPL,
 
@@ -24,13 +24,13 @@ func (mage *FrostMage) registerSummonWaterElementalSpell() {
 				CastTime: 1500 * time.Millisecond,
 			},
 			CD: core.Cooldown{
-				Timer:    mage.NewTimer(),
+				Timer:    frost.NewTimer(),
 				Duration: time.Minute * 1,
 			},
 		},
 
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
-			mage.waterElemental.Enable(sim, mage.waterElemental)
+			frost.waterElemental.Enable(sim, frost.waterElemental)
 		},
 	})
 }
@@ -43,7 +43,7 @@ type WaterElemental struct {
 	Waterbolt *core.Spell
 }
 
-func (mage *FrostMage) NewWaterElemental() *WaterElemental {
+func (frost *FrostMage) NewWaterElemental() *WaterElemental {
 	waterElementalStatInheritance := func(ownerStats stats.Stats) stats.Stats {
 		// Water elemental usually has about half the HP of the caster, with glyph this is bumped by an additional 40%
 		return stats.Stats{
@@ -63,18 +63,18 @@ func (mage *FrostMage) NewWaterElemental() *WaterElemental {
 	waterElemental := &WaterElemental{
 		Pet: core.NewPet(core.PetConfig{
 			Name:                           "Water Elemental",
-			Owner:                          &mage.Character,
+			Owner:                          &frost.Character,
 			BaseStats:                      waterElementalBaseStats,
 			NonHitExpStatInheritance:       waterElementalStatInheritance,
 			HasDynamicCastSpeedInheritance: true,
 			EnabledOnStart:                 true,
 			IsGuardian:                     true,
 		}),
-		mageOwner: mage,
+		mageOwner: frost,
 	}
 	waterElemental.EnableManaBar()
 
-	mage.AddPet(waterElemental)
+	frost.AddPet(waterElemental)
 
 	return waterElemental
 }
@@ -124,6 +124,7 @@ func (we *WaterElemental) registerWaterboltSpell() {
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
 				GCD:      core.GCDDefault,
+				GCDMin:   core.GCDDefault,
 				CastTime: time.Millisecond * 2500,
 			},
 		},

@@ -72,13 +72,13 @@ func (bear *GuardianDruid) registerToothAndClawPassive() {
 	}))
 
 	// Finally, register the trigger for the personal buff.
-	core.MakeProcTriggerAura(&bear.Unit, core.ProcTrigger{
-		Name:       "Tooth and Claw Trigger",
-		Callback:   core.CallbackOnSpellHitDealt,
-		ProcMask:   core.ProcMaskWhiteHit,
-		Outcome:    core.OutcomeLanded,
-		Harmful:    true,
-		ProcChance: 0.4,
+	bear.MakeProcTriggerAura(core.ProcTrigger{
+		Name:               "Tooth and Claw Trigger",
+		Callback:           core.CallbackOnSpellHitDealt,
+		ProcMask:           core.ProcMaskWhiteHit,
+		Outcome:            core.OutcomeLanded,
+		RequireDamageDealt: true,
+		ProcChance:         0.4,
 
 		Handler: func(sim *core.Simulation, _ *core.Spell, _ *core.SpellResult) {
 			if bear.InForm(druid.Bear) {

@@ -22,7 +22,7 @@ func init() {
 		shared.ItemVersionThunderforged:       95997,
 		shared.ItemVersionHeroicThunderforged: 96741,
 	}.RegisterAll(func(version shared.ItemVersion, itemID int32, versionLabel string) {
-		label := "Blades of Renataki"
+		label := "Renataki's Soul Charm"
 
 		core.NewItemEffect(itemID, func(agent core.Agent, state proto.ItemLevelState) {
 			character := agent.GetCharacter()
@@ -30,21 +30,20 @@ func init() {
 			statValue := core.GetItemEffectScaling(itemID, 0.44999998808, state)
 
 			statBuffAura, aura := character.NewTemporaryStatBuffWithStacks(core.TemporaryStatBuffWithStacksConfig{
-				AuraLabel:            fmt.Sprintf("%s %s", label, versionLabel),
+				AuraLabel:            fmt.Sprintf("Blades of Renataki (%s)", versionLabel),
 				ActionID:             core.ActionID{SpellID: 138756},
 				Duration:             time.Second * 10,
 				MaxStacks:            10,
 				TimePerStack:         time.Second * 1,
 				BonusPerStack:        stats.Stats{stats.Agility: statValue},
 				StackingAuraActionID: core.ActionID{SpellID: 138737},
-				StackingAuraLabel:    fmt.Sprintf("Item - Proc Stacking Agility %s", versionLabel),
+				StackingAuraLabel:    fmt.Sprintf("Item - Proc Stacking Agility (%s)", versionLabel),
 				TickImmediately:      true,
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-				Name:    label,
-				Harmful: true,
-				ICD:     time.Second * 10,
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+				Name: fmt.Sprintf("%s (%s)", label, versionLabel),
+				ICD:  time.Second * 10,
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskDirect|core.ProcMaskProc, core.RPPMConfig{
 					PPM: 1.21000003815,
 				}),
@@ -80,7 +79,7 @@ func init() {
 
 			stackingAura := character.RegisterAura(core.Aura{
 				ActionID:  core.ActionID{SpellID: 138849},
-				Label:     fmt.Sprintf("Item - Proc Mana Per Time %s", versionLabel),
+				Label:     fmt.Sprintf("Cloudburst (%s)", versionLabel),
 				Duration:  time.Second * 10,
 				MaxStacks: 5,
 			})
@@ -88,7 +87,7 @@ func init() {
 			var pa *core.PendingAction
 
 			aura := character.RegisterAura(core.Aura{
-				Label:    fmt.Sprintf("%s %s", label, versionLabel),
+				Label:    fmt.Sprintf("%s (%s)", label, versionLabel),
 				ActionID: core.ActionID{SpellID: 138856},
 				Duration: time.Second * 10,
 				OnGain: func(aura *core.Aura, sim *core.Simulation) {
@@ -107,10 +106,9 @@ func init() {
 				},
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-				Name:    label,
-				Harmful: true,
-				ICD:     time.Second * 3,
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+				Name: fmt.Sprintf("%s (%s) - Trigger", label, versionLabel),
+				ICD:  time.Second * 3,
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskSpellHealing, core.RPPMConfig{
 					PPM: 0.95999997854,
 				}.WithHasteMod()),
@@ -146,21 +144,20 @@ func init() {
 			statValue := core.GetItemEffectScaling(itemID, 0.44999998808, state)
 
 			statBuffAura, aura := character.NewTemporaryStatBuffWithStacks(core.TemporaryStatBuffWithStacksConfig{
-				AuraLabel:            fmt.Sprintf("%s %s", label, versionLabel),
+				AuraLabel:            fmt.Sprintf("Wushoolay's Lightning (%s)", versionLabel),
 				ActionID:             core.ActionID{SpellID: 138790},
 				Duration:             time.Second * 10,
 				MaxStacks:            10,
 				TimePerStack:         time.Second * 1,
 				BonusPerStack:        stats.Stats{stats.Intellect: statValue},
 				StackingAuraActionID: core.ActionID{SpellID: 138786},
-				StackingAuraLabel:    fmt.Sprintf("Item - Proc Stacking Intellect %s", versionLabel),
+				StackingAuraLabel:    fmt.Sprintf("Item - Proc Stacking Intellect (%s)", versionLabel),
 				TickImmediately:      true,
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-				Name:    label,
-				Harmful: true,
-				ICD:     time.Second * 10,
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+				Name: fmt.Sprintf("%s (%s)", label, versionLabel),
+				ICD:  time.Second * 10,
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskSpellOrSpellProc, core.RPPMConfig{
 					PPM: 1.21000003815,
 				}),
@@ -194,26 +191,25 @@ func init() {
 			statValue := core.GetItemEffectScaling(itemID, 0.44999998808, state)
 
 			statBuffAura, aura := character.NewTemporaryStatBuffWithStacks(core.TemporaryStatBuffWithStacksConfig{
-				AuraLabel:            fmt.Sprintf("%s %s", label, versionLabel),
-				ActionID:             core.ActionID{SpellID: 138790},
+				AuraLabel:            fmt.Sprintf("Feathers of Fury (%s)", versionLabel),
+				ActionID:             core.ActionID{SpellID: 138758},
 				Duration:             time.Second * 10,
 				MaxStacks:            10,
 				TimePerStack:         time.Second * 1,
 				BonusPerStack:        stats.Stats{stats.Strength: statValue},
-				StackingAuraActionID: core.ActionID{SpellID: 138758},
-				StackingAuraLabel:    fmt.Sprintf("Item - Proc Stacking Strength %s", versionLabel),
+				StackingAuraActionID: core.ActionID{SpellID: 138759},
+				StackingAuraLabel:    fmt.Sprintf("Item - Proc Stacking Strength (%s)", versionLabel),
 				TickImmediately:      true,
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-				Name:    label,
-				Harmful: true,
-				ICD:     time.Second * 10,
-				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskSpellOrSpellProc, core.RPPMConfig{
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+				Name: fmt.Sprintf("%s (%s)", label, versionLabel),
+				ICD:  time.Second * 10,
+				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskDirect|core.ProcMaskProc, core.RPPMConfig{
 					PPM: 1.21000003815,
 				}),
 				Outcome:  core.OutcomeLanded,
-				Callback: core.CallbackOnSpellHitDealt | core.CallbackOnPeriodicDamageDealt,
+				Callback: core.CallbackOnSpellHitDealt,
 				Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
 					aura.Activate(sim)
 				},
@@ -245,11 +241,11 @@ func init() {
 				MaxStacks:            3,
 				BonusPerStack:        stats.Stats{stats.MasteryRating: statValue},
 				StackingAuraActionID: core.ActionID{SpellID: 138864},
-				StackingAuraLabel:    fmt.Sprintf("Blood of Power %s", versionLabel),
+				StackingAuraLabel:    fmt.Sprintf("Blood of Power (%s)", versionLabel),
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-				Name:       label,
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+				Name:       fmt.Sprintf("%s (%s)", label, versionLabel),
 				ProcChance: 0.04,
 				Outcome:    core.OutcomeDodge,
 				Callback:   core.CallbackOnSpellHitTaken,
@@ -286,12 +282,11 @@ func init() {
 				MaxStacks:            5,
 				BonusPerStack:        stats.Stats{stats.Strength: statValue},
 				StackingAuraActionID: core.ActionID{SpellID: 138870},
-				StackingAuraLabel:    fmt.Sprintf("Rampage %s", versionLabel),
+				StackingAuraLabel:    fmt.Sprintf("Rampage (%s)", versionLabel),
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-				Name:    label,
-				Harmful: true,
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+				Name: fmt.Sprintf("%s (%s)", label, versionLabel),
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskDirect|core.ProcMaskProc, core.RPPMConfig{
 					PPM: 3.5,
 				}),
@@ -329,7 +324,7 @@ func init() {
 			// TODO: For now self-shield as there is no healing Sim
 			shield := character.NewDamageAbsorptionAura(core.AbsorptionAuraConfig{
 				Aura: core.Aura{
-					Label:    fmt.Sprintf("%s %s", label, versionLabel),
+					Label:    fmt.Sprintf("Shield of Hydra Sputum (%s)", versionLabel),
 					ActionID: core.ActionID{SpellID: 140380},
 					Duration: time.Second * 15,
 				},
@@ -338,10 +333,9 @@ func init() {
 				},
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-				Name:    label,
-				Harmful: true,
-				ICD:     time.Second * 17,
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+				Name: fmt.Sprintf("%s (%s)", label, versionLabel),
+				ICD:  time.Second * 17,
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskSpellHealing, core.RPPMConfig{
 					PPM: 1.63999998569,
 				}.WithHasteMod()),
@@ -386,15 +380,18 @@ func init() {
 				},
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-				Name:     label,
-				Harmful:  true,
-				ICD:      time.Second * 30,
-				Outcome:  core.OutcomeLanded,
-				Callback: core.CallbackOnSpellHitTaken,
-				ExtraCondition: func(sim *core.Simulation, _ *core.Spell, _ *core.SpellResult) bool {
-					return character.CurrentHealth() < 0.35
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+				Name:               fmt.Sprintf("%s (%s)", label, versionLabel),
+				RequireDamageDealt: true,
+				ICD:                time.Second * 30,
+				Outcome:            core.OutcomeLanded,
+				Callback:           core.CallbackOnSpellHitTaken,
+				TriggerImmediately: true,
+
+				ExtraCondition: func(sim *core.Simulation, _ *core.Spell, result *core.SpellResult) bool {
+					return character.CurrentHealthPercent() < 0.35 && character.CurrentHealth() > 0
 				},
+
 				Handler: func(sim *core.Simulation, _ *core.Spell, _ *core.SpellResult) {
 					spell.Cast(sim, &character.Unit)
 				},
@@ -425,12 +422,11 @@ func init() {
 				MaxStacks:            5,
 				BonusPerStack:        stats.Stats{stats.HasteRating: statValue},
 				StackingAuraActionID: core.ActionID{SpellID: 138895},
-				StackingAuraLabel:    fmt.Sprintf("Frenzy %s", versionLabel),
+				StackingAuraLabel:    fmt.Sprintf("Frenzy (%s)", versionLabel),
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-				Name:    label,
-				Harmful: true,
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+				Name: fmt.Sprintf("%s (%s)", label, versionLabel),
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskDirect|core.ProcMaskProc, core.RPPMConfig{
 					PPM: 3.5,
 				}),
@@ -470,12 +466,11 @@ func init() {
 				MaxStacks:            3,
 				BonusPerStack:        stats.Stats{stats.CritRating: statValue},
 				StackingAuraActionID: core.ActionID{SpellID: 139170},
-				StackingAuraLabel:    fmt.Sprintf("Eye of Brutality %s", versionLabel),
+				StackingAuraLabel:    fmt.Sprintf("Eye of Brutality (%s)", versionLabel),
 			})
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-				Name:    label,
-				Harmful: true,
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+				Name: fmt.Sprintf("%s (%s)", label, versionLabel),
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskDirect|core.ProcMaskProc, core.RPPMConfig{
 					PPM: 0.72000002861,
 				}.WithCritMod()),
@@ -522,16 +517,17 @@ func init() {
 			}
 
 			statBuffAura := character.NewTemporaryStatsAura(
-				fmt.Sprintf("%s %s", label, versionLabel),
+				fmt.Sprintf("Perfect Aim (%s)", versionLabel),
 				core.ActionID{SpellID: UnerringVisionBuffId},
 				stats.Stats{stats.PhysicalCritPercent: 100, stats.SpellCritPercent: 100},
 				time.Second*4,
 			)
+			// Manually override Crit % to Crit Rating
+			statBuffAura.BuffedStatTypes = []stats.Stat{stats.CritRating}
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-				Name:    label,
-				Harmful: true,
-				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskDirect|core.ProcMaskProc, core.RPPMConfig{
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+				Name: fmt.Sprintf("%s (%s)", label, versionLabel),
+				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskSpellOrSpellProc, core.RPPMConfig{
 					PPM: 0.57999998331,
 				}.WithApproximateIlvlMod(1.0, 528).
 					WithClassMod(-0.40000000596, int(1<<proto.Class_ClassWarlock)).
@@ -587,8 +583,8 @@ func init() {
 
 			createStatBuffAura := func(label string, spellID int32) *core.StatBuffAura {
 				return &core.StatBuffAura{
-					Aura: character.RegisterAura(core.Aura{
-						Label:    fmt.Sprintf("Re-Origination - %s", label),
+					Aura: character.GetOrRegisterAura(core.Aura{
+						Label:    fmt.Sprintf("Re-Origination (%s) %s", versionLabel, label),
 						ActionID: core.ActionID{SpellID: spellID},
 						Duration: duration,
 						OnGain: func(aura *core.Aura, sim *core.Simulation) {
@@ -616,24 +612,25 @@ func init() {
 			buffAuras[stats.HasteRating] = createStatBuffAura("Haste", 139121)
 			buffAuras[stats.MasteryRating] = createStatBuffAura("Mastery", 139120)
 
-			triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-				Name:    label,
-				Harmful: true,
-				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskMeleeOrMeleeProc|core.ProcMaskRangedOrRangedProc, core.RPPMConfig{
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+				Name: fmt.Sprintf("%s (%s)", label, versionLabel),
+				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskDirect|core.ProcMaskProc, core.RPPMConfig{
 					PPM: 1.10000002384,
 				}.WithApproximateIlvlMod(1.0, 528)),
 				ICD:      duration,
 				Callback: core.CallbackOnSpellHitDealt | core.CallbackOnPeriodicDamageDealt,
-				Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
+				Handler: func(sim *core.Simulation, _ *core.Spell, _ *core.SpellResult) {
 					for _, buffAura := range buffAuras {
 						buffAura.Deactivate(sim)
 					}
 
 					hasMasteryRaidBuff := masteryRaidBuffs.GetActiveAura().IsActive()
 					currentStats := character.GetStats()
+					currentStatsWithoutDeps := character.GetStatsWithoutDeps()
 
 					if hasMasteryRaidBuff {
 						currentStats[stats.MasteryRating] -= core.MasteryRaidBuffStrength
+						currentStatsWithoutDeps[stats.MasteryRating] -= core.MasteryRaidBuffStrength
 					}
 
 					highestStat := currentStats.GetHighestStatType(buffedStatTypes)
@@ -642,8 +639,8 @@ func init() {
 
 					for _, statType := range buffedStatTypes {
 						if statType != highestStat {
-							buffStrength += currentStats[statType] * 2
-							buffStats[statType] = -currentStats[statType]
+							buffStrength += currentStatsWithoutDeps[statType] * 2
+							buffStats[statType] = -currentStatsWithoutDeps[statType]
 						}
 					}
 
@@ -657,6 +654,171 @@ func init() {
 				character.AddStatProcBuff(itemID, buffAura, false, eligibleSlots)
 			}
 			character.ItemSwap.RegisterProcWithSlots(itemID, triggerAura, eligibleSlots)
+		})
+	})
+
+	// Soul Barrier
+	// Use: Absorbs up to 13377 damage every time you take physical damage, up to a maximum of 66885 damage absorbed. (2 Min Cooldown)
+	shared.ItemVersionMap{
+		shared.ItemVersionLFR:                 95811,
+		shared.ItemVersionNormal:              94528,
+		shared.ItemVersionHeroic:              96555,
+		shared.ItemVersionThunderforged:       96183,
+		shared.ItemVersionHeroicThunderforged: 96927,
+	}.RegisterAll(func(version shared.ItemVersion, itemID int32, versionLabel string) {
+		label := "Soul Barrier"
+
+		core.NewItemEffect(itemID, func(agent core.Agent, state proto.ItemLevelState) {
+			character := agent.GetCharacter()
+			actionId := core.ActionID{SpellID: 138979, ItemID: itemID}
+			absorbPerHitValue := core.GetItemEffectScaling(itemID, 3.78200006485, state)
+
+			damageAbsorptionAura := character.NewDamageAbsorptionAura(core.AbsorptionAuraConfig{
+				Aura: core.Aura{
+					Label:    fmt.Sprintf("%s (%s)", label, versionLabel),
+					ActionID: actionId,
+					Duration: time.Second * 20,
+				},
+				MaxAbsorbPerHit: absorbPerHitValue,
+				ShouldApplyToResult: func(_ *core.Simulation, spell *core.Spell, _ *core.SpellResult, _ bool) bool {
+					return spell.SpellSchool.Matches(core.SpellSchoolPhysical)
+				},
+				ShieldStrengthCalculator: func(_ *core.Unit) float64 {
+					return absorbPerHitValue * 5
+				},
+			})
+
+			spell := character.RegisterSpell(core.SpellConfig{
+				ActionID:    actionId,
+				SpellSchool: core.SpellSchoolPhysical,
+				ProcMask:    core.ProcMaskEmpty,
+
+				Cast: core.CastConfig{
+					CD: core.Cooldown{
+						Timer:    character.NewTimer(),
+						Duration: time.Minute * 3,
+					},
+				},
+
+				CritMultiplier:   character.DefaultCritMultiplier(),
+				DamageMultiplier: 1,
+
+				ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
+					damageAbsorptionAura.Activate(sim)
+				},
+			})
+
+			character.AddMajorCooldown(core.MajorCooldown{
+				Spell: spell,
+				Type:  core.CooldownTypeSurvival,
+				BuffAura: &core.StatBuffAura{
+					Aura:            damageAbsorptionAura.Aura,
+					BuffedStatTypes: []stats.Stat{stats.Health},
+				},
+				ShouldActivate: func(_ *core.Simulation, character *core.Character) bool {
+					return character.CurrentHealthPercent() < 0.4
+				},
+			})
+		})
+	})
+
+	// Spark of Zandalar
+	// Your attacks have a chance to grant you a Spark of Zandalar.
+	// Once you have accumulated 10 Sparks, you will transform into a Zandalari Warrior and gain 700 Strength for 10 sec.
+	// (Approximately 11.10 procs per minute)
+	shared.ItemVersionMap{
+		shared.ItemVersionLFR:                 95654,
+		shared.ItemVersionNormal:              94526,
+		shared.ItemVersionHeroic:              96398,
+		shared.ItemVersionThunderforged:       96026,
+		shared.ItemVersionHeroicThunderforged: 96770,
+	}.RegisterAll(func(version shared.ItemVersion, itemID int32, versionLabel string) {
+		label := "Spark of Zandalar"
+
+		core.NewItemEffect(itemID, func(agent core.Agent, state proto.ItemLevelState) {
+			character := agent.GetCharacter()
+
+			strengthValue := core.GetItemEffectScaling(itemID, 2.47499990463, state)
+
+			buffAura := character.NewTemporaryStatsAura(
+				fmt.Sprintf("Zandalari Warrior (%s)", versionLabel),
+				core.ActionID{SpellID: 138960},
+				stats.Stats{stats.Strength: strengthValue},
+				time.Second*10,
+			)
+
+			stackingAura := character.RegisterAura(core.Aura{
+				ActionID:  core.ActionID{SpellID: 138958},
+				Label:     fmt.Sprintf("%s (%s)", label, versionLabel),
+				Duration:  time.Minute * 1,
+				MaxStacks: 10,
+				OnStacksChange: func(aura *core.Aura, sim *core.Simulation, _ int32, newStacks int32) {
+					if newStacks == aura.MaxStacks {
+						buffAura.Activate(sim)
+						aura.Deactivate(sim)
+					}
+				},
+			})
+
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+				ActionID: core.ActionID{SpellID: 138957},
+				Name:     fmt.Sprintf("%s %s - Trigger", label, versionLabel),
+				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskDirect|core.ProcMaskProc, core.RPPMConfig{
+					PPM: 11.10000038147,
+				}),
+				Outcome:  core.OutcomeLanded,
+				Callback: core.CallbackOnSpellHitDealt | core.CallbackOnPeriodicDamageDealt,
+				Handler: func(sim *core.Simulation, _ *core.Spell, _ *core.SpellResult) {
+					stackingAura.Activate(sim)
+					stackingAura.AddStack(sim)
+				},
+			}).ApplyOnExpire(func(_ *core.Aura, sim *core.Simulation) {
+				buffAura.Deactivate(sim)
+				stackingAura.Deactivate(sim)
+			})
+
+			character.ItemSwap.RegisterProc(itemID, triggerAura)
+		})
+	})
+
+	// Soothing Talisman of the Shado-Pan Assault
+	// Use: Gain 29805 mana. (3 Min Cooldown)
+	core.NewItemEffect(94509, func(agent core.Agent, state proto.ItemLevelState) {
+		character := agent.GetCharacter()
+		actionId := core.ActionID{SpellID: 138724, ItemID: 94509}
+
+		manaValue := core.GetItemEffectScaling(94509, 10.05900001526, state)
+		manaMetrics := character.NewManaMetrics(actionId)
+
+		spell := character.RegisterSpell(core.SpellConfig{
+			ActionID:    actionId,
+			SpellSchool: core.SpellSchoolPhysical,
+			ProcMask:    core.ProcMaskEmpty,
+
+			Cast: core.CastConfig{
+				CD: core.Cooldown{
+					Timer:    character.NewTimer(),
+					Duration: time.Minute * 3,
+				},
+			},
+
+			CritMultiplier:   character.DefaultCritMultiplier(),
+			DamageMultiplier: 1,
+
+			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+				if character.HasManaBar() {
+					character.AddMana(sim, manaValue, manaMetrics)
+				}
+			},
+		})
+
+		character.AddMajorCooldown(core.MajorCooldown{
+			Spell:    spell,
+			Priority: core.CooldownPriorityDefault,
+			Type:     core.CooldownTypeMana,
+			ShouldActivate: func(sim *core.Simulation, character *core.Character) bool {
+				return character.MaxMana()-character.CurrentMana() >= manaValue
+			},
 		})
 	})
 }

@@ -116,9 +116,6 @@ var handlers = map[string]apiHandler{
 		triggered := simsignals.AbortById(requestId)
 		return &proto.AbortResponse{RequestId: requestId, WasTriggered: triggered}
 	}},
-	"/bulkSimCombos": {msg: func() googleProto.Message { return &proto.BulkSimCombosRequest{} }, handle: func(msg googleProto.Message) googleProto.Message {
-		return core.RunBulkCombos(msg.(*proto.BulkSimCombosRequest))
-	}},
 }
 
 var asyncAPIHandlers = map[string]asyncAPIHandler{
@@ -127,9 +124,6 @@ var asyncAPIHandlers = map[string]asyncAPIHandler{
 	}},
 	"/statWeightsAsync": {msg: func() googleProto.Message { return &proto.StatWeightsRequest{} }, handle: func(msg googleProto.Message, reporter chan *proto.ProgressMetrics, requestId string) {
 		core.StatWeightsAsync(msg.(*proto.StatWeightsRequest), reporter, requestId)
-	}},
-	"/bulkSimAsync": {msg: func() googleProto.Message { return &proto.BulkSimRequest{} }, handle: func(msg googleProto.Message, reporter chan *proto.ProgressMetrics, requestId string) {
-		core.RunBulkSimAsync(msg.(*proto.BulkSimRequest), reporter, requestId)
 	}},
 }
 
@@ -211,7 +205,7 @@ func (s *server) handleAsyncAPI(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 				simProgress.latestProgress.Store(progMetric)
-				if progMetric.FinalRaidResult != nil || progMetric.FinalWeightResult != nil || progMetric.FinalBulkResult != nil {
+				if progMetric.FinalRaidResult != nil || progMetric.FinalWeightResult != nil {
 					return
 				}
 			}
@@ -269,7 +263,7 @@ func (s *server) setupAsyncServer() {
 		}
 
 		// If this was the last result, delete the cache for this simulation.
-		if latest.FinalRaidResult != nil || latest.FinalWeightResult != nil || latest.FinalBulkResult != nil {
+		if latest.FinalRaidResult != nil || latest.FinalWeightResult != nil {
 			s.progMut.Lock()
 			delete(s.asyncProgresses, msg.ProgressId)
 			s.progMut.Unlock()

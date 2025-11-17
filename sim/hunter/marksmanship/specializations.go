@@ -11,12 +11,6 @@ func (mm *MarksmanshipHunter) ApplySpecialization() {
 	mm.SteadyFocusAura()
 	mm.PiercingShotsAura()
 	mm.MasterMarksmanAura()
-	// Hotfix only applies to MM
-	mm.AddStaticMod(core.SpellModConfig{
-		Kind:       core.SpellMod_DamageDone_Pct,
-		ClassMask:  hunter.HunterSpellBarrage,
-		FloatValue: 0.15,
-	})
 
 	//Careful Aim
 	caCritMod := mm.AddDynamicMod(core.SpellModConfig{
@@ -58,7 +52,7 @@ func (mm *MarksmanshipHunter) ApplySpecialization() {
 
 		},
 	}))
-	core.MakeProcTriggerAura(&mm.Unit, core.ProcTrigger{
+	mm.MakeProcTriggerAura(core.ProcTrigger{
 		Name:           "Bombardment",
 		ActionID:       core.ActionID{ItemID: 35110},
 		Callback:       core.CallbackOnSpellHitDealt,
@@ -91,7 +85,7 @@ func (mm *MarksmanshipHunter) MasterMarksmanAura() {
 	counter = mm.RegisterAura(core.Aura{
 		Label:     "Master Marksman",
 		Duration:  time.Second * 30,
-		ActionID:  core.ActionID{SpellID: 34486},
+		ActionID:  core.ActionID{SpellID: 34487},
 		MaxStacks: 2,
 	})
 
@@ -116,7 +110,7 @@ func (mm *MarksmanshipHunter) MasterMarksmanAura() {
 	}))
 }
 func (mm *MarksmanshipHunter) SteadyFocusAura() {
-	attackspeedMultiplier := core.TernaryFloat64(mm.CouldHaveSetBonus(hunter.YaunGolSlayersBattlegear, 4), 1.25, 1.15)
+	attackspeedMultiplier := core.TernaryFloat64(mm.CouldHaveSetBonus(hunter.YaungolSlayersBattlegear, 4), 1.25, 1.15)
 	steadyFocusAura := core.BlockPrepull(mm.RegisterAura(core.Aura{
 		Label:     "Steady Focus",
 		ActionID:  core.ActionID{SpellID: 53224, Tag: 1},

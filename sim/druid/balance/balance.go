@@ -57,6 +57,13 @@ type BalanceDruid struct {
 
 	EclipseEnergyMap EclipseEnergyMap
 
+	LunarEclipseSpellMod       *core.SpellMod
+	SolarEclipseSpellMod       *core.SpellMod
+	CelestialAlignmentSpellMod *core.SpellMod
+	IncarnationSpellMod        *core.SpellMod
+
+	ManaMetric *core.ResourceMetrics
+
 	AstralCommunion      *druid.DruidSpell
 	AstralStorm          *druid.DruidSpell
 	AstralStormTickSpell *druid.DruidSpell
@@ -81,11 +88,14 @@ func (moonkin *BalanceDruid) Initialize() {
 	moonkin.Druid.Initialize()
 
 	moonkin.EnableEclipseBar()
+	moonkin.RegisterEclipseSpellMods()
 	moonkin.RegisterEclipseAuras()
 	moonkin.RegisterEclipseEnergyGainAura()
 
 	moonkin.RegisterBalancePassives()
 	moonkin.RegisterBalanceSpells()
+
+	moonkin.ManaMetric = moonkin.NewManaMetrics(core.ActionID{SpellID: 81070 /* Eclipse */})
 }
 
 func (moonkin *BalanceDruid) ApplyTalents() {

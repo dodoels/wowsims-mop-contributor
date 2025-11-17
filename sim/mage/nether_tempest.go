@@ -11,8 +11,8 @@ func (mage *Mage) registerNetherTempest() {
 		return
 	}
 	actionID := core.ActionID{SpellID: 114923}
-	netherTempestCoefficient := 0.24 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.60802&filter%5BSpellID%5D=114923 Field "EffetBonusCoefficient"
-	netherTempestScaling := .31      // Per https://wago.tools/db2/SpellEffect?build=5.5.0.60802&filter%5BSpellID%5D=114923 Field "Coefficient"
+	netherTempestCoefficient := 0.24359999597 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.60802&filter%5BSpellID%5D=114923 Field "EffetBonusCoefficient"
+	netherTempestScaling := 0.31220000982     // Per https://wago.tools/db2/SpellEffect?build=5.5.0.60802&filter%5BSpellID%5D=114923 Field "Coefficient"
 
 	ntCleaveSpell := mage.RegisterSpell(core.SpellConfig{
 		ActionID:       actionID.WithTag(2), // Real SpellID: 114954

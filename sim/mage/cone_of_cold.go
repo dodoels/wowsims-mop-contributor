@@ -8,9 +8,8 @@ import (
 
 func (mage *Mage) registerConeOfColdSpell() {
 
-	coneOfColdCoefficient := 0.32 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.60802&filter%5BSpellID%5D=exact%253A120 Field "EffetBonusCoefficient"
-	coneOfColdScaling := 0.38     // Per https://wago.tools/db2/SpellEffect?build=5.5.0.60802&filter%5BSpellID%5D=exact%253A120 Field "Coefficient"
-	coneOfColdVariance := 0.0     // Per https://wago.tools/db2/SpellEffect?build=5.5.0.60802&filter%5BSpellID%5D=exact%253A120 Field "Variance"
+	coneOfColdCoefficient := 0.31799998879 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.60802&filter%5BSpellID%5D=exact%253A120 Field "EffetBonusCoefficient"
+	coneOfColdScaling := 0.38100001216     // Per https://wago.tools/db2/SpellEffect?build=5.5.0.60802&filter%5BSpellID%5D=exact%253A120 Field "Coefficient"
 
 	mage.RegisterSpell(core.SpellConfig{
 		ActionID:       core.ActionID{SpellID: 120},
@@ -39,7 +38,7 @@ func (mage *Mage) registerConeOfColdSpell() {
 		ThreatMultiplier: 1,
 
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
-			baseDamage := mage.CalcAndRollDamageRange(sim, coneOfColdScaling, coneOfColdVariance)
+			baseDamage := mage.CalcScalingSpellDmg(coneOfColdScaling)
 			spell.CalcAndDealAoeDamage(sim, baseDamage, spell.OutcomeMagicHitAndCrit)
 		},
 	})

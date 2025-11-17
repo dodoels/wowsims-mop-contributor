@@ -37,7 +37,7 @@ func TestFury(t *testing.T) {
 			Consumables:      FullConsumesSpec,
 			SpecOptions:      core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsFury},
 			Rotation:         core.GetAplRotation("../../../ui/warrior/fury/apls", "default"),
-			StartingDistance: 5,
+			StartingDistance: 25,
 
 			ItemFilter: ItemFilter,
 		},

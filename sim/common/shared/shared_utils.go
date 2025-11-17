@@ -11,13 +11,13 @@ import (
 )
 
 type ProcStatBonusEffect struct {
-	Name      string
-	ItemID    int32
-	EnchantID int32
-	Callback  core.AuraCallback
-	ProcMask  core.ProcMask
-	Outcome   core.HitOutcome
-	Harmful   bool
+	Name               string
+	ItemID             int32
+	EnchantID          int32
+	Callback           core.AuraCallback
+	ProcMask           core.ProcMask
+	Outcome            core.HitOutcome
+	RequireDamageDealt bool
 
 	// Any other custom proc conditions not covered by the above fields.
 	CustomProcCondition core.CustomStatBuffProcCondition
@@ -191,17 +191,17 @@ func factory_StatBonusEffect(config ProcStatBonusEffect, extraSpell func(agent c
 			}
 		}
 
-		triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-			ActionID:   triggerActionID,
-			Name:       config.Name,
-			Callback:   config.Callback,
-			ProcMask:   config.ProcMask,
-			Outcome:    config.Outcome,
-			Harmful:    config.Harmful,
-			ProcChance: proc.GetProcChance(),
-			DPM:        dpm,
-			ICD:        time.Millisecond * time.Duration(proc.IcdMs),
-			Handler:    handler,
+		triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+			ActionID:           triggerActionID,
+			Name:               config.Name,
+			Callback:           config.Callback,
+			ProcMask:           config.ProcMask,
+			Outcome:            config.Outcome,
+			RequireDamageDealt: config.RequireDamageDealt,
+			ProcChance:         proc.GetProcChance(),
+			DPM:                dpm,
+			ICD:                time.Millisecond * time.Duration(proc.IcdMs),
+			Handler:            handler,
 		})
 
 		if proc.IcdMs != 0 {
@@ -290,21 +290,21 @@ func NewSimpleStatActive(itemID int32) {
 }
 
 type StackingStatBonusCD struct {
-	Name        string
-	ID          int32
-	AuraID      int32
-	Bonus       stats.Stats
-	Duration    time.Duration
-	MaxStacks   int32
-	CD          time.Duration
-	Callback    core.AuraCallback
-	ProcMask    core.ProcMask
-	SpellFlags  core.SpellFlag
-	Outcome     core.HitOutcome
-	Harmful     bool
-	ProcChance  float64
-	IsDefensive bool
-	Rppm        core.RPPMConfig
+	Name               string
+	ID                 int32
+	AuraID             int32
+	Bonus              stats.Stats
+	Duration           time.Duration
+	MaxStacks          int32
+	CD                 time.Duration
+	Callback           core.AuraCallback
+	ProcMask           core.ProcMask
+	SpellFlags         core.SpellFlag
+	Outcome            core.HitOutcome
+	RequireDamageDealt bool
+	ProcChance         float64
+	IsDefensive        bool
+	Rppm               core.RPPMConfig
 
 	// The stacks will only be granted as long as the trinket is active
 	TrinketLimitsDuration bool
@@ -360,15 +360,15 @@ func NewStackingStatBonusCD(config StackingStatBonusCD) {
 			})
 		}
 
-		core.ApplyProcTriggerCallback(&character.Unit, procAura, core.ProcTrigger{
-			Name:       config.Name,
-			Callback:   config.Callback,
-			ProcMask:   config.ProcMask,
-			SpellFlags: config.SpellFlags,
-			Outcome:    config.Outcome,
-			Harmful:    config.Harmful,
-			ProcChance: config.ProcChance,
-			DPM:        dpm,
+		procAura.AttachProcTriggerCallback(&character.Unit, core.ProcTrigger{
+			Name:               config.Name,
+			Callback:           config.Callback,
+			ProcMask:           config.ProcMask,
+			SpellFlags:         config.SpellFlags,
+			Outcome:            config.Outcome,
+			RequireDamageDealt: config.RequireDamageDealt,
+			ProcChance:         config.ProcChance,
+			DPM:                dpm,
 			Handler: func(sim *core.Simulation, _ *core.Spell, _ *core.SpellResult) {
 				statAura.AddStack(sim)
 			},
@@ -409,20 +409,20 @@ func NewStackingStatBonusCD(config StackingStatBonusCD) {
 }
 
 type StackingStatBonusEffect struct {
-	Name       string
-	ItemID     int32
-	AuraID     int32
-	Bonus      stats.Stats
-	Duration   time.Duration
-	MaxStacks  int32
-	Callback   core.AuraCallback
-	ProcMask   core.ProcMask
-	Rppm       core.RPPMConfig
-	SpellFlags core.SpellFlag
-	Outcome    core.HitOutcome
-	Harmful    bool
-	ProcChance float64
-	Icd        time.Duration
+	Name               string
+	ItemID             int32
+	AuraID             int32
+	Bonus              stats.Stats
+	Duration           time.Duration
+	MaxStacks          int32
+	Callback           core.AuraCallback
+	ProcMask           core.ProcMask
+	Rppm               core.RPPMConfig
+	SpellFlags         core.SpellFlag
+	Outcome            core.HitOutcome
+	RequireDamageDealt bool
+	ProcChance         float64
+	Icd                time.Duration
 }
 
 func NewStackingStatBonusEffect(config StackingStatBonusEffect) {
@@ -461,17 +461,17 @@ func NewStackingStatBonusEffect(config StackingStatBonusEffect) {
 			BonusPerStack: config.Bonus,
 		})
 
-		triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-			ActionID:   core.ActionID{ItemID: config.ItemID},
-			Name:       config.Name,
-			Callback:   config.Callback,
-			ProcMask:   config.ProcMask,
-			SpellFlags: config.SpellFlags,
-			Outcome:    config.Outcome,
-			Harmful:    config.Harmful,
-			ProcChance: config.ProcChance,
-			DPM:        dpm,
-			ICD:        config.Icd,
+		triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+			ActionID:           core.ActionID{ItemID: config.ItemID},
+			Name:               config.Name,
+			Callback:           config.Callback,
+			ProcMask:           config.ProcMask,
+			SpellFlags:         config.SpellFlags,
+			Outcome:            config.Outcome,
+			RequireDamageDealt: config.RequireDamageDealt,
+			ProcChance:         config.ProcChance,
+			DPM:                dpm,
+			ICD:                config.Icd,
 			Handler: func(sim *core.Simulation, _ *core.Spell, _ *core.SpellResult) {
 				procAura.Activate(sim)
 				procAura.AddStack(sim)
@@ -579,10 +579,11 @@ func NewProcDamageEffect(config ProcDamageEffect) {
 		})
 
 		triggerConfig := config.Trigger
+		triggerConfig.TriggerImmediately = true
 		triggerConfig.Handler = func(sim *core.Simulation, _ *core.Spell, _ *core.SpellResult) {
 			damageSpell.Cast(sim, character.CurrentTarget)
 		}
-		triggerAura := core.MakeProcTriggerAura(&character.Unit, triggerConfig)
+		triggerAura := character.MakeProcTriggerAura(triggerConfig)
 
 		if isEnchant {
 			character.ItemSwap.RegisterEnchantProc(effectID, triggerAura)
@@ -673,6 +674,7 @@ func RegisterIgniteEffect(unit *core.Unit, config IgniteConfig) *core.Spell {
 
 	var scheduledRefresh *core.PendingAction
 	procTrigger := config.ProcTrigger
+	procTrigger.TriggerImmediately = true
 	procTrigger.Handler = func(sim *core.Simulation, _ *core.Spell, result *core.SpellResult) {
 		target := result.Target
 		dot := igniteSpell.Dot(target)
@@ -736,7 +738,7 @@ func RegisterIgniteEffect(unit *core.Unit, config IgniteConfig) *core.Spell {
 	if config.ParentAura != nil {
 		config.ParentAura.AttachProcTrigger(procTrigger)
 	} else {
-		core.MakeProcTriggerAura(unit, procTrigger)
+		unit.MakeProcTriggerAura(procTrigger)
 	}
 
 	return igniteSpell
@@ -805,15 +807,20 @@ func RegisterRiposteEffect(character *core.Character, auraSpellID int32, trigger
 		},
 	}))
 
-	core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+	var bonusCrit float64
+	character.MakeProcTriggerAura(core.ProcTrigger{
 		Name:     "Riposte Trigger" + character.Label,
 		ActionID: core.ActionID{SpellID: triggerSpellID},
 		Callback: core.CallbackOnSpellHitTaken,
 		Outcome:  core.OutcomeDodge | core.OutcomeParry,
 		ICD:      time.Second * 1,
 
+		ExtraCondition: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) bool {
+			bonusCrit = max(0, math.Round((character.GetStat(stats.DodgeRating)+character.GetParryRatingWithoutStrength())*0.75))
+			return bonusCrit > 0
+		},
+
 		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			bonusCrit := math.Round((character.GetStat(stats.DodgeRating) + character.GetParryRatingWithoutStrength()) * 0.75)
 			riposteAura.Activate(sim)
 			riposteAura.SetStacks(sim, int32(bonusCrit))
 		},

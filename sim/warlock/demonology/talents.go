@@ -68,6 +68,7 @@ func (demonology *DemonologyWarlock) registerGrimoireOfService() {
 
 	felGuard := demonology.registerFelguardWithName("Grimoire: Felguard", false, true, true)
 	felGuard.MinEnergy = 90
+
 	demonology.BuildAndRegisterSummonSpell(111898, felGuard)
 }
 

@@ -85,56 +85,46 @@ func calculateEclipseMasteryBonus(masteryPoints float64, includeBasePoints bool)
 	return (core.Ternary(includeBasePoints, 15.0+(8.0*1.875), 0.0) + (masteryPoints * 1.875)) / 100
 }
 
-func (moonkin *BalanceDruid) RegisterEclipseAuras() {
-	manaMetrics := moonkin.NewManaMetrics(core.ActionID{SpellID: 79577 /* Eclipse */})
-
-	docEclipseMasteryBonus := 0.0
+func (moonkin *BalanceDruid) RegisterEclipseSpellMods() {
 	eclipseMasteryBonus := calculateEclipseMasteryBonus(moonkin.GetMasteryPoints(), true)
 
-	lunarSpellMod := moonkin.AddDynamicMod(core.SpellModConfig{
-		School:     core.SpellSchoolArcane,
-		Kind:       core.SpellMod_DamageDone_Pct,
-		FloatValue: docEclipseMasteryBonus + eclipseMasteryBonus,
-	})
-
-	solarSpellMod := moonkin.AddDynamicMod(core.SpellModConfig{
+	moonkin.SolarEclipseSpellMod = moonkin.AddDynamicMod(core.SpellModConfig{
 		School:     core.SpellSchoolNature,
 		Kind:       core.SpellMod_DamageDone_Pct,
-		FloatValue: docEclipseMasteryBonus + eclipseMasteryBonus,
+		FloatValue: eclipseMasteryBonus,
 	})
 
-	moonkin.AddOnMasteryStatChanged(func(sim *core.Simulation, oldMastery float64, newMastery float64) {
-		if !moonkin.IsInEclipse() {
-			return
-		}
-
-		masteryBonusDiff := core.MasteryRatingToMasteryPoints(newMastery - oldMastery)
-
-		if lunarSpellMod.IsActive {
-			lunarSpellMod.UpdateFloatValue(lunarSpellMod.GetFloatValue() + calculateEclipseMasteryBonus(masteryBonusDiff, false))
-		} else if solarSpellMod.IsActive {
-			solarSpellMod.UpdateFloatValue(solarSpellMod.GetFloatValue() + calculateEclipseMasteryBonus(masteryBonusDiff, false))
-		}
+	moonkin.LunarEclipseSpellMod = moonkin.AddDynamicMod(core.SpellModConfig{
+		School:     core.SpellSchoolArcane,
+		Kind:       core.SpellMod_DamageDone_Pct,
+		FloatValue: eclipseMasteryBonus,
 	})
 
+	moonkin.CelestialAlignmentSpellMod = moonkin.AddDynamicMod(core.SpellModConfig{
+		School:     core.SpellSchoolArcane | core.SpellSchoolNature,
+		Kind:       core.SpellMod_DamageDone_Pct,
+		FloatValue: eclipseMasteryBonus,
+	})
+}
+
+func (moonkin *BalanceDruid) RegisterEclipseAuras() {
 	lunarEclipse := moonkin.RegisterAura(core.Aura{
 		ActionID: core.ActionID{SpellID: 48518},
 		Label:    "Eclipse (Lunar)",
 		Duration: core.NeverExpires,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
+			eclipseMasteryBonus := calculateEclipseMasteryBonus(moonkin.GetMasteryPoints(), true)
+
 			if moonkin.DreamOfCenarius.IsActive() {
-				docEclipseMasteryBonus = 0.25
+				eclipseMasteryBonus += 0.25
 				moonkin.DreamOfCenarius.Deactivate(sim)
 			}
 
-			masteryBonus := docEclipseMasteryBonus + calculateEclipseMasteryBonus(moonkin.GetMasteryPoints(), true)
-
-			lunarSpellMod.UpdateFloatValue(masteryBonus)
-			lunarSpellMod.Activate()
+			moonkin.LunarEclipseSpellMod.UpdateFloatValue(eclipseMasteryBonus)
+			moonkin.LunarEclipseSpellMod.Activate()
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			docEclipseMasteryBonus = 0.0
-			lunarSpellMod.Deactivate()
+			moonkin.LunarEclipseSpellMod.Deactivate()
 		},
 	})
 
@@ -143,25 +133,25 @@ func (moonkin *BalanceDruid) RegisterEclipseAuras() {
 		Label:    "Eclipse (Solar)",
 		Duration: core.NeverExpires,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
+			eclipseMasteryBonus := calculateEclipseMasteryBonus(moonkin.GetMasteryPoints(), true)
+
 			if moonkin.DreamOfCenarius.IsActive() {
-				docEclipseMasteryBonus = 0.25
+				eclipseMasteryBonus += 0.25
 				moonkin.DreamOfCenarius.Deactivate(sim)
 			}
 
-			masteryBonus := docEclipseMasteryBonus + calculateEclipseMasteryBonus(moonkin.GetMasteryPoints(), true)
-			solarSpellMod.UpdateFloatValue(masteryBonus)
-			solarSpellMod.Activate()
+			moonkin.SolarEclipseSpellMod.UpdateFloatValue(eclipseMasteryBonus)
+			moonkin.SolarEclipseSpellMod.Activate()
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			docEclipseMasteryBonus = 0.0
-			solarSpellMod.Deactivate()
+			moonkin.SolarEclipseSpellMod.Deactivate()
 		},
 	})
 
 	moonkin.AddEclipseCallback(func(eclipse Eclipse, gained bool, sim *core.Simulation) {
 		if gained {
 			// Moonkins are energized for 50% maximum mana every time they enter eclipse.
-			moonkin.AddMana(sim, moonkin.MaxMana()*0.5, manaMetrics)
+			moonkin.AddMana(sim, moonkin.MaxMana()*0.5, moonkin.ManaMetric)
 		}
 
 		if eclipse == LunarEclipse {

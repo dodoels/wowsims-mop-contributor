@@ -1,5 +1,3 @@
-import { group } from 'node:console';
-
 import clsx from 'clsx';
 import tippy from 'tippy.js';
 import { ref } from 'tsx-vanilla';
@@ -8,7 +6,7 @@ import i18n from '../../i18n/config.js';
 import * as Mechanics from '../constants/mechanics.js';
 import { IndividualSimUI } from '../individual_sim_ui';
 import { Player } from '../player.js';
-import { HandType, ItemSlot, PseudoStat, Race, RangedWeaponType, Spec, Stat, WeaponType } from '../proto/common.js';
+import { ItemSlot, PseudoStat, Race, Spec, Stat, WeaponType } from '../proto/common.js';
 import { ActionId } from '../proto_utils/action_id';
 import { getStatName, masterySpellIDs } from '../proto_utils/names.js';
 import { Stats, UnitStat } from '../proto_utils/stats.js';
@@ -34,7 +32,7 @@ export class CharacterStats extends Component {
 	readonly meleeCritCapValueElem: HTMLTableCellElement | undefined;
 	masteryElem: HTMLTableCellElement | undefined;
 	hasRacialHitBonus = false;
-	hasRacialExpertiseBonus = false;
+	activeRacialExpertiseBonuses = [false, false];
 
 	private readonly player: Player<any>;
 	private readonly modifyDisplayStats?: (player: Player<any>) => StatMods;
@@ -143,7 +141,6 @@ export class CharacterStats extends Component {
 							{statName}
 							{unitStat.equalsStat(Stat.StatMasteryRating) && (
 								<div>
-									<br />
 									{translateMasterySpellName(this.player.getSpec())}
 								</div>
 							)}
@@ -182,89 +179,20 @@ export class CharacterStats extends Component {
 		});
 	}
 
-	private hasRacialHitOrExpBonus(): [boolean, boolean] {
-		const mh = this.player.getEquippedItem(ItemSlot.ItemSlotMainHand)?.item;
-		const race = this.player.getRace();
-		switch (race) {
-			case Race.RaceDraenei:
-				return [true, false];
-			case Race.RaceDwarf:
-				if (
-					mh &&
-					(mh.rangedWeaponType === RangedWeaponType.RangedWeaponTypeBow ||
-						mh.rangedWeaponType === RangedWeaponType.RangedWeaponTypeCrossbow ||
-						mh.rangedWeaponType === RangedWeaponType.RangedWeaponTypeGun ||
-						mh.weaponType === WeaponType.WeaponTypeMace)
-				) {
-					return [false, true];
-				}
-			case Race.RaceTroll:
-				if (
-					mh &&
-					(mh.rangedWeaponType === RangedWeaponType.RangedWeaponTypeBow ||
-						mh.rangedWeaponType === RangedWeaponType.RangedWeaponTypeCrossbow ||
-						mh.rangedWeaponType === RangedWeaponType.RangedWeaponTypeGun)
-				) {
-					return [false, true];
-				}
-				break;
-			case Race.RaceGnome:
-				if (
-					mh &&
-					mh.handType === HandType.HandTypeOneHand &&
-					(mh.weaponType === WeaponType.WeaponTypeSword || mh.weaponType === WeaponType.WeaponTypeDagger)
-				) {
-					return [false, true];
-				}
-				break;
-			case Race.RaceHuman:
-				if (mh && (mh.weaponType === WeaponType.WeaponTypeSword || mh.weaponType === WeaponType.WeaponTypeMace)) {
-					return [false, true];
-				}
-				break;
-			case Race.RaceOrc:
-				if (mh && (mh.weaponType === WeaponType.WeaponTypeAxe || mh.weaponType === WeaponType.WeaponTypeFist)) {
-					return [false, true];
-				}
-				break;
-		}
-
-		return [false, false];
-	}
-
-	private convertRacialBonuses(stats: Stats): Stats {
-		if (this.hasRacialExpertiseBonus) {
-			return this.convertRacialExpertiseRating(stats);
-		} else if (this.hasRacialHitBonus) {
-			return this.convertRacialHitRating(stats);
-		}
-
-		return stats;
-	}
-
-	private convertRacialExpertiseRating(stats: Stats): Stats {
-		return stats.addStat(Stat.StatExpertiseRating, Mechanics.EXPERTISE_PER_QUARTER_PERCENT_REDUCTION * -4);
-	}
-
-	private convertRacialHitRating(stats: Stats): Stats {
-		return stats.addStat(Stat.StatHitRating, -Mechanics.PHYSICAL_HIT_RATING_PER_HIT_PERCENT);
-	}
-
 	private updateStats(player: Player<any>) {
 		const playerStats = player.getCurrentStats();
 		const statMods = this.modifyDisplayStats ? this.modifyDisplayStats(this.player) : {};
-		const [hasRacialHitBonus, hasRacialExpertiseBonus] = this.hasRacialHitOrExpBonus();
-		this.hasRacialHitBonus = hasRacialHitBonus;
-		this.hasRacialExpertiseBonus = hasRacialExpertiseBonus;
+		this.hasRacialHitBonus = this.player.getRace() === Race.RaceDraenei;
+		this.activeRacialExpertiseBonuses = this.player.getActiveRacialExpertiseBonuses();
 
-		const baseStats = this.convertRacialBonuses(Stats.fromProto(playerStats.baseStats));
-		const gearStats = this.convertRacialBonuses(Stats.fromProto(playerStats.gearStats));
-		const talentsStats = this.convertRacialBonuses(Stats.fromProto(playerStats.talentsStats));
-		const buffsStats = this.convertRacialBonuses(Stats.fromProto(playerStats.buffsStats));
-		const consumesStats = this.convertRacialBonuses(Stats.fromProto(playerStats.consumesStats));
+		const baseStats = Stats.fromProto(playerStats.baseStats);
+		const gearStats = Stats.fromProto(playerStats.gearStats);
+		const talentsStats = Stats.fromProto(playerStats.talentsStats);
+		const buffsStats = Stats.fromProto(playerStats.buffsStats);
+		const consumesStats = Stats.fromProto(playerStats.consumesStats);
 		const bonusStats = player.getBonusStats();
 
-		let finalStats = this.convertRacialBonuses(Stats.fromProto(playerStats.finalStats))
+		let finalStats = Stats.fromProto(playerStats.finalStats)
 			.add(statMods.base || new Stats())
 			.add(statMods.gear || new Stats())
 			.add(statMods.talents || new Stats())
@@ -473,20 +401,49 @@ export class CharacterStats extends Component {
 	}
 
 	private statDisplayString(deltaStats: Stats, unitStat: UnitStat, includeBase?: boolean): string {
-		const rootRatingValue = unitStat.hasRootStat() ? deltaStats.getStat(unitStat.getRootStat()) : null;
+		const rootStat = unitStat.hasRootStat() ? unitStat.getRootStat() : null;
+		let rootRatingValue = rootStat !== null ? deltaStats.getStat(rootStat) : null;
 		let derivedPercentOrPointsValue = unitStat.convertDefaultUnitsToPercent(deltaStats.getUnitStat(unitStat));
-
-		if (unitStat.equalsStat(Stat.StatMasteryRating) && includeBase) {
-			derivedPercentOrPointsValue = derivedPercentOrPointsValue! + this.player.getBaseMastery();
-		} else if (unitStat.equalsStat(Stat.StatExpertiseRating) && includeBase && this.hasRacialExpertiseBonus) {
-			derivedPercentOrPointsValue = derivedPercentOrPointsValue! + 1;
-		}
-
-		const hideRootRating = rootRatingValue === null || (rootRatingValue === 0 && derivedPercentOrPointsValue !== null);
-		const rootRatingString = hideRootRating ? '' : String(Math.round(rootRatingValue));
 		const percentOrPointsSuffix = unitStat.equalsStat(Stat.StatMasteryRating)
 			? ` ${i18n.t('sidebar.character_stats.points_suffix')}`
 			: i18n.t('sidebar.character_stats.percent_suffix');
+
+		if (unitStat.equalsStat(Stat.StatMasteryRating) && includeBase) {
+			derivedPercentOrPointsValue = derivedPercentOrPointsValue! + this.player.getBaseMastery();
+		} else if (rootStat === Stat.StatHitRating && includeBase && this.hasRacialHitBonus) {
+			// Remove the rating display and only show %
+			if (rootRatingValue !== null && rootRatingValue > 0) {
+				rootRatingValue -= Mechanics.PHYSICAL_HIT_RATING_PER_HIT_PERCENT;
+			}
+		} else if (unitStat.equalsStat(Stat.StatExpertiseRating) && includeBase) {
+			const [mhWeaponExpertiseActive, ohWeaponExpertiseActive] = this.activeRacialExpertiseBonuses;
+
+			// Remove the rating display and only show %
+			if (rootRatingValue !== null && rootRatingValue > 0 && mhWeaponExpertiseActive) {
+				rootRatingValue -= Mechanics.EXPERTISE_PER_QUARTER_PERCENT_REDUCTION * 4;
+			}
+
+			const matchesBothHands = mhWeaponExpertiseActive && ohWeaponExpertiseActive;
+			const offHand = this.player.getEquippedItem(ItemSlot.ItemSlotOffHand);
+			if (
+				!matchesBothHands &&
+				(mhWeaponExpertiseActive || ohWeaponExpertiseActive) &&
+				offHand !== null &&
+				offHand.item.weaponType !== WeaponType.WeaponTypeShield &&
+				offHand.item.weaponType !== WeaponType.WeaponTypeOffHand
+			) {
+				const hideRootRating = rootRatingValue === null || (rootRatingValue === 0 && derivedPercentOrPointsValue !== null);
+				const rootRatingString = hideRootRating ? '' : String(Math.round(rootRatingValue!));
+				const mhPercentString = `${derivedPercentOrPointsValue!.toFixed(2)}` + percentOrPointsSuffix;
+				const ohPercentValue = derivedPercentOrPointsValue! + (ohWeaponExpertiseActive ? 1 : -1);
+				const ohPercentString = `${ohPercentValue.toFixed(2)}` + percentOrPointsSuffix;
+				const wrappedPercentString = hideRootRating ? `${mhPercentString} / ${ohPercentString}` : ` (${mhPercentString} / ${ohPercentString})`;
+				return rootRatingString + wrappedPercentString;
+			}
+		}
+
+		const hideRootRating = rootRatingValue === null || (rootRatingValue === 0 && derivedPercentOrPointsValue !== null);
+		const rootRatingString = hideRootRating ? '' : String(Math.round(rootRatingValue!));
 		const percentOrPointsString = derivedPercentOrPointsValue === null ? '' : `${derivedPercentOrPointsValue.toFixed(2)}` + percentOrPointsSuffix;
 		const wrappedPercentOrPointsString = hideRootRating || derivedPercentOrPointsValue === null ? percentOrPointsString : ` (${percentOrPointsString})`;
 		return rootRatingString + wrappedPercentOrPointsString;

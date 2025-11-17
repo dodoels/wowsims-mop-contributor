@@ -20,9 +20,10 @@ import (
 const MIN_EFFECT_ILVL = 416
 
 type ProcInfo struct {
-	Outcome  core.HitOutcome
-	Callback core.AuraCallback
-	ProcMask core.ProcMask
+	Outcome            core.HitOutcome
+	Callback           core.AuraCallback
+	ProcMask           core.ProcMask
+	RequireDamageDealt bool
 }
 
 // Entry represents a single effect with its ID and display name.
@@ -36,7 +37,6 @@ type Entry struct {
 	Tooltip   []string
 	ProcInfo  ProcInfo
 	Supported bool
-	Harmful   bool
 }
 
 // Group holds a category of effects.
@@ -309,7 +309,6 @@ func TryParseProcEffect(parsed *proto.UIItem, instance *dbc.DBC, groupMapProc ma
 		renderedTooltip := tooltip.String()
 		entry := Entry{Tooltip: strings.Split(renderedTooltip, "\n"), Variants: []*Variant{{ID: int(parsed.Id), Name: parsed.Name}}}
 		entry.ProcInfo, entry.Supported = BuildProcInfo(parsed, instance, renderedTooltip)
-		entry.Harmful = true
 		grp.Entries = append(grp.Entries, &entry)
 		groupMapProc["Procs"] = grp
 
@@ -377,7 +376,6 @@ func TryParseEnchantEffect(enchant *proto.UIEnchant, groupMapProc map[string]Gro
 			renderedTooltip := tooltip.String()
 			entry := Entry{Tooltip: strings.Split(renderedTooltip, "\n"), Variants: []*Variant{{ID: int(enchant.EffectId), Name: enchant.Name}}}
 			entry.ProcInfo, entry.Supported = BuildEnchantProcInfo(enchant, instance, renderedTooltip)
-			entry.Harmful = true
 			grp.Entries = append(grp.Entries, &entry)
 			groupMapProc["Enchants"] = grp
 			if !entry.Supported {
@@ -465,7 +463,9 @@ func BuildEnchantProcInfo(enchant *proto.UIEnchant, instance *dbc.DBC, tooltip s
 }
 
 func BuildSpellProcInfo(procSpell *dbc.Spell, tooltip string, itemType proto.ItemType) (ProcInfo, bool) {
-	var info = ProcInfo{}
+	var info = ProcInfo{
+		RequireDamageDealt: true,
+	}
 
 	// On hit proc
 	if itemType == proto.ItemType_ItemTypeWeapon {
@@ -526,6 +526,10 @@ func BuildSpellProcInfo(procSpell *dbc.Spell, tooltip string, itemType proto.Ite
 
 		if procSpell.ProcTypeMask[0]&dbc.PROC_FLAG_ANY_DIRECT_DEALT > 0 {
 			info.Callback |= core.CallbackOnSpellHitDealt
+
+			if procSpell.ProcTypeMask[0]&dbc.PROC_FLAG_DEAL_HARMFUL_SPELL > 0 {
+				info.RequireDamageDealt = false
+			}
 		}
 
 		if procSpell.ProcTypeMask[0]&dbc.PROC_FLAG_DEAL_HARMFUL_PERIODIC > 0 {
@@ -534,6 +538,7 @@ func BuildSpellProcInfo(procSpell *dbc.Spell, tooltip string, itemType proto.Ite
 
 		if procSpell.ProcTypeMask[0]&dbc.PROC_FLAG_DEAL_HELPFUL_SPELL > 0 &&
 			(hasHealMatcher.MatchString(tooltip) || hasGenericMatcher.MatchString(tooltip)) {
+			info.RequireDamageDealt = false
 			info.Callback |= core.CallbackOnHealDealt
 			info.ProcMask |= core.ProcMaskSpellHealing
 

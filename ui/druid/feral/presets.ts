@@ -13,13 +13,13 @@ import { SavedTalents } from '../../core/proto/ui';
 // Eventually we will import these values for the raid sim too, so its good to
 // keep them in a separate file.
 import PreraidGear from './gear_sets/preraid.gear.json';
-export const PRERAID_PRESET = PresetUtils.makePresetGear('Pre-Raid BiS', PreraidGear);
+export const PRERAID_PRESET = PresetUtils.makePresetGear('Pre-Raid', PreraidGear);
 import P1Gear from './gear_sets/p1.gear.json';
-export const P1_PRESET = PresetUtils.makePresetGear('P1 BiS', P1Gear);
+export const P1_PRESET = PresetUtils.makePresetGear('P1', P1Gear);
 import P2Gear from './gear_sets/p2.gear.json';
-export const P2_PRESET = PresetUtils.makePresetGear('P2 BiS', P2Gear);
+export const P2_PRESET = PresetUtils.makePresetGear('P2', P2Gear);
 import P3Gear from './gear_sets/p3.gear.json';
-export const P3_PRESET = PresetUtils.makePresetGear('P3', P3Gear);
+export const P3_PRESET = PresetUtils.makePresetGear('P3 (Tentative)', P3Gear);
 import P4Gear from './gear_sets/p4.gear.json';
 export const P4_PRESET = PresetUtils.makePresetGear('P4', P4Gear);
 import ItemSwapGear from './gear_sets/p1_item_swap.gear.json';
@@ -41,15 +41,34 @@ export const DOC_EP_PRESET = PresetUtils.makePresetEpWeights(
 		{
 			[Stat.StatStrength]: 0.39,
 			[Stat.StatAgility]: 1.0,
-			[Stat.StatAttackPower]: 0.38,
-			[Stat.StatHitRating]: 0.38,
-			[Stat.StatExpertiseRating]: 0.38,
-			[Stat.StatCritRating]: 0.35,
-			[Stat.StatHasteRating]: 0.22,
+			[Stat.StatAttackPower]: 0.37,
+			[Stat.StatHitRating]: 0.45,
+			[Stat.StatExpertiseRating]: 0.45,
+			[Stat.StatCritRating]: 0.36,
+			[Stat.StatHasteRating]: 0.27,
+			[Stat.StatMasteryRating]: 0.42,
+		},
+		{
+			[PseudoStat.PseudoStatMainHandDps]: 0.73,
+		},
+	),
+);
+
+export const DOC_RORO_PRESET = PresetUtils.makePresetEpWeights(
+	'DoC RoRo',
+	Stats.fromMap(
+		{
+			[Stat.StatStrength]: 0.39,
+			[Stat.StatAgility]: 1.0,
+			[Stat.StatAttackPower]: 0.37,
+			[Stat.StatHitRating]: 0.44,
+			[Stat.StatExpertiseRating]: 0.44,
+			[Stat.StatCritRating]: 0.49,
+			[Stat.StatHasteRating]: 0.42,
 			[Stat.StatMasteryRating]: 0.39,
 		},
 		{
-			[PseudoStat.PseudoStatMainHandDps]: 0.82,
+			[PseudoStat.PseudoStatMainHandDps]: 0.74,
 		},
 	),
 );
@@ -58,17 +77,36 @@ export const HOTW_EP_PRESET = PresetUtils.makePresetEpWeights(
 	'HotW Wrath-Weave',
 	Stats.fromMap(
 		{
-			[Stat.StatStrength]: 0.35,
+			[Stat.StatStrength]: 0.34,
 			[Stat.StatAgility]: 1.0,
-			[Stat.StatAttackPower]: 0.33,
-			[Stat.StatHitRating]: 0.33,
-			[Stat.StatExpertiseRating]: 0.33,
-			[Stat.StatCritRating]: 0.34,
+			[Stat.StatAttackPower]: 0.32,
+			[Stat.StatHitRating]: 0.37,
+			[Stat.StatExpertiseRating]: 0.37,
+			[Stat.StatCritRating]: 0.36,
 			[Stat.StatHasteRating]: 0.25,
+			[Stat.StatMasteryRating]: 0.37,
+		},
+		{
+			[PseudoStat.PseudoStatMainHandDps]: 0.72,
+		},
+	),
+);
+
+export const HOTW_RORO_PRESET = PresetUtils.makePresetEpWeights(
+	'HotW RoRo',
+	Stats.fromMap(
+		{
+			[Stat.StatStrength]: 0.34,
+			[Stat.StatAgility]: 1.0,
+			[Stat.StatAttackPower]: 0.32,
+			[Stat.StatHitRating]: 0.36,
+			[Stat.StatExpertiseRating]: 0.36,
+			[Stat.StatCritRating]: 0.54,
+			[Stat.StatHasteRating]: 0.35,
 			[Stat.StatMasteryRating]: 0.35,
 		},
 		{
-			[PseudoStat.PseudoStatMainHandDps]: 0.80,
+			[PseudoStat.PseudoStatMainHandDps]: 0.72,
 		},
 	),
 );

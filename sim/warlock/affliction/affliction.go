@@ -28,8 +28,10 @@ func RegisterAfflictionWarlock() {
 
 func NewAfflictionWarlock(character *core.Character, options *proto.Player) *AfflictionWarlock {
 	affOptions := options.GetAfflictionWarlock().Options
+
 	affliction := &AfflictionWarlock{
-		Warlock: warlock.NewWarlock(character, options, affOptions.ClassOptions),
+		Warlock:      warlock.NewWarlock(character, options, affOptions.ClassOptions),
+		ExhaleWindow: time.Duration(affOptions.ExhaleWindow * int32(time.Millisecond)),
 	}
 
 	affliction.MaleficGraspMaleficEffectMultiplier = 0.3
@@ -45,17 +47,16 @@ type AfflictionWarlock struct {
 	Agony              *core.Spell
 	UnstableAffliction *core.Spell
 
-	SoulBurnAura     *core.Aura
-	HauntDebuffAuras core.AuraArray
+	SoulBurnAura *core.Aura
 
-	LastCorruption   *core.Dot // Tracks the last corruption we've applied
-	LastInhaleTarget *core.Unit
+	LastCorruptionTarget *core.Unit // Tracks the last target we've applied corruption to
+	LastInhaleTarget     *core.Unit
 
 	DrainSoulMaleficEffectMultiplier    float64
 	MaleficGraspMaleficEffectMultiplier float64
 	ProcMaleficEffect                   func(target *core.Unit, coeff float64, sim *core.Simulation)
 
-	HauntImpactTime time.Duration
+	ExhaleWindow time.Duration
 }
 
 func (affliction AfflictionWarlock) getMasteryBonus() float64 {
@@ -81,9 +82,9 @@ func (affliction *AfflictionWarlock) Initialize() {
 	affliction.registerHaunt()
 	affliction.RegisterCorruption(func(resultList core.SpellResultSlice, spell *core.Spell, sim *core.Simulation) {
 		if resultList[0].Landed() {
-			affliction.LastCorruption = spell.Dot(resultList[0].Target)
+			affliction.LastCorruptionTarget = resultList[0].Target
 		}
-	})
+	}, nil)
 
 	affliction.registerAgony()
 	affliction.registerNightfall()
@@ -108,8 +109,7 @@ func (affliction *AfflictionWarlock) ApplyTalents() {
 func (affliction *AfflictionWarlock) Reset(sim *core.Simulation) {
 	affliction.Warlock.Reset(sim)
 
-	affliction.LastCorruption = nil
-	affliction.HauntImpactTime = 0
+	affliction.LastCorruptionTarget = nil
 }
 
 func (affliction *AfflictionWarlock) OnEncounterStart(sim *core.Simulation) {
@@ -117,6 +117,10 @@ func (affliction *AfflictionWarlock) OnEncounterStart(sim *core.Simulation) {
 	if affliction.SoulBurnAura.IsActive() {
 		defaultShards -= 1
 	}
+
+	haunt := affliction.GetSpell(core.ActionID{SpellID: HauntSpellID})
+	count := affliction.SpellsInFlight[haunt]
+	defaultShards -= count
 
 	affliction.SoulShards.ResetBarTo(sim, defaultShards)
 	affliction.Warlock.OnEncounterStart(sim)

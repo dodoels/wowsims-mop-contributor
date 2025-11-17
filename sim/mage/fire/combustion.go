@@ -19,9 +19,9 @@ func (fire *FireMage) registerCombustionSpell() {
 
 	actionID := core.ActionID{SpellID: 11129}
 
-	combustionVariance := 0.17   // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=11129 Field: "Variance"
-	combustionScaling := 1.0     // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=11129 Field: "Coefficient"
-	combustionCoefficient := 1.0 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=11129 Field: "BonusCoefficient"
+	combustionVariance := 0.17000000179 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=11129 Field: "Variance"
+	combustionScaling := 1.0            // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=11129 Field: "Coefficient"
+	combustionCoefficient := 1.0        // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=11129 Field: "BonusCoefficient"
 
 	fire.Combustion = fire.RegisterSpell(core.SpellConfig{
 		ActionID:       actionID,
@@ -125,10 +125,12 @@ func (fire *FireMage) registerCombustionSpell() {
 		updateCombustionTotalDamageEstimate()
 	})
 
-	core.MakeProcTriggerAura(&fire.Unit, core.ProcTrigger{
-		Name:     "Ignite Tracker",
-		Harmful:  true,
-		Callback: core.CallbackOnSpellHitDealt | core.CallbackOnPeriodicDamageDealt,
+	fire.MakeProcTriggerAura(core.ProcTrigger{
+		Name:               "Ignite Tracker",
+		RequireDamageDealt: true,
+		Callback:           core.CallbackOnSpellHitDealt | core.CallbackOnPeriodicDamageDealt,
+		TriggerImmediately: true,
+
 		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			updateCombustionTickDamageEstimate(sim)
 			updateCombustionTotalDamageEstimate()

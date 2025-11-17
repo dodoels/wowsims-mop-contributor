@@ -413,3 +413,33 @@ func (hp *HunterPet) registerRabidCD() {
 		Type:  core.CooldownTypeDPS,
 	})
 }
+
+func (tp *ThunderhawkPet) RegisterLightningBlast() *core.Spell {
+	return tp.RegisterSpell(core.SpellConfig{
+		ActionID:     core.ActionID{SpellID: 138374},
+		SpellSchool:  core.SpellSchoolNature,
+		ProcMask:     core.ProcMaskEmpty,
+		MissileSpeed: 35,
+		MaxRange:     40,
+
+		Cast: core.CastConfig{
+			DefaultCast: core.Cast{
+				GCD:      core.GCDDefault,
+				CastTime: time.Millisecond * 1500,
+			},
+			IgnoreHaste: true,
+		},
+
+		DamageMultiplier: 1,
+		CritMultiplier:   tp.CritMultiplier(1.0, 0.0),
+		ThreatMultiplier: 1,
+
+		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+			baseDamage := sim.RollWithLabel(16000, 24000, "Lightning Blast")
+			result := spell.CalcDamage(sim, target, baseDamage, spell.OutcomeRangedHitAndCrit)
+			spell.WaitTravelTime(sim, func(sim *core.Simulation) {
+				spell.DealDamage(sim, result)
+			})
+		},
+	})
+}

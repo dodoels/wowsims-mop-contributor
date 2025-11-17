@@ -42,7 +42,8 @@ type DeathKnight struct {
 	FrostPresenceSpell  *core.Spell
 	UnholyPresenceSpell *core.Spell
 
-	PestilenceSpell *core.Spell
+	PestilenceSpell     *core.Spell
+	SummonGargoyleSpell *core.Spell
 
 	BoneShieldAura         *core.Aura
 	BoneWallAura           *core.Aura

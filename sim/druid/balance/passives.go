@@ -45,7 +45,7 @@ func (moonkin *BalanceDruid) registerShootingStars() {
 		},
 	})).AttachSpellMod(castTimeModConfig)
 
-	core.MakeProcTriggerAura(&moonkin.Unit, core.ProcTrigger{
+	moonkin.MakeProcTriggerAura(core.ProcTrigger{
 		Name:           "Shooting Stars Trigger" + moonkin.Label,
 		Callback:       core.CallbackOnPeriodicDamageDealt,
 		Outcome:        core.OutcomeCrit,
@@ -97,6 +97,7 @@ func (moonkin *BalanceDruid) registerNaturesGrace() {
 
 	moonkin.AddEclipseCallback(func(_ Eclipse, gained bool, sim *core.Simulation) {
 		if gained {
+			moonkin.NaturesGrace.Deactivate(sim)
 			moonkin.NaturesGrace.Activate(sim)
 		}
 	})
@@ -138,7 +139,27 @@ func (moonkin *BalanceDruid) registerNaturalInsight() {
 	moonkin.MultiplyStat(stats.Mana, 5)
 }
 
-func (moonkin *BalanceDruid) registerTotalEclipse() {}
+func (moonkin *BalanceDruid) registerTotalEclipse() {
+	moonkin.AddOnMasteryStatChanged(func(sim *core.Simulation, oldMastery float64, newMastery float64) {
+		if !moonkin.IsInEclipse() && !moonkin.CelestialAlignment.RelatedSelfBuff.IsActive() {
+			return
+		}
+
+		masteryBonusDiff := core.MasteryRatingToMasteryPoints(newMastery - oldMastery)
+
+		if moonkin.SolarEclipseSpellMod.IsActive {
+			moonkin.SolarEclipseSpellMod.UpdateFloatValue(moonkin.SolarEclipseSpellMod.GetFloatValue() + calculateEclipseMasteryBonus(masteryBonusDiff, false))
+		}
+
+		if moonkin.LunarEclipseSpellMod.IsActive {
+			moonkin.SolarEclipseSpellMod.UpdateFloatValue(moonkin.SolarEclipseSpellMod.GetFloatValue() + calculateEclipseMasteryBonus(masteryBonusDiff, false))
+		}
+
+		if moonkin.CelestialAlignmentSpellMod.IsActive {
+			moonkin.SolarEclipseSpellMod.UpdateFloatValue(moonkin.SolarEclipseSpellMod.GetFloatValue() + calculateEclipseMasteryBonus(masteryBonusDiff, false))
+		}
+	})
+}
 
 func (moonkin *BalanceDruid) registerLunarShower() {
 	lunarShowerDmgMod := moonkin.AddDynamicMod(core.SpellModConfig{

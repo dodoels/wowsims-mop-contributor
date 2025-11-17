@@ -30,7 +30,6 @@ export const MISSING_ITEM_EFFECTS = [
     101179, // Communal Idol of Wisdom
     101247, // Streamtalker Idol of Wisdom
     102247, // Jina-Kang, Kindness of Chi-Ji
-    102293, // Purified Bindings of Immerseus (N)
     102294, // Nazgrim's Burnished Insignia (N)
     102295, // Fusion-Fire Core (N)
     102299, // Prismatic Prison of Pride (N)
@@ -50,7 +49,6 @@ export const MISSING_ITEM_EFFECTS = [
     103377, // Prideful Gladiator's Dreadplate Gauntlets (LFR) (Season 15) (Horde)
     103678, // Time-Lost Artifact
     104313, // Golden Moss
-    104426, // Purified Bindings of Immerseus (H)
     104463, // Fusion-Fire Core (H)
     104478, // Prismatic Prison of Pride (H)
     104531, // Haromm's Talisman (H)
@@ -64,7 +62,6 @@ export const MISSING_ITEM_EFFECTS = [
     104619, // Dysmorphic Samophlange of Discontinuity (H)
     104636, // Skeer's Bloodsoaked Talisman (H)
     104652, // Black Blood of Y'Shaarj (H)
-    104675, // Purified Bindings of Immerseus (Flexible)
     104712, // Fusion-Fire Core (Flexible)
     104727, // Prismatic Prison of Pride (Flexible)
     104780, // Haromm's Talisman (Flexible)
@@ -78,7 +75,6 @@ export const MISSING_ITEM_EFFECTS = [
     104868, // Dysmorphic Samophlange of Discontinuity (Flexible)
     104885, // Skeer's Bloodsoaked Talisman (Flexible)
     104901, // Black Blood of Y'Shaarj (Flexible)
-    104924, // Purified Bindings of Immerseus (LFR) (Celestial)
     104961, // Fusion-Fire Core (LFR) (Celestial)
     104976, // Prismatic Prison of Pride (LFR) (Celestial)
     105029, // Haromm's Talisman (LFR) (Celestial)
@@ -92,7 +88,6 @@ export const MISSING_ITEM_EFFECTS = [
     105117, // Dysmorphic Samophlange of Discontinuity (LFR) (Celestial)
     105134, // Skeer's Bloodsoaked Talisman (LFR) (Celestial)
     105150, // Black Blood of Y'Shaarj (LFR) (Celestial)
-    105173, // Purified Bindings of Immerseus (Warforged)
     105210, // Fusion-Fire Core (Warforged)
     105225, // Prismatic Prison of Pride (Warforged)
     105278, // Haromm's Talisman (Warforged)
@@ -106,7 +101,6 @@ export const MISSING_ITEM_EFFECTS = [
     105366, // Dysmorphic Samophlange of Discontinuity (Warforged)
     105383, // Skeer's Bloodsoaked Talisman (Warforged)
     105399, // Black Blood of Y'Shaarj (Warforged)
-    105422, // Purified Bindings of Immerseus (Heroic Warforged)
     105459, // Fusion-Fire Core (Heroic Warforged)
     105474, // Prismatic Prison of Pride (Heroic Warforged)
     105527, // Haromm's Talisman (Heroic Warforged)

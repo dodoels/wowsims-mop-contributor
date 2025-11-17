@@ -1,6 +1,7 @@
 package paladin
 
 import (
+	"math"
 	"time"
 
 	"github.com/wowsims/mop/sim/core"
@@ -243,27 +244,16 @@ var ItemSetPlateOfTheLightningEmperor = core.NewItemSet(core.ItemSet{
 			paladin := agent.(PaladinAgent).GetPaladin()
 			hpGainMetrics := core.ActionID{SpellID: 138248}
 
-			totalDamageTaken := 0.0
-
-			paladin.OnSpellRegistered(func(spell *core.Spell) {
-				if spell.Matches(SpellMaskDivineProtection) {
-					paladin.DivineProtectionAura.ApplyOnGain(func(aura *core.Aura, sim *core.Simulation) {
-						totalDamageTaken = 0.0
-					})
-				}
-			})
-
 			setBonusAura.AttachProcTrigger(core.ProcTrigger{
-				Callback: core.CallbackOnSpellHitTaken,
-				Outcome:  core.OutcomeLanded,
-				Harmful:  true,
+				Callback:           core.CallbackOnSpellHitTaken,
+				Outcome:            core.OutcomeLanded,
+				RequireDamageDealt: true,
 
 				Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 					if paladin.DivineProtectionAura.IsActive() {
-						totalDamageTaken += result.Damage
-						if totalDamageTaken >= paladin.MaxHealth()*0.2 {
-							paladin.HolyPower.Gain(sim, 1, hpGainMetrics)
-							totalDamageTaken = 0
+						hpGain := int32(math.Floor(result.PostOutcomeDamage / paladin.MaxHealth() * 5))
+						if hpGain > 0 {
+							paladin.HolyPower.Gain(sim, hpGain, hpGainMetrics)
 						}
 					}
 				},
@@ -403,12 +393,12 @@ var ItemSetPlateOfWingedTriumph = core.NewItemSet(core.ItemSet{
 						blessingOfTheGuardians.Cast(sim, &paladin.Unit)
 					}
 				}).AttachProcTrigger(core.ProcTrigger{
-					Callback: core.CallbackOnSpellHitTaken,
-					Outcome:  core.OutcomeLanded,
-					Harmful:  true,
+					Callback:           core.CallbackOnSpellHitTaken,
+					Outcome:            core.OutcomeLanded,
+					RequireDamageDealt: true,
 
 					Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-						totalDamageTaken += result.Damage
+						totalDamageTaken += result.PostOutcomeDamage
 					},
 				})
 			})

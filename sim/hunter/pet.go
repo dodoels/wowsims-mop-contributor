@@ -1,6 +1,8 @@
 package hunter
 
 import (
+	"time"
+
 	"github.com/wowsims/mop/sim/core"
 	"github.com/wowsims/mop/sim/core/proto"
 	"github.com/wowsims/mop/sim/core/stats"
@@ -14,7 +16,8 @@ type HunterPet struct {
 
 	hunterOwner *Hunter
 
-	FrenzyAura *core.Aura
+	BestialWrathAura *core.Aura
+	FrenzyAura       *core.Aura
 
 	specialAbility *core.Spell
 	KillCommand    *core.Spell
@@ -29,6 +32,63 @@ type HunterPet struct {
 
 	WHFocusIncreaseMod *core.SpellMod
 	WHDamageMod        *core.SpellMod
+}
+
+type ThunderhawkPet struct {
+	HunterPet
+
+	expiresAt      time.Duration
+	LightningBlast *core.Spell
+}
+
+func (hunter *Hunter) NewThunderhawkPet(index int) *ThunderhawkPet {
+	conf := core.PetConfig{
+		Name:                     "Thunderhawk",
+		Owner:                    &hunter.Character,
+		NonHitExpStatInheritance: hunter.makeStatInheritance(),
+		EnabledOnStart:           false,
+		IsGuardian:               true,
+	}
+	thunderhawkPet := &ThunderhawkPet{
+		HunterPet: HunterPet{
+			Pet:         core.NewPet(conf),
+			config:      PetConfig{Name: "Thunderhawk"},
+			hunterOwner: hunter,
+		},
+	}
+	thunderhawkPet.OnPetDisable = thunderhawkPet.disable
+	thunderhawkPet.OnPetEnable = thunderhawkPet.enable
+	hunter.AddPet(thunderhawkPet)
+	return thunderhawkPet
+}
+
+func (tp *ThunderhawkPet) enable(sim *core.Simulation) {
+	tp.expiresAt = sim.CurrentTime + time.Second*10
+}
+
+func (tp *ThunderhawkPet) disable(sim *core.Simulation) {
+	if tp.Hardcast.Expires > sim.CurrentTime {
+		tp.CancelHardcast(sim)
+	}
+}
+
+func (tp *ThunderhawkPet) ExecuteCustomRotation(sim *core.Simulation) {
+	if !tp.GCD.IsReady(sim) {
+		return
+	}
+
+	if tp.LightningBlast.CanCast(sim, tp.CurrentTarget) {
+		if tp.expiresAt < sim.CurrentTime+tp.LightningBlast.CastTime() {
+			tp.Disable(sim)
+		} else {
+			tp.LightningBlast.Cast(sim, tp.CurrentTarget)
+		}
+	}
+}
+
+func (tp *ThunderhawkPet) Initialize() {
+	tp.Pet.Initialize()
+	tp.LightningBlast = tp.RegisterLightningBlast()
 }
 
 func (hunter *Hunter) NewStampedePet(index int) *HunterPet {
@@ -93,13 +153,15 @@ func (hunter *Hunter) NewDireBeastPet() *HunterPet {
 	})
 
 	hunter.AddPet(direBeastPet)
-	core.MakeProcTriggerAura(&direBeastPet.Unit, core.ProcTrigger{
-		Name:       "Dire Beast",
-		ActionID:   core.ActionID{ItemID: 120679},
-		Callback:   core.CallbackOnSpellHitDealt,
-		ProcChance: 1,
-		SpellFlags: core.SpellFlagMeleeMetrics,
-		Outcome:    core.OutcomeLanded,
+	direBeastPet.MakeProcTriggerAura(core.ProcTrigger{
+		Name:               "Dire Beast",
+		ActionID:           core.ActionID{ItemID: 120679},
+		Callback:           core.CallbackOnSpellHitDealt,
+		ProcChance:         1,
+		SpellFlags:         core.SpellFlagMeleeMetrics,
+		Outcome:            core.OutcomeLanded,
+		TriggerImmediately: true,
+
 		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			hunter.AddFocus(sim, 5, focusMetrics)
 		},

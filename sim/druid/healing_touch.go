@@ -31,6 +31,15 @@ func (druid *Druid) registerHealingTouchSpell() {
 				GCD:      core.GCDDefault,
 				CastTime: time.Millisecond * 2500,
 			},
+
+			ModifyCast: func(sim *core.Simulation, spell *core.Spell, curCast *core.Cast) {
+				if druid.InForm(Cat|Bear) {
+					return
+				}
+
+				hastedCastTime := spell.Unit.ApplyCastSpeedForSpell(curCast.CastTime, spell).Round(time.Millisecond)
+				spell.Unit.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime+hastedCastTime)
+			},
 		},
 
 		DamageMultiplier: 1,

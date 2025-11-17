@@ -24,6 +24,7 @@ type Hunter struct {
 	Pet          *HunterPet
 	StampedePet  []*HunterPet
 	DireBeastPet *HunterPet
+	Thunderhawks []*ThunderhawkPet
 
 	// The most recent time at which moving could have started, for trap weaving.
 	mayMoveAt time.Duration
@@ -35,6 +36,9 @@ type Hunter struct {
 	ExplosiveTrap        *core.Spell
 	ExplosiveShot        *core.Spell
 	ImprovedSerpentSting *core.Spell
+	RapidFire            *core.Spell
+
+	BestialWrathAura *core.Aura
 
 	// Fake spells to encapsulate weaving logic.
 	HuntersMarkSpell *core.Spell
@@ -94,6 +98,13 @@ func NewHunter(character *core.Character, options *proto.Player, hunterOptions *
 	}
 
 	hunter.DireBeastPet = hunter.NewDireBeastPet()
+
+	// Add 10 just to be protected against weird good luck :)
+	hunter.Thunderhawks = make([]*ThunderhawkPet, 10)
+	for index := range 10 {
+		hunter.Thunderhawks[index] = hunter.NewThunderhawkPet(index)
+	}
+
 	return hunter
 }
 
@@ -247,8 +258,6 @@ const (
 	HunterSpellGlaiveToss
 	HunterSpellBarrage
 	HunterSpellPowershot
-	HunterSpellsTierTwelve = HunterSpellArcaneShot | HunterSpellKillCommand | HunterSpellChimeraShot | HunterSpellExplosiveShot |
-		HunterSpellMultiShot | HunterSpellAimedShot
 	HunterSpellsAll = HunterSpellSteadyShot | HunterSpellCobraShot |
 		HunterSpellArcaneShot | HunterSpellKillCommand | HunterSpellChimeraShot | HunterSpellExplosiveShot |
 		HunterSpellExplosiveTrap | HunterSpellBlackArrow | HunterSpellMultiShot | HunterSpellAimedShot |

@@ -2,6 +2,8 @@ import { LaunchStatus } from '../core/launched_sims';
 import { ArmorType, Class, MobType, PseudoStat, Race, Profession, Spec, Stat, SpellSchool, WeaponType, RangedWeaponType, ItemSlot } from '../core/proto/common';
 import { ResourceType } from '../core/proto/spell';
 import { RaidFilterOption, SourceFilterOption } from '../core/proto/ui';
+import { BulkSimItemSlot } from '../core/components/individual_sim_ui/bulk/utils';
+import { PresetConfigurationCategory } from '../core/components/individual_sim_ui/preset_configuration_picker';
 
 export const statI18nKeys: Record<Stat, string> = {
 	[Stat.StatStrength]: 'strength',
@@ -26,6 +28,31 @@ export const statI18nKeys: Record<Stat, string> = {
 	[Stat.StatHealth]: 'health',
 	[Stat.StatMana]: 'mana',
 	[Stat.StatMP5]: 'mp5',
+};
+
+export const protoStatNameI18nKeys: Record<string, string> = {
+	['Strength']: 'strength',
+	['Agility']: 'agility',
+	['Stamina']: 'stamina',
+	['Intellect']: 'intellect',
+	['Spirit']: 'spirit',
+	['HitRating']: 'hit',
+	['CritRating']: 'crit',
+	['HasteRating']: 'haste',
+	['ExpertiseRating']: 'expertise',
+	['DodgeRating']: 'dodge',
+	['ParryRating']: 'parry',
+	['MasteryRating']: 'mastery',
+	['AttackPower']: 'attack_power',
+	['RangedAttackPower']: 'ranged_attack_power',
+	['SpellPower']: 'spell_power',
+	['PvpResilienceRating']: 'pvp_resilience',
+	['PvpPowerRating']: 'pvp_power',
+	['Armor']: 'armor',
+	['BonusArmor']: 'bonus_armor',
+	['Health']: 'health',
+	['Mana']: 'mana',
+	['MP5']: 'mp5',
 };
 
 export const pseudoStatI18nKeys: Record<PseudoStat, string> = {
@@ -334,6 +361,33 @@ export const slotNamesI18nKeys: Record<ItemSlot, string> = {
 	[ItemSlot.ItemSlotOffHand]: 'off_hand',
 };
 
+export const bulkSlotNamesI18nKeys: Record<BulkSimItemSlot, string> = {
+	[BulkSimItemSlot.ItemSlotHead]: 'head',
+	[BulkSimItemSlot.ItemSlotNeck]: 'neck',
+	[BulkSimItemSlot.ItemSlotShoulder]: 'shoulder',
+	[BulkSimItemSlot.ItemSlotBack]: 'back',
+	[BulkSimItemSlot.ItemSlotChest]: 'chest',
+	[BulkSimItemSlot.ItemSlotWrist]: 'wrist',
+	[BulkSimItemSlot.ItemSlotHands]: 'hands',
+	[BulkSimItemSlot.ItemSlotWaist]: 'waist',
+	[BulkSimItemSlot.ItemSlotLegs]: 'legs',
+	[BulkSimItemSlot.ItemSlotFeet]: 'feet',
+	[BulkSimItemSlot.ItemSlotFinger]: 'rings',
+	[BulkSimItemSlot.ItemSlotTrinket]: 'trinkets',
+	[BulkSimItemSlot.ItemSlotMainHand]: 'main_hand',
+	[BulkSimItemSlot.ItemSlotOffHand]: 'off_hand',
+	[BulkSimItemSlot.ItemSlotHandWeapon]: 'weapons',
+};
+
+export const presetConfigurationCategoryI18nKeys: Record<PresetConfigurationCategory, string> = {
+	[PresetConfigurationCategory.EPWeights]: 'ep_weights',
+	[PresetConfigurationCategory.Gear]: 'gear',
+	[PresetConfigurationCategory.Talents]: 'talents',
+	[PresetConfigurationCategory.Rotation]: 'rotation',
+	[PresetConfigurationCategory.Encounter]: 'encounter',
+	[PresetConfigurationCategory.Settings]: 'settings',
+};
+
 export const getClassI18nKey = (classID: Class): string => classI18nKeys[classID] || Class[classID].toLowerCase();
 
 export const getSpecI18nKey = (specID: Spec): string => specI18nKeys[specID] || Spec[specID].toLowerCase();
@@ -352,12 +406,24 @@ export const getSourceFilterI18nKey = (source: SourceFilterOption): string => so
 
 export const getRaidFilterI18nKey = (raid: RaidFilterOption): string => raidFilterI18nKeys[raid] || RaidFilterOption[raid].toLowerCase();
 
+export const getBulkSlotI18nKey = (slot: BulkSimItemSlot): string => bulkSlotNamesI18nKeys[slot] || '';
+
 export const getArmorTypeI18nKey = (armorType: ArmorType): string => armorTypeI18nKeys[armorType] || ArmorType[armorType].toLowerCase();
 
 export const getWeaponTypeI18nKey = (weaponType: WeaponType): string => weaponTypeI18nKeys[weaponType] || WeaponType[weaponType].toLowerCase();
 
-export const getRangedWeaponTypeI18nKey = (rangedWeaponType: RangedWeaponType): string => rangedWeaponTypeI18nKeys[rangedWeaponType] || RangedWeaponType[rangedWeaponType].toLowerCase();
+export const getRangedWeaponTypeI18nKey = (rangedWeaponType: RangedWeaponType): string =>
+	rangedWeaponTypeI18nKeys[rangedWeaponType] || RangedWeaponType[rangedWeaponType].toLowerCase();
 
 export const getMasterySpellNameI18nKey = (spec: Spec): string => masterySpellNamesI18nKeys[spec] || Spec[spec].toLowerCase();
 
 export const getSlotNameI18nKey = (slot: ItemSlot): string => slotNamesI18nKeys[slot] || ItemSlot[slot].toLowerCase();
+
+export const getPresetConfigurationCategoryI18nKey = (category: PresetConfigurationCategory): string =>
+	presetConfigurationCategoryI18nKeys[category] || category.toLowerCase();
+
+export const classNameToClassKey = (className: string): string => {
+	const normalizedClassName = className.toLowerCase().replace(/_/g, '');
+	const classKey = normalizedClassName === 'deathknight' ? 'death_knight' : normalizedClassName;
+	return classKey;
+};

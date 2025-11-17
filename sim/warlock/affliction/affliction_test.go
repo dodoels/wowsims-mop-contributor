@@ -54,9 +54,9 @@ func TestAffliction(t *testing.T) {
 			Class:      proto.Class_ClassWarlock,
 			Race:       proto.Race_RaceTroll,
 			OtherRaces: []proto.Race{proto.Race_RaceOrc, proto.Race_RaceGoblin, proto.Race_RaceHuman},
-			GearSet:    core.GetGearSet("../../../ui/warlock/affliction/gear_sets", "preraid"),
+			GearSet:    core.GetGearSet("../../../ui/warlock/affliction/gear_sets", "p2"),
 			OtherGearSets: []core.GearSetCombo{
-				core.GetGearSet("../../../ui/warlock/affliction/gear_sets", "p1"),
+				core.GetGearSet("../../../ui/warlock/affliction/gear_sets", "p3"),
 			},
 			Talents: "231211",
 			Glyphs: &proto.Glyphs{
@@ -67,7 +67,9 @@ func TestAffliction(t *testing.T) {
 			SpecOptions:      core.SpecOptionsCombo{Label: "Affliction Warlock", SpecOptions: defaultAfflictionWarlock},
 			OtherSpecOptions: []core.SpecOptionsCombo{},
 			Rotation:         core.GetAplRotation("../../../ui/warlock/affliction/apls", "default"),
-			OtherRotations:   []core.RotationCombo{},
+			OtherRotations: []core.RotationCombo{
+				core.GetAplRotation("../../../ui/warlock/affliction/apls", "multitarget"),
+			},
 			ItemFilter:       itemFilter,
 			StartingDistance: 25,
 		},

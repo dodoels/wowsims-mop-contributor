@@ -10,9 +10,9 @@ import (
 func (arcane *ArcaneMage) registerArcaneBlastSpell() {
 
 	//https://wago.tools/db2/SpellEffect?build=5.5.0.60802&filter%5BSpellID%5D=30451
-	arcaneBlastVariance := .15
-	arcaneBlastCoefficient := .78
-	arcaneBlastScaling := .78
+	arcaneBlastVariance := 0.15000000596
+	arcaneBlastCoefficient := 0.77700001001
+	arcaneBlastScaling := 0.77700001001
 
 	arcane.RegisterSpell(core.SpellConfig{
 

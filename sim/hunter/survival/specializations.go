@@ -24,7 +24,8 @@ func (survival *SurvivalHunter) ApplyMods() {
 // Todo: Should we support precasting freezing/ice trap?
 func (survival *SurvivalHunter) applyLNL() {
 	actionID := core.ActionID{SpellID: 56343}
-	procChance := core.TernaryFloat64(survival.CouldHaveSetBonus(hunter.YaunGolSlayersBattlegear, 4), 0.40, 0.20)
+	procChance := core.TernaryFloat64(survival.CouldHaveSetBonus(hunter.YaungolSlayersBattlegear, 4), 0.40, 0.20)
+	has4pcT16 := survival.CouldHaveSetBonus(hunter.BattlegearOfTheUnblinkingVigil, 4)
 
 	icd := core.Cooldown{
 		Timer:    survival.NewTimer(),
@@ -52,10 +53,13 @@ func (survival *SurvivalHunter) applyLNL() {
 		OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
 			if spell == survival.ExplosiveShot {
 				survival.ExplosiveShot.CD.Reset()
-				// Weird check but..
-				if !aura.Unit.HasActiveAura("Burning Adrenaline") {
-					aura.RemoveStack(sim)
+
+				// T16 4pc: Explosive Shot casts have a 40% chance to not consume a charge of Lock and Load.
+				if has4pcT16 && sim.Proc(0.4, "T16 4pc") {
+					return
 				}
+
+				aura.RemoveStack(sim)
 			}
 		},
 	}))

@@ -21,18 +21,20 @@ func TestBeastMastery(t *testing.T) {
 		{
 			Class:      proto.Class_ClassHunter,
 			Race:       proto.Race_RaceOrc,
-			OtherRaces: []proto.Race{proto.Race_RaceDwarf},
+			OtherRaces: []proto.Race{proto.Race_RaceWorgen},
 
-			GearSet:         core.GetGearSet("../../../ui/hunter/presets", "p1"),
+			GearSet:         core.GetGearSet("../../../ui/hunter/beast_mastery/gear_sets", "p2"),
 			Talents:         BeastMasteryTalents,
 			OtherTalentSets: talentSets,
 			Glyphs:          BeastMasteryDefaultGlyphs,
 			Consumables:     FullConsumesSpec,
 			SpecOptions:     core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsBasic},
 			Rotation:        core.GetAplRotation("../../../ui/hunter/beast_mastery/apls", "bm"),
+			Profession1:     proto.Profession_Engineering,
+			Profession2:     proto.Profession_Tailoring,
 
 			ItemFilter:       ItemFilter,
-			StartingDistance: 5.1,
+			StartingDistance: 24,
 		},
 	}))
 }
@@ -46,35 +48,6 @@ var ItemFilter = core.ItemFilter{
 	},
 }
 
-func BenchmarkSimulate(b *testing.B) {
-	rsr := &proto.RaidSimRequest{
-		Raid: core.SinglePlayerRaidProto(
-			&proto.Player{
-				Race:           proto.Race_RaceOrc,
-				Class:          proto.Class_ClassHunter,
-				Equipment:      core.GetGearSet("../../../ui/hunter/presets", "p1").GearSet,
-				Consumables:    FullConsumesSpec,
-				Spec:           PlayerOptionsBasic,
-				Glyphs:         BeastMasteryDefaultGlyphs,
-				TalentsString:  BeastMasteryTalents,
-				Buffs:          core.FullIndividualBuffs,
-				ReactionTimeMs: 100,
-			},
-			core.FullPartyBuffs,
-			core.FullRaidBuffs,
-			core.FullDebuffs),
-		Encounter: &proto.Encounter{
-			Duration: 300,
-			Targets: []*proto.Target{
-				core.NewDefaultTarget(),
-			},
-		},
-		SimOptions: core.AverageDefaultSimTestOptions,
-	}
-
-	core.RaidBenchmark(b, rsr)
-}
-
 var FullConsumesSpec = &proto.ConsumesSpec{
 	FlaskId:  76084, // Flask of Spring Blossoms
 	FoodId:   74648, // Sea Mist Rice Noodles
@@ -82,7 +55,7 @@ var FullConsumesSpec = &proto.ConsumesSpec{
 	PrepotId: 76089, // Virmen's Bite
 }
 
-var BeastMasteryTalents = "312111"
+var BeastMasteryTalents = "312211"
 var BeastMasteryDefaultGlyphs = &proto.Glyphs{
 	Major1: int32(proto.HunterMajorGlyph_GlyphOfPathfinding),
 	Major2: int32(proto.HunterMajorGlyph_GlyphOfAnimalBond),
@@ -93,8 +66,10 @@ var PlayerOptionsBasic = &proto.Player_BeastMasteryHunter{
 	BeastMasteryHunter: &proto.BeastMasteryHunter{
 		Options: &proto.BeastMasteryHunter_Options{
 			ClassOptions: &proto.HunterOptions{
-				PetType:   proto.HunterOptions_Wolf,
-				PetUptime: 1,
+				PetType:           proto.HunterOptions_Tallstrider,
+				PetUptime:         1,
+				UseHuntersMark:    true,
+				GlaiveTossSuccess: 0.8,
 			},
 		},
 	},

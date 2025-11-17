@@ -13,9 +13,8 @@ func (mage *Mage) registerFrostBomb() {
 	}
 
 	// Since Frost Bomb does double damage to all targets, these are the AOE values and the main target just gets double.
-	frostBombExplosionCoefficient := 1.725 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.60802&filter%5BSpellID%5D=113092 Field "EffetBonusCoefficient"
-	frostBombExplosionScaling := 2.21      // Per https://wago.tools/db2/SpellEffect?build=5.5.0.60802&filter%5BSpellID%5D=113092 Field "Coefficient"
-	frostBombVariance := 0.0
+	frostBombExplosionCoefficient := 1.72500002384 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.60802&filter%5BSpellID%5D=113092 Field "EffetBonusCoefficient"
+	frostBombExplosionScaling := 2.21059989929     // Per https://wago.tools/db2/SpellEffect?build=5.5.0.60802&filter%5BSpellID%5D=113092 Field "Coefficient"
 	actionID := core.ActionID{SpellID: 112948}
 
 	frostBombExplosionSpell := mage.RegisterSpell(core.SpellConfig{
@@ -35,7 +34,7 @@ func (mage *Mage) registerFrostBomb() {
 				if idx == 0 {
 					spell.DamageMultiplier *= 2
 				}
-				baseDamage := mage.CalcAndRollDamageRange(sim, frostBombExplosionScaling, frostBombVariance)
+				baseDamage := mage.CalcScalingSpellDmg(frostBombExplosionScaling)
 				spell.CalcAndDealDamage(sim, aoeTarget, baseDamage, spell.OutcomeMagicHitAndCrit)
 				if idx == 0 {
 					spell.DamageMultiplier /= 2

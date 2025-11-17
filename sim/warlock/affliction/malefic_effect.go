@@ -6,10 +6,11 @@ import (
 )
 
 func (affliction *AfflictionWarlock) registerMaleficEffect() {
+	var procDot *core.Dot
 	buildSpell := func(id int32) *core.Spell {
 		return affliction.RegisterSpell(core.SpellConfig{
 			ActionID:       core.ActionID{SpellID: id}.WithTag(1),
-			Flags:          core.SpellFlagNoOnCastComplete | core.SpellFlagNoSpellMods | core.SpellFlagIgnoreAttackerModifiers,
+			Flags:          core.SpellFlagPassiveSpell | core.SpellFlagNoOnCastComplete | core.SpellFlagNoSpellMods | core.SpellFlagIgnoreAttackerModifiers,
 			SpellSchool:    core.SpellSchoolShadow,
 			ProcMask:       core.ProcMaskSpellDamage,
 			ClassSpellMask: warlock.WarlockSpellMaleficGrasp,
@@ -19,7 +20,15 @@ func (affliction *AfflictionWarlock) registerMaleficEffect() {
 			CritMultiplier:   affliction.DefaultCritMultiplier(),
 			BonusSpellPower:  0, // used to transmit base damage
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				spell.CalcAndDealDamage(sim, target, spell.BonusSpellPower, spell.OutcomeMagicCrit)
+				result := spell.CalcDamage(sim, target, spell.BonusSpellPower, procDot.OutcomeTickMagicCritNoHitCounter)
+				spell.DealPeriodicDamage(sim, result)
+
+				// Adjust metrics just for Malefic Effects as it is a edgecase and needs to be handled manually
+				if result.DidCrit() {
+					spell.SpellMetrics[result.Target.UnitIndex].CritTicks++
+				} else {
+					spell.SpellMetrics[result.Target.UnitIndex].Ticks++
+				}
 			},
 		})
 	}
@@ -38,7 +47,7 @@ func (affliction *AfflictionWarlock) registerMaleficEffect() {
 	procKeys := []*core.Spell{corruptionProc, agonyProc, uaProc}
 	affliction.ProcMaleficEffect = func(target *core.Unit, coeff float64, sim *core.Simulation) {
 
-		// I don't like it but if sac is specced the damage replciation effect specifically is increased by 20%
+		// I don't like it but if sac is specced the damage replication effect specifically is increased by 20%
 		// Nothing we can do really properly with SpellMod's here nicely
 		if affliction.Talents.GrimoireOfSacrifice {
 			coeff *= 1.2
@@ -60,6 +69,7 @@ func (affliction *AfflictionWarlock) registerMaleficEffect() {
 			}
 
 			proc.BonusSpellPower = calculateDoTBaseTickDamage(dot) * coeff
+			procDot = dot
 			proc.Cast(sim, target)
 		}
 	}

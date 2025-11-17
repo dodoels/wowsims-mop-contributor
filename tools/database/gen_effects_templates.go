@@ -43,20 +43,20 @@ func RegisterAllProcs() {
 	{{- if len .Variants | eq 1}}
 	shared.NewProcStatBonusEffect(shared.ProcStatBonusEffect{
 		{{with index .Variants 0 -}}
-		Name:     "{{ .Name }}",
-		ItemID:   {{ .ID }},
+		Name:               "{{ .Name }}",
+		ItemID:             {{ .ID }},
 		{{- end}}
-		Callback: {{ .ProcInfo.Callback | asCoreCallback }},
-		ProcMask: {{ .ProcInfo.ProcMask | asCoreProcMask }},
-		Outcome:  {{ .ProcInfo.Outcome | asCoreOutcome }},
-		Harmful:  {{ .Harmful }},
+		Callback:           {{ .ProcInfo.Callback | asCoreCallback }},
+		ProcMask:           {{ .ProcInfo.ProcMask | asCoreProcMask }},
+		Outcome:            {{ .ProcInfo.Outcome | asCoreOutcome }},
+		RequireDamageDealt: {{ .ProcInfo.RequireDamageDealt }},
 	})
 	{{- else }}
 	shared.NewProcStatBonusEffectWithVariants(shared.ProcStatBonusEffect{
-		Callback: {{ .ProcInfo.Callback | asCoreCallback }},
-		ProcMask: {{ .ProcInfo.ProcMask | asCoreProcMask }},
-		Outcome:  {{ .ProcInfo.Outcome | asCoreOutcome }},
-		Harmful:  {{ .Harmful }},
+		Callback:           {{ .ProcInfo.Callback | asCoreCallback }},
+		ProcMask:           {{ .ProcInfo.ProcMask | asCoreProcMask }},
+		Outcome:            {{ .ProcInfo.Outcome | asCoreOutcome }},
+		RequireDamageDealt: {{ .ProcInfo.RequireDamageDealt }},
 	}, []shared.ItemVariant{
 		{{- range .Variants }}
 		{ItemID: {{.ID}}, ItemName: "{{.Name}}"},
@@ -67,20 +67,20 @@ func RegisterAllProcs() {
 	{{- if len .Variants | eq 1}}
 	// shared.NewProcStatBonusEffect(shared.ProcStatBonusEffect{
 	{{ with index .Variants 0 -}}
-	//	Name:     "{{ .Name }}",
-	//	ItemID:   {{ .ID }},
+	//	Name:               "{{ .Name }}",
+	//	ItemID:             {{ .ID }},
 		{{- end}}
-	//	Callback: {{ .ProcInfo.Callback | asCoreCallback }},
-	//	ProcMask: {{ .ProcInfo.ProcMask | asCoreProcMask }},
-	//	Outcome:  {{ .ProcInfo.Outcome | asCoreOutcome }},
-	//	Harmful:  {{ .Harmful }}
+	//	Callback:           {{ .ProcInfo.Callback | asCoreCallback }},
+	//	ProcMask:           {{ .ProcInfo.ProcMask | asCoreProcMask }},
+	//	Outcome:            {{ .ProcInfo.Outcome | asCoreOutcome }},
+	//	RequireDamageDealt: {{ .ProcInfo.RequireDamageDealt }}
 	// })
 	{{- else }}
 	// shared.NewProcStatBonusEffectWithVariants(shared.ProcStatBonusEffect{
-	//	Callback: {{ .ProcInfo.Callback | asCoreCallback }},
-	//	ProcMask: {{ .ProcInfo.ProcMask | asCoreProcMask }},
-	//	Outcome:  {{ .ProcInfo.Outcome | asCoreOutcome }},
-	//	Harmful:  {{ .Harmful }},
+	//	Callback:           {{ .ProcInfo.Callback | asCoreCallback }},
+	//	ProcMask:           {{ .ProcInfo.ProcMask | asCoreProcMask }},
+	//	Outcome:            {{ .ProcInfo.Outcome | asCoreOutcome }},
+	//	RequireDamageDealt: {{ .ProcInfo.RequireDamageDealt }},
 	// }, []shared.ItemVariant{
 		{{- range .Variants }}
 	//	{ItemID: {{.ID}}, ItemName: "{{.Name}}"},
@@ -117,24 +117,24 @@ func RegisterAllEnchants() {
 	{{- if .Supported}}
 	shared.NewProcStatBonusEffect(shared.ProcStatBonusEffect{
 		{{with index .Variants 0 -}}
-		Name:      "{{ .Name }}",
-		EnchantID: {{ .ID }},
+		Name:               "{{ .Name }}",
+		EnchantID:          {{ .ID }},
 		{{- end}}
-		Callback:  {{ .ProcInfo.Callback | asCoreCallback }},
-		ProcMask:  {{ .ProcInfo.ProcMask | asCoreProcMask }},
-		Outcome:   {{ .ProcInfo.Outcome | asCoreOutcome }},
-		Harmful:   {{ .Harmful }},
+		Callback:           {{ .ProcInfo.Callback | asCoreCallback }},
+		ProcMask:           {{ .ProcInfo.ProcMask | asCoreProcMask }},
+		Outcome:            {{ .ProcInfo.Outcome | asCoreOutcome }},
+		RequireDamageDealt: {{ .ProcInfo.RequireDamageDealt }},
 	})
 	{{- else}}
 	// shared.NewProcStatBonusEffect(shared.ProcStatBonusEffect{
 	{{- with index .Variants 0 }}
-	//	Name:      "{{ .Name }}",
-	//	EnchantID: {{ .ID }},
+	//	Name:               "{{ .Name }}",
+	//	EnchantID:          {{ .ID }},
 		{{- end}}
-	//	Callback:  {{ .ProcInfo.Callback | asCoreCallback }},
-	//	ProcMask:  {{ .ProcInfo.ProcMask | asCoreProcMask }},
-	//	Outcome:   {{ .ProcInfo.Outcome | asCoreOutcome }},
-	//	Harmful:   {{ .Harmful }},
+	//	Callback:           {{ .ProcInfo.Callback | asCoreCallback }},
+	//	ProcMask:           {{ .ProcInfo.ProcMask | asCoreProcMask }},
+	//	Outcome:            {{ .ProcInfo.Outcome | asCoreOutcome }},
+	//	RequireDamageDealt: {{ .ProcInfo.RequireDamageDealt }},
 	// })
 	{{- end}}
 {{- end }}

@@ -587,9 +587,25 @@ func (character *Character) getCurrentProcMaskForWeaponEffect(itemID int32) Proc
 	})
 }
 
+func (character *Character) GetDynamicProcMaskForTypes(weaponTypes ...proto.WeaponType) *ProcMask {
+	return character.getDynamicProcMaskPointer(func() ProcMask {
+		return character.getCurrentProcMaskFor(func(weapon *Item) bool {
+			return weapon != nil && slices.Contains(weaponTypes, weapon.WeaponType)
+		})
+	})
+}
+
 func (character *Character) GetProcMaskForTypes(weaponTypes ...proto.WeaponType) ProcMask {
 	return character.getCurrentProcMaskFor(func(weapon *Item) bool {
 		return weapon != nil && slices.Contains(weaponTypes, weapon.WeaponType)
+	})
+}
+
+func (character *Character) GetDynamicProcMaskForTypesAndHand(twohand bool, weaponTypes ...proto.WeaponType) *ProcMask {
+	return character.getDynamicProcMaskPointer(func() ProcMask {
+		return character.getCurrentProcMaskFor(func(weapon *Item) bool {
+			return weapon != nil && (weapon.HandType == proto.HandType_HandTypeTwoHand) == twohand && slices.Contains(weaponTypes, weapon.WeaponType)
+		})
 	})
 }
 

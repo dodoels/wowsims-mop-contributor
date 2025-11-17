@@ -1,6 +1,7 @@
 package protection
 
 import (
+	"math"
 	"time"
 
 	"github.com/wowsims/mop/sim/core"
@@ -19,9 +20,10 @@ func (war *ProtectionWarrior) registerShieldBarrier() {
 
 	war.ShieldBarrierAura = war.NewDamageAbsorptionAura(core.AbsorptionAuraConfig{
 		Aura: core.Aura{
-			Label:    "Shield Barrier",
-			ActionID: actionID,
-			Duration: 6 * time.Second,
+			Label:     "Shield Barrier",
+			ActionID:  actionID,
+			Duration:  6 * time.Second,
+			MaxStacks: math.MaxInt32,
 		},
 		ShieldStrengthCalculator: func(_ *core.Unit) float64 {
 			return newAbsorb

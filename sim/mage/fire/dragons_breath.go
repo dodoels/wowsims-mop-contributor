@@ -9,9 +9,9 @@ import (
 
 func (fire *FireMage) registerDragonsBreathSpell() {
 
-	dragonsBreathVariance := 0.15   // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2948 Field: "Variance"
-	dragonsBreathScaling := 1.97    // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2948 Field: "Coefficient"
-	dragonsBreathCoefficient := .22 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2948 Field: "BonusCoefficient"
+	dragonsBreathVariance := 0.15000000596    // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A31661 Field: "Variance"
+	dragonsBreathScaling := 1.96700000763     // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A31661 Field: "Coefficient"
+	dragonsBreathCoefficient := 0.21500000358 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A31661 Field: "BonusCoefficient"
 
 	fire.RegisterSpell(core.SpellConfig{
 		ActionID:       core.ActionID{SpellID: 31661},

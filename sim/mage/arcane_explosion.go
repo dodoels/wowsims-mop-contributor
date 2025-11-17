@@ -6,9 +6,9 @@ import (
 
 func (mage *Mage) registerArcaneExplosionSpell() {
 
-	arcaneExplosionVariance := 0.08
-	arcaneExplosionCoefficient := 0.55
-	arcaneExplosionScaling := 0.483
+	arcaneExplosionVariance := 0.07999999821
+	arcaneExplosionCoefficient := 0.55000001192
+	arcaneExplosionScaling := 0.48300001025
 
 	mage.RegisterSpell(core.SpellConfig{
 		ActionID:       core.ActionID{SpellID: 1449},

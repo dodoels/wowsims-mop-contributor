@@ -18,7 +18,7 @@ func TestArms(t *testing.T) {
 			Class:            proto.Class_ClassWarrior,
 			Race:             proto.Race_RaceOrc,
 			OtherRaces:       []proto.Race{proto.Race_RaceWorgen},
-			StartingDistance: 9,
+			StartingDistance: 25,
 
 			GearSet: core.GetGearSet("../../../ui/warrior/arms/gear_sets", "p1_arms_bis"),
 			OtherGearSets: []core.GearSetCombo{

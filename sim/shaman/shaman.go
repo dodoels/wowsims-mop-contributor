@@ -30,10 +30,12 @@ const (
 func NewShaman(character *core.Character, talents string, selfBuffs SelfBuffs, thunderstormRange bool, feleAutocastOptions *proto.FeleAutocastSettings) *Shaman {
 	if feleAutocastOptions == nil {
 		feleAutocastOptions = &proto.FeleAutocastSettings{
-			AutocastFireblast: true,
-			AutocastFirenova:  true,
-			AutocastImmolate:  true,
-			AutocastEmpower:   false,
+			AutocastFireblast:   true,
+			AutocastFirenova:    true,
+			AutocastImmolate:    true,
+			AutocastEmpower:     false,
+			NoImmolateWfunleash: false,
+			NoImmolateDuration:  0,
 		}
 	}
 	shaman := &Shaman{
@@ -125,14 +127,15 @@ type Shaman struct {
 	LavaBeam          *core.Spell
 	LavaBeamOverloads [2][]*core.Spell
 
-	LavaBurst         *core.Spell
-	LavaBurstOverload [2]*core.Spell
-	FireNova          *core.Spell
-	FireNovas         []*core.Spell
-	LavaLash          *core.Spell
-	Stormstrike       *core.Spell
-	PrimalStrike      *core.Spell
-	Stormblast        *core.Spell
+	LavaBurst             *core.Spell
+	LavaBurstOverload     [2]*core.Spell
+	FireNova              *core.Spell
+	FireNovas             []*core.Spell
+	LavaLash              *core.Spell
+	Stormstrike           *core.Spell
+	PrimalStrike          *core.Spell
+	Stormblast            *core.Spell
+	StormstrikeCastResult *core.SpellResult
 
 	LightningShield       *core.Spell
 	LightningShieldDamage *core.Spell
@@ -167,11 +170,12 @@ type Shaman struct {
 	SearingTotem       *core.Spell
 	TremorTotem        *core.Spell
 
-	UnleashElements *core.Spell
-	UnleashLife     *core.Spell
-	UnleashFlame    *core.Spell
-	UnleashFrost    *core.Spell
-	UnleashWind     *core.Spell
+	UnleashElements     *core.Spell
+	UnleashLife         *core.Spell
+	UnleashFlame        *core.Spell
+	UnleashFrost        *core.Spell
+	UnleashWind         *core.Spell
+	WindfuryUnleashAura *core.Aura
 
 	MaelstromWeaponAura           *core.Aura
 	AncestralSwiftnessInstantAura *core.Aura
@@ -236,6 +240,7 @@ func (shaman *Shaman) Initialize() {
 	shaman.registerShocks()
 	shaman.registerUnleashElements()
 	shaman.registerAscendanceSpell()
+	shaman.registerShamanisticRageSpell()
 
 	shaman.registerBloodlustCD()
 	shaman.registerStormlashCD()
@@ -338,6 +343,7 @@ const (
 	SpellMaskFeralSpirit
 	SpellMaskElementalMastery
 	SpellMaskAscendance
+	SpellMaskWindLash
 	SpellMaskSpiritwalkersGrace
 	SpellMaskShamanisticRage
 	SpellMaskElementalBlast

@@ -13,7 +13,7 @@ Persists for 30 sec.
 */
 func (uhdk *UnholyDeathKnight) registerSummonGargoyle() {
 	actionID := core.ActionID{SpellID: 49206}
-	spell := uhdk.RegisterSpell(core.SpellConfig{
+	uhdk.SummonGargoyleSpell = uhdk.RegisterSpell(core.SpellConfig{
 		ActionID:       actionID,
 		Flags:          core.SpellFlagAPL | core.SpellFlagReadinessTrinket,
 		ClassSpellMask: death_knight.DeathKnightSpellSummonGargoyle,
@@ -45,7 +45,9 @@ func (uhdk *UnholyDeathKnight) registerSummonGargoyle() {
 	})
 
 	uhdk.AddMajorCooldown(core.MajorCooldown{
-		Spell: spell,
+		Spell: uhdk.SummonGargoyleSpell,
 		Type:  core.CooldownTypeDPS,
+
+		AllowSpellQueueing: true,
 	})
 }

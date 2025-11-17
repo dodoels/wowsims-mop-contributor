@@ -2,1866 +2,1866 @@
 	"death_knight": {
 		"major": {
 			"glyph_of_anti_magic_shell": {
-				"name": "Anti-Magic Shell",
-				"description": "Causes your Anti-Magic Shell to absorb all incoming magical damage, up to the absorption limit."
+				"name": "Carapace anti-magie",
+				"description": "Votre Carapace anti-magie absorbe tous les dégâts magiques que vous subissez, jusqu’à la capacité limite d’absorption."
 			},
 			"glyph_of_unholy_frenzy": {
-				"name": "Unholy Frenzy",
-				"description": "Causes your Unholy Frenzy to no longer deal damage to the affected target."
+				"name": "Frénésie impie",
+				"description": "Votre Frénésie impie n’inflige plus de dégâts à la cible affectée."
 			},
 			"glyph_of_icebound_fortitude": {
-				"name": "Icebound Fortitude",
-				"description": "Reduces the cooldown of your Icebound Fortitude by 50%, but also reduces its duration by 75%."
+				"name": "Robustesse glaciale",
+				"description": "Réduit le temps de recharge de votre technique Robustesse glaciale de 50%, mais réduit également sa durée de 75%."
 			},
 			"glyph_of_chains_of_ice": {
-				"name": "Chains of Ice",
-				"description": "Your Chains of Ice also causes 143 Frost damage, with additional damage depending on your attack power."
+				"name": "Chaînes de glace",
+				"description": "Vos Chaînes de glace infligent également 144 à 156 points de dégâts de Givre plus des dégâts supplémentaires en fonction de votre puissance d'attaque."
 			},
 			"glyph_of_death_grip": {
-				"name": "Death Grip",
-				"description": "Increases the range of your Death Grip ability by 5 yards."
+				"name": "Poigne de la mort",
+				"description": "Augmente la portée de votre technique Poigne de la mort de 5 mètres."
 			},
 			"glyph_of_death_and_decay": {
-				"name": "Death and Decay",
-				"description": "Your Death and Decay also reduces the movement speed of enemies within its radius by 50%."
+				"name": "Mort et décomposition",
+				"description": "Votre sort Mort et décomposition réduit aussi la vitesse de déplacement des ennemis situés dans sa zone d’effet de 50%."
 			},
 			"glyph_of_shifting_presences": {
-				"name": "Shifting Presences",
-				"description": "You retain 70% of your Runic Power when switching Presences."
+				"name": "Présences changeantes",
+				"description": "Vous conservez 70% de votre puissance runique quand vous changez de Présence."
 			},
 			"glyph_of_icy_touch": {
-				"name": "Icy Touch",
-				"description": "Your Icy Touch dispels one helpful Magic effect from the target."
+				"name": "Toucher de glace",
+				"description": "Votre Toucher de glace dissipe un effet magique bénéfique sur la cible."
 			},
 			"glyph_of_enduring_infection": {
-				"name": "Enduring Infection",
-				"description": "Your diseases are undispellable, but their damage dealt is reduced by 15%."
+				"name": "Infection durable",
+				"description": "Vos maladies ne peuvent pas être dissipées, mais les dégâts qu’elles infligent sont réduits de 15%."
 			},
 			"glyph_of_pestilence": {
 				"name": "Pestilence",
-				"description": "Increases the radius of your Pestilence effect by 5 yards."
+				"description": "Augmente le rayon de votre effet Pestilence de 5 mètres."
 			},
 			"glyph_of_mind_freeze": {
-				"name": "Mind Freeze",
-				"description": "Reduces the cooldown of your Mind Freeze ability by 1 sec, but also raises its cost by 10 Runic Power."
+				"name": "Gel de l’esprit",
+				"description": "Réduit le temps de recharge de votre technique Gel de l’esprit de 1 s, mais augmente aussi son coût de 10 points de puissance runique."
 			},
 			"glyph_of_strangulate": {
-				"name": "Strangulate",
-				"description": "Increases the Silence duration of your Strangulate ability by 2 sec when used on a target who is casting a spell."
+				"name": "Strangulation",
+				"description": "Augmente la durée de l'effet de silence de votre technique Strangulation de 2 s lorsqu'elle est utilisée sur une cible en train d'incanter un sort."
 			},
 			"glyph_of_pillar_of_frost": {
-				"name": "Pillar of Frost",
-				"description": "Empowers your Pillar of Frost, making you immune to all effects that cause loss of control of your character, but also reduces your movement speed by 70% while the ability is active."
+				"name": "Pilier de givre",
+				"description": "Renforce votre Pilier de givre et vous immunise contre les effets qui entraînent une perte de contrôle de votre personnage, mais réduit également votre vitesse de déplacement de 70% tant que la technique est active."
 			},
 			"glyph_of_vampiric_blood": {
-				"name": "Vampiric Blood",
-				"description": "Increases the bonus healing received while your Vampiric Blood is active by an additional 15%, but your Vampiric Blood no longer grants you health."
+				"name": "Sang vampirique",
+				"description": "Augmente le bonus aux soins reçus quand votre Sang vampirique est actif de 15%, mais Sang vampirique ne vous confère plus de points de vie."
 			},
 			"glyph_of_unholy_command": {
-				"name": "Unholy Command",
-				"description": "Immediately finishes the cooldown of your Death Grip upon dealing a killing blow to a target that grants experience or honor."
+				"name": "Autorité impie",
+				"description": "Met immédiatement fin au temps de recharge de votre Poigne de la mort lorsque vous infligez un coup fatal à une cible qui rapporte de l’expérience ou de l’honneur."
 			},
 			"glyph_of_outbreak": {
-				"name": "Outbreak",
-				"description": "Your Outbreak spell no longer has a cooldown, but now costs 30 Runic Power."
+				"name": "Poussée de fièvre",
+				"description": "Votre sort Poussée de fièvre n’a plus de temps de recharge, mais il coûte désormais 30 points de puissance runique."
 			},
 			"glyph_of_dancing_rune_weapon": {
-				"name": "Dancing Rune Weapon",
-				"description": "Increases your threat generation by 100% while your Dancing Rune Weapon is active, but reduces its damage dealt by 25%."
+				"name": "Arme runique dansante",
+				"description": "Augmente votre génération de menace de 100% quand Arme runique dansante est active, mais réduit les dégâts qu’elle inflige de 25%."
 			},
 			"glyph_of_dark_simulacrum": {
-				"name": "Dark Simulacrum",
-				"description": "Reduces the cooldown of Dark Simulacrum by 30 sec and increases its duration by 4 sec."
+				"name": "Sombre simulacre",
+				"description": "Réduit le temps de recharge de Sombre simulacre de 30 s et augmente sa durée de 4 s."
 			},
 			"glyph_of_death_coil": {
-				"name": "Death Coil",
-				"description": "Your Death Coil spell is now usable on all allies. When cast on a non-undead ally, Death Coil shrouds them with a protective barrier that absorbs up to 168 damage."
+				"name": "Voile mortel",
+				"description": "Désormais, votre sort Voile mortel est aussi utilisable sur tous les alliés. Lorsqu’il est lancé sur un allié qui n’est pas un mort-vivant, Voile mortel l’enveloppe d’une barrière protectrice qui absorbe jusqu’à 168 points de dégâts."
 			},
 			"glyph_of_dark_succor": {
-				"name": "Dark Succor",
-				"description": "When you kill an enemy that yields experience or honor, while in Frost or Unholy Presence, your next Death Strike within 15s is free and will restore at least 20% of your maximum health."
+				"name": "Sombre secours",
+				"description": "Permet à votre prochaine Frappe de mort exécutée en Présence de givre ou impie dans les 15 s après avoir tué un ennemi qui rapporte de l’expérience ou de l’honneur de ne rien coûter et de rendre au moins 20% de votre maximum de points de vie."
 			},
 			"glyph_of_swift_death": {
-				"name": "Swift Death",
-				"description": "The haste effect granted by Soul Reaper now also increases your movement speed by 30% for the duration."
+				"name": "Mort expéditive",
+				"description": "L’effet de hâte conféré par Faucheur d’âme augmente maintenant aussi votre vitesse de déplacement de 30% pendant sa durée."
 			},
 			"glyph_of_loud_horn": {
-				"name": "Loud Horn",
-				"description": "Your Horn of Winter now generates an additional 10 Runic Power, but the cooldown is increased by 100%."
+				"name": "Cor retentissant",
+				"description": "Votre Cor de l’hiver génère à présent 10 points de puissance runique supplémentaire, mais son temps de recharge est augmenté de 100%."
 			},
 			"glyph_of_regenerative_magic": {
-				"name": "Regenerative Magic",
-				"description": "If Anti-Magic Shell expires after its full duration, the cooldown is reduced by up to 50%, based on the amount of damage absorbtion remaining."
+				"name": "Magie régénératrice",
+				"description": "Si Bouclier anti-magie prend fin au terme de sa durée normale, son temps de recharge est réduit de 50% au maximum, proportionnellement au montant de dégâts absorbés."
 			},
 			"glyph_of_festering_blood": {
-				"name": "Festering Blood",
-				"description": "Blood Boil will now treat all targets as though they have Blood Plague or Frost Fever applied."
+				"name": "Sang suppurant",
+				"description": "Furoncle sanglant considère désormais que toutes les cibles sont affectées par Peste de sang ou Fièvre de givre."
 			}
 		},
 		"minor": {
 			"glyph_of_the_geist": {
-				"name": "the Geist",
-				"description": "Your Raise Dead spell summons a geist instead of a ghoul."
+				"name": "Geist",
+				"description": "Votre Réanimation morbide invoque un geist au lieu d’une goule."
 			},
 			"glyph_of_deaths_embrace": {
-				"name": "Death's Embrace",
-				"description": "Your Death Coil refunds 20 Runic Power when used to heal an allied minion, but will no longer trigger Blood Tap when used this way."
+				"name": "Caresse de la mort",
+				"description": "Votre Voile mortel vous rend 20 points de puissance runique quand il est utilisé pour soigner un serviteur allié, mais il ne déclenchera plus Drain sanglant s’il est utilisé de cette façon."
 			},
 			"glyph_of_horn_of_winter": {
-				"name": "Horn of Winter",
-				"description": "When used outside of combat, your Horn of Winter ability causes a brief, localized snow flurry."
+				"name": "Cor de l’hiver",
+				"description": "Lorsqu’il est utilisé hors combat, votre Cor de l’hiver déclenche une courte rafale de neige localisée."
 			},
 			"glyph_of_army_of_the_dead": {
-				"name": "Army of the Dead",
-				"description": "The ghouls summoned by your Army of the Dead no longer taunt their target."
+				"name": "Armée des morts",
+				"description": "Les goules invoquées par votre Armée des morts ne provoquent plus leur cible."
 			},
 			"glyph_of_foul_menagerie": {
-				"name": "Foul Menagerie",
-				"description": "Causes your Army of the Dead spell to summon an assortment of undead minions."
+				"name": "Immonde ménagerie",
+				"description": "Votre Armée des morts invoque différents serviteurs morts-vivants."
 			},
 			"glyph_of_path_of_frost": {
-				"name": "Path of Frost",
-				"description": "Your Path of Frost ability allows you to fall from a greater distance without suffering damage."
+				"name": "Passage de givre",
+				"description": "Votre technique Passage de givre vous permet de tomber de plus haut sans subir de dégâts."
 			},
 			"glyph_of_resilient_grip": {
-				"name": "Resilient Grip",
-				"description": "When your Death Grip ability fails because its target is immune, its cooldown is reset."
+				"name": "Poigne résistante",
+				"description": "Quand votre technique Poigne de la mort échoue parce que la cible y est insensible, son temps de recharge prend fin."
 			},
 			"glyph_of_death_gate": {
-				"name": "Death Gate",
-				"description": "Reduces the cast time of your Death Gate spell by 60%."
+				"name": "Porte de la mort",
+				"description": "Réduit le temps d'incantation de votre sort Porte de la mort de 60%."
 			},
 			"glyph_of_corpse_explosion": {
-				"name": "Corpse Explosion",
-				"description": "Teaches you the ability Corpse Explosion."
+				"name": "Explosion morbide",
+				"description": "Vous apprend la technique Explosion morbide."
 			},
 			"glyph_of_tranquil_grip": {
-				"name": "Tranquil Grip",
-				"description": "Your Death Grip spell no longer taunts the target."
+				"name": "Poigne tranquille",
+				"description": "Votre sort Poigne de la mort ne provoque plus la cible."
 			},
 			"glyph_of_the_skeleton": {
-				"name": "the Skeleton",
-				"description": "Your Raise Dead spell summons a skeleton instead of a ghoul."
+				"name": "Squelette",
+				"description": "Votre sort Réanimation morbide invoque un squelette au lieu d’une goule."
 			},
 			"glyph_of_the_long_winter": {
-				"name": "the Long Winter",
-				"description": "The effect of your Horn of Winter now lasts for 1 hour."
+				"name": "Long hiver",
+				"description": "L’effet de votre Cor de l’hiver dure désormais 1 heure."
 			}
 		}
 	},
 	"druid": {
 		"major": {
 			"glyph_of_frenzied_regeneration": {
-				"name": "Frenzied Regeneration",
-				"description": "For 6s after activating Frenzied Regeneration, healing effects on you are 40% more powerful. However, your Frenzied Regeneration now always costs 50 Rage and no longer converts Rage into health."
+				"name": "Régénération frénétique",
+				"description": "Pendant 6 s suivant l’activation de Régénération frénétique, la puissance des effets de soins qui vous affectent est augmentée de 40 %. En revanche, votre Régénération frénétique coûte désormais toujours 50 points de rage et ne convertit plus les points de rage en points de vie."
 			},
 			"glyph_of_maul": {
-				"name": "Maul",
-				"description": "Your Maul ability now hits 1 additional target for 50% damage."
+				"name": "Mutiler",
+				"description": "Votre technique Mutiler frappe maintenant 1 cible supplémentaire en infligeant 50% des dégâts."
 			},
 			"glyph_of_omens": {
-				"name": "Omens",
-				"description": "While you are not in an Eclipse, the following abilities now grant 10 Solar or Lunar Energy: Entangling Roots, Cyclone, Faerie Fire, Faerie Swarm, Mass Entanglement, Typhoon, Disorienting Roar, Ursol's Vortex, and Mighty Bash."
+				"name": "Augures",
+				"description": "Quand vous n’êtes pas dans une Eclipse, les techniques suivantes vous confèrent 10 points d’énergie solaire ou lunaire : Sarments, Cyclone, Lucioles, Essaim de lucioles, Enchevêtrement de masse, Typhon, Rugissement désorientant, Vortex d’Ursol et Rossée puissante."
 			},
 			"glyph_of_shred": {
-				"name": "Shred",
-				"description": "While Berserk or Tiger's Fury is active, Shred has no positional requirement."
+				"name": "Lambeau",
+				"description": "Quand Berserk ou Fureur du tigre est actif, Lambeau ne nécessite pas de positionnement particulier."
 			},
 			"glyph_of_prowl": {
-				"name": "Prowl",
-				"description": "Reduces the movement penalty of Prowl by 100%."
+				"name": "Rôder",
+				"description": "Réduit la pénalité affectant la vitesse de déplacement lorsque vous rôdez de 100%."
 			},
 			"glyph_of_pounce": {
-				"name": "Pounce",
-				"description": "Increases the range of your Pounce by 8 yards."
+				"name": "Traquenard",
+				"description": "Augmente la portée de votre technique Traquenard de 8 mètres."
 			},
 			"glyph_of_stampede": {
-				"name": "Stampede",
-				"description": "You can now cast Stampeding Roar without being in Bear Form or Cat Form."
+				"name": "Ruée",
+				"description": "Vous pouvez maintenant lancer Ruée rugissante sans être en forme d’ours ou de félin."
 			},
 			"glyph_of_innervate": {
-				"name": "Innervate",
-				"description": "When Innervate is cast on a target other than the caster, both the caster and target will benefit, but at 40% reduced effect."
+				"name": "Innervation",
+				"description": "Quand Innervation est lancée sur une cible autre que le lanceur, ce dernier et sa cible en bénéficient tous deux, mais avec un effet réduit de 40%."
 			},
 			"glyph_of_rebirth": {
-				"name": "Rebirth",
-				"description": "Players resurrected by Rebirth are returned to life with 100% health."
+				"name": "Renaissance",
+				"description": "Les personnages ressuscités avec Renaissance reviennent à la vie avec 100% de leurs points de vie."
 			},
 			"glyph_of_regrowth": {
-				"name": "Regrowth",
-				"description": "Increases the critical strike chance of your Regrowth by 40%, but removes the periodic component of the spell."
+				"name": "Rétablissement",
+				"description": "Augmente les chances de coup critique de votre Rétablissement de 40% mais supprime l’effet périodique de ce sort."
 			},
 			"glyph_of_rejuvenation": {
-				"name": "Rejuvenation",
-				"description": "When you have Rejuvenation active on three or more targets, the cast time of your Nourish spell is reduced by 30%."
+				"name": "Récupération",
+				"description": "Quand votre Récupération est active sur trois cibles ou plus, le temps d'incantation de votre sort Nourrir est réduit de 30%."
 			},
 			"glyph_of_healing_touch": {
-				"name": "Healing Touch",
-				"description": "When you cast Healing Touch, the cooldown on your Nature's Swiftness is reduced by 3 sec."
+				"name": "Toucher guérisseur",
+				"description": "Quand vous utilisez Toucher guérisseur, le temps de recharge de votre Rapidité de la nature est réduit de 3 s."
 			},
 			"glyph_of_efflorescence": {
 				"name": "Efflorescence",
-				"description": "The Efflorescence effect is now caused by your Wild Mushroom instead of by Swiftmend, and lasts as long as the Wild Mushroom is active. Additionally, increases the healing done by Swiftmend by 20%."
+				"description": "L’effet d’Efflorescence est maintenant causé par votre champignon sauvage plutôt que par Prompte guérison et dure tant que le champignon sauvage est actif. En outre, Efflorescence augmente les soins prodigués par Prompte guérison de 20%."
 			},
 			"glyph_of_guided_stars": {
-				"name": "Guided Stars",
-				"description": "Your Starfall only hits targets affected by your Moonfire or Sunfire."
+				"name": "Etoiles guidées",
+				"description": "Vos Météores ne touchent que les cibles affectées par votre Eclat lunaire ou Eclat solaire."
 			},
 			"glyph_of_hurricane": {
-				"name": "Hurricane",
-				"description": "Your Hurricane and Astral Storm abilities now also slow the movement speed of their victims by 50%."
+				"name": "Ouragan",
+				"description": "Maintenant, vos techniques Ouragan et Tempête astrale réduisent aussi la vitesse de déplacement de leurs victimes de 50%."
 			},
 			"glyph_of_skull_bash": {
-				"name": "Skull Bash",
-				"description": "Increases the duration of your Skull Bash interrupt by 2 sec, but increases the cooldown by 5 sec."
+				"name": "Coup de crâne",
+				"description": "Augmente la durée de l’interruption de votre Coup de crâne de 2 s, mais augmente son temps de recharge de 5 s."
 			},
 			"glyph_of_natures_grasp": {
-				"name": "Nature's Grasp",
-				"description": "Reduces the cooldown of Nature's Grasp by 45 sec."
+				"name": "Emprise de la nature",
+				"description": "Réduit le temps de recharge d’Emprise de la nature de 45 s."
 			},
 			"glyph_of_savagery": {
-				"name": "Savagery",
-				"description": "Savage Roar can now be used with 0 combo points, resulting in a 12s duration."
+				"name": "Sauvagerie",
+				"description": "Rugissement sauvage peut désormais être utilisé avec 0 points de combo, portant sa durée à 12 s."
 			},
 			"glyph_of_entangling_roots": {
-				"name": "Entangling Roots",
-				"description": "Reduces the cast time of your Entangling Roots by 0.2 sec."
+				"name": "Sarments",
+				"description": "Réduit le temps d'incantation de vos Sarments de 0,2 s."
 			},
 			"glyph_of_blooming": {
-				"name": "Blooming",
-				"description": "Increases the bloom heal of your Lifebloom when it expires by 50%, but its duration is reduced by 5 sec and your Healing Touch, Nourish, and Regrowth abilities no longer refresh the duration."
+				"name": "Fleuraison",
+				"description": "Augmente les soins de votre Fleur de vie à la fin de son effet de 50%, mais sa durée est réduite de 5 s et vos techniques Toucher guérisseur, Nourrir et Rétablissement ne la réinitialisent plus."
 			},
 			"glyph_of_dash": {
-				"name": "Dash",
-				"description": "Reduces the cooldown of your Dash ability by 60 sec."
+				"name": "Célérité",
+				"description": "Réduit le temps de recharge de votre technique Célérité de 60 s."
 			},
 			"glyph_of_master_shapeshifter": {
-				"name": "Master Shapeshifter",
-				"description": "Reduces the mana cost of all shapeshifts by 100%."
+				"name": "Maître changeforme",
+				"description": "Réduit le coût en mana de tous les changements de forme de 100%."
 			},
 			"glyph_of_survival_instincts": {
-				"name": "Survival Instincts",
-				"description": "Reduces the cooldown of Survival Instincts by 60 sec, but reduces its duration by 50%."
+				"name": "Instincts de survie",
+				"description": "Réduit le temps de recharge d'Instincts de survie de 60 s, mais réduit sa durée de 50%."
 			},
 			"glyph_of_wild_growth": {
-				"name": "Wild Growth",
-				"description": "Wild Growth can affect 1 additional target, but its cooldown is increased by 2 sec."
+				"name": "Croissance sauvage",
+				"description": "Croissance sauvage peut affecter 1 cible supplémentaire, mais son temps de recharge est augmenté de 2 s."
 			},
 			"glyph_of_might_of_ursoc": {
-				"name": "Might of Ursoc",
-				"description": "Increases the health gain from Might of Ursoc by 20%, but increases the cooldown by 2 min."
+				"name": "Puissance d’Ursoc",
+				"description": "Augmente le gain de points de vie octroyé par Puissance d'Ursoc de 20%, mais augmente le temps de recharge de 2 min."
 			},
 			"glyph_of_stampeding_roar": {
-				"name": "Stampeding Roar",
-				"description": "Increases the radius of Stampeding Roar by 30 yards."
+				"name": "Ruée rugissante",
+				"description": "Augmente le rayon de Ruée rugissante de 30 mètres."
 			},
 			"glyph_of_cyclone": {
 				"name": "Cyclone",
-				"description": "Increases the range of your Cyclone spell by 5 yards."
+				"description": "Augmente la portée de votre sort Cyclone de 5 mètres."
 			},
 			"glyph_of_barkskin": {
-				"name": "Barkskin",
-				"description": "Reduces the chance you'll be critically hit by 25% while Barkskin is active."
+				"name": "Ecorce",
+				"description": "Réduit la probabilité de subir des coups critiques de 25% quand Ecorce est active."
 			},
 			"glyph_of_ferocious_bite": {
-				"name": "Ferocious Bite",
-				"description": "Your Ferocious Bite ability heals you for 2% of your maximum health for each 10 Energy used."
+				"name": "Morsure féroce",
+				"description": "Votre technique Morsure féroce vous rend 2% de votre maximum de points de vie par tranche de 10 points d’énergie utilisée."
 			},
 			"glyph_of_fae_silence": {
-				"name": "Fae Silence",
-				"description": "Faerie Fire used in Bear Form also silences the target for 3s, but triggers a 15 sec cooldown."
+				"name": "Silence des lucioles",
+				"description": "La technique Lucioles en forme d’ours réduit également la cible au silence pendant 3 s, mais déclenche un temps de recharge de 15 s."
 			},
 			"glyph_of_faerie_fire": {
-				"name": "Faerie Fire",
-				"description": "Increases the range of your Faerie Fire by 10 yds."
+				"name": "Lucioles",
+				"description": "Augmente la portée de vos Lucioles de 10 mètres."
 			},
 			"glyph_of_cat_form": {
-				"name": "Cat Form",
-				"description": "Increases healing done to you by 20% while in Cat Form."
+				"name": "Forme de félin",
+				"description": "Augmente les soins qui vous sont prodigués de 20% quand vous êtes en forme de félin."
 			}
 		},
 		"minor": {
 			"glyph_of_the_stag": {
-				"name": "the Stag",
-				"description": "Your Travel Form can now be used as a mount by party members. This glyph is disabled while Glyph of the Cheetah is active."
+				"name": "Cerf",
+				"description": "Votre forme de voyage peut désormais servir de monture pour les membres du groupe. Ce glyphe est désactivé tant que le glyphe du guépard est actif."
 			},
 			"glyph_of_the_orca": {
-				"name": "the Orca",
-				"description": "Your Aquatic Form now appears as an Orca."
+				"name": "Epaulard",
+				"description": "Votre forme aquatique a maintenant l’apparence d’un épaulard."
 			},
 			"glyph_of_aquatic_form": {
-				"name": "Aquatic Form",
-				"description": "Increases your swim speed by 50% while in Aquatic Form."
+				"name": "Forme aquatique",
+				"description": "Augmente votre vitesse de nage de 50% lorsque vous êtes en forme aquatique."
 			},
 			"glyph_of_grace": {
-				"name": "Grace",
-				"description": "Feline Grace reduces falling damage even while not in Cat Form."
+				"name": "Grâce",
+				"description": "Grâce féline réduit les dégâts en cas de chute même quand vous n’êtes pas en forme de félin."
 			},
 			"glyph_of_the_chameleon": {
-				"name": "the Chameleon",
-				"description": "Each time you shapeshift into Cat Form or Bear Form, your shapeshifted form will have a random hair color."
+				"name": "Caméléon",
+				"description": "Quand vous adoptez votre forme de félin ou votre forme d’ours, votre pelage est d’une couleur choisie au hasard."
 			},
 			"glyph_of_charm_woodland_creature": {
-				"name": "Charm Woodland Creature",
-				"description": "Teaches you the ability Charm Woodland Creature. Allows the Druid to befriend an ambient creature, which will follow the Druid for 1hr."
+				"name": "Charmer une créature des forêts",
+				"description": "Vous apprend la technique Charmer une créature des forêts. Permet au druide de gagner la confiance d’une créature d’ambiance, qui le suit pendant 1 heure."
 			},
 			"glyph_of_stars": {
-				"name": "Stars",
-				"description": "Your Moonkin Form now appears as Astral Form, conferring all the same benefits, but appearing as an astrally enhanced version of your normal humanoid form."
+				"name": "Astres",
+				"description": "Votre Forme de sélénien est désormais remplacée par Forme astrale, qui procure les même avantages mais vous donne une apparence cosmique dérivée de votre forme humanoïde normale."
 			},
 			"glyph_of_the_predator": {
-				"name": "the Predator",
-				"description": "Your Track Humanoids ability now also tracks beasts."
+				"name": "Prédateur",
+				"description": "Votre technique Pistage des humanoïdes vous permet aussi de pister les bêtes."
 			},
 			"glyph_of_the_treant": {
-				"name": "the Treant",
-				"description": "Teaches you the ability Treant Form. Shapeshift into Treant Form."
+				"name": "Tréant",
+				"description": "Vous permet d’adopter la forme de tréant. Transformation en tréant."
 			},
 			"glyph_of_the_cheetah": {
-				"name": "the Cheetah",
-				"description": "Your Travel Form appears as a Cheetah. This glyph will prevent Glyph of the Stag from functioning."
+				"name": "Guépard",
+				"description": "Votre forme de voyage vous fait prendre l’apparence d’un guépard. Ce glyphe empêchera le glyphe du cerf de fonctionner."
 			},
 			"glyph_of_focus": {
-				"name": "Focus",
-				"description": "Reduces Starfall's radius by 50%."
+				"name": "Focalisation",
+				"description": "Réduit le rayon de Météores de 50%."
 			},
 			"glyph_of_the_sprouting_mushroom": {
-				"name": "the Sprouting Mushroom",
-				"description": "Your Wild Mushroom spell can now be placed on the ground instead of underneath a target."
+				"name": "Champignon naissant",
+				"description": "Votre sort Champignon sauvage peut à présent être placé sur le sol au lieu de sous une cible."
 			},
 			"glyph_of_one_with_nature": {
-				"name": "One with Nature",
-				"description": "Grants you the ability to teleport to a random natural location."
+				"name": "Union avec la Nature",
+				"description": "Vous donne la possibilité de vous téléporter dans un lieu sauvage aléatoire."
 			}
 		}
 	},
 	"hunter": {
 		"major": {
 			"glyph_of_camouflage": {
-				"name": "Camouflage",
-				"description": "Your Camouflage ability now provides stealth even while moving, but your movement speed while Camouflage is active is reduced by 50%."
+				"name": "Dissimulation",
+				"description": "Votre technique Dissimulation vous permet de vous déplacer tout en restant camouflé, mais à une vitesse réduite de 50%, tant que la technique est active."
 			},
 			"glyph_of_liberation": {
-				"name": "Liberation",
-				"description": "When you Disengage, you are healed for 5% of your total health."
+				"name": "Libération",
+				"description": "Quand vous utilisez Désengagement, vous recevez 5% de votre total de points de vie."
 			},
 			"glyph_of_mending": {
-				"name": "Mending",
-				"description": "Your Mend Pet now heals every 1 sec, and heals for an additional 25% of your pet's health over its duration."
+				"name": "Guérison",
+				"description": "Votre Guérison du familier soigne à présent toutes les 1 s et rend 25% des points de vie de votre familier en plus pendant sa durée."
 			},
 			"glyph_of_distracting_shot": {
-				"name": "Distracting Shot",
-				"description": "Your Distracting Shot now distracts the target to attack your pet instead of you."
+				"name": "Trait provocateur",
+				"description": "Votre Trait provocateur distrait maintenant la cible pour qu’elle attaque votre familier plutôt que vous-même."
 			},
 			"glyph_of_endless_wrath": {
-				"name": "Endless Wrath",
-				"description": "While Bestial Wrath is active, your pet cannot be killed, but can still be damaged."
+				"name": "Courroux infini",
+				"description": "Tant que Courroux bestial est actif, votre familier ne peut être tué, mais il peut toujours être blessé."
 			},
 			"glyph_of_deterrence": {
-				"name": "Deterrence",
-				"description": "Increases the damage reduction granted by Deterrence by 20%."
+				"name": "Dissuasion",
+				"description": "Augmente la réduction de dégâts conférée par Dissuasion de 20%."
 			},
 			"glyph_of_disengage": {
-				"name": "Disengage",
-				"description": "Increases the distance you travel when you Disengage."
+				"name": "Désengagement",
+				"description": "Augmente la distance que vous parcourez quand vous utilisez Désengagement."
 			},
 			"glyph_of_freezing_trap": {
-				"name": "Freezing Trap",
-				"description": "When your Freezing Trap breaks, the victim's movement speed is reduced by 70% for 4s."
+				"name": "Piège givrant",
+				"description": "Quand votre Piège givrant est rompu, la vitesse de déplacement de la victime est réduite de 70% pendant 4 s."
 			},
 			"glyph_of_ice_trap": {
-				"name": "Ice Trap",
-				"description": "Increases the radius of the effect from your Ice Trap by 2 yards."
+				"name": "Piège de glace",
+				"description": "Augmente le rayon d’effet de votre Piège de glace de 2 mètres."
 			},
 			"glyph_of_misdirection": {
-				"name": "Misdirection",
-				"description": "When you use Misdirection on your pet, the cooldown on your Misdirection is reset."
+				"name": "Détournement",
+				"description": "Quand vous utilisez Détournement sur votre familier, son temps de recharge est mis à zéro."
 			},
 			"glyph_of_explosive_trap": {
-				"name": "Explosive Trap",
-				"description": "Your Explosive Trap no longer deals damage, instead knocking enemies back from the trap when it explodes."
+				"name": "Piège explosif",
+				"description": "Votre Piège explosif n’inflige plus de dégâts mais repousse les ennemis au loin quand il explose."
 			},
 			"glyph_of_animal_bond": {
-				"name": "Animal Bond",
-				"description": "While your pet is active, all healing done to you and your pet is increased by 10%."
+				"name": "Lien animal",
+				"description": "Tant que votre familier est actif, tous les soins prodigués à vous-même et à votre familier sont augmentés de 10%."
 			},
 			"glyph_of_no_escape": {
-				"name": "No Escape",
-				"description": "Increases the ranged critical strike chance of all of your attacks on targets affected by your Freezing Trap by 100%."
+				"name": "Plus d’échappatoire",
+				"description": "Augmente de 100% les chances de réussir un coup critique à distance avec toutes vos attaques sur les cibles affectées par votre Piège givrant."
 			},
 			"glyph_of_pathfinding": {
-				"name": "Pathfinding",
-				"description": "Increases the speed bonus of your Aspect of the Cheetah and Aspect of the Pack by 8%, and increases your speed while mounted by 10%. The mounted movement speed increase does not stack with other effects."
+				"name": "Science des chemins",	
+				"description": "Augmente le bonus de vitesse de vos Aspects de la meute et du guépard de 8% et augmente la vitesse de votre monture de 10%. Ne se cumule pas avec les autres effets d'augmentation de vitesse de la monture."
 			},
 			"glyph_of_snake_trap": {
-				"name": "Snake Trap",
-				"description": "Snakes from your Snake Trap take 90% reduced damage from area of effect attacks."
+				"name": "Piège à serpents",
+				"description": "Les serpents de votre piège subissent 90% de dégâts de moins des attaques à effet de zone."
 			},
 			"glyph_of_aimed_shot": {
-				"name": "Aimed Shot",
-				"description": "Your Aimed Shot can now be used while moving."
+				"name": "Visée",
+				"description": "Votre Visée peut maintenant être utilisée en cours de déplacement."
 			},
 			"glyph_of_mend_pet": {
-				"name": "Mend Pet",
-				"description": "Gives your Mend Pet ability a 100% chance of cleansing 1 Curse, Disease, Magic or Poison effect from your pet each tick."
+				"name": "Guérison du familier",
+				"description": "Donne à la technique Guérison du familier 100% de chances de faire disparaître 1 effet de malédiction, maladie, magie ou poison du familier à chaque itération."
 			},
 			"glyph_of_solace": {
-				"name": "Solace",
-				"description": "Your Freezing Trap and Scatter Shot also remove all damage over time effects from their targets."
+				"name": "Réconfort",
+				"description": "Votre Piège givrant et votre Flèche de dispersion annulent aussi tous les effets de dégâts sur la durée qui affectent leurs cibles."
 			},
 			"glyph_of_chimera_shot": {
-				"name": "Chimera Shot",
-				"description": "Increases the healing you receive from Chimera Shot by an additional 2% of your maximum health."
+				"name": "Tir de la chimère",
+				"description": "Augmente les soins que vous prodigue Tir de la chimère d'un montant égal à 2% de votre maximum de points de vie."
 			},
 			"glyph_of_tranquilizing_shot": {
-				"name": "Tranquilizing Shot",
-				"description": "Your Tranquilizing Shot no longer costs Focus, but has a 10 sec cooldown."
+				"name": "Tir tranquillisant",
+				"description": "Le coût en focalisation de Tir tranquillisant est annulé, mais cette technique obtient un temps de recharge de 10 s."
 			},
 			"glyph_of_masters_call": {
-				"name": "Master's Call",
-				"description": "Increases the duration of your Master's Call by 4.0 sec."
+				"name": "Appel du maître",
+				"description": "Augmente la durée de votre Appel du maître de 4 s."
 			},
 			"glyph_of_scatter_shot": {
-				"name": "Scatter Shot",
-				"description": "Increases the range of Scatter Shot by 3 yards."
+				"name": "Flèche de dispersion",
+				"description": "Augmente la portée de Flèche de dispersion de 3 mètres."
 			},
 			"glyph_of_mirrored_blades": {
-				"name": "Mirrored Blades",
-				"description": "When attacked by a spell while in Deterrence, you have a 100% chance to reflect it back at the attacker."
+				"name": "Lames réfléchies",
+				"description": "Lorsque vous êtes attaqué avec un sort alors que Dissuasion est activée, vous avez 100% de chances de le renvoyer à l'attaquant."
 			},
 			"glyph_of_black_ice": {
-				"name": "Black Ice",
-				"description": "While you move through the area affected by your Ice Trap you gain 50% movement speed."
+				"name": "Glace noire",
+				"description": "Quand vous vous déplacez sur la zone d’effet de votre Piège de glace, votre vitesse de déplacement est augmentée de 50%."
 			},
 			"glyph_of_the_lean_pack": {
-				"name": "the Lean Pack",
-				"description": "Reduces the radius of Aspect of the Pack by 33 yards."
+				"name": "La meute efflanquée",
+				"description": "Réduit le rayon d’action d’Aspect de la meute de 33 mètres."
 			},
 			"glyph_of_enduring_deceit": {
-				"name": "Enduring Deceit",
-				"description": "Camouflage also reduces spell damage taken by 10%."
+				"name": "Duperie constante",
+				"description": "Le camouflage réduit également les dégâts des sorts subis de 10%."
 			}
 		},
 		"minor": {
 			"glyph_of_aspects": {
 				"name": "Aspects",
-				"description": "Each time you activate a new Aspect, an animal companion representing that Aspect will follow you for 15s."
+				"description": "Chaque fois que vous activez un nouvel aspect, un compagnon animal représentant cet aspect vous suivra pendant 15 s."
 			},
 			"glyph_of_tame_beast": {
-				"name": "Tame Beast",
-				"description": "Reduces the time required to complete Tame Beast by 4 sec."
+				"name": "Apprivoiser une bête",
+				"description": "Réduit le temps nécessaire à l’apprivoisement d’une bête de 4 s."
 			},
 			"glyph_of_revive_pet": {
-				"name": "Revive Pet",
-				"description": "Reduces the pushback suffered from damaging attacks while casting Revive Pet by 100%."
+				"name": "Ressusciter le familier",
+				"description": "Réduit de 100% l'interruption causée par les attaques infligeant des dégâts pendant que vous incantez Ressusciter le familier."
 			},
 			"glyph_of_lesser_proportion": {
-				"name": "Lesser Proportion",
-				"description": "Slightly reduces the size of your pet."
+				"name": "Stature réduite",
+				"description": "Réduit légèrement la taille de votre familier."
 			},
 			"glyph_of_fireworks": {
-				"name": "Fireworks",
-				"description": "Teaches you the ability Fireworks. Launch fireworks from your gun, bow or crossbow."
+				"name": "Feux d’artifice",
+				"description": "Vous apprend la technique Feux d’artifice. Lance un feu d’artifice avec votre fusil, arc ou arbalète."
 			},
 			"glyph_of_aspect_of_the_pack": {
-				"name": "Aspect of the Pack",
-				"description": "Increases the range of your Aspect of the Pack ability by 15 yards."
+				"name": "Aspect de la meute",
+				"description": "Augmente la portée de votre technique Aspect de la meute de 15 mètres."
 			},
 			"glyph_of_stampede": {
-				"name": "Stampede",
-				"description": "Your Stampede no longer summons pets from your stable, and instead uses copies of your current pet."
+				"name": "Ruée",
+				"description": "Vos Ruées n’invoquent plus de familiers depuis votre écurie, mais dupliquent votre familier actuel."
 			},
 			"glyph_of_aspect_of_the_cheetah": {
-				"name": "Aspect of the Cheetah",
-				"description": "Your Aspect of the Cheetah no longer causes you to be dazed when struck. Instead, the effect is cancelled and all your Aspects are placed on a 4 sec cooldown."
+				"name": "Aspect du guépard",
+				"description": "Vous n’êtes plus hébêté quand vous êtes touché sous l’Aspect du guépard. Au lieu de cela, l’effet est annulé et tous vos aspects obtiennent un temps de recharge de 4 s."
 			},
 			"glyph_of_aspect_of_the_beast": {
-				"name": "Aspect of the Beast",
-				"description": "Teaches you the ability Aspect of the Beast. The Hunter takes on the aspects of a beast, becoming untrackable. Only one Aspect can be active at a time."
+				"name": "Aspect de la bête",
+				"description": "Vous apprend la technique Aspect de la bête. Le chasseur adopte les qualités d'une bête et devient impossible à pister. Vous ne pouvez activer qu'un seul aspect à la fois."
 			},
 			"glyph_of_direction": {
 				"name": "Direction",
-				"description": "Causes your Misdirection target to appear larger."
+				"description": "La cible de votre technique Détournement apparaît plus grande."
 			},
 			"glyph_of_marking": {
-				"name": "Marking",
-				"description": "Your Hunter's Mark ability now places a bullseye on your target instead of its usual visual."
+				"name": "Marquage",
+				"description": "Votre Marque du chasseur place une cible sur la créature que vous ciblez au lieu de l’animation habituelle."
 			},
 			"glyph_of_fetch": {
-				"name": "Fetch",
-				"description": "Teaches you the ability Fetch. Command your pet to retrieve the loot from a nearby corpse within 40 yards."
+				"name": "Va chercher",
+				"description": "Vous apprend la technique Va chercher. Ordonne à votre familier d’aller chercher les objets sur un cadavre à moins de 40 mètres."
 			},
 			"glyph_of_focused_fire": {
-				"name": "Focused Fire",
-				"description": "Focus Fire charges apply a visual to you for each charge active."
+				"name": "Feu focalisé",
+				"description": "Les charges de Focalisation du feu vous confèrent un visuel pour chaque charge active."
 			},
 			"glyph_of_chameleon": {
-				"name": "Chameleon",
-				"description": "Focus Fire charges apply a visual to you for each charge active."
+				"name": "Caméléon",
+				"description": "Les charges de Focalisation du feu vous confèrent un visuel pour chaque charge active."
 			}
 		}
 	},
 	"mage": {
 		"major": {
 			"glyph_of_arcane_explosion": {
-				"name": "Arcane Explosion",
-				"description": "Increases the radius of your Arcane Explosion by 5 yards."
+				"name": "Explosion des Arcanes",
+				"description": "Augmente le rayon de votre Explosion des Arcanes de 5 mètres."
 			},
 			"glyph_of_blink": {
-				"name": "Blink",
-				"description": "Increases the distance you travel with the Blink spell by 8 yards."
+				"name": "Transfert",
+				"description": "Augmente la distance que vous parcourez avec le sort Transfert de 8 mètres."
 			},
 			"glyph_of_evocation": {
 				"name": "Evocation",
-				"description": "Your Evocation ability also causes you to regain 60% of your health over its duration. With the Invocation talent, you instead gain 10% of your health upon completing an Evocation. With the Rune of Power talent, you gain 1% of your health per second while standing in your own Rune of Power."
+				"description": "Votre technique Evocation vous permet également de récupérer 60% de vos points de vie pendant sa durée. Avec le talent Invoquer, vous recevez à la place 10% de vos points de vie au terme de l'Evocation. Avec le talent Rune de puissance, vous récupérez 1% de vos points de vie par seconde tant que vous vous tenez dans votre Rune de puissance."
 			},
 			"glyph_of_combustion": {
 				"name": "Combustion",
-				"description": "Increases the direct damage, the duration of the damage over time effect and the cooldown of Combustion by 100%."
+				"description": "Augmente les dégâts directs, la durée des effets de dégâts sur la durée et le temps de recharge de Combustion de 100%."
 			},
 			"glyph_of_frost_nova": {
-				"name": "Frost Nova",
-				"description": "Reduces the cooldown of Frost Nova by 5 sec."
+				"name": "Nova de givre",
+				"description": "Réduit le temps de recharge de Nova de givre de 5 s."
 			},
 			"glyph_of_ice_block": {
-				"name": "Ice Block",
-				"description": "When Ice Block terminates, it triggers an instant free Frost Nova and makes you immune to all spells for 3s."
+				"name": "Bloc de glace",
+				"description": "Quand Bloc de glace prend fin, déclenche instantanément une Nova de givre gratuite et vous immunise contre tous les sorts pendant 3 s."
 			},
 			"glyph_of_splitting_ice": {
-				"name": "Splitting Ice",
-				"description": "Your Ice Lance and Icicles now hit 1 additional target for 50% damage."
+				"name": "Bris de glace",
+				"description": "Votre Javelot de glace et vos Glaçons infligent désormais 50% de leurs dégâts à 1 cibles supplémentaires."
 			},
 			"glyph_of_cone_of_cold": {
-				"name": "Cone of Cold",
-				"description": "Increases the damage done by Cone of Cold by 200%."
+				"name": "Cône de froid",
+				"description": "Augmente les dégâts infligés par votre Cône de froid de 200%."
 			},
 			"glyph_of_rapid_displacement": {
-				"name": "Rapid Displacement",
-				"description": "Blink now has 2 charges, gaining a charge every 15 sec, but no longer frees the caster from stuns and bonds."
+				"name": "Déplacement rapide",
+				"description": "Transfert possède désormais 2 charges, cumulant une charge supplémentaire toutes les 15 s, mais ce sort ne libère plus le lanceur des effets d’étourdissement et d’immobilisation."
 			},
 			"glyph_of_mana_gem": {
-				"name": "Mana Gem",
-				"description": "Your Conjure Mana Gem spell now creates a Brilliant Mana Gem, which holds up to 10 charges."
+				"name": "Gemme de mana",
+				"description": "Votre sort Invocation d’une gemme de mana crée désormais une gemme de mana brillante, qui contient jusqu’à 10 charges."
 			},
 			"glyph_of_polymorph": {
-				"name": "Polymorph",
-				"description": "Your Polymorph spell also removes all damage over time effects from the target."
+				"name": "Métamorphose",
+				"description": "Votre sort Métamorphose annule aussi les effets de dégâts sur la durée sur la cible."
 			},
 			"glyph_of_icy_veins": {
-				"name": "Icy Veins",
-				"description": "Your Icy Veins causes your Frostbolt, Frostfire Bolt, Ice Lance, and your Water Elemental's Waterbolt spells to split into 3 smaller bolts that each do 40% damage, instead of increasing spell casting speed."
+				"name": "Veines glaciales",
+				"description": "Votre technique Veines glaciales fait se diviser vos sorts Eclair de givre, Eclair de givrefeu et Javelot de glace ainsi que l’Eclair d’eau de votre élémentaire d’eau en 3 éclairs plus petits qui infligent chacun 40% de dégâts, au lieu d’une augmentation de la vitesse d’incantation des sorts."
 			},
 			"glyph_of_spellsteal": {
-				"name": "Spellsteal",
-				"description": "Spellsteal now also heals you for 5% of your maximum health when it successfully steals a spell."
+				"name": "Vol de sort",
+				"description": "Vol de sort vous permet également de récupérer 5% de vos points de vie maximum s’il réussit à voler un sort."
 			},
 			"glyph_of_frostfire_bolt": {
-				"name": "Frostfire Bolt",
-				"description": "Reduces the cast time of Frostfire Bolt by 0.5 sec."
+				"name": "Eclair de givrefeu",
+				"description": "Réduit le temps d’incantation d’Eclair de givrefeu de 0.5 s."
 			},
 			"glyph_of_remove_curse": {
-				"name": "Remove Curse",
-				"description": "Increases the damage you deal by 5% for 10s after you successfully remove a curse."
+				"name": "Délivrance de la malédiction",
+				"description": "Augmente les dégâts que vous infligez de 5% pendant 10 s après avoir annulé une malédiction."
 			},
 			"glyph_of_arcane_power": {
-				"name": "Arcane Power",
-				"description": "Increases the duration and cooldown of Arcane Power by 100%."
+				"name": "Pouvoir des Arcanes",
+				"description": "Augmente la durée et le temps de recharge de Pouvoir des Arcanes de 100%."
 			},
 			"glyph_of_water_elemental": {
-				"name": "Water Elemental",
-				"description": "Increases the health of your Water Elemental by 40%, and allows it to cast while moving. When in Assist mode and in combat, commanding your Water Elemental to Follow will cause it to stay near you and autocast Waterbolt when your target is in range."
+				"name": "Elémentaire d’eau",
+				"description": "Augmente les points de vie de votre élémentaire d’eau de 40% et lui permet d’incanter en se déplaçant. Lorsqu’il est en mode soutien et en combat, si vous commandez à votre élémentaire d’eau de vous suivre, il restera près de vous et lancera automatiquement Eclair d’eau quand votre cible est à portée."
 			},
 			"glyph_of_slow": {
-				"name": "Slow",
-				"description": "Your Arcane Blast spell applies the Slow spell to any target it damages if no target is currently affected by your Slow."
+				"name": "Lenteur",
+				"description": "Votre sort Déflagration des Arcanes applique maintenant le sort Lenteur sur toute cible à laquelle elle inflige des dégâts si aucune cible n'est actuellement affectée par Lenteur."
 			},
 			"glyph_of_deep_freeze": {
-				"name": "Deep Freeze",
-				"description": "Your Deep Freeze spell is no longer on the global cooldown, but its duration is reduced by 1 sec."
+				"name": "Congélation",
+				"description": "Votre sort Congélation n’est plus sur le temps de recharge global mais sa durée est réduite de 1 s.."
 			},
 			"glyph_of_counterspell": {
-				"name": "Counterspell",
-				"description": "Your Counterspell can now be cast while casting or channeling other spells, but its cooldown is increased by 4 sec."
+				"name": "Contresort",
+				"description": "Votre Contresort peut désormais être lancé tout en incantant ou canalisant d’autres sorts, mais son temps de recharge est augmenté de 4 s."
 			},
 			"glyph_of_inferno_blast": {
-				"name": "Inferno Blast",
-				"description": "Your Inferno Blast spell spreads Pyroblast, Ignite, and Combustion to 1 additional target."
+				"name": "Déflagration infernale",
+				"description": "Votre sort Déflagration infernale propage Explosion pyrotechnique, Enflammer et Combustion à 1 cible supplémentaire."
 			},
 			"glyph_of_armors": {
-				"name": "Armors",
-				"description": "Reduces the cast time of your Frost Armor, Mage Armor, and Molten Armor spells by 1.5 sec, and increases the defensive effect of each Armor by an additional 10%."
+				"name": "Armures",
+				"description": "Réduit le temps d’incantation de vos sorts Armure de givre, Armure du mage et Armure de la fournaise de 1.5 s et augmente l’effet défensif de chaque armure de 10% de plus."
 			}
 		},
 		"minor": {
 			"glyph_of_loose_mana": {
-				"name": "Loose Mana",
-				"description": "Your Mana Gem now restores mana over 6 sec, rather than instantly."
+				"name": "Mana libre",
+				"description": "Votre Gemme de mana rend désormais du mana pendant 6 s, et plus instantanément."
 			},
 			"glyph_of_momentum": {
-				"name": "Momentum",
-				"description": "Your Blink spell teleports you in the direction you are moving instead of the direction you are facing."
+				"name": "Inertie",
+				"description": "Votre sort Transfert vous téléporte dans la direction vers laquelle vous vous déplacez plutôt que devant vous."
 			},
 			"glyph_of_crittermorph": {
-				"name": "Crittermorph",
-				"description": "When cast on critters, your Polymorph spells now last 24hrs and can be cast on multiple targets."
+				"name": "Métamorphose : Bestiole",
+				"description": "Quand vous lancez vos sorts de métamorphose sur des bestioles, ils durent désormais 24 heures et peuvent être lancés sur plusieurs cibles."
 			},
 			"glyph_of_the_porcupine": {
-				"name": "the Porcupine",
-				"description": "Your Polymorph spell polymorphs the target into a porcupine instead."
+				"name": "Porc-épic",
+				"description": "Votre sort Métamorphose transforme votre cible en porc-épic."
 			},
 			"glyph_of_conjure_familiar": {
-				"name": "Conjure Familiar",
-				"description": "Teaches you the ability Conjure Familiar. Conjures a familiar stone, containing either an Arcane, Fiery, or Icy Familiar."
+				"name": "Invocation du Familier",
+				"description": "Vous apprend le sort Invocation du Familier. Invoque une pierre de familier qui contient un familier arcanique, embrasé, ou glacé."
 			},
 			"glyph_of_the_monkey": {
-				"name": "the Monkey",
-				"description": "Your Polymorph spell polymorphs the target into a monkey instead."
+				"name": "Singe",
+				"description": "Votre sort Métamorphose transforme votre cible en singe."
 			},
 			"glyph_of_the_penguin": {
-				"name": "the Penguin",
-				"description": "Your Polymorph spell polymorphs the target into a penguin instead."
+				"name": "Pingouin",
+				"description": "Votre sort Métamorphose transforme votre cible en pingouin."
 			},
 			"glyph_of_the_bear_cub": {
 				"name": "the Bear Cub",
 				"description": "Your Polymorph spell polymorphs the target into a polar bear cub instead."
 			},
 			"glyph_of_arcane_language": {
-				"name": "Arcane Language",
-				"description": "Your Arcane Brilliance spell allows you to comprehend your allies' racial languages."
+				"name": "Langage des Arcanes",
+				"description": "Votre sort Illumination des Arcanes vous permet de comprendre les langues raciales de vos alliés."
 			},
 			"glyph_of_illusion": {
 				"name": "Illusion",
-				"description": "Teaches you the ability Illusion. Transforms the Mage to look like someone else for 2min."
+				"description": "Vous apprend la technique Illusion. Transforme le mage pour lui donner l’apparence d’un autre pendant 2 min."
 			},
 			"glyph_of_mirror_image": {
-				"name": "Mirror Image",
-				"description": "Your Mirror Images cast Arcane Blast or Fireball instead of Frostbolt depending on your primary talent tree."
+				"name": "Images miroir",
+				"description": "Vos Images miroir lancent Déflagration des Arcanes ou Boule de feu au lieu d'Eclair de givre en fonction de votre arbre de talents principal."
 			},
 			"glyph_of_rapid_teleportation": {
-				"name": "Rapid Teleportation",
-				"description": "After casting a Mage Teleport spell, or entering a Mage Portal, your movement speed is increased by 70% for 1min."
+				"name": "Téléportation rapide",
+				"description": "Après avoir lancé un sort de téléportation ou traversé un portail de mage, votre vitesse de déplacement est augmentée de 70% pendant 1 min."
 			},
 			"glyph_of_discreet_magic": {
-				"name": "Discreet Magic",
-				"description": "Your Nether Tempest, Living Bomb, Frost Bomb, Arcane Barrage, and Inferno Blast no longer affect targets more than 5 yds away from their primary target."
+				"name": "Magie discrète",
+				"description": "Vos sorts Tempête du Néant, Bombe vivante, Bombe de givre, Barrage des Arcanes et Déflagration infernale n’affectent plus les cibles se trouvant à plus de 5 mètres de leur cible principale."
 			},
 			"glyph_of_the_unbound_elemental": {
-				"name": "the Unbound Elemental",
-				"description": "Your Water Elemental is replaced by an Unbound Water Elemental."
+				"name": "Elémentaire délié",
+				"description": "Votre élémentaire d’eau est remplacé par un élémentaire d’eau délié."
 			},
 			"glyph_of_evaporation": {
 				"name": "Evaporation",
-				"description": "Reduces the size of your Water Elemental by 40%."
+				"description": "Réduit la taille de votre élémentaire d’eau de 40%."
 			},
 			"glyph_of_condensation": {
 				"name": "Condensation",
-				"description": "Increases the size of your Water Elemental by 40%."
+				"description": "Augmente la taille de votre élémentaire d’eau de 40%."
 			}
 		}
 	},
 	"monk": {
 		"major": {
 			"glyph_of_rapid_rolling": {
-				"name": "Rapid Rolling",
-				"description": "For 5s seconds after using Roll or Chi Torpedo, your next Roll or Chi Torpedo will go 30% farther."
+				"name": "Tournoiement rapide",
+				"description": "Pendant 5 s secondes après l’utilisation de Roulade ou de Torpille de chi, votre prochaine Roulade ou Torpille de chi vous amènera 30% plus loin."
 			},
 			"glyph_of_transcendence": {
-				"name": "Transcendence",
-				"description": "Reduces the cooldown of your Transcendence: Transfer spell by 5 sec."
+				"name": "Transcendance",
+				"description": "Réduit le temps de recharge de votre sort Transcendance : Transfert de 5 s."
 			},
 			"glyph_of_breath_of_fire": {
-				"name": "Breath of Fire",
-				"description": "When you use Breath of Fire on targets afflicted with your Dizzying Haze, they become Disoriented for 3s."
+				"name": "Souffle de feu",
+				"description": "Quand vous utilisez Souffle de feu sur des cibles victimes de votre Brume vertigineuse, elles sont désorientées pendant 3 s."
 			},
 			"glyph_of_clash": {
-				"name": "Clash",
-				"description": "Increases the range of your Clash ability by 10 yards."
+				"name": "Fracas",
+				"description": "Augmente la portée de votre technique Fracas de 10 mètres."
 			},
 			"glyph_of_enduring_healing_sphere": {
-				"name": "Enduring Healing Sphere",
-				"description": "Increases the duration of your Healing Spheres by 3 minutes."
+				"name": "Sphère de soins durable",
+				"description": "Augmente la durée de vos Sphères de soins de 3 minutes."
 			},
 			"glyph_of_guard": {
-				"name": "Guard",
-				"description": "Increases the amount your Guard absorbs by 10%, but your Guard can only absorb magical damage."
+				"name": "Garde",
+				"description": "Augmente le montant de dégâts absorbés par votre Gardien de 10%, mais il ne peut absorber que des dégâts magiques."
 			},
 			"glyph_of_mana_tea": {
-				"name": "Mana Tea",
-				"description": "Your Mana Tea is instant instead of channeled and consumes two stacks when used, but causes a 10 sec cooldown."
+				"name": "Thé de mana",
+				"description": "Votre Thé de mana n’est plus canalisé, mais bien instantané et consomme deux charges par utilisation. Cependant, un temps de recharge de 10 s est ajouté."
 			},
 			"glyph_of_zen_meditation": {
-				"name": "Zen Meditation",
-				"description": "You can now channel Zen Meditation while moving."
+				"name": "Méditation zen",
+				"description": "Vous pouvez maintenant canaliser Méditation zen en vous déplaçant.."
 			},
 			"glyph_of_renewing_mists": {
-				"name": "Renewing Mists",
-				"description": "Your Renewing Mist travels to the furthest injured target within 40 yards rather than the closest injured target within 20 yards."
+				"name": "Brume de rénovation",
+				"description": "Votre Brume de rénovation se propage jusqu’à la cible blessée la plus éloignée à moins de 40 mètres, plutôt qu’à la cible blessée la moins éloignée dans les 20 mètres."
 			},
 			"glyph_of_spinning_crane_kick": {
-				"name": "Spinning Crane Kick",
-				"description": "You move at full speed while channeling Spinning Crane Kick."
+				"name": "Coup tournoyant de la grue",
+				"description": "Vous vous déplacez à vitesse normale en canalisant Coup tournoyant de la grue."
 			},
 			"glyph_of_surging_mist": {
-				"name": "Surging Mist",
-				"description": "Your Surging Mist no longer requires a target, and instead heals the lowest health target within 40 yards."
+				"name": "Déferlante de brume",
+				"description": "Votre Déferlante de brume ne requiert plus de cible, mais soigne la cible avec le moins de points de vie dans les 40 mètres."
 			},
 			"glyph_of_touch_of_death": {
-				"name": "Touch of Death",
-				"description": "Your Touch of Death no longer has a Chi cost, but the cooldown is increased by 2 minutes."
+				"name": "Toucher mortel",
+				"description": "Votre Toucher mortel ne coûte plus de chi, mais son temps de recharge est augmenté de 2 minutes."
 			},
 			"glyph_of_nimble_brew": {
-				"name": "Nimble Brew",
-				"description": "Clearing an effect with Nimble Brew heals you for 10% of your maximum health."
+				"name": "Breuvage de vivacité",
+				"description": "Supprimer un effet grâce à Breuvage de vivacité vous soigne d’un montant égal à 10% du maximum de vos points de vie."
 			},
 			"glyph_of_afterlife": {
-				"name": "Afterlife",
-				"description": "Increases the chance to summon a Healing Sphere when you kill an enemy while gaining experience or honor to 100%."
+				"name": "Au-delà",
+				"description": "Augmente les chances d’invoquer une Sphère de soins quand vous tuez un ennemi qui rapporte de l’expérience ou de l’honneur de 100%."
 			},
 			"glyph_of_fists_of_fury": {
-				"name": "Fists of Fury",
-				"description": "When channeling Fists of Fury, your parry chance is increased by 100%."
+				"name": "Poings de fureur",
+				"description": "Pendant que vous canalisez Poings de fureur, vos chances de parer sont augmentées de 100%."
 			},
 			"glyph_of_fortifying_brew": {
-				"name": "Fortifying Brew",
-				"description": "Your Fortifying Brew reduces damage taken by an additional 5%, but increases your health by 10% rather than 20%."
+				"name": "Boisson fortifiante",
+				"description": "Votre Boisson fortifiante réduit les dégâts subis de 5% supplémentaires, mais n’augmente plus vos points de vie que de 10% au lieu de 20%."
 			},
 			"glyph_of_leer_of_the_ox": {
-				"name": "Leer of the Ox",
-				"description": "Teaches you the spell Leer of the Ox. |CFFFFFFFFLeer of the Ox|R Your Ox Statue stirs hatred in the target, reducing their movement speed by 50% and causing them to attack your Black Ox Statue for 8s. The statue must be within 40 yards of the target. Requires Black Ox Statue to be active."
+				"name": "Regard mauvais du buffle",
+				"description": "Vous apprend le sort Regard mauvais du buffle. |CFFFFFFFFRegard mauvais du buffle|R Votre Statue de buffle attise la haine de la cible, ce qui réduit la vitesse de déplacement de cette dernière de 50% et la force à attaquer la statue pendant 8 s. La statue doit être à moins de 40 mètres de la cible. Statue du buffle noir doit être active."
 			},
 			"glyph_of_life_cocoon": {
-				"name": "Life Cocoon",
-				"description": "Life Cocoon can now be cast while stunned."
+				"name": "Cocon de vie",
+				"description": "Cocon de vie peut maintenant être lancé alors que vous êtes étourdi."
 			},
 			"glyph_of_fortuitous_spheres": {
-				"name": "Fortuitous Spheres",
-				"description": "Falling below 25% health will automatically summon a healing sphere near you at no cost. This effect cannot occur more often than once every 30 seconds."
+				"name": "Sphères fortuites",
+				"description": "Tomber sous les 25% de points de vie invoquera automatiquement une sphère de soins près de vous sans que cela ne vous coûte de ressource. Cet effet ne peut se produire plus d’une fois toutes les 30 secondes."
 			},
 			"glyph_of_paralysis": {
-				"name": "Paralysis",
-				"description": "Your Paralysis ability also removes all damage over time effects from the target."
+				"name": "Paralysie",
+				"description": "Votre technique Paralysie annule aussi tous les effets de dégâts sur la durée de la cible."
 			},
 			"glyph_of_sparring": {
-				"name": "Sparring",
-				"description": "While Sparring, you also have a 5% chance to deflect spells from attackers in front of you, stacking up to 3 times."
+				"name": "Affrontement",
+				"description": "Tant que vous utilisez Affrontement, vous avez aussi 5% de chances de dévier les sorts venant de devant. Cet effet est cumulable jusqu’à 3 fois."
 			},
 			"glyph_of_detox": {
-				"name": "Detox",
-				"description": "Detox heals your target for 5% when it successfully removes a harmful effect."
+				"name": "Détoxification",
+				"description": "Détoxification rend à votre cible 5% de ses points de vie lorsqu’elle retire avec succès un effet néfaste."
 			},
 			"glyph_of_touch_of_karma": {
-				"name": "Touch of Karma",
-				"description": "Your Touch of Karma now has a 25 yard range."
+				"name": "Toucher du karma",
+				"description": "La portée de votre Toucher du karma est désormais de 25 m."
 			},
 			"glyph_of_targeted_expulsion": {
-				"name": "Targeted Expulsion",
-				"description": "Outside of Battlegrounds and Arenas: Your Uplift no longer costs Chi, but instead costs 10% Mana. Inside of Battlegrounds and Arenas: Expel Harm can now be used on other allies, but the healing is reduced by 50% on them."
+				"name": "Extraction ciblée",
+				"description": "Hors des champs de bataille et des arènes : Votre Elévation ne coûte plus de chi, mais consomme 10 % de points de mana à la place. Dans les champs de bataille et les arènes :]Extraction du mal peut maintenant être utilisé sur d’autres alliés, mais les soins sont réduits de 50 % sur ces cibles."
 			}
 		},
 		"minor": {
 			"glyph_of_spinning_fire_blossom": {
-				"name": "Spinning Fire Blossom",
-				"description": "Your Spinning Fire Blossom requires an enemy target rather than traveling in front of you, but is no longer capable of rooting targets."
+				"name": "Fleur de feu tournoyante",
+				"description": "Votre Fleur de feu tournoyante nécessite une cible ennemie plutôt que de voler droit devant vous, mais elle ne peut plus immobiliser les cibles."
 			},
 			"glyph_of_crackling_tiger_lightning": {
-				"name": "Crackling Tiger Lightning",
-				"description": "Your Crackling Jade Lightning visual is altered to the color of the White Tiger celestial."
+				"name": "Eclair de jade crépitant",
+				"description": "L’animation de votre Eclair de jade crépitant adopte la couleur du Tigre blanc céleste."
 			},
 			"glyph_of_flying_serpent_kick": {
-				"name": "Flying Serpent Kick",
-				"description": "Your Flying Serpent Kick automatically ends when you fly into an enemy, triggering the area of effect damage and snare."
+				"name": "Coup du serpent volant",
+				"description": "Votre Coup du serpent volant prend automatiquement fin quand vous rencontrez un ennemi, à quel point les dégâts à effet de zone et le ralentissement sont déclenchés."
 			},
 			"glyph_of_honor": {
-				"name": "Honor",
-				"description": "You honorably bow after each successful Touch of Death."
+				"name": "Honneur",
+				"description": "Vous saluez avec honneur après chaque Toucher mortel réussi."
 			},
 			"glyph_of_jab": {
-				"name": "Jab",
-				"description": "You always will attack with hands and fist with Jab, even with non-fist weapons equipped."
+				"name": "Coup direct",
+				"description": "Vous attaquez toujours avec vos poings quand vous utilisez Coup direct, même si vous n’êtes pas équipé d’armes de pugilat."
 			},
 			"glyph_of_rising_tiger_kick": {
-				"name": "Rising Tiger Kick",
-				"description": "Your Rising Sun Kick's visual is altered to the color of the White Tiger."
+				"name": "Coup de pied du tigre bondissant",
+				"description": "L’aspect visuel de votre Coup de pied du soleil levant prend la couleur du Tigre blanc."
 			},
 			"glyph_of_spirit_roll": {
-				"name": "Spirit Roll",
-				"description": "You can cast Roll or Chi Torpedo while dead as a spirit."
+				"name": "Roulade des esprits",
+				"description": "Vous pouvez effectuer une Roulade ou une Torpille de chi sous forme d’esprit, quand vous êtes mort."
 			},
 			"glyph_of_fighting_pose": {
-				"name": "Fighting Pose",
-				"description": "Your spirit now appears in a fighting pose when using Transcendence."
+				"name": "Pose de combat",
+				"description": "Votre esprit apparaît maintenant en posture de combat quand vous utilisez Transcendance."
 			},
 			"glyph_of_water_roll": {
-				"name": "Water Roll",
-				"description": "You can Roll or Chi Torpedo over water."
+				"name": "Roulade aquatique",
+				"description": "Vous pouvez effectuer une Roulade ou une Torpille de chi sur l’eau."
 			},
 			"glyph_of_zen_flight": {
 				"name": "Zen Flight",
-				"description": "Teaches you the spell Zen Flight. Zen Flight requires a Flight Master's License in order to be cast. |CFFFFFFFFZen Flight|R You fly through the air at a quick speed on a meditative cloud."
+				"description": "Vous apprend le sort Envol zen. Envol zen requiert une licence de maître de vol pour être lancé. |CFFFFFFFFEnvol zen|R Vous fendez les airs à grande vitesse à bord d’un nuage propice à la méditation."
 			},
 			"glyph_of_blackout_kick": {
-				"name": "Blackout Kick",
-				"description": "Your Blackout Kick always deals 20% additional damage over 4s regardless of positioning but you're unable to trigger the healing effect."
+				"name": "Frappe du voile noir",
+				"description": "Votre Frappe du voile noir inflige toujours 20% de points de dégâts supplémentaires en 4 s quelle que soit votre position, mais vous ne pouvez pas déclencher son effet de soins."
 			}
 		}
 	},
 	"paladin": {
 		"major": {
 			"glyph_of_double_jeopardy": {
-				"name": "Double Jeopardy",
-				"description": "Judging a target increases the damage of your next Judgment by 20%, but only if used on a different second target."
+				"name": "Double péril",
+				"description": "Quand vous Jugez une cible, les dégâts de votre prochain Jugement sont augmentés de 20%, mais seulement si vous l’utilisez sur une cible différente de la première."
 			},
 			"glyph_of_devotion_aura": {
-				"name": "Devotion Aura",
-				"description": "Devotion Aura no longer affects party or raid members, but the cooldown is reduced by 60 sec."
+				"name": "Aura de dévotion",
+				"description": "Aura de dévotion n’affecte plus les membres du groupe ou raid, mais son temps de recharge est réduit de 60 s."
 			},
 			"glyph_of_holy_wrath": {
-				"name": "Holy Wrath",
-				"description": "Your Holy Wrath now also stuns Elementals, Dragonkin, and Aberrations."
+				"name": "Colère divine",
+				"description": "Maintenant, votre Colère divine étourdit aussi les élémentaires, les draconiens et les aberrations."
 			},
 			"glyph_of_divine_protection": {
-				"name": "Divine Protection",
-				"description": "Reduces the magical damage reduction of your Divine Protection to 20% but adds 20% physical damage reduction."
+				"name": "Protection divine",
+				"description": "Diminue la réduction des dégâts magiques de votre Protection divine à 20% mais augmente la réduction des dégâts physiques de 20%."
 			},
 			"glyph_of_templars_verdict": {
-				"name": "Templar's Verdict",
-				"description": "You take 10% less damage for 6s after dealing damage with Templar's Verdict or Exorcism."
+				"name": "Verdict du templier",
+				"description": "Vous subissez 10% de dégâts en moins pendant 6 s après avoir infligé des dégâts avec Verdict du templier ou Exorcisme."
 			},
 			"glyph_of_avenging_wrath": {
-				"name": "Avenging Wrath",
-				"description": "While Avenging Wrath is active, you are healed for 1% of your maximum health every 0.0 sec."
+				"name": "Courroux vengeur",
+				"description": "Pendant que Courroux vengeur est actif, vous recevez 1% de votre maximum de points de vie toutes les 2 s."
 			},
 			"glyph_of_consecration": {
-				"name": "Consecration",
-				"description": "You can now target Consecration anywhere within 25 yards."
+				"name": "Consécration",
+				"description": "Vous pouvez maintenant lancer Consécration vers n’importe quelle cible à moins de 25 mètres."
 			},
 			"glyph_of_focused_shield": {
-				"name": "Focused Shield",
-				"description": "Your Avenger's Shield hits 2 fewer targets, but for 30% more damage."
+				"name": "Bouclier focalisé",
+				"description": "Votre Bouclier du vengeur frappe 2 cibles de moins, mais inflige 30% de dégâts supplémentaires."
 			},
 			"glyph_of_burden_of_guilt": {
-				"name": "Burden of Guilt",
-				"description": "Your Judgment hits fill your target with doubt and remorse, reducing movement speed by 50% for 2s."
+				"name": "Poids de la culpabilité",
+				"description": "Vos Jugements accablent votre cible de doutes et de remords, ce qui réduit sa vitesse de déplacement de 50% pendant 2 s."
 			},
 			"glyph_of_blinding_light": {
-				"name": "Blinding Light",
-				"description": "Your Blinding Light now knocks down targets for 3s instead of Blinding them."
+				"name": "Lumière aveuglante",
+				"description": "Votre Lumière aveuglante envoie maintenant les cibles à terre pendant 3 s au lieu de les aveugler."
 			},
 			"glyph_of_final_wrath": {
-				"name": "Final Wrath",
-				"description": "Your Holy Wrath does an additional 50% damage to targets with less than 20% health."
+				"name": "Colère ultime",
+				"description": "Votre Colère divine inflige 50% de dégâts supplémentaires aux cibles disposant de moins de 20% de leurs points de vie."
 			},
 			"glyph_of_word_of_glory": {
-				"name": "Word of Glory",
-				"description": "Increases your damage by 3% per Holy Power spent after you cast Word of Glory or Eternal Flame on a friendly target. Lasts 6s."
+				"name": "Mot de gloire",
+				"description": "Augmente vos dégâts de 3% par point de puissance sacrée dépensée après avoir lancé Mot de gloire ou Flamme éternelle sur une cible alliée. Dure 6 s."
 			},
 			"glyph_of_illumination": {
 				"name": "Illumination",
-				"description": "Your Holy Shock criticals grant 1% mana return, but Holy Insight returns 10% less mana."
+				"description": "Vos coups critiques avec Horion sacré vous rendent 1% de votre mana, mais Méditation vous fait récupérer 10% de mana en moins."
 			},
 			"glyph_of_harsh_words": {
-				"name": "Harsh Words",
-				"description": "Your Word of Glory can now also be used on enemy targets, causing Holy damage approximately equal to the amount it would have healed. Does not work with Eternal Flame."
+				"name": "Mots durs",
+				"description": "Votre Mot de gloire peut maintenant être utilisé sur des cibles ennemies, infligeant des dégâts du Sacré approximativement égaux au montant de points de vie qu’il rendrait. Ne fonctionne pas avec Flamme éternelle."
 			},
 			"glyph_of_divinity": {
-				"name": "Divinity",
-				"description": "Increases the cooldown of your Lay on Hands by 0 min but causes it to give you 10% of your maximum mana."
+				"name": "Divinité",
+				"description": "Augmente le temps de recharge de votre Imposition des mains de 2 min mais lui permet de vous rendre 10% de votre maximum de mana."
 			},
 			"glyph_of_light_of_dawn": {
-				"name": "Light of Dawn",
-				"description": "Light of Dawn affects 2 fewer targets, but heals each target for 25% more."
+				"name": "Lumière de l'aube",
+				"description": "Lumière de l'aube affecte 2 cibles en moins mais rend à chaque cible 25% de points de vie en plus."
 			},
 			"glyph_of_blessed_life": {
-				"name": "Blessed Life",
-				"description": "You have a 50% chance to gain a charge of Holy Power whenever you are affected by a Stun, Fear or Immobilize effect. This effect cannot occur more than once every 20 sec."
+				"name": "Vie bénie",
+				"description": "Vous avez 50% de chances de recevoir une charge de puissance sacrée chaque fois que vous êtes affecté par un effet d'étourdissement, de peur ou d'immobilisation. Cet effet ne peut se produire plus d'une fois toutes les 20 s."
 			},
 			"glyph_of_flash_of_light": {
-				"name": "Flash of Light",
-				"description": "When you Flash of Light a target, it increases your next heal done to that target within 7s by 10%."
+				"name": "Eclair lumineux",
+				"description": "Lorsque vous utilisez Eclair lumineux sur une cible, cela augmente votre prochain soin prodigué à cette cible dans les 7 s de 10%."
 			},
 			"glyph_of_denounce": {
-				"name": "Denounce",
-				"description": "Your Holy Shocks reduce the cast time of your next Denounce by 0.5 sec. This effect stacks up to 3 times."
+				"name": "Dénoncer",
+				"description": "Vos Horions sacrés réduisent le temps d’incantation de votre prochain Dénoncer de 0.5 s. Cet effet est cumulable jusqu’à 3 fois."
 			},
 			"glyph_of_dazing_shield": {
-				"name": "Dazing Shield",
-				"description": "Your Avenger's Shield now also dazes targets for 10s."
+				"name": "Bouclier d'hébétement",
+				"description": "Votre Bouclier du vengeur hébète également les cibles pendant 10 s."
 			},
 			"glyph_of_immediate_truth": {
-				"name": "Immediate Truth",
-				"description": "Increases the instant damage done by Seal of Truth by 40%, but decreases the damage done by Censure by 50%."
+				"name": "Vérité immédiate",
+				"description": "Augmente les dégâts instantanés infligés par Sceau de vérité de 40%, mais réduit les dégâts infligés par Blâme de 50%."
 			},
 			"glyph_of_beacon_of_light": {
-				"name": "Beacon of Light",
-				"description": "Removes the global cooldown on Beacon of Light."
+				"name": "Guide de lumière",
+				"description": "Libère Guide de lumière du temps de recharge global."
 			},
 			"glyph_of_hammer_of_the_righteous": {
-				"name": "Hammer of the Righteous",
-				"description": "The physical damage reduction caused by Hammer of the Righteous now lasts 50% longer."
+				"name": "Marteau du vertueux",
+				"description": "La réduction des dégâts physiques octroyée par Marteau du vertueux dure maintenant 50% plus longtemps."
 			},
 			"glyph_of_divine_storm": {
-				"name": "Divine Storm",
-				"description": "Your Divine Storm also heals you for 5% of your maximum health."
+				"name": "Tempête divine",
+				"description": "Votre Tempête divine vous rend aussi 5% de votre maximum de points de vie."
 			},
 			"glyph_of_the_alabaster_shield": {
-				"name": "the Alabaster Shield",
-				"description": "Your successful blocks increase the damage of your next Shield of the Righteous by 10%. Stacks up to 1 times."
+				"name": "Bouclier d’albâtre",
+				"description": "Vos blocages réussis augmentent les dégâts de votre prochain Bouclier du vertueux de 10 %. Cumulable jusqu’à 3 fois."
 			},
 			"glyph_of_divine_plea": {
-				"name": "Divine Plea",
-				"description": "Divine Plea returns 50% less mana but has a 50% shorter cooldown."
+				"name": "Supplique divine",
+				"description": "Supplique divine rend 50% de mana en moins, mais son temps de recharge est réduit de 50%."
 			},
 			"glyph_of_holy_shock": {
-				"name": "Holy Shock",
-				"description": "Decreases the healing of Holy Shock by 50% but increases its damage by 50%."
+				"name": "Horion sacré",
+				"description": "Réduit les soins de Horion sacré de 50% mais augmente ses dégâts de 50%."
 			},
 			"glyph_of_inquisition": {
 				"name": "Inquisition",
-				"description": "When you land a killing blow on an opponent that yields experience or honor, the duration of your Inquisition is increased by 30 sec."
+				"description": "Quand vous assénez un coup fatal à un ennemi qui rapporte de l’expérience ou de l’honneur, la durée de votre Inquisition est prolongée de 30 s."
 			},
 			"glyph_of_protector_of_the_innocent": {
-				"name": "Protector of the Innocent",
-				"description": "When you use Word of Glory to heal another target, it also heals you for 20% of the amount."
+				"name": "Protecteur des innocents",
+				"description": "Quand vous utilisez votre Mot de gloire pour soigner autrui, vous recevez également vous-même un montant de points de vie égal à 20% de ces soins."
 			},
 			"glyph_of_the_battle_healer": {
-				"name": "the Battle Healer",
-				"description": "Melee attacks from Seal of Insight heal the most wounded member of your raid or party for 30% of the normal heal instead of you."
+				"name": "Soigneur combattant",
+				"description": "Les attaques en mêlée de Sceau de clairvoyance soignent le membre du groupe ou raid ayant le moins de points de vie pour un montant égal à 30% du soin normal plutôt que vous."
 			},
 			"glyph_of_mass_exorcism": {
-				"name": "Mass Exorcism",
-				"description": "Reduces the range of Exorcism to melee range, but causes 25% damage to all enemies within 8 yards of the primary target."
+				"name": "Exorcisme de masse",
+				"description": "Votre Exorcisme ne peut plus atteindre qu’une cible à portée de mêlée, mais il inflige 25% des dégâts à tous les ennemis à moins de 8 mètres de la cible principale."
 			},
 			"glyph_of_divine_shield": {
-				"name": "Divine Shield",
-				"description": "Removing harmful effects with Divine Shield heals you for 10% for each effect removed. This heal cannot exceed 50% of your maximum health."
+				"name": "Bouclier divin",
+				"description": "Annuler des effets néfastes avec Bouclier divin vous rend 10% de vos points de vie par effet annulé. Ces soins ne peuvent dépasser 50% de vos points de vie maximum."
 			},
 			"glyph_of_hand_of_sacrifice": {
-				"name": "Hand of Sacrifice",
-				"description": "Hand of Sacrifice no longer redirects damage to the Paladin."
+				"name": "Main de sacrifice",
+				"description": "Main de sacrifice ne redirige plus les dégâts vers le paladin."
 			}
 		},
 		"minor": {
 			"glyph_of_the_luminous_charger": {
-				"name": "the Luminous Charger",
-				"description": "Your Paladin class mounts glow with holy light."
+				"name": "Destrier lumineux",
+				"description": "De vos montures de paladin émane de la lumière sacrée."
 			},
 			"glyph_of_the_mounted_king": {
-				"name": "the Mounted King",
-				"description": "Mounting one of your Paladin class mounts automatically casts Blessing of Kings on you."
+				"name": "Monture royale",
+				"description": "Quand vous montez sur une monture de paladin, vous recevez automatiquement Bénédiction des rois."
 			},
 			"glyph_of_contemplation": {
 				"name": "Contemplation",
-				"description": "Teaches you the ability Contemplation. Allows you a moment of peace as you kneel in quiet contemplation to ponder the nature of the Light."
+				"description": "Vous apprend la technique Contemplation. Vous offre un moment de quiétude pendant lequel vous méditez, à genoux, sur la nature de la Lumière."
 			},
 			"glyph_of_winged_vengeance": {
-				"name": "Winged Vengeance",
-				"description": "Your Avenging Wrath depicts 4 wings."
+				"name": "Vengeance ailée",
+				"description": "Votre Courroux vengeur a 4 ailes."
 			},
 			"glyph_of_seal_of_blood": {
-				"name": "Seal of Blood",
-				"description": "Your Seal of Truth now uses the Seal of Blood visual."
+				"name": "Sceau de sang",
+				"description": "Votre Sceau de vérité utilise à présent le même visuel que Sceau de sang."
 			},
 			"glyph_of_fire_from_the_heavens": {
-				"name": "Fire From the Heavens",
-				"description": "Your Judgment and Hammer of Wrath criticals call down fire from the sky."
+				"name": "Feu des cieux",
+				"description": "Vos coups critiques avec Jugement et Marteau de courroux invoquent le feu du ciel."
 			},
 			"glyph_of_focused_wrath": {
-				"name": "Focused Wrath",
-				"description": "Holy Wrath only affects one target."
+				"name": "Colère focalisée",
+				"description": "Colère divine n’affecte qu’une cible."
 			},
 			"glyph_of_the_falling_avenger": {
-				"name": "the Falling Avenger",
-				"description": "You slow fall during Avenging Wrath."
+				"name": "Chute du vengeur",
+				"description": "Vos chutes sont ralenties pendant Courroux vengeur."
 			},
 			"glyph_of_the_righteous_retreat": {
-				"name": "the Righteous Retreat",
-				"description": "During Divine Shield, you can invoke your Hearthstone 50% faster."
+				"name": "Retraite vertueuse",
+				"description": "Pendant Bouclier divin, vous pouvez utiliser votre pierre de foyer 50% plus vite."
 			},
 			"glyph_of_bladed_judgment": {
-				"name": "Bladed Judgment",
-				"description": "Your Judgment spell depicts an axe or sword instead of a hammer, if you have an axe or sword equipped."
+				"name": "Jugement tranchant",
+				"description": "Le marteau de votre sort Jugement est remplacé par une hache ou une épée si vous êtes équipé d’une telle arme."
 			},
 			"glyph_of_the_exorcist": {
-				"name": "the Exorcist",
-				"description": "Exorcism will now appear to remove the evil from its target."
+				"name": "Exorciste",
+				"description": "Exorcisme apparaîtra désormais pour éliminer le mal de sa cible."
 			},
 			"glyph_of_pillar_of_light": {
-				"name": "Pillar of Light",
-				"description": "Critical heals on other players display a small pillar of light at their location briefly."
+				"name": "Pilier de lumière",
+				"description": "Les soins critiques prodigués aux autres personnages-joueurs font apparaître un petit pilier de lumière éphémère à leur emplacement."
 			}
 		}
 	},
 	"priest": {
 		"major": {
 			"glyph_of_circle_of_healing": {
-				"name": "Circle of Healing",
-				"description": "Your Circle of Healing spell heals 1 additional target, but its mana cost is increased by 35%."
+				"name": "Cercle de soins",
+				"description": "Votre sort Cercle de soins soigne 1 cible supplémentaire, mais son coût en mana est augmenté de 35%."
 			},
 			"glyph_of_purify": {
-				"name": "Purify",
-				"description": "Your Purify spell also heals your target for 5% of maximum health when you successfully dispel a magical effect or disease."
+				"name": "Purifier",
+				"description": "Votre sort Purifier soigne également votre cible pour un montant égal à 5% de son maximum de points de vie quand vous dissipez avec succès un effet magique ou une maladie."
 			},
 			"glyph_of_fade": {
-				"name": "Fade",
-				"description": "Your Fade ability now also reduces all damage taken by 10%."
+				"name": "Oubli",
+				"description": "Votre technique Oubli réduit à présent tous les dégâts subis de 10%."
 			},
 			"glyph_of_fear_ward": {
-				"name": "Fear Ward",
-				"description": "Reduces the cooldown of Fear Ward by 60 sec."
+				"name": "Gardien de peur",
+				"description": "Réduit le temps de recharge de Gardien de peur de 60 s."
 			},
 			"glyph_of_inner_sanctum": {
-				"name": "Inner Sanctum",
-				"description": "Spell damage taken is reduced by 6% while within Inner Fire, and the movement speed bonus of your Inner Will is increased by 6%."
+				"name": "Sanctum intérieur",
+				"description": "Les dégâts des sorts subis sont réduits de 6% quand vous bénéficiez de Feu intérieur, et le bonus à la vitesse de déplacement de votre Volonté intérieure est augmenté de 6%."
 			},
 			"glyph_of_holy_nova": {
-				"name": "Holy Nova",
-				"description": "Teaches you the ability Holy Nova. Causes an explosion of holy light around the caster, causing 2477 Holy damage to all enemy targets within 10 yards and healing up to 5 targets within 10 yards for 525. Healing is divided among the number of targets healed. These effects cause no threat."
+				"name": "Nova sacrée",
+				"description": "Vous apprend la technique Nova sacrée. Provoque une explosion de Lumière sacrée autour du lanceur, infligeant 13 points de dégâts du Sacré aux ennemis dans un rayon de 10 mètres, et rendant 20 points de vie à 5 cibles au maximum dans un rayon de 10 mètres. Les soins sont divisés par le nombre de cibles soignées. Ces effets ne génèrent aucune menace."
 			},
 			"glyph_of_inner_fire": {
-				"name": "Inner Fire",
-				"description": "Increases the armor gained from your Inner Fire spell by 50%."
+				"name": "Feu intérieur",
+				"description": "Augmente l’armure obtenue grâce à votre sort Feu intérieur de 50%."
 			},
 			"glyph_of_deep_wells": {
-				"name": "Deep Wells",
-				"description": "Increases the total amount of charges of your Lightwell by 2."
+				"name": "Puits sans fond",
+				"description": "Augmente le montant total de charges de votre Puits de lumière de 2."
 			},
 			"glyph_of_mass_dispel": {
-				"name": "Mass Dispel",
-				"description": "Causes your Mass Dispel to be potent enough to remove Magic effects that are normally undispellable."
+				"name": "Dissipation de masse",
+				"description": "Rend votre Dissipation de masse assez puissante pour annuler les effets magiques qui ne sont normalement pas dissipables."
 			},
 			"glyph_of_psychic_horror": {
-				"name": "Psychic Horror",
-				"description": "Reduces the cooldown of your Psychic Horror by -10.0 sec."
+				"name": "Horreur psychique",
+				"description": "Réduit le temps de recharge de votre Horreur psychique de 10 s."
 			},
 			"glyph_of_holy_fire": {
-				"name": "Holy Fire",
-				"description": "Increases the range of your Holy Fire, Smite, and Power Word: Solace spells by 10 yards."
+				"name": "Flammes sacrées",
+				"description": "Augmente la portée de vos sorts Flammes sacrées, Châtiment et Mot de pouvoir : Réconfort de 10 mètres."
 			},
 			"glyph_of_weakened_soul": {
-				"name": "Weakened Soul",
-				"description": "Reduces the duration of the Weakened Soul effect caused by Power Word: Shield by 2 sec."
+				"name": "Ame affaiblie",
+				"description": "Réduit la durée de l’effet Ame affaiblie causé par Mot de pouvoir : Bouclier de 2 s."
 			},
 			"glyph_of_power_word_shield": {
-				"name": "Power Word: Shield",
-				"description": "20% of the absorb from your Power Word: Shield spell is converted into healing."
+				"name": "Mot de pouvoir : Bouclier",
+				"description": "20% des dégâts absorbés par votre sort Mot de pouvoir : Bouclier sont convertis en soins."
 			},
 			"glyph_of_spirit_of_redemption": {
-				"name": "Spirit of Redemption",
-				"description": "Increases the duration of Spirit of Redemption by 10 sec."
+				"name": "Esprit de rédemption",
+				"description": "Augmente la durée d’Esprit de rédemption de 10 s."
 			},
 			"glyph_of_psychic_scream": {
-				"name": "Psychic Scream",
-				"description": "Targets of your Psychic Scream and your Psyfiend's Psychic Terror now tremble in place instead of fleeing in fear."
+				"name": "Cri psychique",
+				"description": "Les cibles de votre Cri psychique et de la Terreur psychique de votre Démon psychique tremblent sur place au lieu de fuir sous l’effet de la peur."
 			},
 			"glyph_of_renew": {
-				"name": "Renew",
-				"description": "Your Renew heals for 33% more each time it heals, but its duration is reduced by 3 sec."
+				"name": "Rénovation",
+				"description": "Votre Rénovation rend 33% de points de vie supplémentaires avec chaque soin, mais sa durée est réduite de 3 s."
 			},
 			"glyph_of_scourge_imprisonment": {
-				"name": "Scourge Imprisonment",
-				"description": "Reduces the cast time of your Shackle Undead by 1.0 sec."
+				"name": "Emprisonnement du Fléau",
+				"description": "Réduit le temps d'incantation de votre sort Entraves des morts-vivants de 1.0 s."
 			},
 			"glyph_of_mind_blast": {
-				"name": "Mind Blast",
-				"description": "When you critically hit with your Mind Blast, you cause the target to be unable to move for 4s."
+				"name": "Attaque mentale",
+				"description": "Quand vous réussissez un coup critique avec votre Attaque mentale, la cible est incapable de se déplacer pendant 4 s."
 			},
 			"glyph_of_dispel_magic": {
-				"name": "Dispel Magic",
-				"description": "Your Dispel Magic spell also damages your target for 4937 Holy damage when you successfully dispel a magical effect."
+				"name": "Dissipation de la magie",
+				"description": "Votre sort Dissipation de la magie inflige également à votre cible 30 points de dégâts du Sacré quand vous dissipez avec succès un effet magique."
 			},
 			"glyph_of_smite": {
-				"name": "Smite",
-				"description": "Your Smite spell inflicts an additional 20% damage against targets afflicted by Power Word: Solace, but that additional damage does not get transferred by Atonement."
+				"name": "Châtiment",
+				"description": "Votre sort Châtiment inflige 20% de dégâts supplémentaires aux cibles affectées par Mot de puissance : Réconfort, mais les dégâts supplémentaires ne sont pas transférés par Expiation."
 			},
 			"glyph_of_prayer_of_mending": {
-				"name": "Prayer of Mending",
-				"description": "The first charge of your Prayer of Mending heals for an additional 60% but your Prayer of Mending has 1 fewer charge."
+				"name": "Prière de guérison",
+				"description": "La première charge de votre Prière de guérison rend 60% de points de vie supplémentaires mais votre Prière de guérison a 1 charge en moins."
 			},
 			"glyph_of_levitate": {
-				"name": "Levitate",
-				"description": "Increases your movement speed while Levitating and for 10 sec afterward by 15%."
+				"name": "Lévitation",
+				"description": "Augmente de 15% votre vitesse de déplacement pendant que vous Lévitez et pendant 10 s supplémentaires après la fin du sort."
 			},
 			"glyph_of_reflective_shield": {
-				"name": "Reflective Shield",
-				"description": "Causes 70% of the damage you absorb with Power Word: Shield to reflect back at the attacker. This damage causes no threat."
+				"name": "Bouclier réflecteur",
+				"description": "Renvoie 70% des dégâts que vous absorbez avec votre Mot de pouvoir : Bouclier à l'attaquant. Ces dégâts ne génèrent pas de menace."
 			},
 			"glyph_of_dispersion": {
 				"name": "Dispersion",
-				"description": "Reduces the cooldown on Dispersion by 15 sec."
+				"description": "Réduit le temps de recharge de Dispersion de 15 s."
 			},
 			"glyph_of_leap_of_faith": {
-				"name": "Leap of Faith",
-				"description": "Your Leap of Faith spell now also clears all movement impairing effects from your target."
+				"name": "Saut de foi",
+				"description": "Désormais, votre sort Saut de foi dissipe également tous les effets affectant le déplacement sur votre cible."
 			},
 			"glyph_of_penance": {
-				"name": "Penance",
-				"description": "Increases the mana cost of Penance by 20% but allows Penance to be cast while moving."
+				"name": "Pénitence",
+				"description": "Augmente le coût en mana de Pénitence de 20% mais permet de l’utiliser en cours de déplacement."
 			},
 			"glyph_of_focused_mending": {
-				"name": "Focused Mending",
-				"description": "Causes your Prayer of Mending to only bounce between the target and the caster."
+				"name": "Guérison focalisée",
+				"description": "Permet à votre Prière de guérison de ne rebondir qu’entre la cible et le lanceur."
 			},
 			"glyph_of_mind_spike": {
-				"name": "Mind Spike",
-				"description": "Your successful non-instant Mind Spikes, reduce the cast time of your next Mind Blast within 9s by 50%. This effect can stack up to 2 times."
+				"name": "Pointes mentales",
+				"description": "Vos Pointes mentales non instantanées réussies réduisent le temps d'incantation de votre prochaine Attaque mentale pendant 9 s de 50%. Cet effet est cumulable jusqu'à 2 fois."
 			},
 			"glyph_of_binding_heal": {
-				"name": "Binding Heal",
-				"description": "Your Binding Heal spell now heals a third friendly target within 20 yards, but costs 35% more mana."
+				"name": "Soins de lien",
+				"description": "Vos Soins de lien soignent à présent une cible supplémentaire à moins de 20 mètres, mais coûtent 35% de mana en plus."
 			},
 			"glyph_of_mind_flay": {
-				"name": "Mind Flay",
-				"description": "Your Mind Flay spell no longer slows your victim's movement speed. Instead, each time Mind Flay deals damage you will be granted 15% increased movement speed for 5s, stacking up to 3 times."
+				"name": "Fouet mental",
+				"description": "Votre sort Fouet mental ne réduit plus la vitesse de déplacement de votre victime. Au lieu de cela, chaque fois que Fouet mental inflige des dégâts, vous bénéficiez d’une augmentation de 15% de votre vitesse de déplacement pendant 5 s, cumulable jusqu'à 3 fois."
 			},
 			"glyph_of_shadow_word_death": {
-				"name": "Shadow Word: Death",
-				"description": "Your Shadow Word: Death can now be cast at any time, but deals 25% damage against targets above 20% health and does not generate a Shadow Orb when used against them. Casting Shadow Word: Death now also does damage to you equivalent to the damage it would do to an enemy above 20% health."
+				"name": "Mot de l’ombre : Mort",
+				"description": "Votre sort Mot de l’ombre : Mort peut être incanté à tout moment, mais il inflige 25% de dégâts contre les cibles disposant de 20% de leurs points de vie ou plus. Incanter Mot de l’ombre : Mort vous inflige aussi des dégâts égaux à ceux qui seraient infligés à un ennemi disposant d'au moins 20% de ses points de vie."
 			},
 			"glyph_of_vampiric_embrace": {
-				"name": "Vampiric Embrace",
-				"description": "Your Vampiric Embrace converts an additional 50% of the damage you deal into healing, but the duration is reduced by 5 sec."
+				"name": "Etreinte vampirique",
+				"description": "Votre Etreinte vampirique convertit 50% de plus des dégâts que vous infligez en soins, mais sa durée est réduite de 5 s."
 			},
 			"glyph_of_lightspring": {
-				"name": "Lightspring",
-				"description": "Your Lightwell no longer automatically heals nearby targets, but can be clicked by players to deal 50% more healing than normal."
+				"name": "Source de lumière",
+				"description": "Votre Puits de lumière ne soigne plus automatiquement les cibles proches, mais les joueurs peuvent cliquer dessus pour qu’il leur prodigue 50% de soins en plus que la normale."
 			},
 			"glyph_of_lightwell": {
-				"name": "Lightwell",
-				"description": "Your Lightwell no longer automatically heals nearby targets, but can be clicked by players to deal 50% more healing than normal."
+				"name": "Puits de lumière",
+				"description": "Votre Puits de lumière ne soigne plus automatiquement les cibles proches, mais les joueurs peuvent cliquer dessus pour qu’il leur prodigue 50% de soins en plus que la normale."
 			}
 		},
 		"minor": {
 			"glyph_of_shadow_ravens": {
-				"name": "Shadow Ravens",
-				"description": "Your Shadow Orbs now appear as Shadow Ravens."
+				"name": "Corbeaux d’ombre",
+				"description": "Vos Orbes d’ombre ont maintenant l’apparence de Corbeaux d’ombre."
 			},
 			"glyph_of_borrowed_time": {
-				"name": "Borrowed Time",
-				"description": "Your Borrowed Time is now displayed visually."
+				"name": "Sursis",
+				"description": "La durée de votre Sursis est affichée."
 			},
 			"glyph_of_shackle_undead": {
-				"name": "Shackle Undead",
-				"description": "Changes the appearance of your Shackle Undead."
+				"name": "Entraves des morts-vivants",
+				"description": "Modifie l’apparence de votre sort Entraves des morts-vivants."
 			},
 			"glyph_of_dark_archangel": {
-				"name": "Dark Archangel",
-				"description": "When you apply Devouring Plague to a target, you take on the form of a Dark Archangel for 8s."
+				"name": "Sombre archange",
+				"description": "Quand vous infligez Peste dévorante à une cible, vous prenez la forme d’un sombre archange pendant 8 s."
 			},
 			"glyph_of_shadow": {
-				"name": "Shadow",
-				"description": "Alters the appearance of your Shadowform to be less transparent."
+				"name": "Ombre",
+				"description": "Modifie l’apparence de votre Forme d’Ombre, la rendant moins transparente."
 			},
 			"glyph_of_the_heavens": {
-				"name": "the Heavens",
-				"description": "Your Levitate targets will appear to be riding on a cloud for the duration of the spell."
+				"name": "Cieux",
+				"description": "Les cibles de votre Lévitation apparaissent sur un nuage pendant la durée du sort."
 			},
 			"glyph_of_confession": {
 				"name": "Confession",
-				"description": "Teaches you the ability Confession. Compels a friendly target to confess a secret."
+				"description": "Vous apprend la technique Confession. Incite une cible alliée à confesser un secret."
 			},
 			"glyph_of_holy_resurrection": {
-				"name": "Holy Resurrection",
-				"description": "Your resurrection target appears bathed in holy light for the duration of the Resurrection cast."
+				"name": "Résurrection sacrée",
+				"description": "La cible que vous ressuscitez apparaît comme baignée de lumière sacrée pendant toute la durée de l’incantation de Résurrection."
 			},
 			"glyph_of_the_valkyr": {
-				"name": "the Val'kyr",
-				"description": "While Spirit of Redemption is active, you now appear as a Val'kyr."
+				"name": "Val'kyrs",
+				"description": "Tant que dure Esprit de rédemption, vous avez l’apparence d’une val’kyr."
 			},
 			"glyph_of_shadowy_friends": {
-				"name": "Shadowy Friends",
-				"description": "Your Shadowform extends to your non-combat pets."
+				"name": "Amis de l'ombre",
+				"description": "Votre forme d’Ombre se propage à vos familiers pacifiques."
 			},
 			"glyph_of_angels": {
-				"name": "Angels",
-				"description": "Your heal spells momentarily grant you angelic wings."
+				"name": "Anges",
+				"description": "Vos sorts de soins vous font pousser une paire d'ailes angéliques éphémère."
 			},
 			"glyph_of_the_sha": {
-				"name": "the Sha",
-				"description": "Transforms your Shadowfiend and Mindbender into a Sha Beast."
+				"name": "Sha",
+				"description": "Transforme votre ombrefiel et votre torve-esprit en bête sha."
 			},
 			"glyph_of_shifted_appearances": {
-				"name": "Shifted Appearances",
-				"description": "Void Shift causes you and your target to exchange appearances for several seconds. Does not affect mounted players."
+				"name": "Apparences passagères",
+				"description": "Passage dans le Vide vous fait échanger votre apparence avec votre cible pendant plusieurs secondes. N’affecte pas les personnages-joueurs en monture."
 			},
 			"glyph_of_inspired_hymns": {
-				"name": "Inspired Hymns",
-				"description": "While channeling Hymns, a spirit appears above you."
+				"name": "Hymnes inspirés",
+				"description": "Pendant que vous canalisez des Hymnes, un esprit apparaît au-dessus de vous."
 			}
 		}
 	},
 	"rogue": {
 		"major": {
 			"glyph_of_shadow_walk": {
-				"name": "Shadow Walk",
-				"description": "Your Shadow Walk ability also increases your stealth detection while active."
+				"name": "Marche des ténèbres",
+				"description": "Votre technique Marche des ténèbres augmente aussi votre détection du camouflage quand elle est active."
 			},
 			"glyph_of_ambush": {
-				"name": "Ambush",
-				"description": "Increases the range of Ambush by 5 yards."
+				"name": "Embuscade",
+				"description": "Augmente la portée d'Embuscade de 5 mètres."
 			},
 			"glyph_of_blade_flurry": {
-				"name": "Blade Flurry",
-				"description": "Your attacks have a 30% higher chance of applying Non-Lethal poisons while Blade Flurry is active."
+				"name": "Déluge de lames",
+				"description": "Vos attaques ont 30% de chances en plus d’appliquer des poisons non létaux tant que Déluge de lames est actif."
 			},
 			"glyph_of_sharp_knives": {
-				"name": "Sharp Knives",
-				"description": "Your Fan of Knives also damages the armor of its victims, applying 1 application of the Weakened Armor effect to each target."
+				"name": "Couteaux aiguisés",
+				"description": "Votre Éventail de couteaux endommage aussi l’armure de ses victimes, appliquant 1 fois l’effet Armure affaiblie à chaque cible."
 			},
 			"glyph_of_recuperate": {
-				"name": "Recuperate",
-				"description": "Increases the healing of your Recuperate ability by an additional 1.0% of your maximum health."
+				"name": "Conversion",
+				"description": "Augmente les soins de votre technique Conversion de 1.0% supplémentaires du total de vos points de vie."
 			},
 			"glyph_of_evasion": {
 				"name": "Evasion",
-				"description": "Increases the duration of Evasion by 5 sec."
+				"description": "Augmente la durée d'Evasion de 5 s."
 			},
 			"glyph_of_recovery": {
-				"name": "Recovery",
-				"description": "While Recuperate is active, you receive 20% increased healing from other sources."
+				"name": "Convalescence",
+				"description": "Tant que Conversion est active, les soins que vous prodiguent les autres sources sont augmentés de 20%."
 			},
 			"glyph_of_expose_armor": {
-				"name": "Expose Armor",
-				"description": "Your Expose Armor ability causes three applications of Weakened Armor."
+				"name": "Exposer l’armure",
+				"description": "Votre technique Exposer l’armure génère trois applications d’Armure affaiblie."
 			},
 			"glyph_of_feint": {
-				"name": "Feint",
-				"description": "Increases the duration of Feint by 2 sec."
+				"name": "Feinte",
+				"description": "Augmente la durée de Feinte de 2 s."
 			},
 			"glyph_of_garrote": {
-				"name": "Garrote",
-				"description": "Increases the duration of your Garrote ability's silence effect by 1.0 sec."
+				"name": "Garrot",
+				"description": "Augmente la durée de l'effet de silence de votre technique Garrot de 1.0 s."
 			},
 			"glyph_of_gouge": {
-				"name": "Gouge",
-				"description": "Your Gouge ability no longer requires that the target be facing you."
+				"name": "Suriner",
+				"description": "Votre technique Suriner ne nécessite plus de faire face à la cible."
 			},
 			"glyph_of_smoke_bomb": {
-				"name": "Smoke Bomb",
-				"description": "Increases the duration of your Smoke Bomb by 2 sec."
+				"name": "Bombe fumigène",
+				"description": "Augmente la durée de votre Bombe fumigène de 2 s."
 			},
 			"glyph_of_cheap_shot": {
-				"name": "Cheap Shot",
-				"description": "Increases the duration of your Cheap Shot by 0.5 sec."
+				"name": "Coup bas",
+				"description": "Augmente la durée de votre Coup bas de 0.5 s."
 			},
 			"glyph_of_hemorraghing_veins": {
-				"name": "Hemorraghing Veins",
-				"description": "Your Sanguinary Veins ability now also increases damage done to targets affected by your Hemorrhage."
+				"name": "Hémorragie veineuse",
+				"description": "Votre technique Veines sanguinaires augmente maintenant aussi les dégâts infligés aux cibles affectées par votre Hémorragie."
 			},
 			"glyph_of_kick": {
-				"name": "Kick",
-				"description": "Increases the cooldown of your Kick ability by 4 sec, but this cooldown is reduced by 6 sec when your Kick successfully interrupts a spell."
+				"name": "Coup de pied",
+				"description": "Augmente le temps de recharge de votre technique Coup de pied de 4 s, mais ce temps de recharge est réduit de 6 s quand votre Coup de pied interrompt un sort avec succès."
 			},
 			"glyph_of_redirect": {
-				"name": "Redirect",
-				"description": "Reduces the cooldown of Redirect by 50 seconds."
+				"name": "Rediriger",
+				"description": "Réduit le temps de recharge de Rediriger de 50 s."
 			},
 			"glyph_of_shiv": {
-				"name": "Shiv",
-				"description": "Reduces the cooldown of your Shiv ability by 3 sec."
+				"name": "Kriss",
+				"description": "Réduit le temps de recharge de votre technique Kriss de 3 s."
 			},
 			"glyph_of_sprint": {
 				"name": "Sprint",
-				"description": "Increases the movement speed of your Sprint ability by an additional 30%."
+				"description": "Augmente la vitesse de déplacement de votre technique de Sprint de 30% supplémentaires."
 			},
 			"glyph_of_vendetta": {
 				"name": "Vendetta",
-				"description": "Reduces the damage bonus of your Vendetta ability by 5% but increases its duration by 10 sec."
+				"description": "Réduit le bonus aux dégâts de votre technique Vendetta de 5%, mais augmente sa durée de 10 s."
 			},
 			"glyph_of_stealth": {
-				"name": "Stealth",
-				"description": "Reduces the cooldown of your Stealth ability by 4 sec."
+				"name": "Camouflage",
+				"description": "Réduit le temps de recharge de votre technique Camouflage de 4 s."
 			},
 			"glyph_of_deadly_momentum": {
-				"name": "Deadly Momentum",
-				"description": "When you land a killing blow on an opponent that yields experience or honor, your Slice and Dice and Recuperate abilities are refreshed to their original duration."
+				"name": "Elan mortel",
+				"description": "Quand vous infligez un coup mortel à une cible qui rapporte de l’expérience ou de l’honneur, la durée de vos techniques Débiter et Conversion est réinitialisée."
 			},
 			"glyph_of_cloak_of_shadows": {
-				"name": "Cloak of Shadows",
-				"description": "While Cloak of Shadows is active, you take 40% less physical damage."
+				"name": "Cape d'ombre",
+				"description": "Lorsque votre Cape d'ombre est active, vous subissez 40% de dégâts physiques en moins."
 			},
 			"glyph_of_vanish": {
-				"name": "Vanish",
-				"description": "Increases the duration of your Vanish effect by 2 sec."
+				"name": "Disparition",
+				"description": "Augmente la durée de votre effet Disparition de 2 s."
 			},
 			"glyph_of_blind": {
-				"name": "Blind",
-				"description": "Your Blind ability also removes all damage over time effects from the target that would cause Blind to break early."
+				"name": "Cécité",
+				"description": "Votre technique Cécité supprime également de la cible tous les effets de dégâts sur la durée qui y mettraient prématurément fin."
 			}
 		},
 		"minor": {
 			"glyph_of_decoy": {
-				"name": "Decoy",
-				"description": "When you Vanish, you leave behind a brief illusion that very closely resembles you."
+				"name": "Leurre",
+				"description": "Quand vous utilisez Disparition, vous laissez derrière vous pendant une courte durée une illusion à votre image."
 			},
 			"glyph_of_detection": {
-				"name": "Detection",
-				"description": "Teaches you the ability Detection. Focus intently on trying to detect certain creatures."
+				"name": "Détection",
+				"description": "Vous apprend la technique Détection. Vous vous concentrez afin de tenter de détecter certaines créatures."
 			},
 			"glyph_of_hemorrhage": {
-				"name": "Hemorrhage",
-				"description": "Your Hemorrhage ability only causes lingering damage over time to targets that were already afflicted by a Bleed effect."
+				"name": "Hémorragie",
+				"description": "Votre technique Hémorragie n’inflige plus que des dégâts persistants sur la durée aux cibles déjà victimes d’un effet de saignement."
 			},
 			"glyph_of_pick_pocket": {
-				"name": "Pick Pocket",
-				"description": "Increases the range of your Pick Pocket ability by 5 yards."
+				"name": "Vol à la tire",
+				"description": "Augmente la portée de votre compétence Vol à la tire de 5 mètres."
 			},
 			"glyph_of_distract": {
-				"name": "Distract",
-				"description": "Increases the range of your Distract ability by 5 yards."
+				"name": "Distraction",
+				"description": "Augmente la portée de votre technique Distraction de 5 mètres."
 			},
 			"glyph_of_pick_lock": {
-				"name": "Pick Lock",
-				"description": "Reduces the cast time of your Pick Lock ability by 100%."
+				"name": "Crochetage",
+				"description": "Réduit le temps d'incantation de votre compétence Crochetage de 100%."
 			},
 			"glyph_of_safe_fall": {
-				"name": "Safe Fall",
-				"description": "Increases the distance your Safe Fall ability allows you to fall without taking damage."
+				"name": "Chute amortie",
+				"description": "Votre technique Chute amortie vous permet de tomber encore plus loin sans subir de dégâts."
 			},
 			"glyph_of_blurred_speed": {
-				"name": "Blurred Speed",
-				"description": "Enables you to walk on water while your Sprint ability is active."
+				"name": "Flou de la vitesse",
+				"description": "Vous permet de marcher sur l'eau quand votre technique Sprint est active."
 			},
 			"glyph_of_poisons": {
 				"name": "Poisons",
-				"description": "You apply poisons to your weapons 50% faster."
+				"description": "Vous appliquez les poisons sur vos armes 50% plus vite."
 			},
 			"glyph_of_killing_spree": {
-				"name": "Killing Spree",
-				"description": "Your Killing Spree returns you to your starting location when the effect ends."
+				"name": "Série meurtrière",
+				"description": "Vous revenez à votre point de départ quand votre Série meurtrière se termine."
 			},
 			"glyph_of_tricks_of_the_trade": {
-				"name": "Tricks of the Trade",
-				"description": "Your Tricks of the Trade ability no longer costs Energy, but also no longer increases the damage dealt by the target."
+				"name": "Ficelles du métier",
+				"description": "Votre technique Ficelles du métier ne coûte pas d'énergie mais le bonus aux dégâts pour son bénéficiaire est supprimé."
 			},
 			"glyph_of_disguise": {
-				"name": "Disguise",
-				"description": "When you Pick Pocket a humanoid enemy, you also copy their appearance for 5min. Your disguise will unravel upon entering combat."
+				"name": "Déguisement",
+				"description": "Quand vous utilisez Vol à la tire sur un ennemi humanoïde, vous prenez aussi son apparence pendant 5 min. Votre déguisement tombe quand vous entrez en combat."
 			},
 			"glyph_of_headhunting": {
-				"name": "Headhunting",
-				"description": "Your Throw and Deadly Throw abilities will now throw axes regardless of your currently equipped weapon."
+				"name": "Chasseur de têtes",
+				"description": "Vos techniques Lancer et Lancer mortel lancent à présent des haches, quelle que soit l’arme dont vous êtes actuellement équipé."
 			},
 			"glyph_of_improved_distraction": {
-				"name": "Improved Distraction",
-				"description": "Distract now summons a decoy at the target location."
+				"name": "Distraction améliorée",
+				"description": "Distraction invoque désormais un leurre à l’emplacement de la cible."
 			}
 		}
 	},
 	"shaman": {
 		"major": {
 			"glyph_of_unstable_earth": {
-				"name": "Unstable Earth",
-				"description": "Causes your Earthquake spell to also reduce the movement speed of affected targets by 40% for 3s."
+				"name": "Terre instable",
+				"description": "Votre sort Séisme réduit également la vitesse de déplacement des cibles affectées de 40% pendant 3 s."
 			},
 			"glyph_of_chain_lightning": {
-				"name": "Chain Lightning",
-				"description": "Your Chain Lightning spell now strikes 2 additional targets, but deals 10% less damage."
+				"name": "Chaîne d'éclairs",
+				"description": "Votre Chaîne d'éclairs frappe 2 cibles supplémentaires, mais ses dégâts sont réduits de 10%."
 			},
 			"glyph_of_spirit_walk": {
-				"name": "Spirit Walk",
-				"description": "Reduces the cooldown of your Spirit Walk ability by 25%."
+				"name": "Marche de l’esprit",
+				"description": "Réduit le temps de recharge de votre technique Marche de l’esprit de 25%."
 			},
 			"glyph_of_capacitor_totem": {
-				"name": "Capacitor Totem",
-				"description": "Reduces the charging time of your Capacitor Totem by 2 sec."
+				"name": "Totem condensateur",
+				"description": "Réduit le temps de charge de votre Totem condensateur de 2 s."
 			},
 			"glyph_of_purge": {
 				"name": "Purge",
-				"description": "Your Purge dispels 1 additional Magic effect but has a 6 sec cooldown."
+				"description": "Votre Purge dissipe 1 effet magique supplémentaire mais a un temps de recharge de 6 s."
 			},
 			"glyph_of_fire_elemental_totem": {
-				"name": "Fire Elemental Totem",
-				"description": "Reduces the cooldown and duration of your Fire Elemental Totem by 50%."
+				"name": "Totem d'élémentaire de feu",
+				"description": "Réduit le temps de recharge et la durée de votre Totem d'élémentaire de feu de 50%."
 			},
 			"glyph_of_fire_nova": {
-				"name": "Fire Nova",
-				"description": "Increases the radius of your Fire Nova spell by 5 yards."
+				"name": "Nova de feu",
+				"description": "Augmente de 5 mètres le rayon d'effet de votre technique Nova de feu."
 			},
 			"glyph_of_flame_shock": {
-				"name": "Flame Shock",
-				"description": "When your Flame Shock deals damage, it heals you for 30% of the damage dealt."
+				"name": "Horion de flammes",
+				"description": "Quand votre Horion de flammes inflige des dégâts, vous recevez 30% des dégâts infligés sous forme de points de vie."
 			},
 			"glyph_of_wind_shear": {
-				"name": "Wind Shear",
-				"description": "Increases the school lockout duration of Wind Shear by 1 sec, but also increases the cooldown by 3 sec."
+				"name": "Cisaille de vent",
+				"description": "Augmente la durée du verrouillage de l'école provoquée par Cisaille de vent de 1 s, mais augmente aussi le temps de recharge de 3 s."
 			},
 			"glyph_of_healing_stream_totem": {
-				"name": "Healing Stream Totem",
-				"description": "When your Healing Stream Totem heals an ally, it also reduces their Fire, Frost, and Nature damage taken by 10% for 6s."
+				"name": "Totem guérisseur",
+				"description": "Quand votre Totem guérisseur soigne un allié, il réduit également les dégâts de Feu, de Givre et de Nature que ce dernier subit de 10% pendant 6 s."
 			},
 			"glyph_of_healing_wave": {
-				"name": "Healing Wave",
-				"description": "Your Healing Wave also heals you for 20% of the healing effect when you heal someone else."
+				"name": "Vague de soins",
+				"description": "Votre Vague de soins vous soigne aussi pour un montant égal à 20% de l'effet de soins quand vous soignez quelqu'un d'autre."
 			},
 			"glyph_of_totemic_recall": {
-				"name": "Totemic Recall",
-				"description": "Causes your Totemic Recall ability to return the full mana cost of any recalled totems."
+				"name": "Rappel totémique",
+				"description": "Votre Rappel totémique rend le montant total du coût en mana des totems rappelés."
 			},
 			"glyph_of_telluric_currents": {
-				"name": "Telluric Currents",
-				"description": "Causes your Lightning Bolt to restore 2% of your mana when it strikes an enemy."
+				"name": "Courants telluriques",
+				"description": "Votre sort Éclair vous rend [Elémentaire, Restauration : 2%] [Amélioration : 10% ] de votre mana lorsqu’il atteint un ennemi."
 			},
 			"glyph_of_grounding_totem": {
-				"name": "Grounding Totem",
-				"description": "Instead of absorbing a spell, your Grounding Totem reflects the next harmful spell back at its caster, but the cooldown of your Grounding Totem is increased by 20 sec."
+				"name": "Totem de glèbe",
+				"description": "Au lieu d'absorber un sort, votre Totem de glèbe renvoie le prochain sort néfaste sur son lanceur, mais son temps de recharge est augmenté de 20 s."
 			},
 			"glyph_of_spiritwalkers_grace": {
-				"name": "Spiritwalker's Grace",
-				"description": "Increases the duration of your Spiritwalker's Grace by 5 sec."
+				"name": "Grâce du marcheur des esprits",
+				"description": "Augmente la durée de votre Grâce du marcheur des esprits de 5 s."
 			},
 			"glyph_of_water_shield": {
-				"name": "Water Shield",
-				"description": "Increases the mana generated reactively by your Water Shield when you are attacked by 50%, but reduces the passive mana generation by 15%."
+				"name": "Bouclier d'eau",
+				"description": "Augmente de 50% la régénération de mana de votre sort Bouclier d'eau quand on vous attaque, mais réduit de 15% la régénération de mana passive."
 			},
 			"glyph_of_cleansing_waters": {
-				"name": "Cleansing Waters",
-				"description": "When you dispel a harmful Magic or Curse effect from an ally, you also heal the target for 5% of your maximum health."
+				"name": "Eaux purificatrices",
+				"description": "Quand vous dissipez un effet magique néfaste ou de malédiction sur un allié, vous rendez également à la cible un montant de points de vie égal à 5% de votre maximum de points de vie."
 			},
 			"glyph_of_frost_shock": {
-				"name": "Frost Shock",
-				"description": "Decreases the cooldown incurred by your Frost Shock by 2 sec."
+				"name": "Horion de givre",
+				"description": "Réduit le temps de recharge Encouru par votre Horion de givre de 2 s."
 			},
 			"glyph_of_chaining": {
-				"name": "Chaining",
-				"description": "Increases the jump distance of your Chain Heal spell by 100%, but gives the spell a 2 sec cooldown."
+				"name": "Chaîne de guérison",
+				"description": "Augmente la distance que peut parcourir votre sort Salve de guérison d’une cible à l’autre de 100%, mais ajoute au sort un temps de recharge de 2 s."
 			},
 			"glyph_of_healing_storm": {
-				"name": "Healing Storm",
-				"description": "Each application of Maelstrom Weapon also increases your direct healing done by 20%."
+				"name": "Tempête guérisseuse",
+				"description": "Chaque application d'Arme du Maelström augmente également vos soins directs de 20%."
 			},
 			"glyph_of_ghost_wolf": {
-				"name": "Ghost Wolf",
-				"description": "While in Ghost Wolf form, you are less hindered by effects that would reduce movement speed."
+				"name": "Loup fantôme",
+				"description": "En forme de Loup fantôme, vous êtes moins sensible aux effets qui ralentiraient votre vitesse de déplacement."
 			},
 			"glyph_of_thunder": {
-				"name": "Thunder",
-				"description": "Reduces the cooldown on Thunderstorm by 10 sec."
+				"name": "Tonnerre",
+				"description": "Réduit le temps de recharge d'Orage de 10 s."
 			},
 			"glyph_of_feral_spirit": {
-				"name": "Feral Spirit",
-				"description": "Increases the healing done by your Feral Spirits' Spirit Hunt by 40%."
+				"name": "Esprit farouche",
+				"description": "Augmente les soins prodigués par la Chasse des Esprits de vos Esprits farouches de 40%."
 			},
 			"glyph_of_riptide": {
-				"name": "Riptide",
-				"description": "Removes the cooldown of Riptide, but reduces the initial direct healing by 75%."
+				"name": "Remous",
+				"description": "Votre technique Remous n’a plus de temps de recharge, mais les soins directs qu’elle prodigue initialement sont réduits de 75%."
 			},
 			"glyph_of_shamanistic_rage": {
-				"name": "Shamanistic Rage",
-				"description": "Activating your Shamanistic Rage ability also cleanses you of all dispellable harmful Magic effects."
+				"name": "Rage du chaman",
+				"description": "L'activation de votre technique Rage du chaman vous purifie également de tous les effets magiques néfastes qui peuvent être dissipés."
 			},
 			"glyph_of_hex": {
-				"name": "Hex",
-				"description": "Reduces the cooldown of your Hex spell by 10 sec."
+				"name": "Maléfice",
+				"description": "Réduit le temps de recharge de votre sort Maléfice de 10 s."
 			},
 			"glyph_of_totemic_vigor": {
-				"name": "Totemic Vigor",
-				"description": "Increases the health of your totems by 5% of your maximum health."
+				"name": "Vigueur totémique",
+				"description": "Augmente les points de vie de vos totems de 5% de votre maximum de points de vie."
 			},
 			"glyph_of_lightning_shield": {
-				"name": "Lightning Shield",
-				"description": "When your Lightning Shield is triggered, you take 10% less damage for 6s."
+				"name": "Bouclier de foudre",
+				"description": "Quand votre Bouclier de foudre est déclenché, vous subissez 10% de dégâts en moins pendant 6 s."
 			},
 			"glyph_of_purging": {
-				"name": "Purging",
-				"description": "Successfully Purging a target now grants a stack of Maelstrom Weapon."
+				"name": "Purgation",
+				"description": "Une purge réussie sur une cible accorde maintenant une charge d’Arme du maelström."
 			},
 			"glyph_of_eternal_earth": {
-				"name": "Eternal Earth",
-				"description": "Your Lightning Bolt has a chance to add a charge to your currently active Earth Shield. This cannot cause Earth Shield to exceed 9 charges."
+				"name": "Terre éternelle",
+				"description": "Votre Eclair a une chance d’ajouter une charge à votre Bouclier de terre actuellement actif. Cet effet ne peut permettre à Bouclier de terre d’avoir plus de 9 charges."
 			}
 		},
 		"minor": {
 			"glyph_of_the_lakestrider": {
-				"name": "the Lakestrider",
-				"description": "You automatically gain Water Walking while you are in Ghost Wolf form."
+				"name": "Marcheur du lac",
+				"description": "Vous obtenez automatiquement Marche sur l’eau quand vous vous transformez en Loup fantôme."
 			},
 			"glyph_of_lava_lash": {
-				"name": "Lava Lash",
-				"description": "Your Lava Lash ability no longer spreads Flame Shock to nearby targets."
+				"name": "Fouet de lave",
+				"description": "Votre technique Fouet de lave ne propage plus Horion de flammes aux cibles proches."
 			},
 			"glyph_of_astral_recall": {
-				"name": "Astral Recall",
-				"description": "Reduces the cooldown of your Astral Recall spell by 5 minutes."
+				"name": "Rappel astral",
+				"description": "Réduit le temps de recharge de votre sort Rappel astral de 5 minutes."
 			},
 			"glyph_of_far_sight": {
-				"name": "Far Sight",
-				"description": "Your Far Sight spell may be used indoors."
+				"name": "Double vue",
+				"description": "Votre sort Double vue peut être utilisé en intérieur."
 			},
 			"glyph_of_the_spectral_wolf": {
-				"name": "the Spectral Wolf",
-				"description": "Alters the appearance of your Ghost Wolf transformation, causing it to resemble a large, spectral wolf."
+				"name": "Loup spectral",
+				"description": "Modifie l'apparence de votre forme de Loup fantôme pour la faire ressembler à un grand loup spectral."
 			},
 			"glyph_of_totemic_encirclement": {
-				"name": "Totemic Encirclement",
-				"description": "When you cast a totem spell, you also place unempowered totems for any elements that are not currently active. These totems have 5 health and produce no other effects."
+				"name": "Encerclement totémique",
+				"description": "Quand vous lancez un sort de totem, vous posez aussi des totems non activés pour chacun des éléments non utilisés actuellement. Ces totems disposent de 5 points de vie et n’ont pas d’effet."
 			},
 			"glyph_of_thunderstorm": {
-				"name": "Thunderstorm",
-				"description": "Removes the knockback effect from your Thunderstorm spell."
+				"name": "Orage",
+				"description": "Supprimer l’effet de renversement de votre sort Orage."
 			},
 			"glyph_of_deluge": {
-				"name": "Deluge",
-				"description": "Your Chain Heal now has a watery appearance."
+				"name": "Déluge",
+				"description": "Votre sort Salve de guérison prend une apparence aqueuse."
 			},
 			"glyph_of_spirit_raptors": {
-				"name": "Spirit Raptors",
-				"description": "Your Spirit Wolves are replaced with Spirit Raptors."
+				"name": "Esprits du raptor",
+				"description": "Vos Esprits du loup sont remplacés par des Esprits du raptor."
 			},
 			"glyph_of_lingering_ancestors": {
-				"name": "Lingering Ancestors",
-				"description": "Resurrecting someone with Ancestral Spirit causes a ghostly ancestor to follow them around for a short time."
+				"name": "Ancêtres rémanents",
+				"description": "Ressusciter quelqu’un à l’aide de la technique Esprit ancestral invoque un ancêtre fantomatique qui le suit pendant un court instant."
 			},
 			"glyph_of_spirit_wolf": {
-				"name": "Spirit Wolf",
-				"description": "Ghost Wolf can be now be used while you are a ghost."
+				"name": "Esprit du loup",
+				"description": "Loup fantôme peut maintenant être utilisé pendant que vous êtes un fantôme."
 			},
 			"glyph_of_flaming_serpent": {
-				"name": "Flaming Serpent",
-				"description": "Your Searing Totem now resembles Vol'jin's Serpent Ward."
+				"name": "Serpents enflammés",
+				"description": "Votre Totem incendiaire ressemble à présent au Gardien serpent de Vol’jin."
 			},
 			"glyph_of_the_compy": {
-				"name": "the Compy",
-				"description": "Your Hex now transforms enemies into a Compy."
+				"name": "Compie",
+				"description": "Votre Maléfice transforme à présent les ennemis en compies."
 			},
 			"glyph_of_elemental_familiars": {
-				"name": "Elemental Familiars",
-				"description": "Summons a random Fire, Water, or Nature familiar. Familiars of different types have a tendency to fight each other."
+				"name": "Familiers élémentaires",
+				"description": "Invoque au hasard un familier d’eau, de feu ou de nature. Les familiers de type différent ont tendance à se battre."
 			},
 			"glyph_of_astral_fixation": {
-				"name": "Astral Fixation",
-				"description": "Astral Recall now takes you to your capital's Earthshrine."
+				"name": "Fixation astrale",
+				"description": "Rappel astral vous conduit à présent au sanctuaire terrestre de votre capitale."
 			},
 			"glyph_of_rain_of_frogs": {
-				"name": "Rain of Frogs",
-				"description": "You summon a rain storm of frogs at your targeted location."
+				"name": "Pluie de grenouilles",
+				"description": "Vous invoquez une pluie torrentielle de grenouilles à l’endroit ciblé."
 			}
 		}
 	},
 	"warlock": {
 		"major": {
 			"glyph_of_conflagrate": {
-				"name": "Conflagrate",
-				"description": "Conflagrate no longer requires Immolate to snare the target."
+				"name": "Conflagration",
+				"description": "Conflagration ne nécessite plus Immolation pour ralentir la cible."
 			},
 			"glyph_of_siphon_life": {
-				"name": "Siphon Life",
-				"description": "Your Immolate spell will heal you for 0.5% of your maximum health when dealing periodic damage."
+				"name": "Siphon de vie",
+				"description": "Votre sort Immolation vous rend 0.5% de vos points de vie maximum quand vous infligez des dégâts périodiques."
 			},
 			"glyph_of_fear": {
-				"name": "Fear",
-				"description": "Your Fear causes the target to tremble in place instead of fleeing in fear."
+				"name": "Peur",
+				"description": "Votre Peur fait trembler la cible, qui reste sur place au lieu de fuir."
 			},
 			"glyph_of_demon_training": {
-				"name": "Demon Training",
-				"description": "Improves your demon's special abilities: Your Fel Imp 's Firebolt cast time is reduced by 50% and fires in bursts of three. Increases your Voidlord 's total armor by 10%. Your Shivarra 's Mesmerizes ability also removes all damage over time effects from the target. When your Observer uses Clone Magic, you will also be healed for that amount. Increases your Wrathguard 's total health by 20%."
+				"name": "Entraînement de démon",
+				"description": "Améliore les techniques spéciales de votre démon : Le temps d’incantation de l’Éclair de feu de votre Diablotin est réduit de 50 % et les éclairs sont tirés par salves de trois. Augmente le montant total d'armure de votre Marcheur du Vide de 10 %. La technique Séduction de votre Succube ou Incube annule aussi tous les effets de dégâts sur la durée sur la cible. Lorsque votre Chasseur corrompu utilise Dévorer la magie, vous recevez le même montant de points de vie. Augmente le total de points de vie de votre Gangregarde de 20 %."
 			},
 			"glyph_of_healthstone": {
-				"name": "Healthstone",
-				"description": "You receive 100% more healing from using a healthstone, but the health is restored over 10 sec."
+				"name": "Pierre de soins",
+				"description": "Vous recevez 100% de soins supplémentaires lors de l'utilisation d'une pierre de soins, mais en 10 s."
 			},
 			"glyph_of_curse_of_the_elements": {
-				"name": "Curse of the Elements",
-				"description": "Curse of the Elements hits 2 additional nearby targets."
+				"name": "Malédiction des éléments",
+				"description": "Malédiction des éléments affecte 2 cibles proches supplémentaires."
 			},
 			"glyph_of_imp_swarm": {
-				"name": "Imp Swarm",
-				"description": "Teaches you the ability Imp Swarm. Requires Demonology. |Tinterface/icons/ability_warlock_impoweredimp.blp:24|t Imp Swarm Summons 4 Wild Imps from the Twisting Nether to attack the target. The Wild Imps passive effect is disabled while Imp Swarm is on cooldown. Imp Swarm's cooldown is reduced by spell haste. Also increases Wild Imp's cooldown by 4 sec."
+				"name": "Essaim de diablotins",
+				"description": "Vous apprend la technique Essaim de diablotins. Nécessite Démonologie. |Tinterface/icons/ability_warlock_impoweredimp.blp:24|t Essaim de diablotins Invoque 4 Diablotins sauvages provenant du Néant distordu afin d’attaquer la cible. L’effet passif de Diablotin sauvage est désactivé pendant le temps de recharge d’Essaim de diablotins. Le temps de recharge d’Essaim de diablotins est réduit par la hâte des sorts. Augmente également le temps de recharge de Diablotin sauvage de 4 s."
 			},
 			"glyph_of_havoc": {
-				"name": "Havoc",
-				"description": "Havoc gains 3 additional charges, but the cooldown is increased by 35 seconds."
+				"name": "Tumulte",
+				"description": "Tumulte obtient 3 charges supplémentaires, mais le temps de recharge est augmenté de 35 secondes."
 			},
 			"glyph_of_soulstone": {
-				"name": "Soulstone",
-				"description": "Players resurrected by Soulstone are returned to life with 100% health."
+				"name": "Pierre d'âme",
+				"description": "Les personnages ressuscités grâce à une Pierre d'âme reviennent à la vie avec 100% de leurs points de vie."
 			},
 			"glyph_of_unstable_affliction": {
-				"name": "Unstable Affliction",
-				"description": "Reduces the cast time of Unstable Affliction by 25%."
+				"name": "Affliction instable",
+				"description": "Réduit le temps d’incantation d’Affliction instable de 25%."
 			},
 			"glyph_of_soul_consumption": {
-				"name": "Soul Consumption",
-				"description": "Your Drain Soul restores 20% of your total health after you kill a target that yields experience or honor. You restore 20% of your total health after you kill a target in Demon Form that yields experience or honor. You restore 20% of your total health after you kill a target with Chaos Bolt that yields experience or honor."
+				"name": "Consomption d’âme",
+				"description": "Votre Drain d’âme vous rend 20% de votre total de points de vie quand vous avez tué une cible qui rapporte de l’expérience ou de l’honneur. Vous récupérez 20% du total de vos points de vie quand vous avez tué une cible en forme de démon qui rapporte de l’expérience ou de l’honneur. Vous récupérez 20% du total de vos points de vie quand vous avez tué une cible avec Trait du chaos qui rapporte de l’expérience ou de l’honneur."
 			},
 			"glyph_of_curse_of_exhaustion": {
-				"name": "Curse of Exhaustion",
-				"description": "Curse of Exhaustion now reduces the targets movement speed by 30%, lasts half as long and has a 10 second cooldown."
+				"name": "Malédiction d'épuisement",
+				"description": "Malédiction d'épuisement réduit maintenant la vitesse de déplacement de la cible de 30%, dure moitié moins longtemps et a un temps de recharge de 10 secondes."
 			},
 			"glyph_of_drain_life": {
-				"name": "Drain Life",
-				"description": "Increases the healing of your Drain Life by 30%."
+				"name": "Drain de vie",
+				"description": "Augmente les soins de votre Drain de vie de 30%."
 			},
 			"glyph_of_demon_hunting": {
-				"name": "Demon Hunting",
-				"description": "Requires Demonology. Teaches you the ability Dark Apotheosis. Dark Apotheosis You imbue yourself with demonic energies, reducing physical damage taken by 10.00%, reduces magic damage taken by 15%, and allows the use of various demonic abilities. In addition, Soulshatter becomes Provocation which taunts your target, Twilight Ward becomes Fury Ward which will absorb all schools of damage, Shadow Bolt becomes Demonic Slash, and Fear becomes Sleep."
+				"name": "Chasse au démon",
+				"description": "Nécessite Démonologie. Vous apprend la technique Sombre apothéose. Sombre apothéose Vous vous imprégnez d’énergies démoniaques réduisant les dégâts subis de 10%, réduisant les dégâts magiques subis de 15% et permettant l’utilisation de différentes techniques démoniaques. De plus, Brise-âme provoque votre cible, Garde du crépuscule devient Gardien de fureur qui absorbe toutes les écoles de dégâts, Trait de l’ombre devient Entaille démoniaque et Peur devient Sommeil."
 			},
 			"glyph_of_ember_tap": {
-				"name": "Ember Tap",
-				"description": "Ember Tap heals you for an additional 5% of your health, but the health is restored over 10 sec."
+				"name": "Connexion embrasé",
+				"description": "Connexion embrasée vous rend 5% supplémentaires de vos points de vie, mais les points de vie vous sont rendus en 10 s."
 			},
 			"glyph_of_demonic_circle": {
-				"name": "Demonic Circle",
-				"description": "Reduces the cooldown on Demonic Circle by 4 sec."
+				"name": "Cercle démoniaque",
+				"description": "Réduit le temps de recharge de Cercle démoniaque de 4 s."
 			},
 			"glyph_of_unending_resolve": {
-				"name": "Unending Resolve",
-				"description": "The damage reduction of Unending Resolve is reduced by 20%, but the cooldown is reduced by 60 sec."
+				"name": "Résolution interminable",
+				"description": "La réduction des dégâts de Résolution interminable est diminuée de 20%, mais son temps de recharge est réduit de 60 s."
 			},
 			"glyph_of_life_tap": {
-				"name": "Life Tap",
-				"description": "Your Life Tap no longer consumes health, but instead absorbs 0 healing received. This effect stacks. The absorb lasts 30 sec."
+				"name": "Connexion",
+				"description": "Votre Connexion ne consomme plus de points de vie, mais absorbe 0 points de vie sur les soins reçus. Cet effet est cumulable."
 			},
 			"glyph_of_eternal_resolve": {
-				"name": "Eternal Resolve",
-				"description": "Outside of Battlegrounds and Arenas: Increases the duration of Unstable Affliction, Corruption, Doom, and Agony by 50%, and reduces their damage by 20%. Inside of Battlegrounds and Arenas: Unending Resolve can no longer be activated, but passively provides 10% damage reduction from all sources."
+				"name": "Résolution éternelle",
+				"description": "Hors des champs de bataille et des arènes : Augmente la durée d’Affliction instable, Corruption, Agonie et Destin funeste de 50 % et réduit leurs dégâts de 20 %. Dans les champs de bataille et les arènes : Résolution interminable ne peut plus être activée, mais elle confère de manière passive 10 % de réduction des dégâts de toutes sources."
 			},
 			"glyph_of_supernova": {
 				"name": "Supernova",
-				"description": "When you are killed, all enemies within 8 yards take damage equal to 10% of your maximum health per Burning Ember held."
+				"description": "Quand vous mourez, tous les ennemis à moins de 8 mètres subissent un montant de dégâts égal à 10% de votre maximum de points de vie par Braise ardente en votre possession."
 			}
 		},
 		"minor": {
 			"glyph_of_hand_of_guldan": {
-				"name": "Hand of Gul'dan",
-				"description": "Your Hand of Gul'dan can now be targeted at a location."
+				"name": "Main de Gul’dan",
+				"description": "Vous pouvez à présent cibler un emplacement avec votre Main de Gul’dan."
 			},
 			"glyph_of_verdant_spheres": {
-				"name": "Verdant Spheres",
-				"description": "Your Soul Shards are transformed into Verdant Spheres."
+				"name": "Sphères verdoyantes",
+				"description": "Vos éclats d’âme sont transformés en Sphères verdoyantes."
 			},
 			"glyph_of_nightmares": {
-				"name": "Nightmares",
-				"description": "Your Felsteed and Dreadsteed can cross water while running and leave a trail of flames."
+				"name": "Cauchemars",
+				"description": "Votre palefroi corrompu et votre destrier de l’effroi peuvent galoper sur l’eau et leurs sabots laissent un sillage de flammes derrière eux."
 			},
 			"glyph_of_felguard": {
-				"name": "Felguard",
-				"description": "Your Felguard will equip a random two-handed axe, sword or polearm from your backpack."
+				"name": "Gangregarde",
+				"description": "Votre gangregarde s’équipe au hasard d’une épée à deux mains, d’une hache à deux mains ou d’une arme d’hast présente dans votre sac à dos."
 			},
 			"glyph_of_health_funnel": {
-				"name": "Health Funnel",
-				"description": "Your Health Funnel instantly restores 15% of your demon's health, but has a 10 sec. cooldown."
+				"name": "Captation de vie",
+				"description": "Votre Captation de vie rend instantanément 15% de ses points de vie à votre démon, mais elle comporte un temps de recharge de 10 s."
 			},
 			"glyph_of_subtlety": {
-				"name": "Subtlety",
-				"description": "Your Soul Shards no longer display while out of combat."
+				"name": "Discrétion",
+				"description": "Vos Eclats d’âme ne sont plus affichés en dehors des combats."
 			},
 			"glyph_of_shadow_bolt": {
-				"name": "Shadow Bolt",
-				"description": "Splits your Shadow Bolt into three smaller attacks."
+				"name": "Trait de l'ombre",
+				"description": "Divise votre Trait de l'ombre en trois attaques plus petites."
 			},
 			"glyph_of_carrion_swarm": {
-				"name": "Carrion Swarm",
-				"description": "Your Carrion Swarm no longer knocks targets back."
+				"name": "Vol de charognards",
+				"description": "Votre Vol de charognards ne fait plus tomber les cibles à la renverse."
 			},
 			"glyph_of_falling_meteor": {
-				"name": "Falling Meteor",
-				"description": "If you use Demonic Leap while falling, you slam into the ground rapidly and will not die from falling damage."
+				"name": "Chute de météores",
+				"description": "Si vous utilisez Bond démoniaque alors que vous tombez, vous tombez sur le sol à grande vitesse sans mourir de votre chute."
 			},
 			"glyph_of_unending_breath": {
-				"name": "Unending Breath",
-				"description": "Increases the swim speed of targets affected by your Unending Breath spell by 20%."
+				"name": "Respiration interminable",
+				"description": "Augmente la vitesse de nage des cibles affectées par votre Respiration interminable de 20%."
 			},
 			"glyph_of_eye_of_kilrogg": {
-				"name": "Eye of Kilrogg",
-				"description": "Your Eye of Kilrogg is no longer stealthed and can now place your Demonic Circle. The casting Warlock must be within line of sight of the Eye of Kilrogg to place the Demonic Circle. In addition, the movement speed of your Eye of Kilrogg is increased by 50% and allows it to fly in areas where flying mounts are enabled."
+				"name": "Oeil de Kilrogg",
+				"description": "Votre Oeil de Kilrogg n’est plus camouflé et peut maintenant placer votre cercle démoniaque. Le démoniste en train d’incanter doit se trouver dans le champ de vision de l’Oeil de Kilrogg pour pouvoir placer le cercle. En outre, la vitesse de déplacement de votre Oeil de Kilrogg est augmentée de 50% et il devient capable de voler dans les zones où les montures volantes sont activées."
 			},
 			"glyph_of_subjugate_demon": {
-				"name": "Subjugate Demon",
-				"description": "Reduces the cast time of your Subjugate Demon spell by 50%."
+				"name": "Subjugation de démon",
+				"description": "Réduit le temps d’incantation de votre sort Subjugation de démon de 50%."
 			},
 			"glyph_of_soulwell": {
-				"name": "Soulwell",
-				"description": "Your soulwell glows with an eerie light."
+				"name": "Puits des âmes",
+				"description": "Votre Puits des âmes brille d’une étrange lueur."
 			},
 			"glyph_of_crimson_banish": {
-				"name": "Crimson Banish",
-				"description": "Your Banish spell is now red."
+				"name": "Bannissement écarlate",
+				"description": "Votre sort Bannir est maintenant rouge."
 			},
 			"glyph_of_gateway_attunement": {
-				"name": "Gateway Attunement",
-				"description": "Demonic Gateways will automatically activate when you step near them."
+				"name": "Porte harmonisée",
+				"description": "Vos Portes des démons s’activent automatiquement lorsque vous marchez à côté."
 			}
 		}
 	},
 	"warrior": {
 		"major": {
 			"glyph_of_long_charge": {
-				"name": "Long Charge",
-				"description": "Increases the range of your Charge ability by 5 yards."
+				"name": "Charge longue",
+				"description": "Augmente la portée de votre technique Charge de 5 mètres."
 			},
 			"glyph_of_unending_rage": {
-				"name": "Unending Rage",
-				"description": "Increases your maximum Rage by 20.0."
+				"name": "Rage interminable",
+				"description": "Augmente vos points de rage maximum de 20."
 			},
 			"glyph_of_enraged_speed": {
-				"name": "Enraged Speed",
-				"description": "While Enraged, you move 20% faster."
+				"name": "Vitesse enragée",
+				"description": "Lorsque vous êtes Enragé, vous vous déplacez 20% plus vite."
 			},
 			"glyph_of_hindering_strikes": {
-				"name": "Hindering Strikes",
-				"description": "Your Heroic Strike and Cleave now also reduce the target's movement speed by 50% for 8s."
+				"name": "Coups gênants",
+				"description": "Maintenant, Frappe héroïque et Enchaînement diminuent aussi la vitesse de déplacement de la cible de 50% pendant 8 s."
 			},
 			"glyph_of_heavy_repercussions": {
-				"name": "Heavy Repercussions",
-				"description": "While your Shield Block is active, your Shield Slam hits for an additional 50% damage."
+				"name": "Lourdes répercussions",
+				"description": "Quand votre Maîtrise du blocage est active, votre Heurt de bouclier inflige 50% de dégâts supplémentaires."
 			},
 			"glyph_of_bloodthirst": {
-				"name": "Bloodthirst",
-				"description": "Increases the healing of Bloodthirst by 100%."
+				"name": "Sanguinaire",
+				"description": "Augmente les soins de Sanguinaire de 100%."
 			},
 			"glyph_of_rude_interruption": {
-				"name": "Rude Interruption",
-				"description": "Successfully interrupting a spell with Pummel increases your damage by 6% for 20s."
+				"name": "Interruption brutale",
+				"description": "L'interruption réussie d'un sort avec Volée de coups augmente vos dégâts de 6% pendant 20 s."
 			},
 			"glyph_of_gag_order": {
-				"name": "Gag Order",
-				"description": "Your Pummel and Heroic Throw also silence the target for 3s. Does not work against players."
+				"name": "Imposition du silence",
+				"description": "Vos techniques Volée de coups et Lancer héroïque réduisent aussi la cible au silence pendant 3 s. Ne fonctionne pas contre les personnages-joueurs."
 			},
 			"glyph_of_blitz": {
-				"name": "Blitz",
-				"description": "Your Charge also roots and snares an additional 2 nearby targets."
+				"name": "Attaque éclair",
+				"description": "Votre Charge enracine et ralentit 2 cibles proches supplémentaires."
 			},
 			"glyph_of_mortal_strike": {
-				"name": "Mortal Strike",
-				"description": "When your Mortal Strike is affecting a target, healing effects on you are increased by 10%."
+				"name": "Frappe mortelle",
+				"description": "Quand votre Frappe mortelle affecte une cible, les effets de soins sur vous sont augmentés de 10%."
 			},
 			"glyph_of_die_by_the_sword": {
-				"name": "Die by the Sword",
-				"description": "While Die by the Sword is active, using Overpower increases its duration by 1 sec and using Wild Strike increases its duration by 0.5 sec per use."
+				"name": "Par le fil de l’épée",
+				"description": "Quand Par le fil de l’épée est actif, Fulgurance augmente sa durée de 1 s et Frappe sauvage augmente sa durée de 0.5 s par utilisation."
 			},
 			"glyph_of_hamstring": {
-				"name": "Hamstring",
-				"description": "When you spend Rage to apply Hamstring, the Rage cost of your next Hamstring is reduced by 100%."
+				"name": "Brise-genou",
+				"description": "Quand vous dépensez de la rage pour utiliser Brise-genou, le coût en rage de votre prochain Brise-genou est réduit de 100%."
 			},
 			"glyph_of_hold_the_line": {
-				"name": "Hold the Line",
-				"description": "Improves the damage of your next Revenge by 50% following a successful parry."
+				"name": "Tenir le front",
+				"description": "Augmente les dégâts de votre prochaine Revanche de 50% après une parade réussie."
 			},
 			"glyph_of_shield_slam": {
-				"name": "Shield Slam",
-				"description": "Your Shield Slam now dispels 1 magical effect."
+				"name": "Heurt de bouclier",
+				"description": "Votre Heurt de bouclier dissipe maintenant 1 effet magique."
 			},
 			"glyph_of_hoarse_voice": {
-				"name": "Hoarse Voice",
-				"description": "Reduces the cooldown and Rage generation of your Battle and Commanding Shout by 50%."
+				"name": "Voix rauque",
+				"description": "Réduit le temps de recharge et la génération de rage de votre Cri de guerre et de votre Cri de commandement de 50%."
 			},
 			"glyph_of_sweeping_strikes": {
-				"name": "Sweeping Strikes",
-				"description": "When you hit a target with Sweeping Strikes, you gain 1.0 Rage."
+				"name": "Attaques circulaires",
+				"description": "Quand vous touchez une cible avec Attaques circulaires, vous recevez 1 points de rage."
 			},
 			"glyph_of_resonating_power": {
-				"name": "Resonating Power",
-				"description": "Increases the damage and cooldown of Thunder Clap by 50%."
+				"name": "Puissance de résonance",
+				"description": "Augmente les dégâts et le temps de recharge de Coup de tonnerre de 50%."
 			},
 			"glyph_of_victory_rush": {
-				"name": "Victory Rush",
-				"description": "Increases the total healing provided by your Victory Rush by 50%. This glyph has no effect if combined with the Impending Victory talent."
+				"name": "Ivresse de la victoire",
+				"description": "Augmente le total de soins prodigués par votre Ivresse de la victoire 50%. Ce glyphe est sans effet s’il est combiné avec le talent Victoire imminente."
 			},
 			"glyph_of_raging_wind": {
-				"name": "Raging Wind",
-				"description": "Your Raging Blow hits increase the damage of your next Whirlwind by 10%."
+				"name": "Déchaînement du vent",
+				"description": "Vos coups réussis avec Coup déchaîné augmentent les dégâts de votre prochain Tourbillon de 10%."
 			},
 			"glyph_of_whirlwind": {
-				"name": "Whirlwind",
-				"description": "Increases the radius of Whirlwind by 4 yards."
+				"name": "Tourbillon",
+				"description": "Augmente le rayon de Tourbillon de 4 mètres."
 			},
 			"glyph_of_death_from_above": {
-				"name": "Death From Above",
-				"description": "Reduces the cooldown on Heroic Leap by 15 sec."
+				"name": "La mort venue d’en haut",
+				"description": "Réduit le temps de recharge de Bond héroïque de 15 s."
 			},
 			"glyph_of_victorious_throw": {
-				"name": "Victorious Throw",
-				"description": "Increases the range of Victory Rush and Impending Victory by 15 yards."
+				"name": "Lancer victorieux",
+				"description": "Augmente la portée d’Ivresse de la victoire et de Victoire imminente de 15 mètres."
 			},
 			"glyph_of_spell_reflection": {
-				"name": "Spell Reflection",
-				"description": "Reduces the cooldown on Spell Reflection by 5 sec."
+				"name": "Renvoi de sort",
+				"description": "Réduit le temps de recharge de Renvoi de sort de 5 s."
 			},
 			"glyph_of_shield_wall": {
-				"name": "Shield Wall",
-				"description": "Shield Wall now reduces damage taken by an additional 20%, but its cooldown is increased by 2 min."
+				"name": "Mur protecteur",
+				"description": "Mur protecteur réduit à présent les dégâts subis de 20% supplémentaires, mais son temps de recharge est augmenté de 2 min."
 			},
 			"glyph_of_colossus_smash": {
-				"name": "Colossus Smash",
-				"description": "Your Colossus Smash also applies the Sunder Armor effect to your target."
+				"name": "Frappe du colosse",
+				"description": "Votre Frappe du colosse applique également l’effet Fracasser armure sur votre cible."
 			},
 			"glyph_of_bull_rush": {
-				"name": "Bull Rush",
-				"description": "Your Charge generates 15 additional Rage."
+				"name": "Charge de taureau",
+				"description": "Votre Charge génère 15 points de rage supplémentaires."
 			},
 			"glyph_of_recklessness": {
-				"name": "Recklessness",
-				"description": "Decreases the critical chance of Recklessness by 12% but increases its duration by 50%."
+				"name": "Témérité",
+				"description": "Réduit les chances de coup critique de Témérité de 12% mais augmente sa durée de 50%."
 			},
 			"glyph_of_incite": {
-				"name": "Incite",
-				"description": "Using Demoralizing Shout makes your next 3 Heroic Strike or Cleave abilities free."
+				"name": "Emulation",
+				"description": "L’utilisation de Cri démoralisant supprime le coût de vos 3 prochaines techniques Frappe héroïque ou Enchaînement."
 			},
 			"glyph_of_impaling_throws": {
-				"name": "Impaling Throws",
-				"description": "Heroic Throw now leaves an axe in the target, which can be retrieved by moving within 5 yards of the target to finish the cooldown of Heroic Throw. This effect will only occur when Heroic Throw is cast from more than 10 yards away from the target."
+				"name": "Lancers transperçants",
+				"description": "Lancers transperçants plante désormais une hache dans la cible, qui peut être récupérée en se déplaçant à moins de 5 mètres de la cible pour mettre un terme au temps de recharge de Lancers transperçants. Cet effet ne peut se produire que lorsque Lancers transperçants est lancé à plus de 10 mètres de la cible."
 			},
 			"glyph_of_the_executor": {
-				"name": "The Executor",
-				"description": "Killing an enemy with Execute grants you 30 rage."
+				"name": "Exécuteur",
+				"description": "Le fait de tuer un ennemi avec Exécution vous fait gagner 30 points de rage."
 			}
 		},
 		"minor": {
 			"glyph_of_mystic_shout": {
-				"name": "Mystic Shout",
-				"description": "Your Battle Shout and Commanding Shout cause you to hover in the air for 1s."
+				"name": "Cri mystique",
+				"description": "Votre Cri de guerre et votre Cri de commandement vous font planer dans les airs pendant 1 s."
 			},
 			"glyph_of_bloodcurdling_shout": {
-				"name": "Bloodcurdling Shout",
-				"description": "Your Battle Shout and Commanding Shout terrify small animals."
+				"name": "Cri à glacer le sang",
+				"description": "Votre Cri de guerre et votre Cri de commandement terrifient les petits animaux."
 			},
 			"glyph_of_gushing_wound": {
-				"name": "Gushing Wound",
-				"description": "Your Deep Wounds are even bloodier than normal."
+				"name": "Blessure hémorragique",
+				"description": "Vos Blessures profondes sont encore plus sanglantes que d’habitude."
 			},
 			"glyph_of_mighty_victory": {
-				"name": "Mighty Victory",
-				"description": "When your Victory Rush or Impending Victory heal you, you grow slightly larger."
+				"name": "Puissance de la victoire",
+				"description": "Quand votre Ivresse de la victoire ou votre Victoire imminente vous soigne, vous gagnez légèrement en taille."
 			},
 			"glyph_of_bloody_healing": {
-				"name": "Bloody Healing",
-				"description": "Increases the healing you receive from bandages by 20% while your Deep Wounds is active."
+				"name": "Soins sanglants",
+				"description": "Augmente les soins que vous prodiguent les bandages de 20% tant que votre technique Blessures profondes est active."
 			},
 			"glyph_of_intimidating_shout": {
-				"name": "Intimidating Shout",
-				"description": "All targets of your Intimidating Shout now tremble in place instead of fleeing in fear."
+				"name": "Cri d'intimidation",
+				"description": "Toutes les cibles de votre Cri d'intimidation tremblent à présent sur place au lieu de fuir sous l'effet de la peur."
 			},
 			"glyph_of_thunder_strike": {
-				"name": "Thunder Strike",
-				"description": "Your Thunder Clap visual includes a lightning strike."
+				"name": "Coup de tonnerre",
+				"description": "Le visuel de votre Coup de tonnerre comporte maintenant un éclair."
 			},
 			"glyph_of_crow_feast": {
-				"name": "Crow Feast",
-				"description": "Your Execute critical strikes summon a flock of carrion birds."
+				"name": "Festin des corbeaux",
+				"description": "Vos coups critiques avec Exécution invoquent un vol de charognards."
 			},
 			"glyph_of_burning_anger": {
-				"name": "Burning Anger",
-				"description": "You get so angry when Enraged that you catch on fire."
+				"name": "Colère brûlante",
+				"description": "Quand vous êtes Enragé, vous êtes tellement en colère que vous prenez feu."
 			},
 			"glyph_of_the_blazing_trail": {
-				"name": "the Blazing Trail",
-				"description": "Your Charge leaves a trail of fire in its wake. If you're going to Charge why not do it with some style?"
+				"name": "Traînée ardente",
+				"description": "Votre Charge laisse un sillage de feu. Autant charger avec classe."
 			},
 			"glyph_of_the_raging_whirlwind": {
-				"name": "the Raging Whirlwind",
-				"description": "Whirlwind gives you 15 rage over 6s, but for that time you no longer generate rage from autoattacks."
+				"name": "Tourbillon déchaîné",
+				"description": "Tourbillon génère 15 points de rage en 6 s, mais pendant ce temps les attaques automatiques ne génèrent pas de rage."
 			},
 			"glyph_of_the_subtle_defender": {
-				"name": "the Subtle Defender",
-				"description": "Removes the threat generation bonus from Defensive Stance."
+				"name": "Défenseur subtil",
+				"description": "Supprime le bonus à la génération de menace de la posture défensive."
 			},
 			"glyph_of_the_watchful_eye": {
-				"name": "the Watchful Eye",
-				"description": "Intervene will now target the party or raid member with the lowest health within 25 yards."
+				"name": "Œil attentif",
+				"description": "Intervention cible à présent le membre du groupe ou raid aux points de vie les plus bas dans les 25 mètres."
 			},
 			"glyph_of_the_weaponmaster": {
-				"name": "the Weaponmaster",
-				"description": "Your Shout abilities cause the appearance of your weapon to change to that of a random weapon from your primary bag for 10min."
+				"name": "Maître d’armes",
+				"description": "Vos techniques de Cri donnent à votre arme l’apparence d’une arme choisie au hasard parmi celles dans votre sac principal pendant 10 min."
 			}
 		}
 	}

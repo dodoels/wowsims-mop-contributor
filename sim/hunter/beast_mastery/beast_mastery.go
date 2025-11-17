@@ -75,6 +75,17 @@ func (bmHunter *BeastMasteryHunter) Initialize() {
 		direBeastPetMod.Activate()
 	}
 
+	var thunderhawkPetMods []*core.SpellMod = make([]*core.SpellMod, len(bmHunter.Thunderhawks))
+	for i := range bmHunter.Thunderhawks {
+		if bmHunter.Thunderhawks[i] != nil {
+			thunderhawkPetMods[i] = bmHunter.Thunderhawks[i].AddDynamicMod(core.SpellModConfig{
+				Kind:       core.SpellMod_DamageDone_Pct,
+				FloatValue: baseMasteryBonus,
+			})
+			thunderhawkPetMods[i].Activate()
+		}
+	}
+
 	var amocDamageMod *core.SpellMod
 	if bmHunter.Talents.AMurderOfCrows {
 		amocDamageMod = bmHunter.AddDynamicMod(core.SpellModConfig{
@@ -99,6 +110,12 @@ func (bmHunter *BeastMasteryHunter) Initialize() {
 
 		if direBeastPetMod != nil {
 			direBeastPetMod.UpdateFloatValue(masteryBonus)
+		}
+
+		for i := range bmHunter.Thunderhawks {
+			if thunderhawkPetMods[i] != nil {
+				thunderhawkPetMods[i].UpdateFloatValue(masteryBonus)
+			}
 		}
 
 		if amocDamageMod != nil {

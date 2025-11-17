@@ -1,2 +1,12 @@
-// Configuration for spec-specific UI elements on the settings tab.
-// These don't need to be in a separate file but it keeps things cleaner.
+import * as InputHelpers from '../../core/components/input_helpers';
+import { Player } from '../../core/player';
+import { Spec } from '../../core/proto/common';
+import i18n from '../../i18n/config';
+
+
+export const ExhaleWindow = InputHelpers.makeSpecOptionsNumberInput<Spec.SpecAfflictionWarlock>({
+	fieldName: 'exhaleWindow',
+	label: i18n.t('rotation_tab.options.warlock.affliction.exhale_window.label'),
+	labelTooltip: i18n.t('rotation_tab.options.warlock.affliction.exhale_window.tooltip'),
+	showWhen: (player: Player<Spec.SpecAfflictionWarlock>) => true,
+});

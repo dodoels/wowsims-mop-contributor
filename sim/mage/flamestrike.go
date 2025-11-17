@@ -8,11 +8,11 @@ import (
 
 func (mage *Mage) registerFlamestrikeSpell() {
 
-	flameStrikeVariance := 0.2    // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2120 Field: "Variance"
-	flameStrikeScaling := .46     // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2120 Field: "Coefficient"
-	flameStrikeCoefficient := .52 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2120 Field: "BonusCoefficient"
-	flameStrikeDotScaling := .12
-	flameStrikeDotCoefficient := .14
+	flameStrikeVariance := 0.20200000703    // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2120 Field: "Variance"
+	flameStrikeScaling := 0.45600000024     // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2120 Field: "Coefficient"
+	flameStrikeCoefficient := 0.51800000668 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2120 Field: "BonusCoefficient"
+	flameStrikeDotScaling := 0.11900000274
+	flameStrikeDotCoefficient := 0.13500000536
 
 	mage.Flamestrike = mage.RegisterSpell(core.SpellConfig{
 		ActionID:       core.ActionID{SpellID: 2120},

@@ -28,8 +28,8 @@ func (arcane *ArcaneMage) OutcomeArcaneMissiles(sim *core.Simulation, result *co
 func (arcane *ArcaneMage) registerArcaneMissilesSpell() {
 
 	// Values found at https://wago.tools/db2/SpellEffect?build=5.5.0.60802&filter%5BSpellID%5D=exact%253A7268
-	arcaneMissilesScaling := 0.22
-	arcaneMissilesCoefficient := 0.22
+	arcaneMissilesScaling := 0.22200000286
+	arcaneMissilesCoefficient := 0.22200000286
 	actionID := core.ActionID{SpellID: 7268}
 	arcane.arcaneMissilesTickSpell = arcane.GetOrRegisterSpell(core.SpellConfig{
 		ActionID:       actionID.WithTag(1),
@@ -116,14 +116,16 @@ func (arcane *ArcaneMage) registerArcaneMissilesSpell() {
 	}))
 
 	// Listener for procs
-	core.MakeProcTriggerAura(&arcane.Unit, core.ProcTrigger{
-		Name:              "Arcane Missiles - Activation",
-		ActionID:          core.ActionID{SpellID: 79684},
-		ClassSpellMask:    mage.MageSpellsAll ^ (mage.MageSpellArcaneMissilesCast | mage.MageSpellArcaneMissilesTick | mage.MageSpellNetherTempestDot | mage.MageSpellLivingBombDot),
-		SpellFlagsExclude: core.SpellFlagHelpful,
-		ProcChance:        0.3,
-		Callback:          core.CallbackOnSpellHitDealt,
-		Outcome:           core.OutcomeLanded,
+	arcane.MakeProcTriggerAura(core.ProcTrigger{
+		Name:               "Arcane Missiles - Activation",
+		ActionID:           core.ActionID{SpellID: 79684},
+		ClassSpellMask:     mage.MageSpellsAll ^ (mage.MageSpellArcaneMissilesCast | mage.MageSpellArcaneMissilesTick | mage.MageSpellNetherTempestDot | mage.MageSpellLivingBombDot | mage.MageSpellLivingBombExplosion),
+		SpellFlagsExclude:  core.SpellFlagHelpful,
+		ProcChance:         0.3,
+		Callback:           core.CallbackOnSpellHitDealt,
+		Outcome:            core.OutcomeLanded,
+		TriggerImmediately: true,
+
 		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			arcane.arcaneMissilesProcAura.Activate(sim)
 			arcane.arcaneMissilesProcAura.AddStack(sim)

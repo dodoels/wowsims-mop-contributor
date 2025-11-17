@@ -35,6 +35,10 @@ func (raw RandomSuffix) ToProto() *proto.ItemRandomSuffix {
 
 		amount := raw.AllocationPct[i]
 		suffix.Stats[stat] = float64(amount)
+
+		if suffix.Name == "" {
+			suffix.Name = stats.Stat(stat).StatName()
+		}
 	}
 	return suffix
 }

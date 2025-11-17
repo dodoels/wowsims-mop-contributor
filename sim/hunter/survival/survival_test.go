@@ -14,21 +14,27 @@ func init() {
 }
 
 func TestSurvival(t *testing.T) {
+	var talentSets []core.TalentsCombo
+	talentSets = core.GenerateTalentVariationsForRows(SurvivalTalents, SurvivalDefaultGlyphs, []int{4, 5})
 
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class:      proto.Class_ClassHunter,
 			Race:       proto.Race_RaceOrc,
-			OtherRaces: []proto.Race{proto.Race_RaceDwarf},
+			OtherRaces: []proto.Race{proto.Race_RaceWorgen},
 
-			GearSet:          core.GetGearSet("../../../ui/hunter/presets", "p1"),
-			Talents:          SurvivalTalents,
-			Glyphs:           SurvivalDefaultGlyphs,
-			Consumables:      FullConsumesSpec,
-			SpecOptions:      core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsBasic},
-			Rotation:         core.GetAplRotation("../../../ui/hunter/survival/apls", "sv"),
-			StartingDistance: 5.1,
+			GearSet:         core.GetGearSet("../../../ui/hunter/survival/gear_sets", "p2"),
+			Talents:         SurvivalTalents,
+			OtherTalentSets: talentSets,
+			Glyphs:          SurvivalDefaultGlyphs,
+			Consumables:     FullConsumesSpec,
+			SpecOptions:     core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsBasic},
+			Rotation:        core.GetAplRotation("../../../ui/hunter/survival/apls", "sv"),
+			Profession1:     proto.Profession_Engineering,
+			Profession2:     proto.Profession_Tailoring,
+
 			ItemFilter:       ItemFilter,
+			StartingDistance: 24,
 		},
 	}))
 }
@@ -40,35 +46,6 @@ var ItemFilter = core.ItemFilter{
 		proto.RangedWeaponType_RangedWeaponTypeCrossbow,
 		proto.RangedWeaponType_RangedWeaponTypeGun,
 	},
-}
-
-func BenchmarkSimulate(b *testing.B) {
-	rsr := &proto.RaidSimRequest{
-		Raid: core.SinglePlayerRaidProto(
-			&proto.Player{
-				Race:           proto.Race_RaceOrc,
-				Class:          proto.Class_ClassHunter,
-				Equipment:      core.GetGearSet("../../../ui/hunter/presets", "p1").GearSet,
-				Consumables:    FullConsumesSpec,
-				Spec:           PlayerOptionsBasic,
-				Glyphs:         SurvivalDefaultGlyphs,
-				TalentsString:  SurvivalTalents,
-				Buffs:          core.FullIndividualBuffs,
-				ReactionTimeMs: 100,
-			},
-			core.FullPartyBuffs,
-			core.FullRaidBuffs,
-			core.FullDebuffs),
-		Encounter: &proto.Encounter{
-			Duration: 300,
-			Targets: []*proto.Target{
-				core.NewDefaultTarget(),
-			},
-		},
-		SimOptions: core.AverageDefaultSimTestOptions,
-	}
-
-	core.RaidBenchmark(b, rsr)
 }
 
 var FullConsumesSpec = &proto.ConsumesSpec{
@@ -89,8 +66,10 @@ var PlayerOptionsBasic = &proto.Player_SurvivalHunter{
 	SurvivalHunter: &proto.SurvivalHunter{
 		Options: &proto.SurvivalHunter_Options{
 			ClassOptions: &proto.HunterOptions{
-				PetType:   proto.HunterOptions_Wolf,
-				PetUptime: 1,
+				PetType:           proto.HunterOptions_Tallstrider,
+				PetUptime:         1,
+				UseHuntersMark:    true,
+				GlaiveTossSuccess: 0.8,
 			},
 		},
 	},

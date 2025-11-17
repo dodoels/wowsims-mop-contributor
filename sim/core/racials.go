@@ -156,8 +156,9 @@ func applyRaceEffects(agent Agent) {
 			character.AddStat(stats.ExpertiseRating, ExpertisePerQuarterPercentReduction*4)
 		}
 
-		applyWeaponSpecialization(character, 4*ExpertisePerQuarterPercentReduction,
-			proto.WeaponType_WeaponTypeMace)
+		if ranged == nil {
+			applyWeaponSpecialization(character, "Mace Specialization", 59224, false, proto.WeaponType_WeaponTypeMace)
+		}
 
 		actionID := ActionID{SpellID: 20594}
 
@@ -191,12 +192,14 @@ func applyRaceEffects(agent Agent) {
 	case proto.Race_RaceGnome:
 		character.PseudoStats.SchoolDamageTakenMultiplier[stats.SchoolIndexArcane] *= 0.99
 		character.MultiplyStat(stats.Mana, 1.05)
-		applyOneHandWeaponSpecialization(character, 4*ExpertisePerQuarterPercentReduction,
-			proto.WeaponType_WeaponTypeSword, proto.WeaponType_WeaponTypeDagger)
+		applyWeaponSpecialization(character, "Shortblade Specialization", 92680, true,
+			proto.WeaponType_WeaponTypeSword,
+			proto.WeaponType_WeaponTypeDagger)
 	case proto.Race_RaceHuman:
 		character.MultiplyStat(stats.Spirit, 1.03)
-		applyWeaponSpecialization(character, 4*ExpertisePerQuarterPercentReduction,
-			proto.WeaponType_WeaponTypeMace, proto.WeaponType_WeaponTypeSword)
+		applyWeaponSpecialization(character, "Sword Specialization ", 20597, false,
+			proto.WeaponType_WeaponTypeMace,
+			proto.WeaponType_WeaponTypeSword)
 	case proto.Race_RaceNightElf:
 		character.PseudoStats.SchoolDamageTakenMultiplier[stats.SchoolIndexNature] *= 0.99
 		character.PseudoStats.BaseDodgeChance += 0.02
@@ -282,9 +285,9 @@ func applyRaceEffects(agent Agent) {
 			},
 		})
 
-		// Axe specialization
-		applyWeaponSpecialization(character, 4*ExpertisePerQuarterPercentReduction,
-			proto.WeaponType_WeaponTypeAxe, proto.WeaponType_WeaponTypeFist)
+		applyWeaponSpecialization(character, "Axe Specialization", 20574, false,
+			proto.WeaponType_WeaponTypeAxe,
+			proto.WeaponType_WeaponTypeFist)
 	case proto.Race_RaceTauren:
 		character.PseudoStats.SchoolDamageTakenMultiplier[stats.SchoolIndexNature] *= 0.99
 		character.AddStat(stats.Health, character.GetBaseStats()[stats.Health]*0.05)
@@ -359,14 +362,16 @@ func applyRaceEffects(agent Agent) {
 			},
 		})
 
-		MakeProcTriggerAura(&character.Unit, ProcTrigger{
-			Name:       "Touch of the Grave",
-			ActionID:   ActionID{SpellID: 5227},
-			Callback:   CallbackOnSpellHitDealt | CallbackOnPeriodicDamageDealt,
-			ProcMask:   ProcMaskSpellDamage | ProcMaskMelee,
-			Outcome:    OutcomeLanded,
-			ProcChance: 0.2,
-			ICD:        time.Second * 15,
+		character.MakeProcTriggerAura(ProcTrigger{
+			Name:               "Touch of the Grave",
+			ActionID:           ActionID{SpellID: 5227},
+			Callback:           CallbackOnSpellHitDealt | CallbackOnPeriodicDamageDealt,
+			ProcMask:           ProcMaskSpellDamage | ProcMaskMelee,
+			Outcome:            OutcomeLanded,
+			ProcChance:         0.2,
+			ICD:                time.Second * 15,
+			TriggerImmediately: true,
+
 			Handler: func(sim *Simulation, spell *Spell, result *SpellResult) {
 				touchOfTheGraveDamageSpell.Cast(sim, result.Target)
 			},
@@ -386,30 +391,68 @@ func applyRaceEffects(agent Agent) {
 	}
 }
 
-func applyWeaponSpecialization(character *Character, expertiseBonus float64, weaponTypes ...proto.WeaponType) {
-	mask := character.GetProcMaskForTypes(weaponTypes...)
+func applyWeaponSpecialization(character *Character, label string, spellID int32, oneHand bool, weaponTypes ...proto.WeaponType) {
+	mask := Ternary(oneHand, character.GetDynamicProcMaskForTypesAndHand(false, weaponTypes...), character.GetDynamicProcMaskForTypes(weaponTypes...))
+	expertiseBonus := ExpertisePerQuarterPercentReduction * 4
 
-	if mask == ProcMaskMelee || (mask == ProcMaskMeleeMH && !character.HasOHWeapon()) {
-		character.AddStat(stats.ExpertiseRating, expertiseBonus)
-	} else {
-		character.OnSpellRegistered(func(spell *Spell) {
-			if spell.ProcMask.Matches(mask) {
-				spell.BonusExpertiseRating += expertiseBonus
+	expSpellMod := character.AddDynamicMod(SpellModConfig{
+		Kind: SpellMod_Custom,
+		ApplyCustom: func(mod *SpellMod, spell *Spell) {
+			if spell.ProcMask.Matches(ProcMaskMeleeOH) && !spell.ProcMask.Matches(ProcMaskMeleeMH) {
+				spell.BonusExpertiseRating += mod.GetFloatValue()
 			}
-		})
-	}
-}
-
-func applyOneHandWeaponSpecialization(character *Character, expertiseBonus float64, weaponTypes ...proto.WeaponType) {
-	mask := character.GetProcMaskForTypesAndHand(false, weaponTypes...)
-
-	if mask == ProcMaskMelee || (mask == ProcMaskMeleeMH && !character.HasOHWeapon()) {
-		character.AddStat(stats.ExpertiseRating, expertiseBonus)
-	} else {
-		character.OnSpellRegistered(func(spell *Spell) {
-			if spell.ProcMask.Matches(mask) {
-				spell.BonusExpertiseRating += expertiseBonus
+		},
+		RemoveCustom: func(mod *SpellMod, spell *Spell) {
+			if spell.ProcMask.Matches(ProcMaskMeleeOH) && !spell.ProcMask.Matches(ProcMaskMeleeMH) {
+				spell.BonusExpertiseRating -= mod.GetFloatValue()
 			}
-		})
-	}
+		},
+		FloatValue: expertiseBonus,
+	})
+
+	expStatAura := character.RegisterAura(Aura{
+		Label:    "ExpertiseStatAura",
+		Duration: NeverExpires,
+	}).AttachStatBuff(stats.ExpertiseRating, expertiseBonus)
+
+	aura := character.RegisterAura(Aura{
+		Label:      label,
+		ActionID:   ActionID{SpellID: spellID},
+		BuildPhase: Ternary(mask.Matches(ProcMaskMeleeMH), CharacterBuildPhaseBase, CharacterBuildPhaseNone),
+		Duration:   NeverExpires,
+
+		OnReset: func(aura *Aura, sim *Simulation) {
+			if *mask != ProcMaskUnknown {
+				aura.Activate(sim)
+			}
+		},
+
+		OnGain: func(aura *Aura, sim *Simulation) {
+			// Always add if main-hand matches
+			if mask.Matches(ProcMaskMeleeMH) {
+				expStatAura.Activate(sim)
+				if *mask == ProcMaskMeleeMH {
+					// Remove from off-hand attacks if only main-hand matches
+					expSpellMod.UpdateFloatValue(-expertiseBonus)
+					expSpellMod.Activate()
+				}
+			} else if mask.Matches(ProcMaskMeleeOH) {
+				// Only add specifically to off-hand attacks
+				expSpellMod.UpdateFloatValue(expertiseBonus)
+				expSpellMod.Activate()
+			}
+		},
+
+		OnExpire: func(aura *Aura, sim *Simulation) {
+			expStatAura.Deactivate(sim)
+			expSpellMod.Deactivate()
+		},
+	})
+
+	character.RegisterItemSwapCallback(AllWeaponSlots(), func(sim *Simulation, slot proto.ItemSlot) {
+		aura.Deactivate(sim)
+		if mask.Matches(ProcMaskMelee) {
+			aura.Activate(sim)
+		}
+	})
 }

@@ -13,9 +13,9 @@ func (mage *Mage) registerFireBlastSpell() {
 		return
 	}
 
-	fireBlastVariance := 0.17    // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2136 Field: "Variance"
-	fireBlastScaling := .79      // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2136 Field: "Coefficient"
-	fireBlastCoefficient := 1.01 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2136 Field: "BonusCoefficient"
+	fireBlastVariance := 0.17000000179    // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2136 Field: "Variance"
+	fireBlastScaling := 0.78899997473     // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2136 Field: "Coefficient"
+	fireBlastCoefficient := 1.01199996471 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2136 Field: "BonusCoefficient"
 
 	mage.FireBlast = mage.RegisterSpell(core.SpellConfig{
 		ActionID:       core.ActionID{SpellID: 2136},

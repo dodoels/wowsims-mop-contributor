@@ -50,6 +50,8 @@ func (affliction *AfflictionWarlock) registerSoulSwap() {
 				(*spellRef).Proc(sim, target)
 				dot.RestoreState(state, sim)
 			}
+
+			inhaleBuff.Deactivate(sim)
 		},
 	})
 

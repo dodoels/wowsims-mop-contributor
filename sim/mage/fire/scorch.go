@@ -9,9 +9,9 @@ import (
 
 func (fire *FireMage) registerScorchSpell() {
 
-	scorchVariance := 0.17   // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2948 Field: "Variance"
-	scorchScaling := .98     // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2948 Field: "Coefficient"
-	scorchCoefficient := .84 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2948 Field: "BonusCoefficient"
+	scorchVariance := 0.17000000179   // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2948 Field: "Variance"
+	scorchScaling := 0.97600001097    // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2948 Field: "Coefficient"
+	scorchCoefficient := 0.8370000124 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2948 Field: "BonusCoefficient"
 
 	fire.RegisterSpell(core.SpellConfig{
 		ActionID:       core.ActionID{SpellID: 2948},

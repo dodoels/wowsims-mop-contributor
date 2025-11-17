@@ -3,40 +3,41 @@ package unholy
 import (
 	"testing"
 
-	_ "github.com/wowsims/mop/sim/common" // imported to get item effects included.
+	"github.com/wowsims/mop/sim/common" // imported to get item effects included.
 	"github.com/wowsims/mop/sim/core"
 	"github.com/wowsims/mop/sim/core/proto"
 )
 
 func init() {
 	RegisterUnholyDeathKnight()
+	common.RegisterAllEffects()
 }
 
 func TestUnholy(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class:      proto.Class_ClassDeathKnight,
-			Race:       proto.Race_RaceOrc,
-			OtherRaces: []proto.Race{proto.Race_RaceTroll, proto.Race_RaceWorgen},
+			Race:       proto.Race_RaceTroll,
+			OtherRaces: []proto.Race{proto.Race_RaceOrc, proto.Race_RaceWorgen},
 
-			GearSet: core.GetGearSet("../../../ui/death_knight/unholy/gear_sets", "p2"),
+			GearSet: core.GetGearSet("../../../ui/death_knight/unholy/gear_sets", "p3"),
 			OtherGearSets: []core.GearSetCombo{
 				core.GetGearSet("../../../ui/death_knight/unholy/gear_sets", "prebis"),
 			},
-			Talents: "200010",
+			Talents: "300010",
 			OtherTalentSets: []core.TalentsCombo{
 				{Label: "RoilingBlood", Talents: "100010", Glyphs: UnholyDefaultGlyphs},
-				{Label: "UnholyBlight", Talents: "300010", Glyphs: UnholyDefaultGlyphs},
-				{Label: "RunicEmpowerment", Talents: "200020", Glyphs: UnholyDefaultGlyphs},
-				{Label: "RunicCorruption", Talents: "200030", Glyphs: UnholyDefaultGlyphs},
-				{Label: "GlyphOfOutbreak", Talents: "200010", Glyphs: GlyphOfOutbreak},
+				{Label: "PlagueLeech", Talents: "200010", Glyphs: UnholyDefaultGlyphs},
+				{Label: "RunicEmpowerment", Talents: "300020", Glyphs: UnholyDefaultGlyphs},
+				{Label: "RunicCorruption", Talents: "300030", Glyphs: UnholyDefaultGlyphs},
+				{Label: "GlyphOfOutbreak", Talents: "300010", Glyphs: GlyphOfOutbreak},
 			},
 			Glyphs:      UnholyDefaultGlyphs,
 			Consumables: FullConsumesSpec,
 			SpecOptions: core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsUnholy},
 			Rotation:    core.GetAplRotation("../../../ui/death_knight/unholy/apls", "default"),
 			Profession1: proto.Profession_Engineering,
-			Profession2: proto.Profession_Blacksmithing,
+			Profession2: proto.Profession_Herbalism,
 
 			ItemFilter: ItemFilter,
 		},

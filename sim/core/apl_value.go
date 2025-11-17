@@ -106,6 +106,8 @@ func (rot *APLRotation) newAPLValueWithContext(config *proto.APLValue, groupVari
 		value = rot.newValueBossSpellIsCasting(config.GetBossSpellIsCasting(), config.Uuid)
 	case *proto.APLValue_BossSpellTimeToReady:
 		value = rot.newValueBossSpellTimeToReady(config.GetBossSpellTimeToReady(), config.Uuid)
+	case *proto.APLValue_BossCurrentTarget:
+		value = rot.newValueBossCurrentTarget(config.GetBossCurrentTarget(), config.Uuid)
 
 	// Resources
 	case *proto.APLValue_CurrentHealth:
@@ -164,6 +166,8 @@ func (rot *APLRotation) newAPLValueWithContext(config *proto.APLValue, groupVari
 		value = rot.newValueNextRuneCooldown(config.GetNextRuneCooldown(), config.Uuid)
 	case *proto.APLValue_RuneSlotCooldown:
 		value = rot.newValueRuneSlotCooldown(config.GetRuneSlotCooldown(), config.Uuid)
+	case *proto.APLValue_FullRuneCooldown:
+		value = rot.newValueFullRuneCooldown(config.GetFullRuneCooldown(), config.Uuid)
 
 	// Unit
 	case *proto.APLValue_UnitIsMoving:
@@ -210,6 +214,8 @@ func (rot *APLRotation) newAPLValueWithContext(config *proto.APLValue, groupVari
 		value = rot.newValueSpellGCDHastedDuration(config.GetSpellGcdHastedDuration(), config.Uuid)
 	case *proto.APLValue_SpellFullCooldown:
 		value = rot.newValueSpellFullCooldown(config.GetSpellFullCooldown(), config.Uuid)
+	case *proto.APLValue_SpellInFlight:
+		value = rot.newValueSpellInFlight(config.GetSpellInFlight(), config.Uuid)
 
 	// Auras
 	case *proto.APLValue_AuraIsKnown:
@@ -249,6 +255,8 @@ func (rot *APLRotation) newAPLValueWithContext(config *proto.APLValue, groupVari
 		value = rot.newValueAllItemStatProcsActive(config.GetAllTrinketStatProcsActive(), config.Uuid)
 	case *proto.APLValue_AnyTrinketStatProcsActive:
 		value = rot.newValueAnyTrinketStatProcsActive(config.GetAnyTrinketStatProcsActive(), config.Uuid)
+	case *proto.APLValue_AnyTrinketStatProcsAvailable:
+		value = rot.newValueAnyTrinketStatProcsAvailable(config.GetAnyTrinketStatProcsAvailable(), config.Uuid)
 	case *proto.APLValue_TrinketProcsMinRemainingTime:
 		value = rot.newValueItemProcsMinRemainingTime(config.GetTrinketProcsMinRemainingTime(), config.Uuid)
 	case *proto.APLValue_TrinketProcsMaxRemainingIcd:
@@ -259,6 +267,8 @@ func (rot *APLRotation) newAPLValueWithContext(config *proto.APLValue, groupVari
 		value = rot.newValueNumStatBuffCooldowns(config.GetNumStatBuffCooldowns(), config.Uuid)
 	case *proto.APLValue_AnyStatBuffCooldownsActive:
 		value = rot.newValueAnyStatBuffCooldownsActive(config.GetAnyStatBuffCooldownsActive(), config.Uuid)
+	case *proto.APLValue_AnyStatBuffCooldownsMinDuration:
+		value = rot.newValueAnyStatBuffCooldownsMinDuration(config.GetAnyStatBuffCooldownsMinDuration(), config.Uuid)
 
 	// Dots
 	case *proto.APLValue_DotIsActive:
@@ -271,6 +281,8 @@ func (rot *APLRotation) newAPLValueWithContext(config *proto.APLValue, groupVari
 		value = rot.newValueDotLowestRemainingTime(config.GetDotLowestRemainingTime(), config.Uuid)
 	case *proto.APLValue_DotTickFrequency:
 		value = rot.newValueDotTickFrequency(config.GetDotTickFrequency(), config.Uuid)
+	case *proto.APLValue_DotTimeToNextTick:
+		value = rot.newValueDotTimeToNextTick(config.GetDotTimeToNextTick(), config.Uuid)
 	case *proto.APLValue_DotBaseDuration:
 		value = rot.newValueDotBaseDuration(config.GetDotBaseDuration(), config.Uuid)
 	case *proto.APLValue_DotPercentIncrease:

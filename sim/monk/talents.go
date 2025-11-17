@@ -942,17 +942,20 @@ func (monk *Monk) registerRushingJadeWind() {
 		},
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			dot := spell.AOEDot()
-			dot.Apply(sim)
-			dot.TickOnce(sim)
+			result := spell.CalcAndDealOutcome(sim, target, spell.OutcomeAlwaysHitNoHitCounter)
+			if result.Landed() {
+				dot := spell.AOEDot()
+				dot.Apply(sim)
+				dot.TickOnce(sim)
 
-			remainingDuration := dot.RemainingDuration(sim)
-			spell.CD.Set(sim.CurrentTime + remainingDuration)
-			rushingJadeWindBuff.Duration = remainingDuration
-			rushingJadeWindBuff.Activate(sim)
+				remainingDuration := dot.RemainingDuration(sim)
+				spell.CD.Set(sim.CurrentTime + remainingDuration)
+				rushingJadeWindBuff.Duration = remainingDuration
+				rushingJadeWindBuff.Activate(sim)
 
-			if sim.Environment.ActiveTargetCount() >= 3 {
-				monk.AddChi(sim, spell, 1, chiMetrics)
+				if sim.Environment.ActiveTargetCount() >= 3 {
+					monk.AddChi(sim, spell, 1, chiMetrics)
+				}
 			}
 		},
 	}))

@@ -55,9 +55,9 @@ func init() {
 			},
 		})
 
-		proctrigger := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-			Name:    label,
-			Harmful: true,
+		proctrigger := character.MakeProcTriggerAura(core.ProcTrigger{
+			Name: label,
+
 			DPM: character.NewRPPMProcManager(102246, false, false, core.ProcMaskSpellOrSpellProc, core.RPPMConfig{
 				PPM: 2.61100006104,
 			}.WithHasteMod().
@@ -76,7 +76,10 @@ func init() {
 				WithSpecMod(0.15000000596, proto.Spec_SpecDestructionWarlock).
 				WithSpecMod(-0.75, proto.Spec_SpecBrewmasterMonk),
 			),
-			Callback: core.CallbackOnSpellHitDealt,
+
+			Callback:           core.CallbackOnSpellHitDealt,
+			TriggerImmediately: true,
+
 			Handler: func(sim *core.Simulation, _ *core.Spell, result *core.SpellResult) {
 				spell.Cast(sim, result.Target)
 			},
@@ -128,11 +131,11 @@ func init() {
 				},
 			})
 
-			procTrigger := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-				Name:     fmt.Sprintf("%s - Trigger", label),
-				ActionID: core.ActionID{SpellID: 146195},
-				Harmful:  true,
-				ICD:      time.Second * 3,
+			procTrigger := character.MakeProcTriggerAura(core.ProcTrigger{
+				Name:               fmt.Sprintf("%s - Trigger", label),
+				ActionID:           core.ActionID{SpellID: 146195},
+				RequireDamageDealt: true,
+				ICD:                time.Second * 3,
 				DPM: character.NewRPPMProcManager(itemID,
 					false,
 					false,

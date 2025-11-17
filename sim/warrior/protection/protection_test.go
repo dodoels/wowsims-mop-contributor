@@ -7,16 +7,20 @@ import (
 	"github.com/wowsims/mop/sim/core"
 	"github.com/wowsims/mop/sim/core/proto"
 	"github.com/wowsims/mop/sim/encounters/msv"
+	"github.com/wowsims/mop/sim/encounters/toes"
 )
 
 func init() {
 	RegisterProtectionWarrior()
 	common.RegisterAllEffects()
 	msv.Register()
+	toes.Register()
 }
 
 func TestProtectionWarrior(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
+		core.GetTestBuildFromJSON(proto.Class_ClassWarrior, "../../../ui/warrior/protection/builds", "horridon_default", ItemFilter, nil, nil),
+		core.GetTestBuildFromJSON(proto.Class_ClassWarrior, "../../../ui/warrior/protection/builds", "sha_default", ItemFilter, nil, nil),
 		core.GetTestBuildFromJSON(proto.Class_ClassWarrior, "../../../ui/warrior/protection/builds", "garajal_default", ItemFilter, nil, nil),
 		{
 			Class:            proto.Class_ClassWarrior,
@@ -24,10 +28,10 @@ func TestProtectionWarrior(t *testing.T) {
 			OtherRaces:       []proto.Race{proto.Race_RaceHuman},
 			StartingDistance: 15,
 
-			GearSet: core.GetGearSet("../../../ui/warrior/protection/gear_sets", "p1_bis"),
-			// OtherGearSets: []core.GearSetCombo{
-			// 	core.GetGearSet("../../../ui/warrior/protection/gear_sets", "preraid"),
-			// },
+			GearSet: core.GetGearSet("../../../ui/warrior/protection/gear_sets", "p2_bis"),
+			OtherGearSets: []core.GearSetCombo{
+				core.GetGearSet("../../../ui/warrior/protection/gear_sets", "p3_bis"),
+			},
 			Talents:     DefaultTalents,
 			Glyphs:      DefaultGlyphs,
 			Consumables: FullConsumesSpec,
@@ -60,10 +64,10 @@ var ItemFilter = core.ItemFilter{
 	},
 }
 
-var DefaultTalents = "233332"
+var DefaultTalents = "213332"
 var DefaultGlyphs = &proto.Glyphs{
 	Major1: int32(proto.WarriorMajorGlyph_GlyphOfHeavyRepercussions),
-	Major2: int32(proto.WarriorMajorGlyph_GlyphOfUnendingRage),
+	Major2: int32(proto.WarriorMajorGlyph_GlyphOfBullRush),
 	Major3: int32(proto.WarriorMajorGlyph_GlyphOfHoldTheLine),
 }
 

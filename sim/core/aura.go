@@ -251,6 +251,9 @@ func (aura *Aura) TimeInactive(sim *Simulation) time.Duration {
 }
 
 func (aura *Aura) RemainingDuration(sim *Simulation) time.Duration {
+	if !aura.IsActive() {
+		return 0
+	}
 	if aura.expires == NeverExpires {
 		return NeverExpires
 	} else {

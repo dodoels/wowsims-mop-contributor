@@ -110,6 +110,41 @@ func (value *APLValueAnyItemStatProcsActive) GetBool(sim *Simulation) bool {
 	return false
 }
 
+type APLValueAnyItemStatProcsAvailable struct {
+	*APLValueItemStatProcCheck
+}
+
+func (rot *APLRotation) newValueAnyTrinketStatProcsAvailable(config *proto.APLValueAnyTrinketStatProcsAvailable, uuid *proto.UUID) APLValue {
+	parentImpl := rot.newItemStatProcValue("AnyItemStatProcsAvailable", config.StatType1, config.StatType2, config.StatType3, config.MinIcdSeconds, true, uuid)
+
+	if parentImpl == nil {
+		return nil
+	}
+
+	return &APLValueAnyItemStatProcsAvailable{
+		APLValueItemStatProcCheck: parentImpl,
+	}
+}
+func (value *APLValueAnyItemStatProcsAvailable) Type() proto.APLValueType {
+	return proto.APLValueType_ValueTypeBool
+}
+
+// unsure if this works correctly based on a weird bug i observed...
+// this was seemingly returning true if no matching auras were found
+// need to debug further
+func (value *APLValueAnyItemStatProcsAvailable) GetBool(sim *Simulation) bool {
+	if len(value.matchingAuras) == 0 {
+		return false
+	}
+	for _, aura := range value.matchingAuras {
+		if !aura.IsActive() && aura.CanProc(sim) && aura.Icd != nil && aura.Icd.TimeToReady(sim) == 0 {
+			return true
+		}
+	}
+
+	return false
+}
+
 type APLValueItemProcsMinRemainingTime struct {
 	*APLValueItemStatProcCheck
 }
@@ -270,6 +305,57 @@ func (value *APLValueAnyStatBuffCooldownsActive) GetBool(_ *Simulation) bool {
 	return false
 }
 func (value *APLValueAnyStatBuffCooldownsActive) Finalize(rot *APLRotation) {
+	validAuras := FilterSlice(value.matchingAuras, func(aura *StatBuffAura) bool {
+		return !aura.IsSwapped
+	})
+	actionIDs := MapSlice(validAuras, func(aura *StatBuffAura) ActionID {
+		return aura.ActionID
+	})
+
+	rot.ValidationMessageByUUID(value.Uuid, proto.LogLevel_Information, "%s will check the following auras: %s", value, StringFromActionIDs(actionIDs))
+}
+
+type APLValueAnyStatBuffCooldownsMinDuration struct {
+	DefaultAPLValueImpl
+
+	statTypesToMatch []stats.Stat
+	matchingAuras    []*StatBuffAura
+}
+
+func (rot *APLRotation) newValueAnyStatBuffCooldownsMinDuration(config *proto.APLValueAnyStatBuffCooldownsMinDuration, uuid *proto.UUID) APLValue {
+	unit := rot.unit
+	character := unit.Env.Raid.GetPlayerFromUnit(unit).GetCharacter()
+	statTypesToMatch := stats.IntTupleToStatsList(config.StatType1, config.StatType2, config.StatType3)
+	matchingAuras := character.GetMatchingStatBuffCooldownAuras(statTypesToMatch)
+
+	if len(matchingAuras) == 0 {
+		rot.ValidationMessageByUUID(uuid, proto.LogLevel_Warning, "No cooldown stat buffs found for: %s", StringFromStatTypes(statTypesToMatch))
+		return nil
+	}
+
+	return &APLValueAnyStatBuffCooldownsMinDuration{
+		statTypesToMatch: statTypesToMatch,
+		matchingAuras:    matchingAuras,
+	}
+}
+func (value *APLValueAnyStatBuffCooldownsMinDuration) String() string {
+	return fmt.Sprintf("AnyStatBuffCooldownsMinDuration(%s)", StringFromStatTypes(value.statTypesToMatch))
+}
+func (value *APLValueAnyStatBuffCooldownsMinDuration) Type() proto.APLValueType {
+	return proto.APLValueType_ValueTypeDuration
+}
+func (value *APLValueAnyStatBuffCooldownsMinDuration) GetDuration(sim *Simulation) time.Duration {
+	minRemainingDuration := NeverExpires
+
+	for _, aura := range value.matchingAuras {
+		if aura.IsActive() && (aura.GetStacks() == aura.MaxStacks) {
+			minRemainingDuration = min(minRemainingDuration, aura.RemainingDuration(sim))
+		}
+	}
+
+	return minRemainingDuration
+}
+func (value *APLValueAnyStatBuffCooldownsMinDuration) Finalize(rot *APLRotation) {
 	validAuras := FilterSlice(value.matchingAuras, func(aura *StatBuffAura) bool {
 		return !aura.IsSwapped
 	})

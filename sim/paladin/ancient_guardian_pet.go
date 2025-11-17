@@ -69,15 +69,19 @@ func (ancientGuardian *AncientGuardianPet) ExecuteCustomRotation(sim *core.Simul
 
 func (ancientGuardian *AncientGuardianPet) registerRetributionVariant() {
 	ancientPowerID := core.ActionID{SpellID: 86700}
-	ancientPowerAura := core.MakeProcTriggerAura(&ancientGuardian.Unit, core.ProcTrigger{
-		Name:     "Ancient Power" + ancientGuardian.Label,
-		ActionID: ancientPowerID,
-		Callback: core.CallbackOnSpellHitDealt,
-		Outcome:  core.OutcomeLanded,
-		Harmful:  true,
+	ancientPowerAura := ancientGuardian.MakeProcTriggerAura(core.ProcTrigger{
+		Name:               "Ancient Power" + ancientGuardian.Label,
+		ActionID:           ancientPowerID,
+		Callback:           core.CallbackOnSpellHitDealt,
+		Outcome:            core.OutcomeLanded,
+		RequireDamageDealt: true,
 
 		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			ancientGuardian.paladinOwner.GetAuraByID(ancientPowerID).AddStack(sim)
+			aura := ancientGuardian.paladinOwner.GetAuraByID(ancientPowerID)
+
+			if aura.IsActive() {
+				aura.AddStack(sim)
+			}
 		},
 	})
 

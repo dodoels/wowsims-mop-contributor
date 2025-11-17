@@ -1,6 +1,7 @@
 package demonology
 
 import (
+	"math"
 	"slices"
 	"time"
 
@@ -17,8 +18,8 @@ func (demo *DemonologyWarlock) registerFelguard() *warlock.WarlockPet {
 
 func (demo *DemonologyWarlock) registerFelguardWithName(name string, enabledOnStart bool, autoCastFelstorm bool, isGuardian bool) *warlock.WarlockPet {
 	pet := demo.RegisterPet(proto.WarlockOptions_Felguard, 2, 3.5, name, enabledOnStart, isGuardian)
-	registerLegionStrikeSpell(pet, demo)
 	felStorm := registerFelstorm(pet, demo, autoCastFelstorm)
+	legionStrike := registerLegionStrikeSpell(pet, demo)
 	pet.MinEnergy = 120
 
 	if !isGuardian {
@@ -39,6 +40,25 @@ func (demo *DemonologyWarlock) registerFelguardWithName(name string, enabledOnSt
 				pet.AutoCastAbilities = slices.Insert(pet.AutoCastAbilities, 0, felStorm)
 			},
 		})
+
+		oldEnable := pet.OnPetEnable
+		pet.OnPetEnable = func(sim *core.Simulation) {
+			if oldEnable != nil {
+				oldEnable(sim)
+			}
+
+			if len(pet.AutoCastAbilities) > 1 {
+				pet.AutoCastAbilities = pet.AutoCastAbilities[1:]
+			}
+		}
+	} else {
+		oldEnable := pet.OnPetEnable
+		pet.OnPetEnable = func(sim *core.Simulation) {
+			if oldEnable != nil {
+				oldEnable(sim)
+			}
+			felStorm.CD.Set(sim.CurrentTime + core.DurationFromSeconds(legionStrike.CD.Duration.Seconds()*math.Round(sim.RollWithLabel(1, 3, "Felstorm Delay"))))
+		}
 	}
 
 	return pet
@@ -46,8 +66,8 @@ func (demo *DemonologyWarlock) registerFelguardWithName(name string, enabledOnSt
 
 var legionStrikePetAction = core.ActionID{SpellID: 30213}
 
-func registerLegionStrikeSpell(pet *warlock.WarlockPet, demo *DemonologyWarlock) {
-	pet.AutoCastAbilities = append(pet.AutoCastAbilities, pet.RegisterSpell(core.SpellConfig{
+func registerLegionStrikeSpell(pet *warlock.WarlockPet, demo *DemonologyWarlock) *core.Spell {
+	legionStrike := pet.RegisterSpell(core.SpellConfig{
 		ActionID:       legionStrikePetAction,
 		SpellSchool:    core.SpellSchoolPhysical,
 		ProcMask:       core.ProcMaskMeleeMHSpecial,
@@ -79,7 +99,11 @@ func registerLegionStrikeSpell(pet *warlock.WarlockPet, demo *DemonologyWarlock)
 			spell.CalcAndDealAoeDamage(sim, baseDmg, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
 			demo.DemonicFury.Gain(sim, 12, core.ActionID{SpellID: 30213})
 		},
-	}))
+	})
+
+	pet.AutoCastAbilities = append(pet.AutoCastAbilities, legionStrike)
+
+	return legionStrike
 }
 
 func registerFelstorm(pet *warlock.WarlockPet, _ *DemonologyWarlock, autoCast bool) *core.Spell {

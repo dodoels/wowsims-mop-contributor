@@ -36,7 +36,8 @@ func (rotation *FeralDruidRotation) TryTigersFury(sim *core.Simulation) {
 		return
 	}
 
-	tfEnergyThresh := cat.calcTfEnergyThresh()
+	// Don't over-cap Energy with TF, unless the next special is a DoC Rip.
+	tfEnergyThresh := core.TernaryFloat64(rotation.UseHealingTouch && cat.DreamOfCenariusAura.IsActive() && (cat.ComboPoints() == 5), 100, cat.calcTfEnergyThresh())
 	tfNow := (cat.CurrentEnergy() < tfEnergyThresh) && !cat.BerserkCatAura.IsActive()
 
 	if tfNow {

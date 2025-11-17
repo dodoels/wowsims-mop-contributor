@@ -147,19 +147,22 @@ func (monk *Monk) registerSpinningCraneKick() {
 		},
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			dot := spell.AOEDot()
-			dot.Apply(sim)
-			dot.TickOnce(sim)
+			result := spell.CalcAndDealOutcome(sim, target, spell.OutcomeAlwaysHitNoHitCounter)
+			if result.Landed() {
+				dot := spell.AOEDot()
+				dot.Apply(sim)
+				dot.TickOnce(sim)
 
-			expiresAt := dot.ExpiresAt()
-			monk.AutoAttacks.DelayMeleeBy(sim, expiresAt-sim.CurrentTime)
+				expiresAt := dot.ExpiresAt()
+				monk.AutoAttacks.DelayMeleeBy(sim, expiresAt-sim.CurrentTime)
 
-			remainingDuration := dot.RemainingDuration(sim)
-			spinningCraneKickAura.Duration = remainingDuration
-			spinningCraneKickAura.Activate(sim)
+				remainingDuration := dot.RemainingDuration(sim)
+				spinningCraneKickAura.Duration = remainingDuration
+				spinningCraneKickAura.Activate(sim)
 
-			if sim.Environment.ActiveTargetCount() >= 3 {
-				monk.AddChi(sim, spell, 1, chiMetrics)
+				if sim.Environment.ActiveTargetCount() >= 3 {
+					monk.AddChi(sim, spell, 1, chiMetrics)
+				}
 			}
 		},
 	}))

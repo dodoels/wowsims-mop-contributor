@@ -14,13 +14,13 @@ func (affliction *AfflictionWarlock) registerNightfall() {
 		Duration: time.Second * 6,
 	})
 
-	core.MakeProcTriggerAura(&affliction.Unit, core.ProcTrigger{
+	affliction.MakeProcTriggerAura(core.ProcTrigger{
 		Name:           "Nightfall",
 		ClassSpellMask: warlock.WarlockSpellCorruption,
 		Callback:       core.CallbackOnPeriodicDamageDealt,
 		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			dot := spell.Dot(result.Target)
-			if dot == nil || dot != affliction.LastCorruption || !sim.Proc(0.1, "Nightfall Proc") {
+			if dot == nil || result.Target != affliction.LastCorruptionTarget || !sim.Proc(0.1, "Nightfall Proc") {
 				return
 			}
 

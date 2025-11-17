@@ -30,9 +30,9 @@ func init() {
 				auraID, exists := config.cdrAuraIDs[character.Spec]
 				var cdrAura *core.Aura
 				if exists {
-					cdr := core.GetItemEffectScaling(itemID, 0.00989999995, state) / 100
+					cdr := 1.0 / (1.0 + core.GetItemEffectScaling(itemID, 0.00989999995, state)/100)
 					cdrAura = core.MakePermanent(character.RegisterAura(core.Aura{
-						Label:    fmt.Sprintf("Readiness %s", versionLabel),
+						Label:    fmt.Sprintf("Readiness (%s)", versionLabel),
 						ActionID: core.ActionID{SpellID: auraID},
 					}).AttachSpellMod(core.SpellModConfig{
 						Kind:       core.SpellMod_Cooldown_Multiplier,
@@ -42,18 +42,17 @@ func init() {
 				}
 
 				stats := stats.Stats{}
-				stats[config.buffedStat] = core.GetItemEffectScaling(itemID, 0.96799999475, state)
+				stats[config.buffedStat] = core.GetItemEffectScaling(itemID, 2.97300004959, state)
 
 				aura := character.NewTemporaryStatsAura(
-					fmt.Sprintf("%s %s", config.buffAuraLabel, versionLabel),
+					fmt.Sprintf("%s (%s)", config.buffAuraLabel, versionLabel),
 					core.ActionID{SpellID: config.buffAuraID},
 					stats,
 					config.buffDuration,
 				)
 
-				triggerAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-					Name:       config.baseTrinketLabel,
-					Harmful:    true,
+				triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+					Name:       fmt.Sprintf("%s (%s) - Trigger", config.baseTrinketLabel, versionLabel),
 					ProcChance: 0.15,
 					ICD:        config.icd,
 					ProcMask:   core.ProcMaskDirect | core.ProcMaskProc,
@@ -164,5 +163,63 @@ func init() {
 			proto.Spec_SpecFuryWarrior:       145991,
 			proto.Spec_SpecProtectionWarrior: 145992,
 		},
+	})
+
+	// Purified Bindings of Immerseus
+	// Your attacks have a chance to grant 606 Intellect for 20 sec.
+	// (Proc chance: 15%, 1.917m cooldown)
+	// Amplifies your Critical Strike damage and healing, Haste, Mastery, and Spirit by 1%.
+	shared.ItemVersionMap{
+		shared.ItemVersionLFR:             104924,
+		shared.ItemVersionNormal:          102293,
+		shared.ItemVersionHeroic:          104426,
+		shared.ItemVersionWarforged:       105173,
+		shared.ItemVersionHeroicWarforged: 105422,
+		shared.ItemVersionFlexible:        104675,
+	}.RegisterAll(func(version shared.ItemVersion, itemID int32, versionLabel string) {
+		label := "Purified Bindings of Immerseus"
+
+		core.NewItemEffect(itemID, func(agent core.Agent, state proto.ItemLevelState) {
+			character := agent.GetCharacter()
+			statValue := core.GetItemEffectScaling(itemID, 2.97300004959, state)
+
+			critDamageValue := 1 + core.GetItemEffectScaling(itemID, 0.00088499999, state)/100
+			hasteValue := 1 + core.GetItemEffectScaling(itemID, 0.00176999997, state)/100
+			masteryValue := 1 + core.GetItemEffectScaling(itemID, 0.00176999997, state)/100
+			spiritValue := 1 + core.GetItemEffectScaling(itemID, 0.00176999997, state)/100
+
+			statAura := core.MakePermanent(character.RegisterAura(core.Aura{
+				Label:      fmt.Sprintf("Amplification (%s)", versionLabel),
+				ActionID:   core.ActionID{SpellID: 146051},
+				BuildPhase: core.CharacterBuildPhaseGear,
+			})).
+				AttachStatDependency(character.NewDynamicMultiplyStat(stats.HasteRating, hasteValue)).
+				AttachStatDependency(character.NewDynamicMultiplyStat(stats.MasteryRating, masteryValue)).
+				AttachStatDependency(character.NewDynamicMultiplyStat(stats.Spirit, spiritValue)).
+				AttachMultiplicativePseudoStatBuff(&character.PseudoStats.CritDamageMultiplier, critDamageValue)
+
+			aura := character.NewTemporaryStatsAura(
+				fmt.Sprintf("Expanded Mind (%s)", versionLabel),
+				core.ActionID{SpellID: 146046},
+				stats.Stats{stats.Intellect: statValue},
+				time.Second*20,
+			)
+
+			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+				Name:       fmt.Sprintf("%s (%s)", label, versionLabel),
+				ICD:        time.Second * 115,
+				ProcChance: 0.15,
+				Outcome:    core.OutcomeLanded,
+				Callback:   core.CallbackOnSpellHitDealt,
+				Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
+					aura.Activate(sim)
+				},
+			})
+
+			eligibleSlots := character.ItemSwap.EligibleSlotsForItem(itemID)
+			character.AddStatProcBuff(itemID, aura, false, eligibleSlots)
+			character.ItemSwap.RegisterProcWithSlots(itemID, triggerAura, eligibleSlots)
+			character.ItemSwap.RegisterProcWithSlots(itemID, statAura, eligibleSlots)
+		})
 	})
 }

@@ -92,6 +92,10 @@ export class ActionId {
 					name += ' (Warmaster Blackhorn)';
 				} else if (this.tag == 56781) {
 					name += ' (Goriona)';
+				} else if (this.tag == 68476) {
+					name += ' (Horridon)'
+				} else if (this.tag == 69374) {
+					name += ' (War-God Jalak)'
 				} else if (this.tag > 6445300) {
 					name += ` (Set'thik Windblade ${(this.tag - 6445300).toFixed(0)})`;
 				} else if (this.tag > 4191800) {
@@ -326,6 +330,8 @@ export class ActionId {
 				if (tag == 2) name += ' (Cleave)';
 				break;
 			case 'Ice Lance':
+			case 'Frostbolt':
+			case 'Frostfire Bolt':
 				if (tag == 1) {
 					name += ' (Glyph)';
 				}
@@ -959,7 +965,7 @@ export class ActionId {
 			return 'other-' + this.otherId;
 		} else {
 			console.error('Empty action id!');
-			return '';
+			return this.name;
 		}
 	}
 
@@ -1117,9 +1123,9 @@ export class ActionId {
 
 	static async getTooltipData(actionId: ActionId, options: { signal?: AbortSignal } = {}): Promise<IconData> {
 		if (actionId.itemId) {
-			return await Database.getItemIconData(actionId.itemId, { signal: options?.signal });
+			return Database.getItemIconData(actionId.itemId, { signal: options?.signal });
 		} else {
-			return await Database.getSpellIconData(actionId.spellId, { signal: options?.signal });
+			return Database.getSpellIconData(actionId.spellId, { signal: options?.signal });
 		}
 	}
 
@@ -1210,6 +1216,8 @@ const spellIdTooltipOverrides: Map<string, ActionIdOverride> = new Map([
 	[JSON.stringify({ spellId: 44457, tag: 2 }), { spellId: 44461 }], // Living Bomb Explosion
 	[JSON.stringify({ spellId: 114923, tag: 2 }), { spellId: 114954 }], // Nether Tempest (Cleave)
 	[JSON.stringify({ spellId: 30455, tag: 1 }), { spellId: 131080 }], // Ice Lance - Glyph
+	[JSON.stringify({ spellId: 116, tag: 1 }), { spellId: 131079 }], // Frostbolt - Glyph
+	[JSON.stringify({ spellId: 44614, tag: 1 }), { spellId: 131081 }], // Frostfire bolt - Glyph
 
 	// Warlock - Immolation Aura
 	[JSON.stringify({ spellId: 104025, tag: 2 }), { spellId: 129476 }],
@@ -1222,6 +1230,8 @@ const petNameToActionId: Record<string, ActionId> = {
 	'Ancient Guardian': ActionId.fromSpellId(86698),
 	'Army of the Dead': ActionId.fromSpellId(42650),
 	Bloodworm: ActionId.fromSpellId(50452),
+	'Dire Beast Pet': ActionId.fromSpellId(120679),
+	Stampede: ActionId.fromSpellId(121818),
 	'Fallen Zandalari': ActionId.fromSpellId(138342),
 	'Flame Orb': ActionId.fromSpellId(82731),
 	'Frozen Orb': ActionId.fromSpellId(84721),
@@ -1308,6 +1318,7 @@ const petNameToIcon: Record<string, string> = {
 	'Spore Bat': 'https://wow.zamimg.com/images/wow/icons/medium/ability_hunter_pet_sporebat.jpg',
 	Succubus: 'https://wow.zamimg.com/images/wow/icons/large/spell_shadow_summonsuccubus.jpg',
 	Tallstrider: 'https://wow.zamimg.com/images/wow/icons/medium/ability_hunter_pet_tallstrider.jpg',
+	Thunderhawk: 'https://wow.zamimg.com/images/wow/icons/medium/ability_hunter_pet_windserpent.jpg',
 	Turtle: 'https://wow.zamimg.com/images/wow/icons/medium/ability_hunter_pet_turtle.jpg',
 	'Warp Stalker': 'https://wow.zamimg.com/images/wow/icons/medium/ability_hunter_pet_warpstalker.jpg',
 	Wasp: 'https://wow.zamimg.com/images/wow/icons/medium/ability_hunter_pet_wasp.jpg',

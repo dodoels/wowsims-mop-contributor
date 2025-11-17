@@ -8,7 +8,7 @@ import { UIEnchant as Enchant, UIGem as Gem } from '../../proto/ui';
 import { ActionId } from '../../proto_utils/action_id';
 import { getEnchantDescription } from '../../proto_utils/enchants';
 import { EquippedItem } from '../../proto_utils/equipped_item';
-import { translateSlotName, translateStat } from '../../../i18n/localization';
+import { translateProtoStatName, translateSlotName, translateStat } from '../../../i18n/localization';
 import i18n from '../../../i18n/config';
 import { SimUI } from '../../sim_ui';
 import { EventID } from '../../typed_event';
@@ -172,7 +172,7 @@ export class ItemRenderer extends Component {
 		);
 
 		if (hasRandomSuffix) {
-			nameSpan.textContent += ' ' + newItem.randomSuffix.name;
+			nameSpan.textContent += ' ' + translateProtoStatName(newItem.randomSuffix.name);
 		}
 
 		if (newItem.item.nameDescription) {
@@ -196,7 +196,7 @@ export class ItemRenderer extends Component {
 				fromAmount: Math.abs(reforgeData.fromAmount),
 				fromStat: fromText,
 				toAmount: reforgeData.toAmount,
-				toStat: toText
+				toStat: toText,
 			});
 			this.reforgeElem.classList.remove('hide');
 		} else {

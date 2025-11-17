@@ -92,6 +92,7 @@ message AfflictionWarlock {
 
 	message Options {
 		WarlockOptions class_options = 1;
+		int32 exhale_window = 6;
 	}
 	Options options = 1;
 }

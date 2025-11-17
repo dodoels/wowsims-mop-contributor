@@ -143,7 +143,7 @@ export const OtherDefaults = {
 	race: Race.RaceOrc,
 	profession1: Profession.Engineering,
 	profession2: Profession.Blacksmithing,
-	distanceFromTarget: 15,
+	distanceFromTarget: 25,
 };
 
 export const P1_PRESET_BUILD_SMF = PresetUtils.makePresetBuild('P1 - SMF', {

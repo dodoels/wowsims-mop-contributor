@@ -37,7 +37,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionWarrior, {
 	],
 	epPseudoStats: [PseudoStat.PseudoStatMainHandDps],
 	// Reference stat against which to calculate EP. I think all classes use either spell power or attack power.
-	epReferenceStat: Stat.StatAttackPower,
+	epReferenceStat: Stat.StatStrength,
 	// Which stats to display in the Character Stats section, at the bottom of the left-hand sidebar.
 	displayStats: UnitStat.createDisplayStatArray(
 		[
@@ -61,14 +61,14 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionWarrior, {
 		],
 	),
 
-	defaultBuild: Presets.PRESET_BUILD_DEFAULT,
+	defaultBuild: Presets.PRESET_BUILD_SHA,
 
 	defaults: {
 		// Default equipped gear.
-		gear: Presets.PRERAID_BALANCED_PRESET.gear,
-		itemSwap: Presets.PRERAID_ITEM_SWAP.itemSwap,
+		gear: Presets.P2_BALANCED_PRESET.gear,
+		itemSwap: Presets.P2_ITEM_SWAP.itemSwap,
 		// Default EP weights for sorting gear in the gear picker.
-		epWeights: Presets.P1_EP_PRESET.epWeights,
+		epWeights: Presets.P2_EP_PRESET.epWeights,
 		// Default stat caps for the Reforge Optimizer
 		statCaps: (() => {
 			const hitCap = new Stats().withPseudoStat(PseudoStat.PseudoStatPhysicalHitPercent, 7.5);
@@ -132,19 +132,26 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionWarrior, {
 	},
 
 	presets: {
-		epWeights: [Presets.P1_EP_PRESET],
+		epWeights: [Presets.P2_EP_PRESET, Presets.P2_OFFENSIVE_EP_PRESET, Presets.P3_EP_PRESET, Presets.P3_OFFENSIVE_EP_PRESET],
 		// Preset talents that the user can quickly select.
 		talents: [Presets.StandardTalents],
 		// Preset rotations that the user can quickly select.
-		rotations: [Presets.ROTATION_DEFENSIVE, Presets.ROTATION_DEFAULT],
+		rotations: [Presets.ROTATION_GENERIC, Presets.ROTATION_GARAJAL, Presets.ROTATION_SHA, Presets.ROTATION_HORRIDON],
 		// Preset gear configurations that the user can quickly select.
-		gear: [Presets.PRERAID_BALANCED_PRESET, Presets.P1_BALANCED_PRESET],
-		itemSwaps: [Presets.PRERAID_ITEM_SWAP, Presets.P1_ITEM_SWAP],
-		builds: [Presets.PRESET_BUILD_DEFAULT, Presets.PRESET_BUILD_DEFENSIVE],
+		gear: [
+			Presets.PRERAID_BALANCED_PRESET,
+			Presets.P2_BALANCED_PRESET,
+			Presets.P2_OFFENSIVE_PRESET,
+			Presets.P3_PROG_PRESET,
+			Presets.P3_BALANCED_PRESET,
+			Presets.P3_OFFENSIVE_PRESET,
+		],
+		itemSwaps: [Presets.PRERAID_ITEM_SWAP, Presets.P2_ITEM_SWAP],
+		builds: [Presets.PRESET_BUILD_GARAJAL, Presets.PRESET_BUILD_SHA, Presets.PRESET_BUILD_HORRIDON],
 	},
 
 	autoRotation: (_player: Player<Spec.SpecProtectionWarrior>): APLRotation => {
-		return Presets.ROTATION_DEFENSIVE.rotation.rotation!;
+		return Presets.ROTATION_GENERIC.rotation.rotation!;
 	},
 
 	raidSimPresets: [
@@ -162,11 +169,11 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionWarrior, {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
 					1: Presets.PRERAID_BALANCED_PRESET.gear,
-					2: Presets.P1_BALANCED_PRESET.gear,
+					2: Presets.P2_BALANCED_PRESET.gear,
 				},
 				[Faction.Horde]: {
 					1: Presets.PRERAID_BALANCED_PRESET.gear,
-					2: Presets.P1_BALANCED_PRESET.gear,
+					2: Presets.P2_BALANCED_PRESET.gear,
 				},
 			},
 			otherDefaults: Presets.OtherDefaults,
@@ -178,6 +185,6 @@ export class ProtectionWarriorSimUI extends IndividualSimUI<Spec.SpecProtectionW
 	constructor(parentElem: HTMLElement, player: Player<Spec.SpecProtectionWarrior>) {
 		super(parentElem, player, SPEC_CONFIG);
 
-		new ReforgeOptimizer(this);
+		this.reforger = new ReforgeOptimizer(this);
 	}
 }

@@ -9,11 +9,11 @@ import (
 
 func (fire *FireMage) registerPyroblastSpell() {
 	actionID := core.ActionID{SpellID: 11366}
-	pyroblastVariance := 0.24    // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2948 Field: "Variance"
-	pyroblastScaling := 1.98     // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2948 Field: "Coefficient"
-	pyroblastCoefficient := 1.98 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=exact%253A2948 Field: "BonusCoefficient"
-	pyroblastDotScaling := .36
-	pyroblastDotCoefficient := .36
+	pyroblastVariance := 0.23800000548    // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=11366 Field: "Variance"
+	pyroblastScaling := 1.98000001907     // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=11366 Field: "Coefficient"
+	pyroblastCoefficient := 1.98000001907 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.61217&filter%5BSpellID%5D=11366 Field: "BonusCoefficient"
+	pyroblastDotScaling := 0.36000001431
+	pyroblastDotCoefficient := 0.36000001431
 
 	instantPyroblastDotMod := fire.AddDynamicMod(core.SpellModConfig{
 		Kind:       core.SpellMod_DamageDone_Pct,

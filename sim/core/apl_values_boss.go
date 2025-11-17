@@ -54,3 +54,29 @@ func (value *APLValueBossSpellTimeToReady) GetDuration(sim *Simulation) time.Dur
 func (value *APLValueBossSpellTimeToReady) String() string {
 	return fmt.Sprintf("Boss Spell Time to Ready(%s)", value.spell.ActionID)
 }
+
+type APLValueBossCurrentTarget struct {
+	DefaultAPLValueImpl
+	player *Unit
+	target UnitReference
+}
+
+func (rot *APLRotation) newValueBossCurrentTarget(config *proto.APLValueBossCurrentTarget, _ *proto.UUID) APLValue {
+	unit := rot.GetSourceUnit(config.TargetUnit)
+	if unit.Get() == nil {
+		return nil
+	}
+	return &APLValueBossCurrentTarget{
+		player: rot.unit,
+		target: unit,
+	}
+}
+func (value *APLValueBossCurrentTarget) Type() proto.APLValueType {
+	return proto.APLValueType_ValueTypeBool
+}
+func (value *APLValueBossCurrentTarget) GetBool(sim *Simulation) bool {
+	return value.target.Get().CurrentTarget == value.player
+}
+func (value *APLValueBossCurrentTarget) String() string {
+	return fmt.Sprintf("IsTanking(%s)", value.target.Get().Label)
+}

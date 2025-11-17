@@ -25,7 +25,7 @@ func (mmHunter *MarksmanshipHunter) getAimedShotSpell(spellID int32, isMasterMar
 		},
 
 		CastTime: func(spell *core.Spell) time.Duration {
-			return time.Duration(float64(spell.DefaultCast.CastTime) / mmHunter.TotalRangedHasteMultiplier())
+			return time.Duration(float64(spell.DefaultCast.CastTime) / mmHunter.TotalRangedHasteMultiplier() * max(0, spell.CastTimeMultiplier))
 		},
 	}
 	freeCast := core.CastConfig{
@@ -47,7 +47,7 @@ func (mmHunter *MarksmanshipHunter) getAimedShotSpell(spellID int32, isMasterMar
 			Cost: 50,
 		},
 		Cast:             normalCast,
-		DamageMultiplier: 4.725,
+		DamageMultiplier: 4.5,
 		CritMultiplier:   mmHunter.DefaultCritMultiplier(),
 		ThreatMultiplier: 1,
 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {

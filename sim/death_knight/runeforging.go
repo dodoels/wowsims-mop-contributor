@@ -100,13 +100,13 @@ func init() {
 			})
 		})
 
-		aura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-			Name:     "Rune Of The Fallen Crusader",
-			Callback: core.CallbackOnSpellHitDealt,
-			Outcome:  core.OutcomeLanded,
-			DPM:      character.NewDynamicLegacyProcForEnchant(3368, 2.0, 0),
-			// PPM:      2.0,
-			// ProcMask: procMask,
+		aura := character.MakeProcTriggerAura(core.ProcTrigger{
+			Name:               "Rune Of The Fallen Crusader",
+			Callback:           core.CallbackOnSpellHitDealt,
+			Outcome:            core.OutcomeLanded,
+			DPM:                character.NewDynamicLegacyProcForEnchant(3368, 2.0, 0),
+			TriggerImmediately: true,
+
 			Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 				rfcAura.Activate(sim)
 				healingSpell.Cast(sim, &character.Unit)
@@ -144,7 +144,7 @@ func init() {
 				cinderMod.Deactivate()
 			},
 			OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-				if !result.Landed() {
+				if !result.Landed() || result.Damage == 0 {
 					return
 				}
 
@@ -162,7 +162,7 @@ func init() {
 			},
 		}))
 
-		aura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+		aura := character.MakeProcTriggerAura(core.ProcTrigger{
 			Name:     "Rune of Cinderglacier",
 			Callback: core.CallbackOnSpellHitDealt,
 			Outcome:  core.OutcomeLanded,
@@ -251,7 +251,7 @@ func init() {
 				continue
 			}
 
-			aura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+			aura := character.MakeProcTriggerAura(core.ProcTrigger{
 				Name:     fmt.Sprintf("Razor Frost %s", itemSlot),
 				Callback: core.CallbackOnSpellHitDealt,
 				Outcome:  core.OutcomeLanded,

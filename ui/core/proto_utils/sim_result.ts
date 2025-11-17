@@ -368,12 +368,12 @@ export class UnitMetrics {
 		this.name = metrics.name;
 		this.spec = this.player ? getPlayerSpecFromPlayer(this.player) : null;
 		this.petActionId = petActionId;
-		this.iconUrl = this.isPlayer ? this.spec?.getIcon('medium') ?? '' : this.isTarget ? defaultTargetIcon : '';
+		this.iconUrl = this.isPlayer ? (this.spec?.getIcon('medium') ?? '') : this.isTarget ? defaultTargetIcon : '';
 		this.classColor = this.isTarget
 			? ''
-			: PlayerSpecs.getPlayerClass(this.spec as PlayerSpec<any>)
+			: (PlayerSpecs.getPlayerClass(this.spec as PlayerSpec<any>)
 					.friendlyName.toLowerCase()
-					.replace(/\s/g, '-') ?? '';
+					.replace(/\s/g, '-') ?? '');
 		this.dps = this.metrics.dps!;
 		this.hps = this.metrics.hps!;
 		this.tps = this.metrics.threat!;
@@ -413,7 +413,7 @@ export class UnitMetrics {
 		if (this.target == null) {
 			return `${this.name} (#${this.index + 1})`;
 		} else {
-			return this.name;
+			return `${this.name} (${this.target.name})`;
 		}
 	}
 

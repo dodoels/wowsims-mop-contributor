@@ -177,7 +177,7 @@ type APLValueDotTickFrequency struct {
 
 func (rot *APLRotation) newValueDotTickFrequency(config *proto.APLValueDotTickFrequency, _ *proto.UUID) APLValue {
 	dot := rot.NewDotReference(rot.GetTargetUnit(config.TargetUnit), config.SpellId)
-	if dot == nil {
+	if dot.Get() == nil {
 		return nil
 	}
 	return &APLValueDotTickFrequency{
@@ -188,11 +188,37 @@ func (rot *APLRotation) newValueDotTickFrequency(config *proto.APLValueDotTickFr
 func (value *APLValueDotTickFrequency) Type() proto.APLValueType {
 	return proto.APLValueType_ValueTypeDuration
 }
-func (value *APLValueDotTickFrequency) GetDuration(_ *Simulation) time.Duration {
-	return value.dot.Get().tickPeriod
+func (value *APLValueDotTickFrequency) GetDuration(sim *Simulation) time.Duration {
+	dot := value.dot.Get()
+	return TernaryDuration(dot.IsActive(), dot.tickPeriod, dot.CalcTickPeriod())
 }
 func (value *APLValueDotTickFrequency) String() string {
 	return fmt.Sprintf("Dot Tick Frequency(%s)", value.dot.Get().Spell.ActionID)
+}
+
+type APLValueDotTimeToNextTick struct {
+	DefaultAPLValueImpl
+	dot *DotReference
+}
+
+func (rot *APLRotation) newValueDotTimeToNextTick(config *proto.APLValueDotTimeToNextTick, _ *proto.UUID) APLValue {
+	dot := rot.NewDotReference(rot.GetTargetUnit(config.TargetUnit), config.SpellId)
+	if dot.Get() == nil {
+		return nil
+	}
+	return &APLValueDotTimeToNextTick{
+		dot: dot,
+	}
+}
+
+func (value *APLValueDotTimeToNextTick) Type() proto.APLValueType {
+	return proto.APLValueType_ValueTypeDuration
+}
+func (value *APLValueDotTimeToNextTick) GetDuration(sim *Simulation) time.Duration {
+	return value.dot.Get().TimeUntilNextTick(sim)
+}
+func (value *APLValueDotTimeToNextTick) String() string {
+	return fmt.Sprintf("Time To Next Tick(%s)", value.dot.Get().Spell.ActionID)
 }
 
 type APLValueDotBaseDuration struct {
@@ -228,9 +254,12 @@ func (value *APLValueDotBaseDuration) String() string {
 
 type APLValueDotIncreaseCheck struct {
 	DefaultAPLValueImpl
-	spell    *Spell
-	target   *Unit
-	baseName string
+	spell              *Spell
+	targetRef          UnitReference
+	baseName           string
+	useBaseValue       bool // if true, use the base value before any increases
+	baseValue          float64
+	baseValueDummyAura *Aura // Used to get the base value at encounter start
 }
 
 func (rot *APLRotation) newDotIncreaseValue(baseName string, config *proto.APLValueDotPercentIncrease) *APLValueDotIncreaseCheck {
@@ -238,11 +267,22 @@ func (rot *APLRotation) newDotIncreaseValue(baseName string, config *proto.APLVa
 	if spell == nil || spell.expectedTickDamageInternal == nil {
 		return nil
 	}
-	target := rot.GetTargetUnit(config.TargetUnit).Get()
+	targetRef := rot.GetTargetUnit(config.TargetUnit)
+
+	var baseValueDummyAura *Aura
+	if config.UseBaseValue {
+		baseValueDummyAura = MakePermanent(rot.unit.GetOrRegisterAura(Aura{
+			Label:    "Dummy Aura - APL Dot Increase Base Value",
+			Duration: NeverExpires,
+		}))
+	}
+
 	return &APLValueDotIncreaseCheck{
-		spell:    spell,
-		target:   target,
-		baseName: baseName,
+		spell:              spell,
+		targetRef:          targetRef,
+		baseName:           baseName,
+		useBaseValue:       config.UseBaseValue,
+		baseValueDummyAura: baseValueDummyAura,
 	}
 }
 
@@ -263,17 +303,28 @@ func (rot *APLRotation) newValueDotPercentIncrease(config *proto.APLValueDotPerc
 	if parentImpl == nil {
 		return nil
 	}
+
 	return &APLValueDotPercentIncrease{APLValueDotIncreaseCheck: parentImpl}
 }
 
+func (value *APLValueDotPercentIncrease) Finalize(rot *APLRotation) {
+	if value.useBaseValue && value.baseValueDummyAura != nil {
+		value.baseValueDummyAura.ApplyOnEncounterStart(func(aura *Aura, sim *Simulation) {
+			value.baseValue = value.spell.ExpectedTickDamage(sim, value.targetRef.Get())
+		})
+	}
+}
+
 func (value *APLValueDotPercentIncrease) GetFloat(sim *Simulation) float64 {
-	expectedDamage := value.spell.ExpectedTickDamageFromCurrentSnapshot(sim, value.target)
+	target := value.targetRef.Get()
+	expectedDamage := TernaryFloat64(value.useBaseValue, value.baseValue, value.spell.ExpectedTickDamageFromCurrentSnapshot(sim, target))
+
 	if expectedDamage == 0 {
 		return 1
 	}
 
 	// Rounding this to effectively 3 decimal places as a percentage to avoid floating point errors
-	return math.Round((value.spell.ExpectedTickDamage(sim, value.target)/expectedDamage)*100000)/100000 - 1
+	return math.Round((value.spell.ExpectedTickDamage(sim, target)/expectedDamage)*100000)/100000 - 1
 }
 
 type APLValueDotCritPercentIncrease struct {
@@ -285,7 +336,16 @@ func (rot *APLRotation) newValueDotCritPercentIncrease(config *proto.APLValueDot
 	if parentImpl == nil {
 		return nil
 	}
+
 	return &APLValueDotCritPercentIncrease{APLValueDotIncreaseCheck: parentImpl}
+}
+
+func (value *APLValueDotCritPercentIncrease) Finalize(rot *APLRotation) {
+	if value.useBaseValue && value.baseValueDummyAura != nil {
+		value.baseValueDummyAura.ApplyOnEncounterStart(func(aura *Aura, sim *Simulation) {
+			value.baseValue = value.getCritChance(false)
+		})
+	}
 }
 
 func (value *APLValueDotCritPercentIncrease) GetFloat(sim *Simulation) float64 {
@@ -298,11 +358,13 @@ func (value *APLValueDotCritPercentIncrease) GetFloat(sim *Simulation) float64 {
 }
 
 func (value *APLValueDotCritPercentIncrease) getCritChance(useSnapshot bool) float64 {
-	dot := value.spell.Dot(value.target)
+	target := value.targetRef.Get()
+	dot := value.spell.Dot(target)
 	if useSnapshot {
-		return dot.SnapshotCritChance
+		return TernaryFloat64(value.useBaseValue, value.baseValue, dot.SnapshotCritChance)
 	}
-	return dot.Spell.SpellCritChance(value.target)
+
+	return dot.Spell.SpellCritChance(target)
 }
 
 type APLValueDotTickRatePercentIncrease struct {
@@ -314,22 +376,33 @@ func (rot *APLRotation) newValueDotTickRatePercentIncrease(config *proto.APLValu
 	if parentImpl == nil {
 		return nil
 	}
+
 	return &APLValueDotTickRatePercentIncrease{APLValueDotIncreaseCheck: parentImpl}
+}
+
+func (value *APLValueDotTickRatePercentIncrease) Finalize(rot *APLRotation) {
+	if value.useBaseValue && value.baseValueDummyAura != nil {
+		value.baseValueDummyAura.ApplyOnEncounterStart(func(aura *Aura, sim *Simulation) {
+			value.baseValue = value.getTickRate(false)
+		})
+	}
 }
 
 func (value *APLValueDotTickRatePercentIncrease) GetFloat(sim *Simulation) float64 {
 	currentTickrate := value.getTickRate(true)
+
 	if currentTickrate == 0 {
 		return 1
 	}
-	val := currentTickrate/value.getTickRate(false) - 1
-	return val
+
+	return currentTickrate/value.getTickRate(false) - 1
 }
 
 func (value *APLValueDotTickRatePercentIncrease) getTickRate(useSnapshot bool) float64 {
-	dot := value.spell.Dot(value.target)
+	target := value.targetRef.Get()
+	dot := value.spell.Dot(target)
 	if useSnapshot {
-		return dot.TickPeriod().Seconds()
+		return TernaryFloat64(value.useBaseValue, value.baseValue, TernaryFloat64(dot.IsActive(), dot.TickPeriod().Seconds(), 0))
 	}
 	return dot.CalcTickPeriod().Round(time.Millisecond).Seconds()
 }

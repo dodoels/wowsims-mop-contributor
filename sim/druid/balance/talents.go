@@ -20,7 +20,7 @@ func (moonkin *BalanceDruid) registerIncarnation() {
 
 	actionID := core.ActionID{SpellID: 102560}
 
-	incarnationSpellMod := moonkin.AddDynamicMod(core.SpellModConfig{
+	moonkin.IncarnationSpellMod = moonkin.AddDynamicMod(core.SpellModConfig{
 		School:     core.SpellSchoolArcane | core.SpellSchoolNature,
 		Kind:       core.SpellMod_DamageDone_Pct,
 		FloatValue: 0.25,
@@ -31,13 +31,13 @@ func (moonkin *BalanceDruid) registerIncarnation() {
 		ActionID: actionID,
 		Duration: time.Second * 30,
 		OnGain: func(_ *core.Aura, _ *core.Simulation) {
-			// Only apply the damage bonus when in Eclipse
-			if moonkin.IsInEclipse() {
-				incarnationSpellMod.Activate()
+			// Only apply the damage bonus when in Eclipse or during Celestial Alignment
+			if moonkin.IsInEclipse() || moonkin.CelestialAlignment.RelatedSelfBuff.IsActive() {
+				moonkin.IncarnationSpellMod.Activate()
 			}
 		},
 		OnExpire: func(_ *core.Aura, _ *core.Simulation) {
-			incarnationSpellMod.Deactivate()
+			moonkin.IncarnationSpellMod.Deactivate()
 		},
 	})
 
@@ -45,16 +45,17 @@ func (moonkin *BalanceDruid) registerIncarnation() {
 	moonkin.AddEclipseCallback(func(_ Eclipse, gained bool, _ *core.Simulation) {
 		if incarnationAura.IsActive() {
 			if gained {
-				incarnationSpellMod.Activate()
+				moonkin.IncarnationSpellMod.Activate()
 			} else {
-				incarnationSpellMod.Deactivate()
+				moonkin.IncarnationSpellMod.Deactivate()
 			}
 		}
 	})
 
 	moonkin.ChosenOfElune = moonkin.RegisterSpell(druid.Humanoid|druid.Moonkin, core.SpellConfig{
-		ActionID: actionID,
-		Flags:    core.SpellFlagAPL,
+		ActionID:        actionID,
+		Flags:           core.SpellFlagAPL,
+		RelatedSelfBuff: incarnationAura,
 
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
@@ -66,8 +67,8 @@ func (moonkin *BalanceDruid) registerIncarnation() {
 			},
 		},
 
-		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
-			incarnationAura.Activate(sim)
+		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
+			spell.RelatedSelfBuff.Activate(sim)
 		},
 	})
 
@@ -88,10 +89,12 @@ func (moonkin *BalanceDruid) registerDreamOfCenarius() {
 		Duration: time.Second * 30,
 	})
 
-	core.MakeProcTriggerAura(&moonkin.Unit, core.ProcTrigger{
-		Name:           "Dream of Cenarius Trigger",
-		Callback:       core.CallbackOnCastComplete,
-		ClassSpellMask: druid.DruidSpellHealingTouch,
+	moonkin.MakeProcTriggerAura(core.ProcTrigger{
+		Name:               "Dream of Cenarius Trigger",
+		Callback:           core.CallbackOnCastComplete,
+		ClassSpellMask:     druid.DruidSpellHealingTouch,
+		TriggerImmediately: true,
+
 		Handler: func(sim *core.Simulation, _ *core.Spell, _ *core.SpellResult) {
 			moonkin.DreamOfCenarius.Activate(sim)
 		},
@@ -109,11 +112,13 @@ func (moonkin *BalanceDruid) registerSoulOfTheForest() {
 		Duration: time.Second * 30,
 	})
 
-	core.MakeProcTriggerAura(&moonkin.Unit, core.ProcTrigger{
-		Name:           "Astral Insight (SotF) Trigger",
-		Callback:       core.CallbackOnCastComplete,
-		ClassSpellMask: druid.DruidSpellWrath | druid.DruidSpellStarfire | druid.DruidSpellStarsurge,
-		ProcChance:     0.08,
+	moonkin.MakeProcTriggerAura(core.ProcTrigger{
+		Name:               "Astral Insight (SotF) Trigger",
+		Callback:           core.CallbackOnCastComplete,
+		ClassSpellMask:     druid.DruidSpellWrath | druid.DruidSpellStarfire | druid.DruidSpellStarsurge,
+		ProcChance:         0.08,
+		TriggerImmediately: true,
+
 		Handler: func(sim *core.Simulation, _ *core.Spell, _ *core.SpellResult) {
 			moonkin.AstralInsight.Activate(sim)
 		},

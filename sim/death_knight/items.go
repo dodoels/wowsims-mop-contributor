@@ -282,10 +282,10 @@ var ItemSetBattleplateOfCyclopeanDread = core.NewItemSet(core.ItemSet{
 					}
 
 					dk.PillarOfFrostAura.AttachProcTrigger(core.ProcTrigger{
-						Callback: core.CallbackOnSpellHitDealt,
-						ProcMask: core.ProcMaskSpecial,
-						Outcome:  core.OutcomeLanded,
-						Harmful:  true,
+						Callback:           core.CallbackOnSpellHitDealt,
+						ProcMask:           core.ProcMaskSpecial,
+						Outcome:            core.OutcomeLanded,
+						RequireDamageDealt: true,
 
 						Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 							frozenPowerSpell.Cast(sim, result.Target)
