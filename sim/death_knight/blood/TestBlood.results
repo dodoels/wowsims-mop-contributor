@@ -3084,10 +3084,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-Wushoolay'sFinalChoice-96785"
  value: {
-  dps: 98402.16373
-  tps: 554227.44233
-  dtps: 35802.60563
-  hps: 37792.59755
+  dps: 98407.70705
+  tps: 554148.12291
+  dtps: 35795.85399
+  hps: 37841.05394
  }
 }
 dps_results: {
