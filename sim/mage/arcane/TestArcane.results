@@ -418,15 +418,15 @@ dps_results: {
 dps_results: {
  key: "TestArcane-AllItems-UnerringVisionofLeiShen-96930"
  value: {
-  dps: 162607.44273
-  tps: 157409.5595
+  dps: 163089.67794
+  tps: 158010.00027
  }
 }
 dps_results: {
  key: "TestArcane-AllItems-Wushoolay'sFinalChoice-96785"
  value: {
-  dps: 155112.46781
-  tps: 151522.63093
+  dps: 155306.98161
+  tps: 151733.92782
  }
 }
 dps_results: {

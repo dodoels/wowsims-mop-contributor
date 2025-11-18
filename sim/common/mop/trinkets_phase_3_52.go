@@ -161,8 +161,9 @@ func init() {
 				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskSpellOrSpellProc, core.RPPMConfig{
 					PPM: 1.21000003815,
 				}),
-				Outcome:  core.OutcomeLanded,
-				Callback: core.CallbackOnSpellHitDealt | core.CallbackOnPeriodicDamageDealt,
+				Outcome:            core.OutcomeLanded,
+				Callback:           core.CallbackOnSpellHitDealt | core.CallbackOnPeriodicDamageDealt,
+				RequireDamageDealt: true,
 				Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
 					aura.Activate(sim)
 				},
@@ -533,8 +534,9 @@ func init() {
 					WithClassMod(-0.40000000596, int(1<<proto.Class_ClassWarlock)).
 					WithSpecMod(-0.34999999404, proto.Spec_SpecBalanceDruid),
 				),
-				ICD:      time.Second * 3,
-				Callback: core.CallbackOnSpellHitDealt | core.CallbackOnPeriodicDamageDealt,
+				ICD:                time.Second * 3,
+				Callback:           core.CallbackOnSpellHitDealt | core.CallbackOnPeriodicDamageDealt,
+				RequireDamageDealt: true,
 				Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
 					statBuffAura.Activate(sim)
 				},

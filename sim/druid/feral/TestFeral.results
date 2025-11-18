@@ -2673,9 +2673,9 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-Wushoolay'sFinalChoice-96785"
  value: {
-  dps: 148927.24937
+  dps: 148891.26444
   tps: 252726.62251
-  hps: 11146.79413
+  hps: 10974.11771
  }
 }
 dps_results: {
