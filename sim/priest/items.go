@@ -1,6 +1,7 @@
 package priest
 
 import (
+	"math"
 	"time"
 
 	"github.com/wowsims/mop/sim/core"
@@ -34,6 +35,9 @@ var ItemSetRegaliaOfTheExorcist = core.NewItemSet(core.ItemSet{
 	Bonuses: map[int32]core.ApplySetBonus{
 		2: func(agent core.Agent, setBonusAura *core.Aura) {
 			priest := agent.(PriestAgent).GetPriest()
+
+			setBonusAura.MaxStacks = math.MaxInt32
+
 			setBonusAura.AttachProcTrigger(core.ProcTrigger{
 				Name:           "Regalia of the Exorcist - 2P",
 				SpellFlags:     core.SpellFlagPassiveSpell,
@@ -42,6 +46,8 @@ var ItemSetRegaliaOfTheExorcist = core.NewItemSet(core.ItemSet{
 				Outcome:        core.OutcomeLanded,
 				Callback:       core.CallbackOnSpellHitDealt,
 				Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+					setBonusAura.AddStack(sim)
+
 					if priest.ShadowWordPain != nil && priest.ShadowWordPain.Dot(result.Target).IsActive() {
 						if priest.UnerringFaded[result.Target.Index].Swp <= sim.CurrentTime {
 							priest.ShadowWordPain.Dot(result.Target).SnapshotCritChance -= 1
