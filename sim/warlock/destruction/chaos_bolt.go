@@ -3,6 +3,7 @@ package destruction
 import (
 	"time"
 
+	"github.com/wowsims/mop/sim/common/shared"
 	"github.com/wowsims/mop/sim/core"
 	"github.com/wowsims/mop/sim/core/stats"
 	"github.com/wowsims/mop/sim/warlock"
@@ -11,12 +12,32 @@ import (
 var chaosBoltVariance = 0.2
 var chaosBoltScale = 2.5875
 var chaosBoltCoeff = 2.5875
-var chaosBoltDotCoeff = 0.1294
-var chaosBoltDotScale = 0.1294
 
 func (destro *DestructionWarlock) registerChaosBolt() {
+	actionID := core.ActionID{SpellID: 116858}
+	shared.RegisterIgniteEffect(&destro.Unit, shared.IgniteConfig{
+		ActionID:      actionID.WithTag(1), // Real SpellID: 1277303
+		SpellSchool:   core.SpellSchoolShadow,
+		DotAuraLabel:  "Chaos Bolt Dot",
+		DotAuraTag:    "ChaosBoltDot",
+		TickLength:    1 * time.Second,
+		NumberOfTicks: 3,
+
+		ProcTrigger: core.ProcTrigger{
+			Name:               "Chaos Bolt - Trigger",
+			Callback:           core.CallbackOnSpellHitDealt,
+			ClassSpellMask:     warlock.WarlockSpellChaosBolt,
+			Outcome:            core.OutcomeLanded,
+			RequireDamageDealt: true,
+		},
+
+		DamageCalculator: func(result *core.SpellResult) float64 {
+			return result.Damage * 0.15
+		},
+	})
+
 	destro.RegisterSpell(core.SpellConfig{
-		ActionID:       core.ActionID{SpellID: 116858},
+		ActionID:       actionID,
 		SpellSchool:    core.SpellSchoolShadow,
 		ProcMask:       core.ProcMaskSpellDamage,
 		Flags:          core.SpellFlagAPL,
@@ -34,22 +55,6 @@ func (destro *DestructionWarlock) registerChaosBolt() {
 		BonusCoefficient:         chaosBoltCoeff,
 		BonusCritPercent:         100,
 		MissileSpeed:             16,
-
-		Dot: core.DotConfig{
-			Aura: core.Aura{
-				Label: "Chaosbolt (DoT)",
-			},
-			NumberOfTicks:    3,
-			TickLength:       time.Second,
-			BonusCoefficient: chaosBoltDotCoeff,
-			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
-				dot.Snapshot(target, destro.CalcScalingSpellDmg(chaosBoltDotScale))
-				dot.SnapshotAttackerMultiplier *= (1 + destro.GetStat(stats.SpellCritPercent)/100)
-			},
-			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
-				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTickMagicCrit)
-			},
-		},
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			baseDamage := destro.CalcAndRollDamageRange(sim, chaosBoltScale, chaosBoltVariance)

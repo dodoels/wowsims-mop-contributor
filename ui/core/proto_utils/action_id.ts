@@ -691,6 +691,7 @@ export class ActionId {
 				}
 				break;
 			case 'Immolate':
+			case 'Chaos Bolt':
 				if (tag == 1) {
 					name += ' (DoT)';
 				}

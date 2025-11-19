@@ -209,13 +209,6 @@ func (warlock *Warlock) registerGrimoireOfSacrifice() {
 		OnReset: func(aura *core.Aura, sim *core.Simulation) {
 			aura.Activate(sim)
 		},
-		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if !spell.Matches(WarlockSpellChaosBolt) || !result.Landed() {
-				return
-			}
-
-			warlock.ApplyDotWithPandemic(spell.Dot(result.Target), sim)
-		},
 	})
 
 	switch warlock.Spec {
