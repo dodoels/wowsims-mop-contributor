@@ -95,6 +95,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecSubtletyRogue, {
 		BuffDebuffInputs.Skullbanner,
 		BuffDebuffInputs.ShatteringThrow,
 		BuffDebuffInputs.TricksOfTheTrade,
+		BuffDebuffInputs.UnholyFrenzy,
 
 		BuffDebuffInputs.SpellDamageDebuff,
 		BuffDebuffInputs.MajorArmorDebuff,

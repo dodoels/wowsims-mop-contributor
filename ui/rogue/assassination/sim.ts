@@ -94,6 +94,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecAssassinationRogue, {
 		BuffDebuffInputs.Skullbanner,
 		BuffDebuffInputs.ShatteringThrow,
 		BuffDebuffInputs.TricksOfTheTrade,
+		BuffDebuffInputs.UnholyFrenzy,
 
 		BuffDebuffInputs.SpellDamageDebuff,
 		BuffDebuffInputs.MajorArmorDebuff,

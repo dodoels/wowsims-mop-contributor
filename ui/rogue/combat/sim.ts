@@ -95,6 +95,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecCombatRogue, {
 		BuffDebuffInputs.Skullbanner,
 		BuffDebuffInputs.ShatteringThrow,
 		BuffDebuffInputs.TricksOfTheTrade,
+		BuffDebuffInputs.UnholyFrenzy,
 
 		BuffDebuffInputs.SpellDamageDebuff,
 		BuffDebuffInputs.MajorArmorDebuff,
