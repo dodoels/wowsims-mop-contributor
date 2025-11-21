@@ -1020,8 +1020,8 @@ dps_results: {
 dps_results: {
  key: "TestElemental-AllItems-Haromm'sTalisman-105527"
  value: {
-  dps: 149039.8152
-  tps: 110557.32286
+  dps: 142355.57599
+  tps: 105268.98302
  }
 }
 dps_results: {
@@ -1209,8 +1209,8 @@ dps_results: {
 dps_results: {
  key: "TestElemental-AllItems-Kardris'ToxicTotem-105540"
  value: {
-  dps: 166605.88605
-  tps: 123220.97026
+  dps: 159216.79421
+  tps: 117363.41804
  }
 }
 dps_results: {
@@ -1699,8 +1699,8 @@ dps_results: {
 dps_results: {
  key: "TestElemental-AllItems-RegaliaoftheWitchDoctor"
  value: {
-  dps: 144136.52597
-  tps: 105873.44804
+  dps: 138285.28845
+  tps: 101271.27721
  }
 }
 dps_results: {
@@ -1776,8 +1776,8 @@ dps_results: {
 dps_results: {
  key: "TestElemental-AllItems-RuneofRe-Origination-96918"
  value: {
-  dps: 141214.31867
-  tps: 103226.12278
+  dps: 134816.96856
+  tps: 98212.60517
  }
 }
 dps_results: {

@@ -1013,8 +1013,8 @@ dps_results: {
 dps_results: {
  key: "TestSurvival-AllItems-Haromm'sTalisman-105527"
  value: {
-  dps: 197350.92105
-  tps: 162503.02594
+  dps: 200938.5167
+  tps: 166090.62159
  }
 }
 dps_results: {
@@ -1202,8 +1202,8 @@ dps_results: {
 dps_results: {
  key: "TestSurvival-AllItems-Kardris'ToxicTotem-105540"
  value: {
-  dps: 171752.33599
-  tps: 143070.5388
+  dps: 174844.91874
+  tps: 146163.12155
  }
 }
 dps_results: {
@@ -2336,8 +2336,8 @@ dps_results: {
 dps_results: {
  key: "TestSurvival-AllItems-Wushoolay'sFinalChoice-96785"
  value: {
-  dps: 164184.67359
-  tps: 135500.65075
+  dps: 167111.89994
+  tps: 138427.8771
  }
 }
 dps_results: {
