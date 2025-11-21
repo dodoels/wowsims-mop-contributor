@@ -42,7 +42,6 @@ func (affliction *AfflictionWarlock) registerHotfixes() {
 	affliction.MaleficGraspMaleficEffectMultiplier += 0.1
 	// 2025-07-31 - The damage your Drain Soul causes your other DoTs to deal increased to 100% (was 60%).
 	// 2025-11-13 - The damage your Drain Soul causes your other DoTs to deal decreased to 80% (was 100%).
-	// 2025-11-13 - 5.5.0 damage increase to Drain Soul’s DoT triggers reduced to 15% (was 20%).
-	affliction.DrainSoulMaleficEffectMultiplier += 0.15
+	affliction.DrainSoulMaleficEffectMultiplier += 0.2
 
 }
