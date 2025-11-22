@@ -53,7 +53,7 @@ type Paladin struct {
 	JudgmentsOfTheWiseActionID core.ActionID
 	DefensiveCooldownAuras     []*core.Aura
 
-	DynamicHolyPowerSpent                        int32
+	DynamicHolyPowerSpent                        float64
 	BastionOfGloryMultiplier                     float64
 	ShieldOfTheRighteousAdditiveMultiplier       float64
 	ShieldOfTheRighteousMultiplicativeMultiplier float64
@@ -190,7 +190,7 @@ func (paladin *Paladin) BuilderCooldown() *core.Timer {
 	return paladin.Character.GetOrInitTimer(&paladin.sharedBuilderTimer)
 }
 
-func (paladin *Paladin) SpendableHolyPower() int32 {
+func (paladin *Paladin) SpendableHolyPower() float64 {
 	return min(paladin.HolyPower.Value(), 3)
 }
 

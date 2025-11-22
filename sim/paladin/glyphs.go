@@ -423,7 +423,7 @@ func (paladin *Paladin) registerGlyphOfHarshWords() {
 			},
 			ModifyCast: func(sim *core.Simulation, spell *core.Spell, cast *core.Cast) {
 				paladin.DynamicHolyPowerSpent = paladin.SpendableHolyPower()
-				spell.SetMetricsSplit(paladin.DynamicHolyPowerSpent)
+				spell.SetMetricsSplit(int32(paladin.DynamicHolyPowerSpent))
 			},
 		},
 
@@ -719,7 +719,7 @@ func (paladin *Paladin) registerGlyphOfWordOfGlory() {
 			}
 
 			glyphAura.Activate(sim)
-			glyphAura.SetStacks(sim, paladin.DynamicHolyPowerSpent)
+			glyphAura.SetStacks(sim, int32(paladin.DynamicHolyPowerSpent))
 		},
 	})
 }

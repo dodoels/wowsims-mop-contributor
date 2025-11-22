@@ -42,18 +42,18 @@ func (demonology *DemonologyWarlock) registerImmolationAura() {
 			IsAOE:                true,
 
 			OnTick: func(sim *core.Simulation, _ *core.Unit, dot *core.Dot) {
-				if !demonology.DemonicFury.CanSpend(core.TernaryInt32(demonology.T15_2pc.IsActive(), 18, 25)) {
+				if !demonology.CanSpendDemonicFury(25) {
 					dot.Deactivate(sim)
 					return
 				}
 
-				demonology.DemonicFury.Spend(sim, core.TernaryInt32(demonology.T15_2pc.IsActive(), 18, 25), dot.Spell.ActionID)
+				demonology.SpendDemonicFury(sim, 25, dot.Spell.ActionID)
 				dot.Spell.CalcAndDealPeriodicAoeDamage(sim, baseDamage, dot.OutcomeTick)
 			},
 		},
 
 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
-			return demonology.IsInMeta() && demonology.DemonicFury.CanSpend(core.TernaryInt32(demonology.T15_2pc.IsActive(), 18, 25))
+			return demonology.IsInMeta() && demonology.CanSpendDemonicFury(25)
 		},
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			spell.AOEDot().Apply(sim)

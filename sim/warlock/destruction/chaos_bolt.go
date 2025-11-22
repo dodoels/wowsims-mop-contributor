@@ -60,8 +60,8 @@ func (destro *DestructionWarlock) registerChaosBolt() {
 			// check again we can actually spend as Dark Soul might have run out before the cast finishes
 			if spell.Flags.Matches(SpellFlagDestructionHavoc) {
 				//Havoc Spell doesn't spend resources as it was a duplicate
-			} else if result.Landed() && destro.BurningEmbers.CanSpend(core.TernaryInt32(destro.T15_2pc.IsActive(), 8, 10)) {
-				destro.BurningEmbers.Spend(sim, core.TernaryInt32(destro.T15_2pc.IsActive(), 8, 10), spell.ActionID)
+			} else if result.Landed() && destro.BurningEmbers.CanSpend(core.TernaryFloat64(destro.T15_2pc.IsActive(), 8, 10)) {
+				destro.BurningEmbers.Spend(sim, core.TernaryFloat64(destro.T15_2pc.IsActive(), 8, 10), spell.ActionID)
 			} else {
 				return
 			}
@@ -72,7 +72,7 @@ func (destro *DestructionWarlock) registerChaosBolt() {
 		},
 
 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
-			return destro.BurningEmbers.CanSpend(core.TernaryInt32(destro.T15_2pc.IsActive(), 8, 10))
+			return destro.BurningEmbers.CanSpend(core.TernaryFloat64(destro.T15_2pc.IsActive(), 8, 10))
 		},
 	})
 }

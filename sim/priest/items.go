@@ -104,8 +104,8 @@ var ItemSetRegaliaOfTheTernionGlory = core.NewItemSet(core.ItemSet{
 				ClassMask:  PriestSpellShadowWordDeath | PriestSpellMindSpike | PriestSpellMindBlast,
 			})
 
-			var orbsSpend int32 = 0
-			priest.Unit.GetSecondaryResourceBar().RegisterOnSpend(func(_ *core.Simulation, amount int32, _ core.ActionID) {
+			var orbsSpend float64 = 0
+			priest.Unit.GetSecondaryResourceBar().RegisterOnSpend(func(_ *core.Simulation, amount float64, _ core.ActionID) {
 				orbsSpend = amount
 			})
 

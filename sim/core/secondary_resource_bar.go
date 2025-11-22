@@ -6,32 +6,32 @@ import (
 	"github.com/wowsims/mop/sim/core/proto"
 )
 
-type OnGainCallback func(sim *Simulation, gain int32, realGain int32, actionID ActionID)
-type OnSpendCallback func(sim *Simulation, amount int32, actionID ActionID)
+type OnGainCallback func(sim *Simulation, gain float64, realGain float64, actionID ActionID)
+type OnSpendCallback func(sim *Simulation, amount float64, actionID ActionID)
 
 type SecondaryResourceBar interface {
-	CanSpend(limit int32) bool                                     // Check whether the current resource is available or not
-	Spend(sim *Simulation, amount int32, action ActionID)          // Spend the specified amount of resource
-	SpendUpTo(sim *Simulation, limit int32, action ActionID) int32 // Spends as much resource as possible up to the speciefied limit; Returns the amount of resource spent
-	Gain(sim *Simulation, amount int32, action ActionID)           // Gain the amount specified from the action
-	Reset(sim *Simulation)                                         // Resets the current resource bar
-	ResetBarTo(sim *Simulation, resourcesToKeep int32)             // Resets the current resource bar to the specified value
-	Value() int32                                                  // Returns the current amount of resource
-	RegisterOnGain(callback OnGainCallback)                        // Registers a callback that will be called. Gain = amount gained, realGain = actual amount gained due to caps
-	RegisterOnSpend(callback OnSpendCallback)                      // Registers a callback that will be called when the resource was spend
+	CanSpend(limit float64) bool                                       // Check whether the current resource is available or not
+	Spend(sim *Simulation, amount float64, action ActionID)            // Spend the specified amount of resource
+	SpendUpTo(sim *Simulation, limit float64, action ActionID) float64 // Spends as much resource as possible up to the speciefied limit; Returns the amount of resource spent
+	Gain(sim *Simulation, amount float64, action ActionID)             // Gain the amount specified from the action
+	Reset(sim *Simulation)                                             // Resets the current resource bar
+	ResetBarTo(sim *Simulation, resourcesToKeep float64)               // Resets the current resource bar to the specified value
+	Value() float64                                                    // Returns the current amount of resource
+	RegisterOnGain(callback OnGainCallback)                            // Registers a callback that will be called. Gain = amount gained, realGain = actual amount gained due to caps
+	RegisterOnSpend(callback OnSpendCallback)                          // Registers a callback that will be called when the resource was spend
 }
 
 type SecondaryResourceConfig struct {
 	Type    proto.SecondaryResourceType // The type of resource the bar tracks
-	Max     int32                       // The maximum amount the bar tracks
-	Default int32                       // The default value this bar should be initialized with
+	Max     float64                     // The maximum amount the bar tracks
+	Default float64                     // The default value this bar should be initialized with
 }
 
 // Default implementation of SecondaryResourceBar
 // Use RegisterSecondaryResourceBar to intantiate the resource bar
 type DefaultSecondaryResourceBarImpl struct {
 	config  SecondaryResourceConfig
-	value   int32
+	value   float64
 	unit    *Unit
 	metrics map[ActionID]*ResourceMetrics
 	onGain  []OnGainCallback
@@ -39,12 +39,12 @@ type DefaultSecondaryResourceBarImpl struct {
 }
 
 // CanSpend implements SecondaryResourceBar.
-func (bar *DefaultSecondaryResourceBarImpl) CanSpend(limit int32) bool {
+func (bar *DefaultSecondaryResourceBarImpl) CanSpend(limit float64) bool {
 	return bar.value >= limit
 }
 
 // Gain implements SecondaryResourceBar.
-func (bar *DefaultSecondaryResourceBarImpl) Gain(sim *Simulation, amount int32, action ActionID) {
+func (bar *DefaultSecondaryResourceBarImpl) Gain(sim *Simulation, amount float64, action ActionID) {
 	if amount < 0 {
 		panic("Can not gain negative amount")
 	}
@@ -57,7 +57,7 @@ func (bar *DefaultSecondaryResourceBarImpl) Gain(sim *Simulation, amount int32, 
 	if sim.Log != nil {
 		bar.unit.Log(
 			sim,
-			"Gained %d %s from %s (%d --> %d) of %d total.",
+			"Gained %0.01f %s from %s (%0.01f --> %0.01f) of %0.01f total.",
 			amountGained,
 			proto.SecondaryResourceType_name[int32(bar.config.Type)],
 			action,
@@ -80,7 +80,7 @@ func (bar *DefaultSecondaryResourceBarImpl) Reset(sim *Simulation) {
 
 var encounterStartActionID = ActionID{OtherID: proto.OtherAction_OtherActionEncounterStart}
 
-func (bar *DefaultSecondaryResourceBarImpl) ResetBarTo(sim *Simulation, resourcesToKeep int32) {
+func (bar *DefaultSecondaryResourceBarImpl) ResetBarTo(sim *Simulation, resourcesToKeep float64) {
 	if bar.value > resourcesToKeep {
 		bar.Spend(sim, bar.value-resourcesToKeep, encounterStartActionID)
 	} else if resourcesToKeep > bar.value {
@@ -89,7 +89,7 @@ func (bar *DefaultSecondaryResourceBarImpl) ResetBarTo(sim *Simulation, resource
 }
 
 // Spend implements SecondaryResourceBar.
-func (bar *DefaultSecondaryResourceBarImpl) Spend(sim *Simulation, amount int32, action ActionID) {
+func (bar *DefaultSecondaryResourceBarImpl) Spend(sim *Simulation, amount float64, action ActionID) {
 	if amount > bar.value {
 		panic("Trying to spend more resource than is available.")
 	}
@@ -102,7 +102,7 @@ func (bar *DefaultSecondaryResourceBarImpl) Spend(sim *Simulation, amount int32,
 	if sim.Log != nil {
 		bar.unit.Log(
 			sim,
-			"Spent %d %s from %s (%d --> %d) of %d total.",
+			"Spent %0.01f %s from %s (%0.01f --> %0.01f) of %0.01f total.",
 			amount,
 			proto.SecondaryResourceType_name[int32(bar.config.Type)],
 			metrics.ActionID,
@@ -118,7 +118,7 @@ func (bar *DefaultSecondaryResourceBarImpl) Spend(sim *Simulation, amount int32,
 }
 
 // SpendUpTo implements SecondaryResourceBar.
-func (bar *DefaultSecondaryResourceBarImpl) SpendUpTo(sim *Simulation, limit int32, action ActionID) int32 {
+func (bar *DefaultSecondaryResourceBarImpl) SpendUpTo(sim *Simulation, limit float64, action ActionID) float64 {
 	if bar.value > limit {
 		bar.Spend(sim, limit, action)
 		return limit
@@ -130,11 +130,11 @@ func (bar *DefaultSecondaryResourceBarImpl) SpendUpTo(sim *Simulation, limit int
 }
 
 // Value implements SecondaryResourceBar.
-func (bar *DefaultSecondaryResourceBarImpl) Value() int32 {
+func (bar *DefaultSecondaryResourceBarImpl) Value() float64 {
 	return bar.value
 }
 
-func (bar *DefaultSecondaryResourceBarImpl) Max() int32 {
+func (bar *DefaultSecondaryResourceBarImpl) Max() float64 {
 	return bar.config.Max
 }
 
@@ -164,13 +164,13 @@ func (bar *DefaultSecondaryResourceBarImpl) RegisterOnSpend(callback OnSpendCall
 	bar.onSpend = append(bar.onSpend, callback)
 }
 
-func (bar *DefaultSecondaryResourceBarImpl) invokeOnGain(sim *Simulation, gain int32, realGain int32, actionID ActionID) {
+func (bar *DefaultSecondaryResourceBarImpl) invokeOnGain(sim *Simulation, gain float64, realGain float64, actionID ActionID) {
 	for _, callback := range bar.onGain {
 		callback(sim, gain, realGain, actionID)
 	}
 }
 
-func (bar *DefaultSecondaryResourceBarImpl) invokeOnSpend(sim *Simulation, amount int32, actionID ActionID) {
+func (bar *DefaultSecondaryResourceBarImpl) invokeOnSpend(sim *Simulation, amount float64, actionID ActionID) {
 	for _, callback := range bar.onSpend {
 		callback(sim, amount, actionID)
 	}

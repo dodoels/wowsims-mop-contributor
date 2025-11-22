@@ -54,7 +54,7 @@ type ShadowPriest struct {
 	*priest.Priest
 	options      *proto.ShadowPriest_Options
 	ShadowOrbs   core.SecondaryResourceBar
-	orbsConsumed int32 // Number of orbs consumed by the last devouring plague cast
+	orbsConsumed float64 // Number of orbs consumed by the last devouring plague cast
 
 	// Shadow Spells
 	DevouringPlague *core.Spell

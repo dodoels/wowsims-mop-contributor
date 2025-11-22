@@ -67,7 +67,7 @@ func (affliction *AfflictionWarlock) GetWarlock() *warlock.Warlock {
 	return affliction.Warlock
 }
 
-const MaxSoulShards = int32(4)
+const MaxSoulShards = 4.0
 
 func (affliction *AfflictionWarlock) Initialize() {
 	affliction.Warlock.Initialize()
@@ -119,7 +119,7 @@ func (affliction *AfflictionWarlock) OnEncounterStart(sim *core.Simulation) {
 	}
 
 	haunt := affliction.GetSpell(core.ActionID{SpellID: HauntSpellID})
-	count := affliction.SpellsInFlight[haunt]
+	count := float64(affliction.SpellsInFlight[haunt])
 	defaultShards -= count
 
 	affliction.SoulShards.ResetBarTo(sim, defaultShards)

@@ -63,7 +63,7 @@ func (ret *RetributionPaladin) registerInquisition() {
 		ThreatMultiplier: 1,
 
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
-			duration := inquisitionDuration * time.Duration(ret.DynamicHolyPowerSpent+core.TernaryInt32(ret.T11Ret4pc.IsActive(), 1, 0))
+			duration := inquisitionDuration * time.Duration(ret.DynamicHolyPowerSpent+core.TernaryFloat64(ret.T11Ret4pc.IsActive(), 1, 0))
 
 			// Inquisition behaves like a dot with DOT_REFRESH, which means you'll never lose your current tick
 			if spell.RelatedSelfBuff.IsActive() {
@@ -76,7 +76,7 @@ func (ret *RetributionPaladin) registerInquisition() {
 
 			spell.RelatedSelfBuff.Duration = duration
 			spell.RelatedSelfBuff.Activate(sim)
-			spell.RelatedSelfBuff.SetStacks(sim, ret.DynamicHolyPowerSpent)
+			spell.RelatedSelfBuff.SetStacks(sim, int32(ret.DynamicHolyPowerSpent))
 
 			ret.HolyPower.SpendUpTo(sim, ret.DynamicHolyPowerSpent, actionID)
 		},

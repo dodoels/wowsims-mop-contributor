@@ -54,7 +54,7 @@ func (destruction *DestructionWarlock) registerConflagrate() {
 				emberGain += 1
 			}
 
-			destruction.BurningEmbers.Gain(sim, emberGain, spell.ActionID)
+			destruction.BurningEmbers.Gain(sim, float64(emberGain), spell.ActionID)
 		},
 	})
 }
