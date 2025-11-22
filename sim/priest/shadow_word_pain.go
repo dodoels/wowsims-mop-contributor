@@ -3,7 +3,6 @@ package priest
 import (
 	"time"
 
-	"github.com/wowsims/mop/sim/common/mop"
 	"github.com/wowsims/mop/sim/core"
 )
 
@@ -60,15 +59,10 @@ func (priest *Priest) registerShadowWordPainSpell() {
 				dot.Apply(sim)
 				dot.TickOnce(sim)
 
-				// Failsave for Unerring Vision custom code for shadow
-				unerringAura := priest.GetAuraByID(core.ActionID{SpellID: mop.UnerringVisionBuffId})
-				if unerringAura != nil && unerringAura.IsActive() {
-					priest.UnerringFaded[target.Index].Swp = spell.Dot(target).ExpiresAt()
-				} else {
-					// make sure we reset here to not have edge cases where we refresh the dot before
-					// it's expiration and did not update the expiration time, so it will be decreased by 100%
-					priest.UnerringFaded[target.Index].VT = 1<<63 - 1
-				}
+				// Custom code for tracking T15 2PC extension logic
+				// which recalculates the snapshot if you extend after
+				// the initial duration.
+				priest.T15_2PC_ExtensionTracker[target.Index].Swp = spell.Dot(target).ExpiresAt()
 			}
 		},
 
