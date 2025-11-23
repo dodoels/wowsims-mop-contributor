@@ -81,8 +81,7 @@ func (bdk *BloodDeathKnight) registerMastery() {
 		TriggerImmediately: true,
 
 		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			preHealingOutcome := result.Damage / spell.CasterHealingMultiplier() / bdk.PseudoStats.HealingTakenMultiplier
-			shieldAmount = preHealingOutcome * bdk.getMasteryPercent()
+			shieldAmount = result.Damage * bdk.getMasteryPercent()
 			shieldSpell.Cast(sim, result.Target)
 		},
 	})

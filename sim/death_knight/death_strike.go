@@ -51,7 +51,7 @@ func (dk *DeathKnight) registerDeathStrike() {
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			maxHealth := spell.Unit.MaxHealth()
-			healing := min(max(maxHealth*0.07, damageTakenInFive*dk.deathStrikeHealingMultiplier), maxHealth*0.35)
+			healing := min(max(maxHealth*0.07, damageTakenInFive*dk.deathStrikeHealingMultiplier)+spell.MeleeAttackPower()*0.05, maxHealth*0.35)
 			spell.CalcAndDealHealing(sim, target, healing, spell.OutcomeHealing)
 		},
 	})
