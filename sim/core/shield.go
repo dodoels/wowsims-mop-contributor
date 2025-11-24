@@ -27,11 +27,10 @@ func (shield *Shield) Apply(sim *Simulation, shieldAmount float64) {
 	// So we only apply the spell-specific multiplier.
 	shieldAmount *= shield.Spell.DamageMultiplier
 
-	stacks := shield.Aura.GetStacks()
 	shield.Aura.Deactivate(sim)
 	shield.Aura.Activate(sim)
 	if shield.Aura.MaxStacks > 0 {
-		shield.Aura.SetStacks(sim, stacks)
+		shield.Aura.SetStacks(sim, int32(shieldAmount))
 	}
 
 	threat := 0.0 // TODO

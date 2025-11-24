@@ -51,17 +51,18 @@ var ItemSetRegaliaOfTheExorcist = core.NewItemSet(core.ItemSet{
 						dot := priest.ShadowWordPain.Dot(result.Target)
 						if priest.T15_2PC_ExtensionTracker[result.Target.Index].Swp <= sim.CurrentTime {
 							dot.DurationExtendSnapshot(sim, dot.CalcTickPeriod())
+						} else {
+							dot.AddTick()
 						}
-						dot.AddTick()
 					}
 
 					if priest.VampiricTouch != nil && priest.VampiricTouch.Dot(result.Target).IsActive() {
 						dot := priest.VampiricTouch.Dot(result.Target)
 						if priest.T15_2PC_ExtensionTracker[result.Target.Index].VT <= sim.CurrentTime {
 							dot.DurationExtendSnapshot(sim, dot.CalcTickPeriod())
+						} else {
+							dot.AddTick()
 						}
-
-						dot.AddTick()
 					}
 				},
 			}).ExposeToAPL(138156)

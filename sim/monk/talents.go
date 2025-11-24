@@ -477,7 +477,7 @@ func chiBurstDamageSpellConfig(monk *Monk, isSEFClone bool) core.SpellConfig {
 		ActionID:       chiBurstDamageActionID,
 		SpellSchool:    core.SpellSchoolNature,
 		ProcMask:       core.ProcMaskSpellDamage,
-		Flags:          core.SpellFlagAoE | core.SpellFlagPassiveSpell,
+		Flags:          core.SpellFlagAoE,
 		ClassSpellMask: MonkSpellChiBurst,
 		MissileSpeed:   30,
 		MaxRange:       40,
@@ -514,7 +514,7 @@ func chiBurstHealSpellConfig(monk *Monk, isSEFClone bool) core.SpellConfig {
 		ActionID:       chiBurstHealActionID,
 		SpellSchool:    core.SpellSchoolNature,
 		ProcMask:       core.ProcMaskSpellHealing,
-		Flags:          core.SpellFlagHelpful | core.SpellFlagPassiveSpell,
+		Flags:          core.SpellFlagHelpful,
 		ClassSpellMask: MonkSpellChiBurst,
 		MissileSpeed:   30,
 
@@ -546,7 +546,6 @@ func (monk *Monk) registerChiBurst() {
 	}
 
 	chiBurstDamageSpell := monk.RegisterSpell(chiBurstDamageSpellConfig(monk, false))
-
 	chiBurstHealingSpell := monk.RegisterSpell(chiBurstHealSpellConfig(monk, false))
 
 	chiBurstFakeCastAura := monk.RegisterAura(core.Aura{
