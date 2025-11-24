@@ -11,6 +11,8 @@ import (
 var chaosBoltVariance = 0.2
 var chaosBoltScale = 2.5875
 var chaosBoltCoeff = 2.5875
+var chaosBoltDotCoeff = 0.1294
+var chaosBoltDotScale = 0.1294
 
 func (destro *DestructionWarlock) registerChaosBolt() {
 	destro.RegisterSpell(core.SpellConfig{
@@ -33,6 +35,22 @@ func (destro *DestructionWarlock) registerChaosBolt() {
 		BonusCritPercent:         100,
 		MissileSpeed:             16,
 
+		Dot: core.DotConfig{
+			Aura: core.Aura{
+				Label: "Chaosbolt (DoT)",
+			},
+			NumberOfTicks:    3,
+			TickLength:       time.Second,
+			BonusCoefficient: chaosBoltDotCoeff,
+			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
+				dot.Snapshot(target, destro.CalcScalingSpellDmg(chaosBoltDotScale))
+				dot.SnapshotAttackerMultiplier *= (1 + destro.GetStat(stats.SpellCritPercent)/100)
+			},
+			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
+				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTickMagicCrit)
+			},
+		},
+
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			baseDamage := destro.CalcAndRollDamageRange(sim, chaosBoltScale, chaosBoltVariance)
 			spell.DamageMultiplier *= (1 + destro.GetStat(stats.SpellCritPercent)/100)
@@ -42,8 +60,8 @@ func (destro *DestructionWarlock) registerChaosBolt() {
 			// check again we can actually spend as Dark Soul might have run out before the cast finishes
 			if spell.Flags.Matches(SpellFlagDestructionHavoc) {
 				//Havoc Spell doesn't spend resources as it was a duplicate
-			} else if result.Landed() && destro.BurningEmbers.CanSpend(core.TernaryInt32(destro.T15_2pc.IsActive(), 8, 10)) {
-				destro.BurningEmbers.Spend(sim, core.TernaryInt32(destro.T15_2pc.IsActive(), 8, 10), spell.ActionID)
+			} else if result.Landed() && destro.BurningEmbers.CanSpend(core.TernaryFloat64(destro.T15_2pc.IsActive(), 8, 10)) {
+				destro.BurningEmbers.Spend(sim, core.TernaryFloat64(destro.T15_2pc.IsActive(), 8, 10), spell.ActionID)
 			} else {
 				return
 			}
@@ -54,7 +72,7 @@ func (destro *DestructionWarlock) registerChaosBolt() {
 		},
 
 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
-			return destro.BurningEmbers.CanSpend(core.TernaryInt32(destro.T15_2pc.IsActive(), 8, 10))
+			return destro.BurningEmbers.CanSpend(core.TernaryFloat64(destro.T15_2pc.IsActive(), 8, 10))
 		},
 	})
 }

@@ -60,8 +60,8 @@ func (paladin *Paladin) registerWordOfGlory() {
 				Duration: time.Millisecond * 1500,
 			},
 			ModifyCast: func(sim *core.Simulation, spell *core.Spell, cast *core.Cast) {
-				paladin.DynamicHolyPowerSpent = core.TernaryInt32(paladin.BastionOfPowerAura.IsActive(), 3, paladin.SpendableHolyPower())
-				spell.SetMetricsSplit(paladin.DynamicHolyPowerSpent)
+				paladin.DynamicHolyPowerSpent = core.TernaryFloat64(paladin.BastionOfPowerAura.IsActive(), 3, paladin.SpendableHolyPower())
+				spell.SetMetricsSplit(int32(paladin.DynamicHolyPowerSpent))
 			},
 		},
 

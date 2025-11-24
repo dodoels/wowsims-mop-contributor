@@ -55,8 +55,8 @@ type Priest struct {
 
 	WeakenedSouls core.AuraArray
 
-	ProcPrayerOfMending core.ApplySpellResults
-	UnerringFaded       []TargetDoTInfo
+	ProcPrayerOfMending      core.ApplySpellResults
+	T15_2PC_ExtensionTracker []TargetDoTInfo
 }
 
 type TargetDoTInfo struct {
@@ -100,7 +100,7 @@ func (priest *Priest) Initialize() {
 
 	priest.ApplyGlyphs()
 
-	priest.UnerringFaded = make([]TargetDoTInfo, len(priest.Env.Encounter.AllTargets))
+	priest.T15_2PC_ExtensionTracker = make([]TargetDoTInfo, len(priest.Env.Encounter.AllTargets))
 }
 
 func (priest *Priest) AddHolyEvanglismStack(sim *core.Simulation) {
@@ -122,9 +122,9 @@ func (priest *Priest) ApplyTalents() {
 }
 
 func (priest *Priest) Reset(_ *core.Simulation) {
-	for i := range len(priest.UnerringFaded) {
-		priest.UnerringFaded[i].Swp = 1<<63 - 1
-		priest.UnerringFaded[i].VT = 1<<63 - 1
+	for i := range len(priest.T15_2PC_ExtensionTracker) {
+		priest.T15_2PC_ExtensionTracker[i].Swp = core.NeverExpires
+		priest.T15_2PC_ExtensionTracker[i].VT = core.NeverExpires
 	}
 }
 

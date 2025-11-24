@@ -1985,9 +1985,9 @@ dps_results: {
 dps_results: {
  key: "TestAffliction-AllItems-RuneofRe-Origination-96918"
  value: {
-  dps: 138481.21016
-  tps: 93633.08089
-  hps: 2291.92505
+  dps: 136883.45454
+  tps: 92699.20299
+  hps: 2242.89737
  }
 }
 dps_results: {

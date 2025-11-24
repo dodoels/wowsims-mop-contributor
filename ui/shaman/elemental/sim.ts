@@ -58,9 +58,9 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecElementalShaman, {
 	gemStats: DEFAULT_HYBRID_CASTER_GEM_STATS,
 	defaults: {
 		// Default equipped gear.
-		gear: Presets.P2_PRESET.gear,
+		gear: Presets.P3_PRESET.gear,
 		// Default EP weights for sorting gear in the gear picker.
-		epWeights: Presets.EP_PRESET_DEFAULT.epWeights,
+		epWeights: Presets.EP_PRESET_P3.epWeights,
 		// Default stat caps for the Reforge optimizer
 		statCaps: (() => {
 			return new Stats().withPseudoStat(PseudoStat.PseudoStatSpellHitPercent, 15);
@@ -68,7 +68,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecElementalShaman, {
 		// Default consumes settings.
 		consumables: Presets.DefaultConsumables,
 		// Default talents.
-		talents: Presets.StandardTalents.data,
+		talents: Presets.P3_TALENTS.data,
 		// Default spec-specific settings.
 		specOptions: Presets.DefaultOptions,
 		other: Presets.OtherDefaults,
@@ -95,15 +95,15 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecElementalShaman, {
 	},
 
 	presets: {
-		epWeights: [Presets.EP_PRESET_DEFAULT, Presets.EP_PRESET_AOE],
+		epWeights: [Presets.EP_PRESET_DEFAULT, Presets.EP_PRESET_AOE, Presets.EP_PRESET_P3],
 		// Preset talents that the user can quickly select.
-		talents: [Presets.StandardTalents, Presets.TalentsAoE],
+		talents: [Presets.StandardTalents, Presets.TalentsAoE, Presets.P3_TALENTS],
 		// Preset rotations that the user can quickly select.
-		rotations: [Presets.ROTATION_PRESET_DEFAULT, Presets.ROTATION_PRESET_AOE, Presets.ROTATION_PRESET_CLEAVE],
+		rotations: [Presets.ROTATION_PRESET_DEFAULT, Presets.ROTATION_PRESET_AOE, Presets.ROTATION_PRESET_CLEAVE, Presets.ROTATION_PRESET_P3],
 		// Preset gear configurations that the user can quickly select.
-		gear: [Presets.PRERAID_PRESET, Presets.P1_PRESET, Presets.P2_PRESET],
+		gear: [Presets.PRERAID_PRESET, Presets.P1_PRESET, Presets.P2_PRESET, Presets.P3_PRESET],
 
-		builds: [Presets.P1_PRESET_BUILD_DEFAULT, Presets.P1_PRESET_BUILD_CLEAVE, Presets.P1_PRESET_BUILD_AOE],
+		builds: [Presets.P1_PRESET_BUILD_DEFAULT, Presets.P1_PRESET_BUILD_CLEAVE, Presets.P1_PRESET_BUILD_AOE, Presets.P3_PRESET_BUILD_DEFAULT],
 	},
 
 	autoRotation: (_player: Player<Spec.SpecElementalShaman>): APLRotation => {
@@ -112,13 +112,13 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecElementalShaman, {
 		if (numTargets > 2) return Presets.ROTATION_PRESET_AOE.rotation.rotation!;
 		if (numTargets == 2) return Presets.ROTATION_PRESET_CLEAVE.rotation.rotation!;
 
-		return Presets.ROTATION_PRESET_DEFAULT.rotation.rotation!;
+		return Presets.ROTATION_PRESET_P3.rotation.rotation!;
 	},
 
 	raidSimPresets: [
 		{
 			spec: Spec.SpecElementalShaman,
-			talents: Presets.StandardTalents.data,
+			talents: Presets.P3_TALENTS.data,
 			specOptions: Presets.DefaultOptions,
 			consumables: Presets.DefaultConsumables,
 			defaultFactionRaces: {
@@ -129,10 +129,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecElementalShaman, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.P1_PRESET.gear,
+					1: Presets.P3_PRESET.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.P1_PRESET.gear,
+					1: Presets.P3_PRESET.gear,
 				},
 			},
 			otherDefaults: Presets.OtherDefaults,

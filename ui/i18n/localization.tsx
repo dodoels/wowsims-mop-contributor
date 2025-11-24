@@ -72,7 +72,7 @@ export const translateTargetInputTooltip = (label: string, tooltip: string): str
 };
 
 export const translateSpellSchool = (spellSchool: SpellSchool): string => {
-	return i18n.t(`common.spell_schools.${spellSchoolI18nKeys[spellSchool] || SpellSchool[spellSchool].toLowerCase()}.label`, {
+	return i18n.t(`common.spell_schools.${spellSchoolI18nKeys[spellSchool] || SpellSchool[spellSchool].toLowerCase()}`, {
 		defaultValue: SpellSchool[spellSchool],
 	});
 };

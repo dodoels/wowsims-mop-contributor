@@ -65,7 +65,7 @@ func (demonology *DemonologyWarlock) Initialize() {
 
 	demonology.DemonicFury = demonology.RegisterNewDefaultSecondaryResourceBar(core.SecondaryResourceConfig{
 		Type:    proto.SecondaryResourceType_SecondaryResourceTypeDemonicFury,
-		Max:     1000,
+		Max:     1000, // Multiplied by 10 to avoid having to refactor to float
 		Default: DefaultDemonicFury,
 	})
 
@@ -119,4 +119,36 @@ func NewDemonicFuryCost(cost int) *warlock.SecondaryResourceCost {
 
 func (demo *DemonologyWarlock) IsInMeta() bool {
 	return demo.Metamorphosis.RelatedSelfBuff.IsActive()
+}
+
+func (demo *DemonologyWarlock) CanSpendDemonicFury(amount float64) bool {
+	if demo.T15_2pc.IsActive() {
+		amount *= 0.7
+	}
+
+	return demo.DemonicFury.CanSpend(amount)
+}
+
+func (demo *DemonologyWarlock) SpendUpToDemonicFury(sim *core.Simulation, limit float64, actionID core.ActionID) {
+	if demo.T15_2pc.IsActive() {
+		limit *= 0.7
+	}
+
+	demo.DemonicFury.SpendUpTo(sim, limit, actionID)
+}
+
+func (demo *DemonologyWarlock) SpendDemonicFury(sim *core.Simulation, amount float64, actionID core.ActionID) {
+	if demo.T15_2pc.IsActive() {
+		amount *= 0.7
+	}
+
+	demo.DemonicFury.Spend(sim, amount, actionID)
+}
+
+func (demo *DemonologyWarlock) GainDemonicFury(sim *core.Simulation, amount float64, actionID core.ActionID) {
+	if demo.T15_4pc.IsActive() {
+		amount *= 1.1
+	}
+
+	demo.DemonicFury.Gain(sim, amount, actionID)
 }

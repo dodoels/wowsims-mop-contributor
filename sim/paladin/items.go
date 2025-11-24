@@ -251,7 +251,7 @@ var ItemSetPlateOfTheLightningEmperor = core.NewItemSet(core.ItemSet{
 
 				Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 					if paladin.DivineProtectionAura.IsActive() {
-						hpGain := int32(math.Floor(result.PostOutcomeDamage / paladin.MaxHealth() * 5))
+						hpGain := float64(math.Floor(result.PostOutcomeDamage / paladin.MaxHealth() * 5))
 						if hpGain > 0 {
 							paladin.HolyPower.Gain(sim, hpGain, hpGainMetrics)
 						}

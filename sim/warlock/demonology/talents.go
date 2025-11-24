@@ -54,6 +54,7 @@ func (demonlogy *DemonologyWarlock) registerGrimoireOfSupremacy() {
 			baseDmg := spell.Unit.MHWeaponDamage(sim, spell.MeleeAttackPower()) * 1.95
 			baseDmg /= float64(sim.Environment.ActiveTargetCount())
 			spell.CalcAndDealAoeDamage(sim, baseDmg, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
+			// Pets are not affected by Fury gain modifiers
 			demonlogy.DemonicFury.Gain(sim, 12, core.ActionID{SpellID: 30213})
 		},
 	})

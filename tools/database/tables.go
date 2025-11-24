@@ -1182,7 +1182,7 @@ func ScanSpells(rows *sql.Rows) (dbc.Spell, error) {
 		return spell, fmt.Errorf("scanning spell data: %w", err)
 	}
 
-	spell.Attributes, err = parseIntArrayField(stringAttr, 16)
+	spell.Attributes, err = parseIntArrayField(stringAttr, 17)
 	if err != nil {
 		return spell, fmt.Errorf("parsing attributes args for spell %d (%s): %w", spell.ID, stringAttr, err)
 	}

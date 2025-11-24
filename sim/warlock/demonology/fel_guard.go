@@ -97,6 +97,7 @@ func registerLegionStrikeSpell(pet *warlock.WarlockPet, demo *DemonologyWarlock)
 			baseDmg := spell.Unit.MHWeaponDamage(sim, spell.MeleeAttackPower()) * 1.3
 			baseDmg /= float64(sim.Environment.ActiveTargetCount())
 			spell.CalcAndDealAoeDamage(sim, baseDmg, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
+			// Pets are not affected by Fury gain modifiers
 			demo.DemonicFury.Gain(sim, 12, core.ActionID{SpellID: 30213})
 		},
 	})
