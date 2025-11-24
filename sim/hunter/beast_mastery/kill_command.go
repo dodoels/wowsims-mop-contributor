@@ -20,6 +20,7 @@ func (bmHunter *BeastMasteryHunter) registerKillCommandSpell() {
 		ProcMask:       core.ProcMaskMelee,
 		ClassSpellMask: hunter.HunterSpellKillCommand,
 		Flags:          core.SpellFlagAPL,
+		MaxRange:       100,
 
 		FocusCost: core.FocusCostOptions{
 			Cost: 40,
@@ -33,6 +34,11 @@ func (bmHunter *BeastMasteryHunter) registerKillCommandSpell() {
 				Duration: time.Second * 6,
 			},
 		},
+
+		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
+			return bmHunter.Pet != nil && bmHunter.Pet.KillCommand.CanCast(sim, target)
+		},
+
 		DamageMultiplierAdditive: 1,
 		CritMultiplier:           bmHunter.DefaultCritMultiplier(),
 		ThreatMultiplier:         1,

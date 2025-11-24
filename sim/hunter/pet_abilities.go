@@ -58,39 +58,39 @@ func (hp *HunterPet) NewPetAbility(abilityType PetAbilityType, isPrimary bool) *
 	switch abilityType {
 
 	case Gore:
-		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 35290, CD: time.Second * 10, School: core.SpellSchoolPhysical, DebuffAura: core.GoreAura})
+		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 35290, CD: time.Second * 10, School: core.SpellSchoolPhysical, DebuffAura: core.GoreAura, MaxRange: core.MaxMeleeRange})
 	case Ravage:
-		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 50518, CD: time.Second * 10, School: core.SpellSchoolPhysical, DebuffAura: core.RavageAura})
+		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 50518, CD: time.Second * 10, School: core.SpellSchoolPhysical, DebuffAura: core.RavageAura, MaxRange: core.MaxMeleeRange})
 	case StampedeDebuff:
-		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 57386, CD: time.Second * 15, School: core.SpellSchoolPhysical, DebuffAura: core.StampedeAura})
+		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 57386, CD: time.Second * 15, School: core.SpellSchoolPhysical, DebuffAura: core.StampedeAura, MaxRange: core.MaxMeleeRange})
 	case AcidSpitDebuff:
-		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 55749, CD: time.Second * 10, School: core.SpellSchoolNature, DebuffAura: core.AcidSpitAura})
+		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 55749, CD: time.Second * 10, School: core.SpellSchoolNature, DebuffAura: core.AcidSpitAura, MaxRange: 30})
 	case DemoralizingRoar:
-		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 50256, CD: time.Second * 10, School: core.SpellSchoolNature, DebuffAura: core.DemoralizingRoar})
+		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 50256, CD: time.Second * 10, School: core.SpellSchoolNature, DebuffAura: core.DemoralizingRoar, MaxRange: core.MaxMeleeRange})
 	case DemoralizingScreech:
-		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 24423, CD: time.Second * 8, School: core.SpellSchoolNature, DebuffAura: core.DemoralizingScreech})
+		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 24423, CD: time.Second * 8, School: core.SpellSchoolNature, DebuffAura: core.DemoralizingScreech, MaxRange: core.MaxMeleeRange})
 	case FireBreathDebuff:
-		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 34889, CD: time.Second * 30, School: core.SpellSchoolFire, DebuffAura: core.FireBreathDebuff})
+		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 34889, CD: time.Second * 30, School: core.SpellSchoolFire, DebuffAura: core.FireBreathDebuff, MaxRange: 40})
 	case LightningBreath:
-		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 24844, CD: time.Second * 30, School: core.SpellSchoolFire, DebuffAura: core.LightningBreathDebuff})
+		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 24844, CD: time.Second * 30, School: core.SpellSchoolFire, DebuffAura: core.LightningBreathDebuff, MaxRange: 40})
 	case SporeCloud:
-		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 50274, CD: time.Second * 8, School: core.SpellSchoolFire, DebuffAura: core.SporeCloud})
+		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 50274, CD: time.Second * 8, School: core.SpellSchoolFire, DebuffAura: core.SporeCloud, MaxRange: 6})
 	case TailSpin:
 		return hp.newTailSpin()
 	case Trample:
 		return hp.newTrample()
 	case LavaBreath:
-		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 58604, CD: time.Second * 8, School: core.SpellSchoolFire, DebuffAura: core.LavaBreathAura})
+		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 58604, CD: time.Second * 8, School: core.SpellSchoolFire, DebuffAura: core.LavaBreathAura, MaxRange: 30})
 	case DustCloud:
-		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 50285, CD: time.Second * 25, School: core.SpellSchoolNature, DebuffAura: core.WeakenedArmorAura, Stacks: 3})
+		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 50285, CD: time.Second * 25, School: core.SpellSchoolNature, DebuffAura: core.WeakenedArmorAura, Stacks: 3, MaxRange: core.MaxMeleeRange})
 	case TearArmor:
-		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 50498, CD: time.Second * 6, School: core.SpellSchoolNature, DebuffAura: core.WeakenedArmorAura, Stacks: 1})
+		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 50498, CD: time.Second * 6, School: core.SpellSchoolNature, DebuffAura: core.WeakenedArmorAura, Stacks: 1, MaxRange: core.MaxMeleeRange})
 	case BurrowAttack:
 		return hp.newBurrowAttack()
 	case FroststormBreathAoE:
 		return hp.newFrostStormBreath()
 	case MonstrousBite:
-		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 54680, CD: time.Second * 8, School: core.SpellSchoolNature, DebuffAura: core.MortalWoundsAura})
+		return hp.newPetDebuff(PetDebuffSpellConfig{SpellID: 54680, CD: time.Second * 8, School: core.SpellSchoolNature, DebuffAura: core.MortalWoundsAura, MaxRange: core.MaxMeleeRange})
 	case SpiritMend:
 		return hp.newSpiritMend()
 
@@ -115,6 +115,7 @@ type PetDebuffSpellConfig struct {
 	School     core.SpellSchool
 	GCD        time.Duration
 	CD         time.Duration
+	MaxRange   float64
 
 	OnSpellHitDealt func(*core.Simulation, *core.Spell, *core.SpellResult)
 }
@@ -128,6 +129,8 @@ func (hp *HunterPet) RegisterKillCommandSpell() *core.Spell {
 		ProcMask:       core.ProcMaskEmpty,
 		Flags:          core.SpellFlagAPL,
 		ClassSpellMask: HunterSpellKillCommand,
+		MaxRange:       25,
+
 		FocusCost: core.FocusCostOptions{
 			Cost: 0,
 		},
@@ -136,9 +139,11 @@ func (hp *HunterPet) RegisterKillCommandSpell() *core.Spell {
 				GCD: time.Second * 0,
 			},
 		},
+
 		DamageMultiplier: 1,
 		CritMultiplier:   hp.CritMultiplier(1.0, 0.0),
 		ThreatMultiplier: 1,
+
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			baseDamage := 0.938*spell.RangedAttackPower() + 935
 			spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeRangedHitAndCrit)
@@ -154,6 +159,7 @@ func (hp *HunterPet) newPetDebuff(config PetDebuffSpellConfig) *core.Spell {
 		ProcMask:    core.ProcMaskEmpty,
 		Flags:       core.SpellFlagAPL,
 		//ClassSpellMask: HunterPetSpellDebuff, // Define or adjust the class spell mask appropriately
+		MaxRange: config.MaxRange,
 
 		FocusCost: core.FocusCostOptions{
 			Cost: 0,
@@ -194,6 +200,7 @@ func (hp *HunterPet) newFocusDump(pat PetAbilityType, spellID int32) *core.Spell
 		ProcMask:       core.ProcMaskMeleeMHSpecial,
 		ClassSpellMask: HunterPetFocusDump,
 		Flags:          core.SpellFlagMeleeMetrics,
+		MaxRange:       core.MaxMeleeRange,
 
 		FocusCost: core.FocusCostOptions{
 			Cost: 25,
@@ -208,6 +215,7 @@ func (hp *HunterPet) newFocusDump(pat PetAbilityType, spellID int32) *core.Spell
 			},
 			IgnoreHaste: true,
 		},
+
 		DamageMultiplierAdditive: 1,
 		DamageMultiplier:         core.TernaryFloat64(hp.hunterOwner.Talents.BlinkStrikes, 1.5, 1),
 		CritMultiplier:           hp.CritMultiplier(1.0, 0.0),

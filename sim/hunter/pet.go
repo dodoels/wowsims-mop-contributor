@@ -113,6 +113,7 @@ func (hunter *Hunter) NewStampedePet(index int) *HunterPet {
 			BaseDamageMax:  hunter.ClassSpellScaling * 0.25,
 			CritMultiplier: 2,
 			SwingSpeed:     2,
+			MaxRange:       core.MaxMeleeRange,
 		},
 		AutoSwingMelee: true,
 		ProcMask:       core.ProcMaskEmpty,
@@ -147,6 +148,7 @@ func (hunter *Hunter) NewDireBeastPet() *HunterPet {
 			CritMultiplier:    2,
 			SwingSpeed:        2,
 			AttackPowerPerDPS: 7,
+			MaxRange:          core.MaxMeleeRange,
 		},
 		AutoSwingMelee: true,
 		ProcMask:       core.ProcMaskEmpty,
@@ -235,6 +237,7 @@ func (hunter *Hunter) NewHunterPet() *HunterPet {
 			BaseDamageMax:  hp.hunterOwner.ClassSpellScaling * 0.25,
 			CritMultiplier: 2,
 			SwingSpeed:     2,
+			MaxRange:       core.MaxMeleeRange,
 		},
 		AutoSwingMelee: true,
 	})

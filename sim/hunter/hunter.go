@@ -130,7 +130,6 @@ func (hunter *Hunter) ApplyTalents() {
 	hunter.addBloodthirstyGloves()
 
 	if hunter.Pet != nil {
-
 		hunter.Pet.ApplyTalents()
 	}
 
