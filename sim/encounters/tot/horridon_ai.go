@@ -114,12 +114,11 @@ func makeHorridonAI(raidSize int32, isHeroic bool, isBoss bool) core.AIFactory {
 
 type HorridonAI struct {
 	// Unit references
-	Target     *core.Target
-	BossUnit   *core.Unit
-	AddUnit    *core.Unit
-	MainTank   *core.Unit
-	OffTank    *core.Unit
-	ValidTanks []*core.Unit
+	Target   *core.Target
+	BossUnit *core.Unit
+	AddUnit  *core.Unit
+	MainTank *core.Unit
+	OffTank  *core.Unit
 
 	// Static parameters associated with a given preset
 	raidSize int32
@@ -155,10 +154,6 @@ func (ai *HorridonAI) Initialize(target *core.Target, config *proto.Target) {
 
 	ai.MainTank = ai.BossUnit.CurrentTarget
 	ai.OffTank = ai.AddUnit.CurrentTarget
-
-	ai.ValidTanks = core.FilterSlice([]*core.Unit{ai.MainTank, ai.OffTank}, func(unit *core.Unit) bool {
-		return unit != nil
-	})
 
 	// Save user input parameters
 	if ai.isBoss {

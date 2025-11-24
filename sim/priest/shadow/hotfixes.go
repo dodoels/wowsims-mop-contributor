@@ -13,11 +13,4 @@ func (shadow *ShadowPriest) registerHotfixes() {
 		Kind:       core.SpellMod_DotDamageDone_Pct,
 		FloatValue: 0.07,
 	})
-
-	shadow.AddStaticMod(core.SpellModConfig{
-		ClassMask:  priest.PriestSpellShadowWordPain,
-		Kind:       core.SpellMod_DamageDone_Pct,
-		FloatValue: 0.07,
-	})
-
 }

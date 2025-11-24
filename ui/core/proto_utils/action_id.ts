@@ -84,18 +84,15 @@ export class ActionId {
 					name += ' (Main Hand)';
 				} else if (this.tag == 2) {
 					name += ' (Off Hand)';
-				} else if (this.tag == 41570) {
-					name += ' (Magmaw)';
-				} else if (this.tag == 49416) {
-					name += ' (Blazing Bone Construct)';
-				} else if (this.tag == 56427) {
-					name += ' (Warmaster Blackhorn)';
-				} else if (this.tag == 56781) {
-					name += ' (Goriona)';
 				} else if (this.tag == 68476) {
-					name += ' (Horridon)'
+					name += ' (Horridon)';
 				} else if (this.tag == 69374) {
-					name += ' (War-God Jalak)'
+					name += ' (War-God Jalak)';
+				} else if (this.tag == 99999) {
+					name += ' (Boss)';
+				} else if (this.tag == 99998) {
+					console.log(this, this.tag)
+					name += ' (Add)';
 				} else if (this.tag > 6445300) {
 					name += ` (Set'thik Windblade ${(this.tag - 6445300).toFixed(0)})`;
 				} else if (this.tag > 4191800) {
