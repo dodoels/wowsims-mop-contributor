@@ -43,27 +43,26 @@ var ItemSetRegaliaOfTheExorcist = core.NewItemSet(core.ItemSet{
 				SpellFlags:     core.SpellFlagPassiveSpell,
 				ProcChance:     0.65,
 				ClassSpellMask: PriestSpellShadowyApparation,
-				Outcome:        core.OutcomeLanded,
 				Callback:       core.CallbackOnSpellHitDealt,
 				Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 					setBonusAura.AddStack(sim)
 
 					if priest.ShadowWordPain != nil && priest.ShadowWordPain.Dot(result.Target).IsActive() {
-						if priest.UnerringFaded[result.Target.Index].Swp <= sim.CurrentTime {
-							priest.ShadowWordPain.Dot(result.Target).SnapshotCritChance -= 1
-							priest.UnerringFaded[result.Target.Index].Swp = 1<<63 - 1
+						dot := priest.ShadowWordPain.Dot(result.Target)
+						if priest.T15_2PC_ExtensionTracker[result.Target.Index].Swp <= sim.CurrentTime {
+							dot.DurationExtendSnapshot(sim, dot.CalcTickPeriod())
+						} else {
+							dot.AddTick()
 						}
-
-						priest.ShadowWordPain.Dot(result.Target).AddTick()
 					}
 
 					if priest.VampiricTouch != nil && priest.VampiricTouch.Dot(result.Target).IsActive() {
-						if priest.UnerringFaded[result.Target.Index].VT <= sim.CurrentTime {
-							priest.VampiricTouch.Dot(result.Target).SnapshotCritChance -= 1
-							priest.UnerringFaded[result.Target.Index].VT = 1<<63 - 1
+						dot := priest.VampiricTouch.Dot(result.Target)
+						if priest.T15_2PC_ExtensionTracker[result.Target.Index].VT <= sim.CurrentTime {
+							dot.DurationExtendSnapshot(sim, dot.CalcTickPeriod())
+						} else {
+							dot.AddTick()
 						}
-
-						priest.VampiricTouch.Dot(result.Target).AddTick()
 					}
 				},
 			}).ExposeToAPL(138156)
@@ -104,8 +103,8 @@ var ItemSetRegaliaOfTheTernionGlory = core.NewItemSet(core.ItemSet{
 				ClassMask:  PriestSpellShadowWordDeath | PriestSpellMindSpike | PriestSpellMindBlast,
 			})
 
-			var orbsSpend int32 = 0
-			priest.Unit.GetSecondaryResourceBar().RegisterOnSpend(func(_ *core.Simulation, amount int32, _ core.ActionID) {
+			var orbsSpend float64 = 0
+			priest.Unit.GetSecondaryResourceBar().RegisterOnSpend(func(_ *core.Simulation, amount float64, _ core.ActionID) {
 				orbsSpend = amount
 			})
 

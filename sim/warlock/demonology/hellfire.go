@@ -11,8 +11,8 @@ func (demonology *DemonologyWarlock) registerHellfire() {
 		}
 
 		// 10 for primary, 3 for every other target
-		fury := 10 + (len(resultList)) - 1*3
-		demonology.DemonicFury.Gain(sim, int32(fury), spell.ActionID)
+		fury := 10 + ((len(resultList))-1)*3
+		demonology.GainDemonicFury(sim, float64(fury), spell.ActionID)
 	})
 
 	oldExtra := hellfire.ExtraCastCondition

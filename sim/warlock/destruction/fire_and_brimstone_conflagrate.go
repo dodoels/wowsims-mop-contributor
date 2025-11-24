@@ -60,7 +60,7 @@ func (destruction *DestructionWarlock) registerFireAndBrimstoneConflagrate() {
 					emberGain += 1
 				}
 
-				destruction.BurningEmbers.Gain(sim, emberGain, spell.ActionID)
+				destruction.BurningEmbers.Gain(sim, float64(emberGain), spell.ActionID)
 			}
 			spell.DamageMultiplier /= reduction
 			destruction.BurningEmbers.Spend(sim, 10, spell.ActionID)

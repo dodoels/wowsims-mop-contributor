@@ -146,13 +146,13 @@ func (paladin *Paladin) registerPursuitOfJustice() {
 		Priority: speedLevels[1],
 	})
 
-	paladin.HolyPower.RegisterOnGain(func(sim *core.Simulation, gain, realGain int32, actionID core.ActionID) {
+	paladin.HolyPower.RegisterOnGain(func(sim *core.Simulation, gain, realGain float64, actionID core.ActionID) {
 		pursuitOfJusticeAura.Activate(sim)
-		pursuitOfJusticeAura.SetStacks(sim, paladin.SpendableHolyPower()+1)
+		pursuitOfJusticeAura.SetStacks(sim, int32(paladin.SpendableHolyPower()+1))
 	})
-	paladin.HolyPower.RegisterOnSpend(func(sim *core.Simulation, amount int32, actionID core.ActionID) {
+	paladin.HolyPower.RegisterOnSpend(func(sim *core.Simulation, amount float64, actionID core.ActionID) {
 		pursuitOfJusticeAura.Activate(sim)
-		pursuitOfJusticeAura.SetStacks(sim, paladin.SpendableHolyPower()+1)
+		pursuitOfJusticeAura.SetStacks(sim, int32(paladin.SpendableHolyPower()+1))
 	})
 }
 
@@ -465,7 +465,7 @@ func (paladin *Paladin) registerHolyAvenger() {
 		FloatValue: 0.3,
 	})
 
-	paladin.HolyPower.RegisterOnGain(func(sim *core.Simulation, gain int32, actualGain int32, triggeredActionID core.ActionID) {
+	paladin.HolyPower.RegisterOnGain(func(sim *core.Simulation, gain float64, actualGain float64, triggeredActionID core.ActionID) {
 		if !holyAvengerAura.IsActive() {
 			return
 		}
@@ -536,7 +536,7 @@ func (paladin *Paladin) registerSanctifiedWrath() {
 		cdClassMask = SpellMaskJudgment
 		hpGainActionID := core.ActionID{SpellID: 53376}
 
-		paladin.HolyPower.RegisterOnGain(func(sim *core.Simulation, gain, realGain int32, actionID core.ActionID) {
+		paladin.HolyPower.RegisterOnGain(func(sim *core.Simulation, gain, realGain float64, actionID core.ActionID) {
 			if actionID.SameAction(paladin.JudgmentsOfTheWiseActionID) && paladin.AvengingWrathAura.IsActive() {
 				paladin.HolyPower.Gain(sim, 1, hpGainActionID)
 			}
@@ -578,7 +578,7 @@ func (paladin *Paladin) divinePurposeFactory(label string, spellID int32, durati
 		TriggerImmediately: true,
 
 		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			var hpSpent int32
+			var hpSpent float64
 			if aura.IsActive() && (auraDeactivationCheck == nil || auraDeactivationCheck(aura, spell)) {
 				aura.Deactivate(sim)
 				hpSpent = 3
@@ -590,7 +590,7 @@ func (paladin *Paladin) divinePurposeFactory(label string, spellID int32, durati
 				return
 			}
 
-			if sim.Proc(procChances[hpSpent], label+paladin.Label) {
+			if sim.Proc(procChances[int32(hpSpent)], label+paladin.Label) {
 				pa := sim.GetConsumedPendingActionFromPool()
 				pa.NextActionAt = sim.CurrentTime + core.SpellBatchWindow
 

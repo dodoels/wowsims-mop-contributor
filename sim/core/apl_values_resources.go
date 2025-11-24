@@ -536,9 +536,9 @@ func (rot *APLRotation) newValueCurrentGenericResource(_ *proto.APLValueCurrentG
 	}
 }
 func (value *APLValueCurrentGenericResource) Type() proto.APLValueType {
-	return proto.APLValueType_ValueTypeInt
+	return proto.APLValueType_ValueTypeFloat
 }
-func (value *APLValueCurrentGenericResource) GetInt(sim *Simulation) int32 {
+func (value *APLValueCurrentGenericResource) GetFloat(sim *Simulation) float64 {
 	return value.unit.secondaryResourceBar.Value()
 }
 func (value *APLValueCurrentGenericResource) String() string {

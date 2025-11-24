@@ -54,6 +54,9 @@ type Monk struct {
 
 	SummonHealingSphere func(sim *core.Simulation)
 
+	// Windwalker
+	SEFAura *core.Aura
+
 	// Brewmaster
 	ElusiveBrewAura   *core.Aura
 	ElusiveBrewStacks int32

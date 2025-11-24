@@ -262,20 +262,20 @@ func (s *SecondaryResourceCost) CostFailureReason(_ *core.Simulation, spell *cor
 // IssueRefund implements core.ResourceCostImpl.
 func (s *SecondaryResourceCost) IssueRefund(sim *core.Simulation, spell *core.Spell) {
 	curCost := spell.Cost.PercentModifier * float64(s.SecondaryCost)
-	spell.Unit.GetSecondaryResourceBar().Gain(sim, int32(curCost), spell.ActionID)
+	spell.Unit.GetSecondaryResourceBar().Gain(sim, curCost, spell.ActionID)
 }
 
 // MeetsRequirement implements core.ResourceCostImpl.
 func (s *SecondaryResourceCost) MeetsRequirement(_ *core.Simulation, spell *core.Spell) bool {
 	spell.CurCast.Cost = spell.Cost.PercentModifier * float64(s.SecondaryCost)
-	return spell.Unit.GetSecondaryResourceBar().CanSpend(int32(spell.CurCast.Cost))
+	return spell.Unit.GetSecondaryResourceBar().CanSpend(spell.CurCast.Cost)
 }
 
 // SpendCost implements core.ResourceCostImpl.
 func (s *SecondaryResourceCost) SpendCost(sim *core.Simulation, spell *core.Spell) {
 
 	// during some hard casts resourc might tick down, make sure spells don't execute on exhaustion
-	if spell.Unit.GetSecondaryResourceBar().CanSpend(int32(spell.CurCast.Cost)) {
-		spell.Unit.GetSecondaryResourceBar().Spend(sim, int32(spell.CurCast.Cost), spell.ActionID)
+	if spell.Unit.GetSecondaryResourceBar().CanSpend(spell.CurCast.Cost) {
+		spell.Unit.GetSecondaryResourceBar().Spend(sim, spell.CurCast.Cost, spell.ActionID)
 	}
 }
