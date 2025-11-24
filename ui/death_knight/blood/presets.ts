@@ -1,40 +1,65 @@
 import * as PresetUtils from '../../core/preset_utils.js';
-import { APLRotation_Type } from '../../core/proto/apl.js';
 import { ConsumesSpec, Glyphs, Profession, PseudoStat, Spec, Stat } from '../../core/proto/common.js';
 import { BloodDeathKnight_Options, DeathKnightMajorGlyph, DeathKnightMinorGlyph } from '../../core/proto/death_knight';
 import { SavedTalents } from '../../core/proto/ui.js';
 import { Stats } from '../../core/proto_utils/stats';
 import DefaultApl from './apls/defensive.apl.json';
-import P1BloodGear from './gear_sets/p1.gear.json';
+import P2BalanceBloodGear from './gear_sets/p2.gear.json';
+import P2OffensiveBloodGear from './gear_sets/p2_offensive.gear.json';
 import DefaultBuild from './builds/sha_default.build.json';
-import ShaBuild from './builds/sha_without_gear.build.json';
+import ShaBuild from './builds/sha_encounter_only.build.json';
 // import PreRaidBloodGear from './gear_sets/preraid.gear.json';
 
 // export const PRERAID_BLOOD_PRESET = PresetUtils.makePresetGear('Pre-Raid', PreRaidBloodGear);
-export const P1_BLOOD_PRESET = PresetUtils.makePresetGear('Pre-ToES BiS', P1BloodGear);
+export const P2_BALANCED_BLOOD_PRESET = PresetUtils.makePresetGear('P2 - BIS (Balanced)', P2BalanceBloodGear);
+export const P2_OFFENSIVE_BLOOD_PRESET = PresetUtils.makePresetGear('P2 - BIS (Offensive)', P2OffensiveBloodGear);
 
 export const BLOOD_ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Sha of Fear', DefaultApl);
 
 // Preset options for EP weights
-export const P1_BLOOD_EP_PRESET = PresetUtils.makePresetEpWeights(
-	'P1 Balanced',
+export const P2_BALANCED_EP_PRESET = PresetUtils.makePresetEpWeights(
+	'P2 - Balanced',
 	Stats.fromMap(
 		{
 			[Stat.StatStrength]: 1.00,
-			[Stat.StatStamina]: 1.54,
-			[Stat.StatAttackPower]: 0.29,
-			[Stat.StatHitRating]: 1.11,
+			[Stat.StatStamina]: 1.30,
+			[Stat.StatHitRating]: 1.16,
 			[Stat.StatCritRating]: 0.64,
-			[Stat.StatHasteRating]: 0.56,
-			[Stat.StatExpertiseRating]: 1.01,
-			[Stat.StatArmor]: 0.79,
+			[Stat.StatHasteRating]: 0.58,
+			[Stat.StatExpertiseRating]: 1.02,
 			[Stat.StatDodgeRating]: 0.50,
-			[Stat.StatParryRating]: 0.65,
-			[Stat.StatBonusArmor]: 0.79,
-			[Stat.StatMasteryRating]: 0.19,
+			[Stat.StatParryRating]: 0.69,
+			[Stat.StatMasteryRating]: 0.62,
+			[Stat.StatAttackPower]: 0.25,
+			[Stat.StatArmor]: 0.64,
+			[Stat.StatBonusArmor]: 0.64,
 		},
+	{
+			[PseudoStat.PseudoStatMainHandDps]: 2.70,
+			[PseudoStat.PseudoStatOffHandDps]: 0.0,
+		},
+	),
+);
+
+export const P2_OFFENSIVE_EP_PRESET = PresetUtils.makePresetEpWeights(
+	'P2 - Offensive',
+	Stats.fromMap(
 		{
-			[PseudoStat.PseudoStatMainHandDps]: 1.76,
+			[Stat.StatStrength]: 1.00,
+			[Stat.StatStamina]: 0.71,
+			[Stat.StatHitRating]: 1.46,
+			[Stat.StatCritRating]: 0.80,
+			[Stat.StatHasteRating]: 0.62,
+			[Stat.StatExpertiseRating]: 1.27,
+			[Stat.StatDodgeRating]: 0.52,
+			[Stat.StatParryRating]: 0.64,
+			[Stat.StatMasteryRating]: 0.34,
+			[Stat.StatAttackPower]: 0.32,
+			[Stat.StatArmor]: 0.35,
+			[Stat.StatBonusArmor]: 0.35,
+		},
+	{
+			[PseudoStat.PseudoStatMainHandDps]: 2.90,
 			[PseudoStat.PseudoStatOffHandDps]: 0.0,
 		},
 	),

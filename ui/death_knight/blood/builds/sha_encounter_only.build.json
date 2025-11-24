@@ -1,4 +1,5 @@
 {
+  "apiVersion": 2,
   "raidBuffs": {
     "trueshotAura": true,
     "serpentsSwiftness": true,
@@ -29,7 +30,6 @@
     "race": "RaceBloodElf",
     "class": "ClassDeathKnight",
     "consumables": {
-      "prepotId": 76090,
       "potId": 76090,
       "flaskId": 76087,
       "foodId": 74656,
@@ -120,7 +120,7 @@
     }
   },
   "encounter": {
-    "apiVersion": 1,
+    "apiVersion": 2,
     "duration": 620,
     "durationVariation": 16,
     "executeProportion20": 0.2,

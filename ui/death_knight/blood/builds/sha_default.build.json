@@ -1,4 +1,5 @@
 {
+  "apiVersion": 2,
   "raidBuffs": {
     "trueshotAura": true,
     "serpentsSwiftness": true,
@@ -28,39 +29,38 @@
     "name": "Player",
     "race": "RaceBloodElf",
     "class": "ClassDeathKnight",
-    "equipment": {
+    "equipment":  {
       "items": [
-        {"id":86966,"gems":[76895,76688],"reforging":122},
-        {"id":86967,"reforging":164},
-        {"id":86986,"enchant":4805,"gems":[76639],"reforging":168},
-        {"id":86980,"enchant":4422,"reforging":165},
-        {"id":89923,"enchant":4420,"gems":[76639,76639],"reforging":146},
-        {"id":89934,"enchant":4415,"gems":[76639],"reforging":157},
-        {"id":86956,"enchant":4431,"gems":[76639,76639],"reforging":122,"tinker":4697},
-        {"id":86955,"gems":[76639,76639,76639],"reforging":164,"tinker":4223},
-        {"id":89928,"enchant":4824,"gems":[76690,76639],"reforging":123},
-        {"id":86979,"enchant":4869,"gems":[76652],"reforging":150},
-        {"id":86946,"reforging":158},
-        {"id":86957,"reforging":150},
-        {"id":86046},
-        {"id":89079},
-        {"id":87061,"enchant":3368,"reforging":144},
+        {"id":86920,"gems":[76895,76639],"upgradeStep":"UpgradeStepTwo"},
+        {"id":90509,"reforging":125,"upgradeStep":"UpgradeStepTwo"},
+        {"id":89921,"enchant":4805,"gems":[76652],"upgradeStep":"UpgradeStepTwo"},
+        {"id":87159,"enchant":4422,"reforging":123,"upgradeStep":"UpgradeStepTwo"},
+        {"id":86918,"enchant":4420,"gems":[76639,76639],"reforging":137,"upgradeStep":"UpgradeStepTwo"},
+        {"id":90506,"enchant":4411,"gems":[76639],"reforging":164,"upgradeStep":"UpgradeStepTwo"},
+        {"id":89946,"enchant":4431,"gems":[76639,76639],"upgradeStep":"UpgradeStepTwo","tinker":4898},
+        {"id":89919,"gems":[76652,76639,76639],"reforging":157,"upgradeStep":"UpgradeStepTwo","tinker":4223},
+        {"id":89928,"enchant":4824,"gems":[76690,76639],"reforging":122,"upgradeStep":"UpgradeStepTwo"},
+        {"id":90507,"enchant":4429,"gems":[76639],"reforging":139,"upgradeStep":"UpgradeStepTwo"},
+        {"id":86946,"reforging":159,"upgradeStep":"UpgradeStepTwo"},
+        {"id":87158,"reforging":143,"upgradeStep":"UpgradeStepTwo"},
+        {"id":87172,"upgradeStep":"UpgradeStepTwo"},
+        {"id":86046,"upgradeStep":"UpgradeStepTwo"},
+        {"id":87176,"enchant":3368,"gems":[89881,76639],"reforging":164,"upgradeStep":"UpgradeStepTwo"},
         {}
       ]
     },
     "consumables": {
-      "prepotId": 76090,
       "potId": 76090,
       "flaskId": 76087,
       "foodId": 74656,
       "conjuredId": 5512
     },
     "bonusStats": {
-      "apiVersion": 1,
+      "apiVersion": 2,
       "stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
       "pseudoStats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     },
-    "itemSwap": {"items":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],"prepullBonusStats":{"apiVersion":1,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"pseudoStats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},
+    "itemSwap": {"items":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],"prepullBonusStats":{"apiVersion":2,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"pseudoStats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},
     "buffs": {
       "devotionAuraCount": 2,
       "painSuppressionCount": 1,
@@ -155,7 +155,7 @@
     }
   },
   "encounter": {
-    "apiVersion": 1,
+    "apiVersion": 2,
     "duration": 620,
     "durationVariation": 16,
     "executeProportion20": 0.2,

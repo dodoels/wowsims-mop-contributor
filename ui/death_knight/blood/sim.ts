@@ -63,9 +63,9 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecBloodDeathKnight, {
 	),
 	defaults: {
 		// Default equipped gear.
-		gear: Presets.P1_BLOOD_PRESET.gear,
+		gear: Presets.P2_BALANCED_BLOOD_PRESET.gear,
 		// Default EP weights for sorting gear in the gear picker.
-		epWeights: Presets.P1_BLOOD_EP_PRESET.epWeights,
+		epWeights: Presets.P2_BALANCED_EP_PRESET.epWeights,
 		// Default stat caps for the Reforge Optimizer
 		statCaps: (() => {
 			const hitCap = new Stats().withPseudoStat(PseudoStat.PseudoStatPhysicalHitPercent, 7.5);
@@ -78,7 +78,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecBloodDeathKnight, {
 				StatCap.fromStat(Stat.StatExpertiseRating, {
 					breakpoints: [7.5 * 4 * Mechanics.EXPERTISE_PER_QUARTER_PERCENT_REDUCTION, 15 * 4 * Mechanics.EXPERTISE_PER_QUARTER_PERCENT_REDUCTION],
 					capType: StatCapType.TypeSoftCap,
-					postCapEPs: [0.22, 0],
+					postCapEPs: [0.25, 0],
 				}),
 			];
 		})(),
@@ -143,13 +143,13 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecBloodDeathKnight, {
 	},
 
 	presets: {
-		epWeights: [Presets.P1_BLOOD_EP_PRESET],
+		epWeights: [Presets.P2_BALANCED_EP_PRESET, Presets.P2_OFFENSIVE_EP_PRESET],
 		// Preset rotations that the user can quickly select.
 		rotations: [Presets.BLOOD_ROTATION_PRESET_DEFAULT],
 		// Preset talents that the user can quickly select.
 		talents: [Presets.BloodTalents],
 		// Preset gear configurations that the user can quickly select.
-		gear: [Presets.P1_BLOOD_PRESET],
+		gear: [ Presets.P2_BALANCED_BLOOD_PRESET, Presets.P2_OFFENSIVE_BLOOD_PRESET],
 		builds: [Presets.PRESET_BUILD_SHA],
 	},
 
@@ -171,10 +171,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecBloodDeathKnight, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.P1_BLOOD_PRESET.gear,
+					1: Presets.P2_BALANCED_BLOOD_PRESET.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.P1_BLOOD_PRESET.gear,
+					1: Presets.P2_BALANCED_BLOOD_PRESET.gear,
 				},
 			},
 			otherDefaults: Presets.OtherDefaults,
