@@ -6,8 +6,8 @@ import (
 	"github.com/wowsims/mop/sim/core"
 )
 
-const SwpScaleCoeff = 0.629661016949
-const SwpSpellCoeff = 0.31
+const SwpScaleCoeff = 0.629660992297
+const SwpSpellCoeff = 0.310169488695
 
 func (priest *Priest) registerShadowWordPainSpell() {
 	priest.ShadowWordPain = priest.RegisterSpell(core.SpellConfig{
