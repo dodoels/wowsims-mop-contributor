@@ -31,6 +31,20 @@ const netherTempestBreakpoints = [
 	mageBombBreakpoints.get('23-tick - Nether Tempest')!,
 ];
 
+const P2CritPostCapEPs = [
+	0.56 * Mechanics.CRIT_RATING_PER_CRIT_PERCENT,
+	0.45 * Mechanics.CRIT_RATING_PER_CRIT_PERCENT,
+	0.35 * Mechanics.CRIT_RATING_PER_CRIT_PERCENT,
+];
+const P2HastePostCapEPs = [0.46 * Mechanics.HASTE_RATING_PER_HASTE_PERCENT];
+
+const P3CritPostCapEPs = [
+	0.51 * Mechanics.CRIT_RATING_PER_CRIT_PERCENT,
+	0.44 * Mechanics.CRIT_RATING_PER_CRIT_PERCENT,
+	0.38 * Mechanics.CRIT_RATING_PER_CRIT_PERCENT,
+];
+const P3HastePostCapEPs = [0.48 * Mechanics.HASTE_RATING_PER_HASTE_PERCENT];
+
 const SPEC_CONFIG = registerSpecConfig(Spec.SpecFrostMage, {
 	cssClass: 'frost-mage-sim-ui',
 	cssScheme: PlayerClasses.getCssClass(PlayerClasses.Mage),
@@ -70,13 +84,13 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFrostMage, {
 			const hasteSoftCapConfig = StatCap.fromPseudoStat(PseudoStat.PseudoStatSpellHastePercent, {
 				breakpoints: livingBombBreakpoints,
 				capType: StatCapType.TypeThreshold,
-				postCapEPs: [(Presets.P1_BIS_EP_PRESET.epWeights.getStat(Stat.StatCritRating) - 0.01) * Mechanics.HASTE_RATING_PER_HASTE_PERCENT],
+				postCapEPs: P2HastePostCapEPs,
 			});
 
 			const critSoftCapConfig = StatCap.fromPseudoStat(PseudoStat.PseudoStatSpellCritPercent, {
-				breakpoints: [28],
+				breakpoints: [23, 26, 28],
 				capType: StatCapType.TypeSoftCap,
-				postCapEPs: [(Presets.P1_BIS_EP_PRESET.epWeights.getStat(Stat.StatMasteryRating) / 2) * Mechanics.CRIT_RATING_PER_CRIT_PERCENT],
+				postCapEPs: P2CritPostCapEPs,
 			});
 
 			return [critSoftCapConfig, hasteSoftCapConfig];
@@ -184,6 +198,8 @@ export class FrostMageSimUI extends IndividualSimUI<Spec.SpecFrostMage> {
 				return Presets.P1_PREBIS_EP_PRESET.epWeights;
 			},
 			updateSoftCaps: softCaps => {
+				const avgIlvl = player.getGear().getAverageItemLevel(false);
+
 				this.individualConfig.defaults.softCapBreakpoints!.forEach(softCap => {
 					const softCapToModify = softCaps.find(sc => sc.unitStat.equals(softCap.unitStat));
 					if (softCap.unitStat.equalsPseudoStat(PseudoStat.PseudoStatSpellHastePercent) && softCapToModify) {
@@ -192,6 +208,19 @@ export class FrostMageSimUI extends IndividualSimUI<Spec.SpecFrostMage> {
 							softCapToModify.breakpoints = livingBombBreakpoints;
 						} else if (talents.netherTempest) {
 							softCapToModify.breakpoints = netherTempestBreakpoints;
+						}
+						if (avgIlvl >= 517) {
+							softCapToModify.postCapEPs = P3HastePostCapEPs;
+						} else {
+							softCapToModify.postCapEPs = P2HastePostCapEPs;
+						}
+					}
+
+					if (softCap.unitStat.equalsPseudoStat(PseudoStat.PseudoStatSpellCritPercent) && softCapToModify) {
+						if (avgIlvl >= 517) {
+							softCapToModify.postCapEPs = P3CritPostCapEPs;
+						} else {
+							softCapToModify.postCapEPs = P2CritPostCapEPs;
 						}
 					}
 				});

@@ -1,15 +1,23 @@
 import { Encounter } from '../../core/encounter';
 import * as PresetUtils from '../../core/preset_utils.js';
 import { Class, ConsumesSpec, Debuffs, Encounter as EncounterProto, Glyphs, Profession, Race, RaidBuffs, Stat } from '../../core/proto/common.js';
-import { ElementalShaman_Options as ElementalShamanOptions, FeleAutocastSettings, ShamanImbue, ShamanMajorGlyph, ShamanShield } from '../../core/proto/shaman.js';
+import {
+	ElementalShaman_Options as ElementalShamanOptions,
+	FeleAutocastSettings,
+	ShamanImbue,
+	ShamanMajorGlyph,
+	ShamanShield,
+} from '../../core/proto/shaman.js';
 import { SavedTalents } from '../../core/proto/ui.js';
 import { Stats } from '../../core/proto_utils/stats';
 import { defaultRaidBuffMajorDamageCooldowns } from '../../core/proto_utils/utils';
 import AoEApl from './apls/aoe.apl.json';
 import CleaveApl from './apls/cleave.apl.json';
 import DefaultApl from './apls/default.apl.json';
+import P3Apl from './apls/p3.apl.json';
 import P1Gear from './gear_sets/p1.gear.json';
 import P2Gear from './gear_sets/p2.gear.json';
+import P3Gear from './gear_sets/p3.gear.json';
 import PreraidGear from './gear_sets/preraid.gear.json';
 
 // Preset options for this spec.
@@ -19,8 +27,10 @@ import PreraidGear from './gear_sets/preraid.gear.json';
 export const PRERAID_PRESET = PresetUtils.makePresetGear('Pre-raid', PreraidGear);
 export const P1_PRESET = PresetUtils.makePresetGear('P1 - Default', P1Gear);
 export const P2_PRESET = PresetUtils.makePresetGear('P2 - Default', P2Gear);
+export const P3_PRESET = PresetUtils.makePresetGear('P3 - (WiP)', P3Gear);
 
 export const ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Default', DefaultApl);
+export const ROTATION_PRESET_P3 = PresetUtils.makePresetAPLRotation('P3 (WiP)', P3Apl);
 export const ROTATION_PRESET_CLEAVE = PresetUtils.makePresetAPLRotation('Cleave', CleaveApl);
 export const ROTATION_PRESET_AOE = PresetUtils.makePresetAPLRotation('AoE (3+)', AoEApl);
 
@@ -35,6 +45,19 @@ export const EP_PRESET_DEFAULT = PresetUtils.makePresetEpWeights(
 		[Stat.StatHitRating]: 1.1,
 		[Stat.StatSpirit]: 1.1,
 		[Stat.StatMasteryRating]: 0.44,
+	}),
+);
+
+export const EP_PRESET_P3 = PresetUtils.makePresetEpWeights(
+	'P3 (WiP)',
+	Stats.fromMap({
+		[Stat.StatIntellect]: 1.0,
+		[Stat.StatSpellPower]: 0.82,
+		[Stat.StatCritRating]: 0.41,
+		[Stat.StatHasteRating]: 0.46,
+		[Stat.StatHitRating]: 1.25,
+		[Stat.StatSpirit]: 1.25,
+		[Stat.StatMasteryRating]: 0.49,
 	}),
 );
 
@@ -57,6 +80,16 @@ export const StandardTalents = {
 	name: 'Default',
 	data: SavedTalents.create({
 		talentsString: '333121',
+		glyphs: Glyphs.create({
+			major1: ShamanMajorGlyph.GlyphOfSpiritwalkersGrace,
+		}),
+	}),
+};
+
+export const P3_TALENTS = {
+	name: 'P3 (WiP)',
+	data: SavedTalents.create({
+		talentsString: '333322',
 		glyphs: Glyphs.create({
 			major1: ShamanMajorGlyph.GlyphOfSpiritwalkersGrace,
 		}),
@@ -88,11 +121,11 @@ export const DefaultOptions = ElementalShamanOptions.create({
 	classOptions: {
 		shield: ShamanShield.LightningShield,
 		feleAutocast: FeleAutocastSettings.create({
-					autocastFireblast: true,
-					autocastFirenova: true,
-					autocastImmolate: true,
-					autocastEmpower: false,
-				}),
+			autocastFireblast: true,
+			autocastFirenova: true,
+			autocastImmolate: true,
+			autocastEmpower: false,
+		}),
 	},
 });
 
@@ -145,4 +178,12 @@ export const P1_PRESET_BUILD_AOE = PresetUtils.makePresetBuild('AoE (4+)', {
 	rotation: ROTATION_PRESET_AOE,
 	encounter: ENCOUNTER_AOE,
 	epWeights: EP_PRESET_AOE,
+});
+
+export const P3_PRESET_BUILD_DEFAULT = PresetUtils.makePresetBuild('P3 (WiP)', {
+	talents: P3_TALENTS,
+	rotation: ROTATION_PRESET_P3,
+	encounter: ENCOUNTER_SINGLE_TARGET,
+	epWeights: EP_PRESET_P3,
+	gear: P3_PRESET,
 });

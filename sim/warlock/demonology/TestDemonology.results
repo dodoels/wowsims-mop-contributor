@@ -1119,6 +1119,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestDemonology-AllItems-Haromm'sTalisman-105527"
+ value: {
+  dps: 93917.25774
+  tps: 58894.65317
+  hps: 1261.31268
+ }
+}
+dps_results: {
  key: "TestDemonology-AllItems-Hawkmaster'sTalon-89082"
  value: {
   dps: 93424.60481
@@ -1324,6 +1332,14 @@ dps_results: {
   dps: 91489.24393
   tps: 56334.59901
   hps: 1259.82572
+ }
+}
+dps_results: {
+ key: "TestDemonology-AllItems-Kardris'ToxicTotem-105540"
+ value: {
+  dps: 109160.30313
+  tps: 68420.95667
+  hps: 1260.94094
  }
 }
 dps_results: {
@@ -1881,9 +1897,9 @@ dps_results: {
 dps_results: {
  key: "TestDemonology-AllItems-RegaliaoftheThousandfoldHells"
  value: {
-  dps: 108269.37483
-  tps: 66203.23063
-  hps: 1538.64713
+  dps: 107745.56177
+  tps: 65611.01413
+  hps: 1525.72856
  }
 }
 dps_results: {
@@ -1969,9 +1985,9 @@ dps_results: {
 dps_results: {
  key: "TestDemonology-AllItems-RuneofRe-Origination-96918"
  value: {
-  dps: 90804.71008
-  tps: 55782.1055
-  hps: 1261.31268
+  dps: 90446.85071
+  tps: 55650.45859
+  hps: 1258.71051
  }
 }
 dps_results: {
@@ -2569,9 +2585,9 @@ dps_results: {
 dps_results: {
  key: "TestDemonology-AllItems-UnerringVisionofLeiShen-96930"
  value: {
-  dps: 114124.20838
-  tps: 67128.8492
-  hps: 1261.31268
+  dps: 113437.86867
+  tps: 67482.13476
+  hps: 1259.45399
  }
 }
 dps_results: {
@@ -2649,9 +2665,9 @@ dps_results: {
 dps_results: {
  key: "TestDemonology-AllItems-Wushoolay'sFinalChoice-96785"
  value: {
-  dps: 102282.82133
-  tps: 62196.99452
-  hps: 1264.65834
+  dps: 103258.4871
+  tps: 62505.29527
+  hps: 1258.33877
  }
 }
 dps_results: {

@@ -14,7 +14,7 @@ const frostfireBoltVariance = 0.23999999464 // Per https://wago.tools/db2/SpellE
 func (mage *Mage) frostfireBoltConfig(config core.SpellConfig) core.SpellConfig {
 	return core.SpellConfig{
 		ActionID:       config.ActionID,
-		SpellSchool:    core.SpellSchoolFire | core.SpellSchoolFrost,
+		SpellSchool:    core.SpellSchoolFrostfire,
 		ProcMask:       core.ProcMaskSpellDamage,
 		Flags:          config.Flags,
 		ClassSpellMask: MageSpellFrostfireBolt,

@@ -688,6 +688,7 @@ export class ActionId {
 				}
 				break;
 			case 'Immolate':
+			case 'Chaos Bolt':
 				if (tag == 1) {
 					name += ' (DoT)';
 				}
@@ -1219,6 +1220,9 @@ const spellIdTooltipOverrides: Map<string, ActionIdOverride> = new Map([
 	// Warlock - Immolation Aura
 	[JSON.stringify({ spellId: 104025, tag: 2 }), { spellId: 129476 }],
 	[JSON.stringify({ spellId: 47897, tag: 1 }), { spellId: 47960 }], // Shadowflame Dot
+	[JSON.stringify({ spellId: 30108, tag: 1 }), { spellId: 131736 }], // Malefic Grasp - Unstable Affliction
+	[JSON.stringify({ spellId: 980, tag: 1 }), { spellId: 131737 }], // Malefic Grasp - Agony
+	[JSON.stringify({ spellId: 172, tag: 1 }), { spellId: 131740 }], // Malefic Grasp - Corruption
 ]);
 
 export const defaultTargetIcon = 'https://wow.zamimg.com/images/wow/icons/large/spell_shadow_metamorphosis.jpg';

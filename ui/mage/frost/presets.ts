@@ -27,24 +27,24 @@ export const ROTATION_PRESET_AOE = PresetUtils.makePresetAPLRotation('AOE', Fros
 export const P3_BIS_EP_PRESET = PresetUtils.makePresetEpWeights(
 	'Item Level >= 517',
 	Stats.fromMap({
-		[Stat.StatIntellect]: 1.21,
+		[Stat.StatIntellect]: 1.23,
 		[Stat.StatSpellPower]: 1,
-		[Stat.StatHitRating]: 1.47,
-		[Stat.StatCritRating]: 0.40,
-		[Stat.StatHasteRating]: 0.74,
-		[Stat.StatMasteryRating]: 0.71,
+		[Stat.StatHitRating]: 1.55,
+		[Stat.StatCritRating]: 0.54,
+		[Stat.StatHasteRating]: 0.81,
+		[Stat.StatMasteryRating]: 0.52,
 	}),
 );
 
 export const P1_BIS_EP_PRESET = PresetUtils.makePresetEpWeights(
 	'Item Level >= 500',
 	Stats.fromMap({
-		[Stat.StatIntellect]: 1.0,
-		[Stat.StatSpellPower]: 0.98,
-		[Stat.StatHitRating]: 1.15,
-		[Stat.StatCritRating]: 0.49,
-		[Stat.StatHasteRating]: 0.51,
-		[Stat.StatMasteryRating]: 0.44,
+		[Stat.StatIntellect]: 1.26,
+		[Stat.StatSpellPower]: 1,
+		[Stat.StatHitRating]: 1.30,
+		[Stat.StatCritRating]: 0.61,
+		[Stat.StatHasteRating]: 0.74,
+		[Stat.StatMasteryRating]: 0.52,
 	}),
 );
 

@@ -49,7 +49,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecArcaneMage, {
 		epWeights: Presets.P1_BIS_EP_PRESET.epWeights,
 		// Default stat caps for the Reforge Optimizer
 		statCaps: (() => {
-			return new Stats().withPseudoStat(PseudoStat.PseudoStatSpellHitPercent, 15);
+			const hitCap = new Stats().withPseudoStat(PseudoStat.PseudoStatSpellHitPercent, 15);
+			const hasteCap = new Stats().withPseudoStat(PseudoStat.PseudoStatSpellHastePercent, 53.32);
+
+			return hitCap.add(hasteCap);
 		})(),
 		// Default soft caps for the Reforge optimizer
 		softCapBreakpoints: (() => {
@@ -106,7 +109,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecArcaneMage, {
 	presets: {
 		epWeights: [Presets.P1_PREBIS_EP_PRESET, Presets.P1_BIS_EP_PRESET, Presets.P3_BIS_EP_PRESET],
 		// Preset rotations that the user can quickly select.
-		rotations: [Presets.ROTATION_PRESET_DEFAULT],
+		rotations: [Presets.ROTATION_PRESET_DEFAULT, Presets.ROTATION_PRESET_P3_4PC],
 		// Preset talents that the user can quickly select.
 		talents: [Presets.ArcaneTalents, Presets.ArcaneTalentsCleave],
 		// Preset gear configurations that the user can quickly select.

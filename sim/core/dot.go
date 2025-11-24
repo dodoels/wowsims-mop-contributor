@@ -233,7 +233,7 @@ func (dot *Dot) CopyDotAndApply(sim *Simulation, originaldot *Dot) {
 	sim.AddPendingAction(dot.tickAction)
 }
 
-// This is the incredibly cursed way of extending DoT durations (for Fel flame (Cata) / moonfire / sunfire)
+// This is the incredibly cursed way of extending DoT durations (for Moonfire / Sunfire / SWP (T15 2P) / VT (T15 2P))
 // Don't use unless you know what you're doing
 // It extends the duration, immediately recalculates the next tick and then fits as many ticks into the rest of
 // the aura duration as it can. This will cause aura duration and dot ticks to desync ingame, so the aura will fall off

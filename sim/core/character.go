@@ -729,7 +729,6 @@ func (character *Character) AddStatProcBuff(effectID int32, procAura *StatBuffAu
 	character.RegisterItemSwapCallback(eligibleSlots, func(sim *Simulation, slot proto.ItemSlot) {
 		procAura.IsSwapped = !hasEquippedCheck(effectID, eligibleSlots)
 	})
-
 }
 
 func (character *Character) GetMatchingItemProcAuras(statTypesToMatch []stats.Stat, minIcd time.Duration) []*StatBuffAura {

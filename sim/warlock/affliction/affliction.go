@@ -67,7 +67,7 @@ func (affliction *AfflictionWarlock) GetWarlock() *warlock.Warlock {
 	return affliction.Warlock
 }
 
-const MaxSoulShards = int32(4)
+const MaxSoulShards = 4.0
 
 func (affliction *AfflictionWarlock) Initialize() {
 	affliction.Warlock.Initialize()
@@ -119,14 +119,15 @@ func (affliction *AfflictionWarlock) OnEncounterStart(sim *core.Simulation) {
 	}
 
 	haunt := affliction.GetSpell(core.ActionID{SpellID: HauntSpellID})
-	count := affliction.SpellsInFlight[haunt]
+	count := float64(affliction.SpellsInFlight[haunt])
 	defaultShards -= count
 
 	affliction.SoulShards.ResetBarTo(sim, defaultShards)
 	affliction.Warlock.OnEncounterStart(sim)
 }
 
-func calculateDoTBaseTickDamage(dot *core.Dot) float64 {
+func calculateDoTBaseTickDamage(dot *core.Dot, target *core.Unit) float64 {
 	stacks := math.Max(float64(dot.Aura.GetStacks()), 1)
-	return dot.SnapshotBaseDamage * dot.SnapshotAttackerMultiplier * stacks
+	attackTable := dot.Spell.Unit.AttackTables[target.UnitIndex]
+	return dot.SnapshotBaseDamage * dot.Spell.AttackerDamageMultiplier(attackTable, true) * stacks
 }

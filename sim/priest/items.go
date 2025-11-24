@@ -1,6 +1,7 @@
 package priest
 
 import (
+	"math"
 	"time"
 
 	"github.com/wowsims/mop/sim/core"
@@ -34,30 +35,33 @@ var ItemSetRegaliaOfTheExorcist = core.NewItemSet(core.ItemSet{
 	Bonuses: map[int32]core.ApplySetBonus{
 		2: func(agent core.Agent, setBonusAura *core.Aura) {
 			priest := agent.(PriestAgent).GetPriest()
+
+			setBonusAura.MaxStacks = math.MaxInt32
+
 			setBonusAura.AttachProcTrigger(core.ProcTrigger{
 				Name:           "Regalia of the Exorcist - 2P",
 				SpellFlags:     core.SpellFlagPassiveSpell,
 				ProcChance:     0.65,
 				ClassSpellMask: PriestSpellShadowyApparation,
-				Outcome:        core.OutcomeLanded,
 				Callback:       core.CallbackOnSpellHitDealt,
 				Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-					if priest.ShadowWordPain != nil && priest.ShadowWordPain.Dot(result.Target).IsActive() {
-						if priest.UnerringFaded[result.Target.Index].Swp <= sim.CurrentTime {
-							priest.ShadowWordPain.Dot(result.Target).SnapshotCritChance -= 1
-							priest.UnerringFaded[result.Target.Index].Swp = 1<<63 - 1
-						}
+					setBonusAura.AddStack(sim)
 
-						priest.ShadowWordPain.Dot(result.Target).AddTick()
+					if priest.ShadowWordPain != nil && priest.ShadowWordPain.Dot(result.Target).IsActive() {
+						dot := priest.ShadowWordPain.Dot(result.Target)
+						if priest.T15_2PC_ExtensionTracker[result.Target.Index].Swp <= sim.CurrentTime {
+							dot.DurationExtendSnapshot(sim, dot.CalcTickPeriod())
+						}
+						dot.AddTick()
 					}
 
 					if priest.VampiricTouch != nil && priest.VampiricTouch.Dot(result.Target).IsActive() {
-						if priest.UnerringFaded[result.Target.Index].VT <= sim.CurrentTime {
-							priest.VampiricTouch.Dot(result.Target).SnapshotCritChance -= 1
-							priest.UnerringFaded[result.Target.Index].VT = 1<<63 - 1
+						dot := priest.VampiricTouch.Dot(result.Target)
+						if priest.T15_2PC_ExtensionTracker[result.Target.Index].VT <= sim.CurrentTime {
+							dot.DurationExtendSnapshot(sim, dot.CalcTickPeriod())
 						}
 
-						priest.VampiricTouch.Dot(result.Target).AddTick()
+						dot.AddTick()
 					}
 				},
 			}).ExposeToAPL(138156)
@@ -98,8 +102,8 @@ var ItemSetRegaliaOfTheTernionGlory = core.NewItemSet(core.ItemSet{
 				ClassMask:  PriestSpellShadowWordDeath | PriestSpellMindSpike | PriestSpellMindBlast,
 			})
 
-			var orbsSpend int32 = 0
-			priest.Unit.GetSecondaryResourceBar().RegisterOnSpend(func(_ *core.Simulation, amount int32, _ core.ActionID) {
+			var orbsSpend float64 = 0
+			priest.Unit.GetSecondaryResourceBar().RegisterOnSpend(func(_ *core.Simulation, amount float64, _ core.ActionID) {
 				orbsSpend = amount
 			})
 

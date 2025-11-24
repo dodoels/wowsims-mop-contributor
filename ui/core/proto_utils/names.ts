@@ -128,6 +128,7 @@ export const spellSchoolNames: Map<number, string> = new Map([
 	[SpellSchool.Shadow + SpellSchool.Frost, 'Shadowfrost'],
 	[SpellSchool.Nature + SpellSchool.Shadow, 'Plague'],
 	[SpellSchool.Fire + SpellSchool.Nature, 'Firestorm'],
+	[SpellSchool.Fire + SpellSchool.Frost + SpellSchool.Nature, 'Elemental'],
 ]);
 
 export const resourceNames: Map<ResourceType, string> = new Map([

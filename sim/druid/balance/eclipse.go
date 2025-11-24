@@ -64,21 +64,14 @@ func (moonkin *BalanceDruid) EnableEclipseBar() {
 	}
 }
 
-func (moonkin *BalanceDruid) SuspendEclipseBar() {
+func (moonkin *BalanceDruid) SuspendEclipseBar(sim *core.Simulation) {
 	moonkin.eclipseEnergyBar.previousGainMask = moonkin.eclipseEnergyBar.gainMask
+	moonkin.eclipseEnergyBar.invokeCallback(moonkin.currentEclipse, false, sim)
 	moonkin.eclipseEnergyBar.resetWithMask(NoEnergy)
 }
 
 func (moonkin *BalanceDruid) RestoreEclipseBar() {
 	moonkin.eclipseEnergyBar.resetWithMask(moonkin.eclipseEnergyBar.previousGainMask)
-}
-
-func (moonkin *BalanceDruid) ActivateEclipse(eclipse Eclipse, sim *core.Simulation) {
-	moonkin.eclipseEnergyBar.invokeCallback(eclipse, true, sim)
-}
-
-func (moonkin *BalanceDruid) DeactivateEclipse(eclipse Eclipse, sim *core.Simulation) {
-	moonkin.eclipseEnergyBar.invokeCallback(eclipse, false, sim)
 }
 
 func calculateEclipseMasteryBonus(masteryPoints float64, includeBasePoints bool) float64 {

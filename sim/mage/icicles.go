@@ -16,7 +16,7 @@ func (mage *Mage) registerFrostMastery() {
 		ActionID:         core.ActionID{SpellID: 148022},
 		SpellSchool:      core.SpellSchoolFrost,
 		ProcMask:         core.ProcMaskSpellDamageProc, // Use SpellDamageProc to prevent triggering StormLash
-		Flags:            core.SpellFlagAPL,
+		Flags:            core.SpellFlagPassiveSpell | core.SpellFlagNoOnCastComplete | core.SpellFlagNoSpellMods | core.SpellFlagIgnoreModifiers,
 		ClassSpellMask:   MageSpellIcicle,
 		MissileSpeed:     20,
 		DamageMultiplier: 1,
