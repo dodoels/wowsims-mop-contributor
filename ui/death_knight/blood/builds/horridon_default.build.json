@@ -1,0 +1,200 @@
+{
+  "apiVersion": 2,
+  "raidBuffs": {
+    "trueshotAura": true,
+    "serpentsSwiftness": true,
+    "elementalOath": true,
+    "leaderOfThePack": true,
+    "blessingOfMight": true,
+    "blessingOfKings": true,
+    "powerWordFortitude": true,
+    "bloodlust": true,
+    "stormlashTotemCount": 4,
+    "skullBannerCount": 2
+  },
+  "debuffs": {
+    "weakenedBlows": true,
+    "physicalVulnerability": true,
+    "weakenedArmor": true,
+    "curseOfElements": true
+  },
+  "tanks": [
+    {
+    },
+    {
+      "type": "Player"
+    }
+  ],
+  "partyBuffs": {
+  },
+  "player": {
+    "name": "Player",
+    "race": "RaceBloodElf",
+    "class": "ClassDeathKnight",
+    "equipment": {
+      "items": [
+        {"id":86920,"gems":[76895,76656],"reforging":133,"upgradeStep":"UpgradeStepTwo"},
+        {"id":90509,"reforging":126,"upgradeStep":"UpgradeStepTwo"},
+        {"id":89921,"enchant":4805,"gems":[76700],"reforging":133,"upgradeStep":"UpgradeStepTwo"},
+        {"id":87159,"enchant":4422,"reforging":126,"upgradeStep":"UpgradeStepTwo"},
+        {"id":86918,"enchant":4420,"gems":[76700,76700],"reforging":133,"upgradeStep":"UpgradeStepTwo"},
+        {"id":90506,"enchant":4411,"gems":[76700],"reforging":139,"upgradeStep":"UpgradeStepTwo"},
+        {"id":89946,"enchant":4431,"gems":[76643,76700],"reforging":133,"upgradeStep":"UpgradeStepTwo","tinker":4898},
+        {"id":89919,"gems":[76700,76656,76700],"reforging":147,"upgradeStep":"UpgradeStepTwo","tinker":4223},
+        {"id":89928,"enchant":4824,"gems":[76673,76643],"reforging":126,"upgradeStep":"UpgradeStepTwo"},
+        {"id":90507,"enchant":4429,"gems":[76700],"reforging":133,"upgradeStep":"UpgradeStepTwo"},
+        {"id":86946,"reforging":161,"upgradeStep":"UpgradeStepTwo"},
+        {"id":95141,"reforging":122,"upgradeStep":"UpgradeStepTwo"},
+        {"id":87172,"upgradeStep":"UpgradeStepTwo"},
+        {"id":86046,"upgradeStep":"UpgradeStepTwo"},
+        {"id":87176,"enchant":3368,"gems":[89881,76700],"reforging":143,"upgradeStep":"UpgradeStepTwo"},
+        {}
+      ]
+    },
+    "consumables": {
+      "potId": 76090,
+      "flaskId": 76087,
+      "foodId": 74656,
+      "conjuredId": 5512
+    },
+    "bonusStats": {
+      "apiVersion": 2,
+      "stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+      "pseudoStats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    },
+    "itemSwap": {"items":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],"prepullBonusStats":{"apiVersion":2,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"pseudoStats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},
+    "buffs": {
+      "vigilanceCount": 2
+    },
+    "bloodDeathKnight": {
+      "options": {
+        "classOptions": {
+        }
+      }
+    },
+    "talentsString": "231111",
+    "glyphs": {
+      "major1": 104047,
+      "major2": 104048,
+      "major3": 43536,
+      "minor1": 104101,
+      "minor2": 43550,
+      "minor3": 43672
+    },
+    "profession1": "Engineering",
+    "profession2": "Blacksmithing",
+    "cooldowns": {
+      "hpPercentForDefensives": 0.3
+    },
+    "rotation": {
+      "type": "TypeAPL",
+      "simple": {
+        "cooldowns": {
+          "hpPercentForDefensives": 0.3
+        }
+      },
+      "prepullActions": [
+        {"action":{"castSpell":{"spellId":{"spellId":48263}}},"doAtValue":{"const":{"val":"-36s"}}},
+        {"action":{"castSpell":{"spellId":{"spellId":49222}}},"doAtValue":{"const":{"val":"-35s"}}},
+        {"action":{"castSpell":{"spellId":{"spellId":42650}}},"doAtValue":{"const":{"val":"-7s"}},"hide":true},
+        {"action":{"castSpell":{"spellId":{"otherId":"OtherActionPotion"}}},"doAtValue":{"const":{"val":"-1s"}}}
+      ],
+      "priorityList": [
+        {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpGt","lhs":{"currentTime":{}},"rhs":{"const":{"val":"27s"}}}},{"or":{"vals":[{"bossCurrentTarget":{"targetUnit":{"type":"Target","index":1}}},{"bossCurrentTarget":{"targetUnit":{"type":"Target"}}}]}}]}},"castSpell":{"spellId":{"spellId":49222}}}},
+        {"action":{"schedule":{"schedule":"30s","innerAction":{"castSpell":{"spellId":{"spellId":48792}}}}}},
+        {"action":{"schedule":{"schedule":"20s,80s","innerAction":{"castSpell":{"spellId":{"spellId":55233}}}}}},
+        {"action":{"schedule":{"schedule":"40s","innerAction":{"castSpell":{"spellId":{"itemId":76090}}}}}},
+        {"action":{"schedule":{"schedule":"42s","innerAction":{"castSpell":{"spellId":{"spellId":49028}}}}}},
+        {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpGt","lhs":{"currentTime":{}},"rhs":{"const":{"val":"27s"}}}}]}},"castAllStatBuffCooldowns":{"statType1":19,"statType2":11,"statType3":10}}},
+        {"action":{"condition":{"and":{"vals":[{"not":{"val":{"spellIsReady":{"spellId":{"spellId":55233}}}}},{"auraIsInactive":{"auraId":{"spellId":55233}}},{"auraIsInactive":{"auraId":{"spellId":81256}}}]}},"castSpell":{"spellId":{"spellId":108788}}}},
+        {"action":{"condition":{"and":{"vals":[{"not":{"val":{"spellIsReady":{"spellId":{"spellId":55233}}}}},{"auraIsInactive":{"auraId":{"spellId":55233}}}]}},"castSpell":{"spellId":{"spellId":97462,"tag":-1}}}},
+        {"action":{"condition":{"and":{"vals":[{"not":{"val":{"spellIsReady":{"spellId":{"spellId":55233}}}}},{"auraIsInactive":{"auraId":{"spellId":55233}}},{"or":{"vals":[{"cmp":{"op":"OpLe","lhs":{"auraRemainingTime":{"auraId":{"spellId":97462,"tag":-1}}},"rhs":{"const":{"val":"2.5s"}}}},{"auraIsInactive":{"auraId":{"spellId":49222}}}]}}]}},"castSpell":{"spellId":{"spellId":31821,"tag":-1}}}},
+        {"action":{"condition":{"and":{"vals":[{"not":{"val":{"spellIsReady":{"spellId":{"spellId":48792}}}}},{"auraIsInactive":{"auraId":{"spellId":48792}}}]}},"castSpell":{"spellId":{"spellId":33206,"tag":-1}}}},
+        {"action":{"schedule":{"schedule":"42s, 54s, 66s","innerAction":{"castSpell":{"spellId":{"spellId":114030,"tag":-1}}}}}},
+        {"action":{"condition":{"auraIsActive":{"auraId":{"spellId":96171}}},"castSpell":{"spellId":{"spellId":48982}}}},
+        {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpGe","lhs":{"currentNonDeathRuneCount":{"runeType":"RuneBlood"}},"rhs":{"const":{"val":"1"}}}},{"cmp":{"op":"OpLe","lhs":{"currentHealthPercent":{}},"rhs":{"const":{"val":"60%"}}}}]}},"castSpell":{"spellId":{"spellId":48982}}}},
+        {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpGe","lhs":{"currentNonDeathRuneCount":{"runeType":"RuneBlood"}},"rhs":{"const":{"val":"1"}}}},{"cmp":{"op":"OpLt","lhs":{"currentHealthPercent":{}},"rhs":{"const":{"val":"100%"}}}}]}},"castSpell":{"spellId":{"spellId":48982}}}},
+        {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpLt","lhs":{"currentHealthPercent":{}},"rhs":{"const":{"val":"100%"}}}}]}},"castSpell":{"spellId":{"itemId":5512}}}},
+        {"action":{"condition":{"and":{"vals":[{"auraIsKnown":{"auraId":{"spellId":114851}}},{"cmp":{"op":"OpLe","lhs":{"currentHealthPercent":{}},"rhs":{"const":{"val":"50%"}}}},{"not":{"val":{"spellCanCast":{"spellId":{"spellId":49998,"tag":1}}}}}]}},"strictSequence":{"actions":[{"castSpell":{"spellId":{"spellId":45529}}},{"wait":{"duration":{"const":{"val":"10ms"}}}}]}}},
+        {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpLe","lhs":{"currentHealthPercent":{}},"rhs":{"const":{"val":"60%"}}}},{"not":{"val":{"spellCanCast":{"spellId":{"spellId":49998,"tag":1}}}}},{}]}},"castSpell":{"spellId":{"spellId":123693}}}},
+        {"action":{"condition":{"cmp":{"op":"OpLe","lhs":{"currentHealthPercent":{}},"rhs":{"const":{"val":"60%"}}}},"castSpell":{"spellId":{"spellId":49998,"tag":1}}}},
+        {"action":{"condition":{"or":{"vals":[{"auraIsInactive":{"auraId":{"spellId":77535}}},{"or":{"vals":[{"cmp":{"op":"OpLt","lhs":{"auraRemainingTime":{"auraId":{"spellId":77535}}},"rhs":{"const":{"val":"3s"}}}},{"cmp":{"op":"OpGe","lhs":{"auraNumStacks":{"auraId":{"spellId":77535},"includeReactionTime":true}},"rhs":{"currentHealth":{}}}}]}}]}},"castSpell":{"spellId":{"spellId":49998,"tag":1}}}},
+        {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpLe","lhs":{"currentHealthPercent":{}},"rhs":{"const":{"val":"50%"}}}}]}},"castSpell":{"spellId":{"spellId":48743}}}},
+        {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpLe","lhs":{"currentHealthPercent":{}},"rhs":{"const":{"val":"45%"}}}},{"not":{"val":{"spellCanCast":{"spellId":{"spellId":49998,"tag":1}}}}}]}},"castSpell":{"spellId":{"spellId":47568}}}},
+        {"action":{"autocastOtherCooldowns":{}}},
+        {"action":{"condition":{"cmp":{"op":"OpLe","lhs":{"currentTime":{}},"rhs":{"const":{"val":"0.3s"}}}},"castSpell":{"spellId":{"spellId":49998,"tag":1}}}},
+        {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpEq","lhs":{"currentRuneCount":{"runeType":"RuneFrost"}},"rhs":{"const":{"val":"2"}}}},{"cmp":{"op":"OpEq","lhs":{"currentRuneCount":{"runeType":"RuneUnholy"}},"rhs":{"const":{"val":"2"}}}}]}},"castSpell":{"spellId":{"spellId":49998,"tag":1}}}},
+        {"action":{"condition":{"cmp":{"op":"OpGe","lhs":{"currentRunicPower":{}},"rhs":{"const":{"val":"90"}}}},"castSpell":{"spellId":{"spellId":56815}}}},
+        {"action":{"condition":{"and":{"vals":[{"isExecutePhase":{"threshold":"E35"}},{"cmp":{"op":"OpGe","lhs":{"currentNonDeathRuneCount":{"runeType":"RuneBlood"}},"rhs":{"const":{"val":"1"}}}}]}},"castSpell":{"spellId":{"spellId":114867,"tag":1}}}},
+        {"action":{"condition":{"cmp":{"op":"OpGe","lhs":{"currentNonDeathRuneCount":{"runeType":"RuneBlood"}},"rhs":{"const":{"val":"2"}}}},"castSpell":{"spellId":{"spellId":55050}}}},
+        {"action":{"condition":{"or":{"vals":[{"auraIsActive":{"auraId":{"spellId":81256}}},{}]}},"castSpell":{"spellId":{"spellId":77575}}}},
+        {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpLe","lhs":{"auraRemainingTime":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":55078}}},"rhs":{"const":{"val":"1s"}}}},{"cmp":{"op":"OpLe","lhs":{"auraRemainingTime":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":55095}}},"rhs":{"const":{"val":"1s"}}}},{"cmp":{"op":"OpGt","lhs":{"spellTimeToReady":{"spellId":{"spellId":49028}}},"rhs":{"const":{"val":"16s"}}}}]}},"castSpell":{"spellId":{"spellId":77575}}}},
+        {"action":{"condition":{"and":{"vals":[{"auraIsKnown":{"auraId":{"spellId":114851}}},{"cmp":{"op":"OpGe","lhs":{"auraNumStacks":{"auraId":{"spellId":114851}}},"rhs":{"const":{"val":"11"}}}}]}},"strictSequence":{"actions":[{"castSpell":{"spellId":{"spellId":45529}}},{"wait":{"duration":{"const":{"val":"10ms"}}}}]}}},
+        {"action":{"condition":{"and":{"vals":[{"auraIsActive":{"auraId":{"spellId":81141}}},{"or":{"vals":[{"cmp":{"op":"OpGe","lhs":{"dotPercentIncrease":{"spellId":{"spellId":55078}}},"rhs":{"const":{"val":"0%"}}}},{"cmp":{"op":"OpGe","lhs":{"dotPercentIncrease":{"spellId":{"spellId":55095}}},"rhs":{"const":{"val":"0%"}}}}]}}]}},"castSpell":{"spellId":{"spellId":48721}}}},
+        {"action":{"condition":{"not":{"val":{"auraIsActive":{"auraId":{"spellId":81256}}}}},"castSpell":{"spellId":{"spellId":46584}}}},
+        {"action":{"condition":{"and":{"vals":[{"auraIsActive":{"auraId":{"spellId":81141}}},{"spellCanCast":{"spellId":{"spellId":43265}}}]}},"castSpell":{"spellId":{"spellId":43265}}}},
+        {"action":{"condition":{"auraIsActive":{"auraId":{"spellId":81141}}},"castSpell":{"spellId":{"spellId":48721}}}},
+        {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpGt","lhs":{"nextRuneCooldown":{"runeType":"RuneFrost"}},"rhs":{"const":{"val":"1s"}}}},{"cmp":{"op":"OpGt","lhs":{"nextRuneCooldown":{"runeType":"RuneUnholy"}},"rhs":{"const":{"val":"1s"}}}},{"cmp":{"op":"OpGe","lhs":{"currentNonDeathRuneCount":{"runeType":"RuneBlood"}},"rhs":{"const":{"val":"1"}}}}]}},"castSpell":{"spellId":{"spellId":55050}}}},
+        {"action":{"condition":{"and":{"vals":[{"not":{"val":{"spellCanCast":{"spellId":{"spellId":56815}}}}},{"cmp":{"op":"OpGe","lhs":{"currentRunicPower":{}},"rhs":{"const":{"val":"15"}}}}]}},"castSpell":{"spellId":{"spellId":50613}}}},
+        {"action":{"castSpell":{"spellId":{"spellId":56815}}}},
+        {"action":{"castSpell":{"spellId":{"spellId":57330}}}}
+      ]
+    },
+    "reactionTimeMs": 250,
+    "inFrontOfTarget": true,
+    "distanceFromTarget": 5,
+    "healingModel": {
+      "hps": 91787,
+      "cadenceSeconds": 0.37,
+      "cadenceVariation": 1.31,
+      "absorbFrac": 0.14,
+      "burstWindow": 6
+    }
+  },
+  "encounter": {
+    "apiVersion": 2,
+    "duration": 93,
+    "durationVariation": 23,
+    "executeProportion20": 0.2,
+    "executeProportion25": 0.25,
+    "executeProportion35": 0.35,
+    "executeProportion45": 0.45,
+    "executeProportion90": 0.9,
+    "targets": [
+      {
+        "id": 68476,
+        "name": "Horridon 25 H",
+        "level": 93,
+        "mobType": "MobTypeBeast",
+        "stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24835,0,1962616500,0,0],
+        "minBaseDamage": 512867,
+        "damageSpread": 0.5508,
+        "swingSpeed": 2,
+        "targetInputs": [
+          {
+            "inputType": "Number",
+            "label": "Jalak death time",
+            "tooltip": "Simulation time (in seconds) at which to disable War-God Jalak and trigger the Rampage buff on Horridon. If set longer than the simulated fight length, then Jalak will be tanked the entire time and Rampage will never be triggered.",
+            "numberValue": 33
+          },
+          {
+            "label": "Taunt swap for Triple Puncture",
+            "tooltip": "If checked, taunt swap upon Jalak's death and on every other Triple Puncture application afterwards in order to limit stack accumulation on a single tank.",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "id": 69374,
+        "name": "War-God Jalak 25 H",
+        "level": 93,
+        "mobType": "MobTypeHumanoid",
+        "stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24835,0,78504660,0,0],
+        "minBaseDamage": 485334,
+        "damageSpread": 0.4668,
+        "swingSpeed": 2,
+        "tankIndex": 1
+      }
+    ]
+  }
+}

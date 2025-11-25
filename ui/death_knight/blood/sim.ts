@@ -12,6 +12,9 @@ import { StatCap, Stats, UnitStat } from '../../core/proto_utils/stats';
 import { defaultRaidBuffMajorDamageCooldowns } from '../../core/proto_utils/utils';
 import * as Presets from './presets';
 
+const ExpertiseBreakpoints = [0.25, 0];
+const OffensiveExpertiseBreakpoints = [0.7, 0];
+
 const SPEC_CONFIG = registerSpecConfig(Spec.SpecBloodDeathKnight, {
 	cssClass: 'blood-death-knight-sim-ui',
 	cssScheme: PlayerClasses.getCssClass(PlayerClasses.DeathKnight),
@@ -78,7 +81,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecBloodDeathKnight, {
 				StatCap.fromStat(Stat.StatExpertiseRating, {
 					breakpoints: [7.5 * 4 * Mechanics.EXPERTISE_PER_QUARTER_PERCENT_REDUCTION, 15 * 4 * Mechanics.EXPERTISE_PER_QUARTER_PERCENT_REDUCTION],
 					capType: StatCapType.TypeSoftCap,
-					postCapEPs: [0.25, 0],
+					postCapEPs: ExpertiseBreakpoints,
 				}),
 			];
 		})(),
@@ -143,14 +146,26 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecBloodDeathKnight, {
 	},
 
 	presets: {
-		epWeights: [Presets.P2_BALANCED_EP_PRESET, Presets.P2_OFFENSIVE_EP_PRESET],
+		epWeights: [
+			Presets.P2_BALANCED_EP_PRESET,
+			Presets.P2_OFFENSIVE_EP_PRESET,
+			Presets.P3_SURVIVAL_EP_PRESET,
+			Presets.P3_BALANCED_EP_PRESET,
+			Presets.P3_OFFENSIVE_EP_PRESET,
+		],
 		// Preset rotations that the user can quickly select.
 		rotations: [Presets.BLOOD_ROTATION_PRESET_DEFAULT],
 		// Preset talents that the user can quickly select.
 		talents: [Presets.BloodTalents],
 		// Preset gear configurations that the user can quickly select.
-		gear: [ Presets.P2_BALANCED_BLOOD_PRESET, Presets.P2_OFFENSIVE_BLOOD_PRESET],
-		builds: [Presets.PRESET_BUILD_SHA],
+		gear: [
+			Presets.P2_BALANCED_BLOOD_PRESET,
+			Presets.P2_OFFENSIVE_BLOOD_PRESET,
+			Presets.P3_PROG_BLOOD_PRESET,
+			Presets.P3_BALANCED_BLOOD_PRESET,
+			Presets.P3_OFFENSIVE_BLOOD_PRESET,
+		],
+		builds: [Presets.PRESET_BUILD_SHA, Presets.PRESET_BUILD_HORRIDON],
 	},
 
 	autoRotation: (_player: Player<Spec.SpecBloodDeathKnight>): APLRotation => {
@@ -185,6 +200,22 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecBloodDeathKnight, {
 export class BloodDeathKnightSimUI extends IndividualSimUI<Spec.SpecBloodDeathKnight> {
 	constructor(parentElem: HTMLElement, player: Player<Spec.SpecBloodDeathKnight>) {
 		super(parentElem, player, SPEC_CONFIG);
-		this.reforger = new ReforgeOptimizer(this);
+		this.reforger = new ReforgeOptimizer(this, {
+			updateSoftCaps: softCaps => {
+				const epWeights = player.getEpWeights();
+
+				this.individualConfig.defaults.softCapBreakpoints!.forEach(softCap => {
+					const softCapToModify = softCaps.find(sc => sc.unitStat.equals(softCap.unitStat));
+					if (softCap.unitStat.equalsStat(Stat.StatExpertiseRating) && softCapToModify) {
+						if (epWeights.equals(Presets.P3_OFFENSIVE_EP_PRESET.epWeights)) {
+							softCapToModify.postCapEPs = OffensiveExpertiseBreakpoints;
+						} else {
+							softCapToModify.postCapEPs = ExpertiseBreakpoints;
+						}
+					}
+				});
+				return softCaps;
+			},
+		});
 	}
 }
