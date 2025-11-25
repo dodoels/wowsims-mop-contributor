@@ -29,7 +29,6 @@ func (hunter *Hunter) registerRapidFireCD() {
 					}
 				},
 			})
-
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
 			aura.Unit.MultiplyRangedHaste(sim, 1/hasteMultiplier)

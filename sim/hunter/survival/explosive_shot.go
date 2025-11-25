@@ -8,10 +8,8 @@ import (
 )
 
 func (svHunter *SurvivalHunter) registerExplosiveShotSpell() {
-	actionID := core.ActionID{SpellID: 53301}
-
-	svHunter.Hunter.ExplosiveShot = svHunter.Hunter.RegisterSpell(core.SpellConfig{
-		ActionID:       actionID,
+	svHunter.explosiveShot = svHunter.Hunter.RegisterSpell(core.SpellConfig{
+		ActionID:       core.ActionID{SpellID: 53301},
 		SpellSchool:    core.SpellSchoolFire,
 		ClassSpellMask: hunter.HunterSpellExplosiveShot,
 		ProcMask:       core.ProcMaskRangedSpecial,
@@ -19,6 +17,7 @@ func (svHunter *SurvivalHunter) registerExplosiveShotSpell() {
 		MissileSpeed:   40,
 		MinRange:       0,
 		MaxRange:       40,
+
 		FocusCost: core.FocusCostOptions{
 			Cost: 25,
 		},
@@ -32,11 +31,10 @@ func (svHunter *SurvivalHunter) registerExplosiveShotSpell() {
 				Duration: time.Second * 6,
 			},
 		},
-		DamageMultiplier:         1,
-		DamageMultiplierAdditive: 1,
 
-		CritMultiplier:   svHunter.DefaultCritMultiplier(),
+		DamageMultiplier: 1,
 		ThreatMultiplier: 1,
+		CritMultiplier:   svHunter.DefaultCritMultiplier(),
 
 		Dot: core.DotConfig{
 			Aura: core.Aura{
@@ -80,5 +78,4 @@ func (svHunter *SurvivalHunter) registerExplosiveShotSpell() {
 			})
 		},
 	})
-
 }

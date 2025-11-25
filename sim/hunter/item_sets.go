@@ -78,12 +78,6 @@ var SaurokStalker = core.NewItemSet(core.ItemSet{
 					core.RPPMConfig{
 						PPM: 1.0,
 					}.WithHasteMod(),
-					// According to an old PTR forum post by Ghostcrawler, the following spec mods should be active
-					// but it's not in the DB (not even in the 7.3.5 db).
-					// Comment: https://www.wowhead.com/mop-classic/spell=138365/item-hunter-t15-2p-bonus#comments:id=1796629
-					// PPM mods: https://wago.tools/db2/SpellProcsPerMinuteMod?build=5.5.1.63538&filter%5BSpellProcsPerMinuteID%5D=exact%3A57&page=1
-					// WithSpecMod(0.7, proto.Spec_SpecBeastMasteryHunter).
-					// WithSpecMod(1.2, proto.Spec_SpecSurvivalHunter),
 				),
 				ICD: time.Millisecond * 250,
 

@@ -7,7 +7,6 @@ import (
 )
 
 func (hunter *Hunter) registerCobraShotSpell() {
-
 	csMetrics := hunter.NewFocusMetrics(core.ActionID{SpellID: 77767})
 	hunter.RegisterSpell(core.SpellConfig{
 		ActionID:       core.ActionID{SpellID: 77767},
@@ -53,7 +52,6 @@ func (hunter *Hunter) registerCobraShotSpell() {
 				}
 				spell.DealDamage(sim, result)
 			})
-
 		},
 	})
 }

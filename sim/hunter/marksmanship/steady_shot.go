@@ -8,7 +8,6 @@ import (
 )
 
 func (mm *MarksmanshipHunter) registerSteadyShotSpell() {
-
 	ssMetrics := mm.NewFocusMetrics(core.ActionID{SpellID: 56641})
 
 	mm.RegisterSpell(core.SpellConfig{
@@ -20,6 +19,7 @@ func (mm *MarksmanshipHunter) registerSteadyShotSpell() {
 		MissileSpeed:   40,
 		MinRange:       0,
 		MaxRange:       40,
+
 		FocusCost: core.FocusCostOptions{
 			Cost: 0,
 		},
@@ -37,18 +37,17 @@ func (mm *MarksmanshipHunter) registerSteadyShotSpell() {
 				return time.Duration(float64(spell.DefaultCast.CastTime) / mm.TotalRangedHasteMultiplier())
 			},
 		},
-		BonusCritPercent:         0,
-		DamageMultiplierAdditive: 1,
-		DamageMultiplier:         0.66,
-		CritMultiplier:           mm.DefaultCritMultiplier(),
-		ThreatMultiplier:         1,
+
+		DamageMultiplier: 0.66,
+		CritMultiplier:   mm.DefaultCritMultiplier(),
+		ThreatMultiplier: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			baseDamage := mm.AutoAttacks.Ranged().CalculateNormalizedWeaponDamage(sim, spell.RangedAttackPower())
 			baseDamage += mm.GetBaseDamageFromCoeff(2.112)
 
 			intFocus := 14.0
-			if mm.HasActiveAura("Steady Focus") {
+			if mm.steadyFocusAura.IsActive() {
 				intFocus += 3
 			}
 			mm.AddFocus(sim, intFocus, ssMetrics)

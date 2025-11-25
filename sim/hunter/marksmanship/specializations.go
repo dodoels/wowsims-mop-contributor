@@ -25,53 +25,36 @@ func (mm *MarksmanshipHunter) ApplySpecialization() {
 			caCritMod.Deactivate()
 		})
 	})
-	//bombardmentActionId := core.ActionID{SpellID: 35110}
-	//focusMetrics := mm.NewFocusMetrics(bombardmentActionId)
-	dmgMod := mm.AddDynamicMod(core.SpellModConfig{
-		Kind:       core.SpellMod_DamageDone_Pct,
-		ClassMask:  hunter.HunterSpellMultiShot,
-		FloatValue: 0.6,
-	})
-	costMod := mm.AddDynamicMod(core.SpellModConfig{
-		Kind:      core.SpellMod_PowerCost_Flat,
-		ClassMask: hunter.HunterSpellMultiShot,
-		IntValue:  -20,
-	})
 
 	bombardmentAura := core.BlockPrepull(mm.RegisterAura(core.Aura{
 		Label:    "Bombardment",
 		ActionID: core.ActionID{SpellID: 35110},
 		Duration: time.Second * 6,
-		OnGain: func(aura *core.Aura, sim *core.Simulation) {
-			costMod.Activate()
-			dmgMod.Activate()
-		},
-		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			costMod.Deactivate()
-			dmgMod.Deactivate()
+	})).AttachSpellMod(core.SpellModConfig{
+		Kind:       core.SpellMod_DamageDone_Pct,
+		ClassMask:  hunter.HunterSpellMultiShot,
+		FloatValue: 0.6,
+	}).AttachSpellMod(core.SpellModConfig{
+		Kind:      core.SpellMod_PowerCost_Flat,
+		ClassMask: hunter.HunterSpellMultiShot,
+		IntValue:  -20,
+	})
 
-		},
-	}))
 	mm.MakeProcTriggerAura(core.ProcTrigger{
-		Name:           "Bombardment",
-		ActionID:       core.ActionID{ItemID: 35110},
+		Name:           "Bombardment Trigger",
 		Callback:       core.CallbackOnSpellHitDealt,
-		ProcChance:     1,
 		ClassSpellMask: hunter.HunterSpellMultiShot,
 		Outcome:        core.OutcomeCrit,
+
 		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if bombardmentAura.IsActive() {
-				bombardmentAura.Refresh(sim)
-			} else {
-				bombardmentAura.Activate(sim)
-			}
+			bombardmentAura.Activate(sim)
 		},
 	})
 }
+
 func (mm *MarksmanshipHunter) MasterMarksmanAura() {
 	var counter *core.Aura
-	procChance := 0.5
-	mmAura := core.BlockPrepull(mm.RegisterAura(core.Aura{
+	mm.readySetAimAura = core.BlockPrepull(mm.RegisterAura(core.Aura{
 		Label:    "Ready, Set, Aim...",
 		ActionID: core.ActionID{SpellID: 82925},
 		Duration: time.Second * 8,
@@ -89,33 +72,33 @@ func (mm *MarksmanshipHunter) MasterMarksmanAura() {
 		MaxStacks: 2,
 	})
 
-	core.MakePermanent(mm.RegisterAura(core.Aura{
-		Label: "Master Marksman Internal",
-		OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
-			if !spell.Matches(hunter.HunterSpellSteadyShot) {
-				return
-			}
-			if procChance == 1 || sim.Proc(procChance, "Master Marksman Proc") {
-				if counter.GetStacks() == 2 {
-					mmAura.Activate(sim)
-					counter.Deactivate(sim)
-				} else {
-					if !counter.IsActive() {
-						counter.Activate(sim)
-					}
-					counter.AddStack(sim)
+	mm.MakeProcTriggerAura(core.ProcTrigger{
+		Name:               "Master Marksman Internal",
+		Callback:           core.CallbackOnCastComplete,
+		ClassSpellMask:     hunter.HunterSpellSteadyShot,
+		ProcChance:         0.5,
+		TriggerImmediately: true,
+
+		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+			if counter.GetStacks() == 2 {
+				mm.readySetAimAura.Activate(sim)
+				counter.Deactivate(sim)
+			} else {
+				if !counter.IsActive() {
+					counter.Activate(sim)
 				}
+				counter.AddStack(sim)
 			}
 		},
-	}))
+	})
 }
 func (mm *MarksmanshipHunter) SteadyFocusAura() {
 	attackspeedMultiplier := core.TernaryFloat64(mm.CouldHaveSetBonus(hunter.YaungolSlayersBattlegear, 4), 1.25, 1.15)
-	steadyFocusAura := core.BlockPrepull(mm.RegisterAura(core.Aura{
-		Label:     "Steady Focus",
-		ActionID:  core.ActionID{SpellID: 53224, Tag: 1},
-		Duration:  time.Second * 20,
-		MaxStacks: 1,
+	mm.steadyFocusAura = core.BlockPrepull(mm.RegisterAura(core.Aura{
+		Label:    "Steady Focus",
+		ActionID: core.ActionID{SpellID: 53224, Tag: 1},
+		Duration: time.Second * 20,
+
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
 			aura.Unit.MultiplyRangedSpeed(sim, attackspeedMultiplier)
 		},
@@ -132,11 +115,12 @@ func (mm *MarksmanshipHunter) SteadyFocusAura() {
 			if spell.ProcMask.Matches(core.ProcMaskRangedAuto) || spell.ActionID.SpellID == 0 || !spell.Flags.Matches(core.SpellFlagAPL) {
 				return
 			}
+
 			if !spell.Matches(hunter.HunterSpellSteadyShot) {
 				aura.SetStacks(sim, 1)
 			} else {
 				if aura.GetStacks() == 2 {
-					steadyFocusAura.Activate(sim)
+					mm.steadyFocusAura.Activate(sim)
 					aura.SetStacks(sim, 1)
 				} else {
 					aura.SetStacks(sim, 2)
@@ -147,7 +131,6 @@ func (mm *MarksmanshipHunter) SteadyFocusAura() {
 }
 
 func (mm *MarksmanshipHunter) PiercingShotsAura() {
-
 	psSpell := mm.RegisterSpell(core.SpellConfig{
 		ActionID:    core.ActionID{SpellID: 53238},
 		SpellSchool: core.SpellSchoolPhysical,
@@ -168,7 +151,6 @@ func (mm *MarksmanshipHunter) PiercingShotsAura() {
 				// Specifically account for bleed modifiers, since it still affects the spell, but we're ignoring all modifiers.
 				dot.SnapshotAttackerMultiplier = target.PseudoStats.PeriodicPhysicalDamageTakenMultiplier
 				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
-
 			},
 		},
 
@@ -178,20 +160,14 @@ func (mm *MarksmanshipHunter) PiercingShotsAura() {
 		},
 	})
 
-	mm.RegisterAura(core.Aura{
-		Label:    "Piercing Shots Talent",
-		Duration: core.NeverExpires,
-		OnReset: func(aura *core.Aura, sim *core.Simulation) {
-			aura.Activate(sim)
-		},
-		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if !result.DidCrit() {
-				return
-			}
-			if !spell.Matches(hunter.HunterSpellAimedShot) && !spell.Matches(hunter.HunterSpellSteadyShot) && !spell.Matches(hunter.HunterSpellChimeraShot) {
-				return
-			}
+	mm.MakeProcTriggerAura(core.ProcTrigger{
+		Name:               "Piercing Shots Talent",
+		Callback:           core.CallbackOnSpellHitDealt,
+		ClassSpellMask:     hunter.HunterSpellAimedShot | hunter.HunterSpellSteadyShot | hunter.HunterSpellChimeraShot,
+		Outcome:            core.OutcomeCrit,
+		TriggerImmediately: true,
 
+		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			dot := psSpell.Dot(result.Target)
 			newDamage := result.Damage * 0.3
 

@@ -29,7 +29,6 @@ type HunterPet struct {
 
 	uptimePercent    float64
 	frostStormBreath *core.Spell
-	hasOwnerCooldown bool
 
 	WHFocusIncreaseMod *core.SpellMod
 	WHDamageMod        *core.SpellMod
@@ -114,8 +113,6 @@ func (hunter *Hunter) NewStampedePet(index int) *HunterPet {
 		Pet:         core.NewPet(conf),
 		config:      PetConfig{Name: "Stampede"},
 		hunterOwner: hunter,
-
-		//hasOwnerCooldown: petConfig.SpecialAbility == FuriousHowl || petConfig.SpecialAbility == SavageRend,
 	}
 	stampedePet.EnableAutoAttacks(stampedePet, core.AutoAttackOptions{
 		MainHand: core.Weapon{
@@ -146,8 +143,6 @@ func (hunter *Hunter) NewDireBeastPet() *HunterPet {
 		Pet:         core.NewPet(conf),
 		config:      PetConfig{Name: "Dire Beast"},
 		hunterOwner: hunter,
-
-		//hasOwnerCooldown: petConfig.SpecialAbility == FuriousHowl || petConfig.SpecialAbility == SavageRend,
 	}
 	dbActionID := core.ActionID{SpellID: 120679}
 	focusMetrics := hunter.NewFocusMetrics(dbActionID)
@@ -328,12 +323,6 @@ func (hp *HunterPet) ExecuteCustomRotation(sim *core.Simulation) {
 	percentRemaining := sim.GetRemainingDurationPercent()
 	if percentRemaining < 1.0-hp.uptimePercent { // once fight is % completed, disable pet.
 		hp.Disable(sim)
-		return
-	}
-
-	if hp.hasOwnerCooldown && hp.CurrentFocus() < 50 {
-		// When a major ability (Furious Howl or Savage Rend) is ready, pool enough
-		// energy to use on-demand.
 		return
 	}
 
