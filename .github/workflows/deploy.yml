@@ -1,78 +1,78 @@
-name: Build and Deploy
-on:
-    push:
-        branches:
-            - master
-jobs:
-    build-and-deploy:
-        runs-on: ubuntu-latest
-        permissions:
-            contents: write
-            pull-requests: write
-        steps:
-            - name: Install Go
-              uses: actions/setup-go@v2
-              with:
-                  go-version: 1.23.x
+# name: Build and Deploy
+# on:
+#     push:
+#         branches:
+#             - master
+# jobs:
+#     build-and-deploy:
+#         runs-on: ubuntu-latest
+#         permissions:
+#             contents: write
+#             pull-requests: write
+#         steps:
+#             - name: Install Go
+#               uses: actions/setup-go@v2
+#               with:
+#                   go-version: 1.23.x
 
-            - name: Install Protoc
-              uses: arduino/setup-protoc@v1
-              with:
-                  version: 3.x
-                  repo-token: ${{ secrets.GITHUB_TOKEN }}
+#             - name: Install Protoc
+#               uses: arduino/setup-protoc@v1
+#               with:
+#                   version: 3.x
+#                   repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-            - name: Install Protoc Go plugin
-              run: go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+#             - name: Install Protoc Go plugin
+#               run: go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 
-            - name: Install Node
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 22
+#             - name: Install Node
+#               uses: actions/setup-node@v3
+#               with:
+#                   node-version: 22
 
-            - name: Checkout 🛎️
-              uses: actions/checkout@v5
-              with:
-                  persist-credentials: false
+#             - name: Checkout 🛎️
+#               uses: actions/checkout@v5
+#               with:
+#                   persist-credentials: false
 
-            - name: Test Locales 💬
-              run: |
-                  npm ci
-                  npm run test:locales
+#             - name: Test Locales 💬
+#               run: |
+#                   npm ci
+#                   npm run test:locales
 
-            - name: Build 🔧
-              run: |
-                  make dist/mop/.dirstamp
+#             - name: Build 🔧
+#               run: |
+#                   make dist/mop/.dirstamp
 
-            - name: Update proto version file
-              run: |
-                  cp sim/core/TestProtoVersioning.results .deployedprotoversion
+#             - name: Update proto version file
+#               run: |
+#                   cp sim/core/TestProtoVersioning.results .deployedprotoversion
 
-            - name: Commit updated version file
-              run: |
-                  git config --local user.name "github-actions[bot]"
-                  git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-                  if ! git diff --exit-code; then
-                      git checkout -b github-actions
-                      git add .deployedprotoversion
-                      git commit -m "Auto-update .deployedprotoversion file due to API version increase"
-                      git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git
-                      git push --set-upstream origin github-actions
-                      gh pr create --fill
-                      gh pr merge --merge --delete-branch
-                  fi
-              env:
-                GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#             - name: Commit updated version file
+#               run: |
+#                   git config --local user.name "github-actions[bot]"
+#                   git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+#                   if ! git diff --exit-code; then
+#                       git checkout -b github-actions
+#                       git add .deployedprotoversion
+#                       git commit -m "Auto-update .deployedprotoversion file due to API version increase"
+#                       git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git
+#                       git push --set-upstream origin github-actions
+#                       gh pr create --fill
+#                       gh pr merge --merge --delete-branch
+#                   fi
+#               env:
+#                 GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-            - name: Test
-              run: |
-                  make test
+#             - name: Test
+#               run: |
+#                   make test
 
-            - name: Deploy 🚀
-              uses: JamesIves/github-pages-deploy-action@v4
-              with:
-                  repository-name: wowsims/pages-deploy
-                  branch: main
-                  folder: dist/mop
-                  target-folder: mop
-                  single-commit: true
-                  token: ${{ secrets.DEPLOY_REPO_TOKEN }}
+#             - name: Deploy 🚀
+#               uses: JamesIves/github-pages-deploy-action@v4
+#               with:
+#                   repository-name: wowsims/pages-deploy
+#                   branch: main
+#                   folder: dist/mop
+#                   target-folder: mop
+#                   single-commit: true
+#                   token: ${{ secrets.DEPLOY_REPO_TOKEN }}
