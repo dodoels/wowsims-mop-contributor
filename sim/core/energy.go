@@ -11,11 +11,12 @@ import (
 type energyBar struct {
 	unit *Unit
 
-	maxEnergy      float64
-	currentEnergy  float64
-	maxComboPoints int32
-	comboPoints    int32
-	nextEnergyTick time.Duration
+	maxEnergy          float64
+	currentEnergy      float64
+	maxComboPoints     int32
+	comboPoints        int32
+	CurrentComboTarget *Unit
+	nextEnergyTick     time.Duration
 
 	// Time between Energy ticks.
 	EnergyTickDuration time.Duration
@@ -211,7 +212,12 @@ func (eb *energyBar) updateMaxEnergyInternal(sim *Simulation, bonusEnergy float6
 	}
 }
 
-func (eb *energyBar) AddComboPoints(sim *Simulation, pointsToAdd int32, metrics *ResourceMetrics) {
+func (eb *energyBar) AddComboPoints(sim *Simulation, pointsToAdd int32, target *Unit, metrics *ResourceMetrics) {
+	if (target != eb.CurrentComboTarget) && (eb.comboPoints > 0) {
+		eb.SpendComboPoints(sim, metrics)
+	}
+
+	eb.CurrentComboTarget = target
 	newComboPoints := min(eb.comboPoints+pointsToAdd, eb.maxComboPoints)
 	metrics.AddEvent(float64(pointsToAdd), float64(newComboPoints-eb.comboPoints))
 
@@ -254,7 +260,7 @@ func (eb *energyBar) ResetComboPoints(sim *Simulation, comboPointsToKeep int32) 
 	if eb.comboPoints > comboPointsToKeep {
 		eb.SpendPartialComboPoints(sim, eb.comboPoints-comboPointsToKeep, eb.EncounterStartMetrics)
 	} else if comboPointsToKeep > eb.comboPoints {
-		eb.AddComboPoints(sim, comboPointsToKeep-eb.comboPoints, eb.EncounterStartMetrics)
+		eb.AddComboPoints(sim, comboPointsToKeep-eb.comboPoints, eb.CurrentComboTarget, eb.EncounterStartMetrics)
 	}
 }
 
@@ -265,6 +271,7 @@ func (eb *energyBar) reset(sim *Simulation) {
 
 	eb.currentEnergy = eb.maxEnergy
 	eb.comboPoints = 0
+	eb.CurrentComboTarget = Ternary(eb.ownerClass == proto.Class_ClassMonk, eb.unit, eb.unit.CurrentTarget)
 
 	if eb.hasHasteRatingScaling {
 		eb.hasteRatingMultiplier = 1.0 + eb.unit.GetStat(stats.HasteRating)/(100*HasteRatingPerHastePercent)

@@ -80,8 +80,8 @@ func (druid *Druid) registerSwipeCatSpell() {
 
 				result := spell.CalcAndDealDamage(sim, aoeTarget, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
 
-				if result.Landed() && (aoeTarget == druid.CurrentTarget) {
-					druid.AddComboPoints(sim, 1, spell.ComboPointMetrics())
+				if result.Landed() && (aoeTarget == druid.CurrentComboTarget) {
+					druid.AddComboPoints(sim, 1, aoeTarget, spell.ComboPointMetrics())
 				}
 			}
 		},

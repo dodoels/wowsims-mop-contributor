@@ -54,8 +54,8 @@ func (druid *Druid) ApplyPrimalFury() {
 					druid.AddRage(sim, mangleRageGen, rageMetrics)
 				}
 			} else if druid.InForm(Cat) {
-				if spell.Matches(DruidSpellBuilder) && (result.Target == druid.CurrentTarget) {
-					druid.AddComboPoints(sim, 1, cpMetrics)
+				if spell.Matches(DruidSpellBuilder) {
+					druid.AddComboPoints(sim, 1, result.Target, cpMetrics)
 				}
 			}
 		},

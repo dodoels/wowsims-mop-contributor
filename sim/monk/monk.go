@@ -115,7 +115,7 @@ func (monk *Monk) RegisterOnStanceChanged(onStanceChanged OnStanceChanged) {
 }
 
 func (monk *Monk) AddChi(sim *core.Simulation, spell *core.Spell, pointsToAdd int32, metrics *core.ResourceMetrics) {
-	monk.AddComboPoints(sim, pointsToAdd, metrics)
+	monk.AddComboPoints(sim, pointsToAdd, &monk.Unit, metrics)
 
 	if spell != nil && spell.Flags.Matches(SpellFlagBuilder) {
 		// TODO: Verify that RJW can trigger Power Strikes

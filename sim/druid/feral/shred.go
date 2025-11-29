@@ -53,7 +53,7 @@ func (cat *FeralDruid) registerShredSpell() {
 			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
 
 			if result.Landed() {
-				cat.AddComboPoints(sim, 1, spell.ComboPointMetrics())
+				cat.AddComboPoints(sim, 1, target, spell.ComboPointMetrics())
 				cat.ApplyBloodletting(target)
 			} else {
 				spell.IssueRefund(sim)

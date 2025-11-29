@@ -62,7 +62,7 @@ func (rogue *Rogue) ApplyTalents() {
 				},
 			},
 			ApplyEffects: func(sim *core.Simulation, unit *core.Unit, spell *core.Spell) {
-				rogue.AddComboPoints(sim, 5, mfdMetrics)
+				rogue.AddComboPoints(sim, 5, rogue.CurrentComboTarget, mfdMetrics)
 			},
 		})
 
@@ -89,7 +89,7 @@ func (rogue *Rogue) ApplyTalents() {
 
 			OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 				if result.Landed() && spell.Flags.Matches(SpellFlagFinisher) {
-					rogue.AddComboPoints(sim, aura.GetStacks(), antiMetrics)
+					rogue.AddComboPoints(sim, aura.GetStacks(), rogue.CurrentComboTarget, antiMetrics)
 					aura.SetStacks(sim, 0)
 					aura.Deactivate(sim)
 				}

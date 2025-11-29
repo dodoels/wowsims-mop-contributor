@@ -23,7 +23,7 @@ func (subRogue *SubtletyRogue) registerHonorAmongThieves() {
 
 	maybeProc := func(sim *core.Simulation) {
 		if icd.IsReady(sim) && sim.Proc(procChance, "Honor Among Thieves") {
-			subRogue.AddComboPointsOrAnticipation(sim, 1, comboMetrics)
+			subRogue.AddComboPointsOrAnticipation(sim, 1, subRogue.CurrentComboTarget, comboMetrics)
 
 			if subRogue.T16EnergyAura != nil {
 				subRogue.T16EnergyAura.Activate(sim)

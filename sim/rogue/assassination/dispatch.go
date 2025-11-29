@@ -42,7 +42,7 @@ func (sinRogue *AssassinationRogue) registerDispatch() {
 			damage := addedDamage + spell.Unit.MHNormalizedWeaponDamage(sim, spell.MeleeAttackPower())
 			outcome := spell.CalcAndDealDamage(sim, target, damage, spell.OutcomeMeleeSpecialHitAndCrit)
 			if outcome.Landed() {
-				sinRogue.AddComboPointsOrAnticipation(sim, 1, spell.ComboPointMetrics())
+				sinRogue.AddComboPointsOrAnticipation(sim, 1, target, spell.ComboPointMetrics())
 			} else {
 				spell.IssueRefund(sim)
 			}

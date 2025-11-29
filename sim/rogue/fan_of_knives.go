@@ -54,8 +54,8 @@ func (rogue *Rogue) registerFanOfKnives() {
 				damage *= sim.Encounter.AOECapMultiplier()
 
 				result := fokSpell.CalcAndDealDamage(sim, aoeTarget, damage, fokSpell.OutcomeMeleeSpecialNoBlockDodgeParry)
-				if result.Landed() && aoeTarget == rogue.CurrentTarget {
-					rogue.AddComboPointsOrAnticipation(sim, 1, cpMetrics)
+				if result.Landed() && aoeTarget == rogue.CurrentComboTarget {
+					rogue.AddComboPointsOrAnticipation(sim, 1, aoeTarget, cpMetrics)
 
 					if hasGlyph {
 						sunder := rogue.ExposeArmorAuras.Get(aoeTarget)

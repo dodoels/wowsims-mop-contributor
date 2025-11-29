@@ -49,7 +49,7 @@ func (rogue *Rogue) registerAmbushSpell() {
 			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialNoBlockDodgeParry)
 
 			if result.Landed() {
-				rogue.AddComboPointsOrAnticipation(sim, 2, spell.ComboPointMetrics())
+				rogue.AddComboPointsOrAnticipation(sim, 2, target, spell.ComboPointMetrics())
 			} else {
 				spell.IssueRefund(sim)
 			}

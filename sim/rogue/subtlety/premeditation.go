@@ -31,7 +31,7 @@ func (subRogue *SubtletyRogue) registerPremeditation() {
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
 			// Remove 2 points because no finisher was casted
 			if shouldTimeout {
-				subRogue.AddComboPoints(sim, -2, comboMetrics)
+				subRogue.AddComboPoints(sim, -2, subRogue.CurrentComboTarget, comboMetrics)
 				shouldTimeout = false
 			}
 		},
@@ -70,7 +70,7 @@ func (subRogue *SubtletyRogue) registerPremeditation() {
 		},
 
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
-			subRogue.AddComboPointsOrAnticipation(sim, 2, comboMetrics)
+			subRogue.AddComboPointsOrAnticipation(sim, 2, subRogue.CurrentComboTarget, comboMetrics)
 			premedAura.Activate(sim)
 		},
 	})

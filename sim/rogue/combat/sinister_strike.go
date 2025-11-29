@@ -45,7 +45,7 @@ func (comRogue *CombatRogue) registerSinisterStrikeSpell() {
 			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
 
 			if result.Landed() {
-				comRogue.AddComboPointsOrAnticipation(sim, 1, spell.ComboPointMetrics())
+				comRogue.AddComboPointsOrAnticipation(sim, 1, target, spell.ComboPointMetrics())
 			} else {
 				spell.IssueRefund(sim)
 			}

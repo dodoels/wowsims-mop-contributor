@@ -61,10 +61,7 @@ func (druid *Druid) registerRakeSpell() {
 			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
 
 			if result.Landed() {
-				if target == spell.Unit.CurrentTarget {
-					druid.AddComboPoints(sim, 1, spell.ComboPointMetrics())
-				}
-
+				druid.AddComboPoints(sim, 1, target, spell.ComboPointMetrics())
 				spell.Dot(target).Apply(sim)
 			} else {
 				spell.IssueRefund(sim)

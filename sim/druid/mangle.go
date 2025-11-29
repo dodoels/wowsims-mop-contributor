@@ -88,7 +88,7 @@ func (druid *Druid) registerMangleCatSpell() {
 			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
 
 			if result.Landed() {
-				druid.AddComboPoints(sim, 1, spell.ComboPointMetrics())
+				druid.AddComboPoints(sim, 1, target, spell.ComboPointMetrics())
 				druid.ApplyBloodletting(target)
 			} else {
 				spell.IssueRefund(sim)

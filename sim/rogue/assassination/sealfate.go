@@ -27,7 +27,7 @@ func (sinRogue *AssassinationRogue) applySealFate() {
 			}
 
 			if icd.IsReady(sim) {
-				sinRogue.AddComboPointsOrAnticipation(sim, 1, cpMetrics)
+				sinRogue.AddComboPointsOrAnticipation(sim, 1, result.Target, cpMetrics)
 				icd.Use(sim)
 
 				if sinRogue.T16EnergyAura != nil {
