@@ -103,7 +103,7 @@ export const simLaunchStatuses: Record<Spec, SimStatus> = {
 		status: LaunchStatus.Unlaunched,
 	},
 	[Spec.SpecProtectionPaladin]: {
-		phase: Phase.Phase1,
+		phase: Phase.Phase2,
 		status: LaunchStatus.Beta,
 	},
 	[Spec.SpecRetributionPaladin]: {

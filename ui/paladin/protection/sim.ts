@@ -12,6 +12,9 @@ import { defaultRaidBuffMajorDamageCooldowns } from '../../core/proto_utils/util
 import * as PaladinInputs from '../inputs.js';
 import * as Presets from './presets.js';
 
+const ExpertisePostCapEPs = [0.6, 0];
+const OffensiveExpertisePostCapEPs = [0.42, 0];
+
 const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionPaladin, {
 	cssClass: 'protection-paladin-sim-ui',
 	cssScheme: PlayerClasses.getCssClass(PlayerClasses.Paladin),
@@ -89,10 +92,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionPaladin, {
 
 	defaults: {
 		// Default equipped gear.
-		gear: Presets.P1_BALANCED_GEAR_PRESET.gear,
+		gear: Presets.P2_BALANCED_GEAR_PRESET.gear,
 		// Default EP weights for sorting gear in the gear picker.
 		// Values for now are pre-Cata initial WAG
-		epWeights: Presets.P1_BALANCED_EP_PRESET.epWeights,
+		epWeights: Presets.P2_BALANCED_EP_PRESET.epWeights,
 		// Default stat caps for the Reforge Optimizer
 		statCaps: (() => {
 			const hitCap = new Stats().withPseudoStat(PseudoStat.PseudoStatPhysicalHitPercent, 7.5);
@@ -105,7 +108,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionPaladin, {
 				StatCap.fromStat(Stat.StatExpertiseRating, {
 					breakpoints: [7.5 * 4 * Mechanics.EXPERTISE_PER_QUARTER_PERCENT_REDUCTION, 15 * 4 * Mechanics.EXPERTISE_PER_QUARTER_PERCENT_REDUCTION],
 					capType: StatCapType.TypeSoftCap,
-					postCapEPs: [0.57, 0],
+					postCapEPs: ExpertisePostCapEPs,
 				}),
 			];
 		})(),
@@ -165,14 +168,14 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionPaladin, {
 	},
 
 	presets: {
-		epWeights: [Presets.P1_BALANCED_EP_PRESET],
+		epWeights: [Presets.P2_BALANCED_EP_PRESET, Presets.P2_OFFENSIVE_EP_PRESET],
 		// Preset talents that the user can quickly select.
 		talents: [Presets.DefaultTalents],
 		// Preset rotations that the user can quickly select.
 		rotations: [Presets.APL_PRESET],
 		// Preset gear configurations that the user can quickly select.
-		gear: [Presets.P1_BALANCED_GEAR_PRESET, Presets.P1_OFFENSIVE_GEAR_PRESET],
-		builds: [Presets.P1_BALANCED_BUILD_PRESET, Presets.PRESET_BUILD_SHA],
+		gear: [Presets.P2_BALANCED_GEAR_PRESET, Presets.P2_OFFENSIVE_GEAR_PRESET],
+		builds: [Presets.P2_BALANCED_BUILD_PRESET, Presets.PRESET_BUILD_SHA],
 	},
 
 	autoRotation: (_player: Player<Spec.SpecProtectionPaladin>): APLRotation => {
@@ -193,10 +196,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionPaladin, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.P1_BALANCED_GEAR_PRESET.gear,
+					1: Presets.P2_BALANCED_GEAR_PRESET.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.P1_BALANCED_GEAR_PRESET.gear,
+					1: Presets.P2_BALANCED_GEAR_PRESET.gear,
 				},
 			},
 		},
@@ -209,7 +212,21 @@ export class ProtectionPaladinSimUI extends IndividualSimUI<Spec.SpecProtectionP
 
 		this.reforger = new ReforgeOptimizer(this, {
 			updateSoftCaps: softCaps => {
-				softCaps[0].postCapEPs[0] = player.getEpWeights().getStat(Stat.StatExpertiseRating) * 0.9;
+				const epWeights = player.getEpWeights();
+
+				this.individualConfig.defaults.softCapBreakpoints!.forEach(softCap => {
+					const softCapToModify = softCaps.find(sc => sc.unitStat.equals(softCap.unitStat));
+					if (softCap.unitStat.equalsStat(Stat.StatExpertiseRating) && softCapToModify) {
+						if (
+							// epWeights.equals(Presets.P3_OFFENSIVE_EP_PRESET.epWeights) ||
+							epWeights.equals(Presets.P2_OFFENSIVE_EP_PRESET.epWeights)
+						) {
+							softCapToModify.postCapEPs = OffensiveExpertisePostCapEPs;
+						} else {
+							softCapToModify.postCapEPs = ExpertisePostCapEPs;
+						}
+					}
+				});
 				return softCaps;
 			},
 		});
