@@ -24,6 +24,7 @@ func (mage *Mage) ApplyTalents() {
 	// Level 90
 	mage.registerRuneOfPower()
 	mage.registerInvocation()
+	mage.registerIncantersWard()
 
 }
 
@@ -209,4 +210,24 @@ func (mage *Mage) registerRuneOfPower() {
 			mage.RuneOfPowerAura.Activate(sim)
 		},
 	})
+}
+
+func (mage *Mage) registerIncantersWard() {
+	if !mage.Talents.IncantersWard {
+		return
+	}
+
+	core.MakePermanent(mage.RegisterAura(core.Aura{
+		Label:    "Incanter's Ward Passive",
+		ActionID: core.ActionID{SpellID: 1463},
+		OnGain: func(aura *core.Aura, sim *core.Simulation) {
+			mage.MultiplyManaRegenSpeed(sim, 1.65)
+		},
+		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+			mage.MultiplyManaRegenSpeed(sim, 1/1.65)
+		},
+	}).AttachSpellMod(core.SpellModConfig{
+		Kind:       core.SpellMod_DamageDone_Pct,
+		FloatValue: 0.06,
+	}))
 }
