@@ -139,9 +139,8 @@ func (pet *StormEarthAndFirePet) registerSEFFistsOfFury() {
 	fistsOfFuryTickSpell := pet.RegisterSpell(fistsOfFuryTickSpellConfig(pet.owner, pet, core.SpellConfig{
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
 			// Damage is split between all mobs, each hit rolls for hit/crit separately
-			snapshotDamage /= float64(sim.Environment.ActiveTargetCount())
-
-			spell.CalcAoeDamage(sim, snapshotDamage, spell.OutcomeMeleeSpecialHitAndCrit)
+			damagePerMob := snapshotDamage / float64(sim.Environment.ActiveTargetCount())
+			spell.CalcAoeDamage(sim, damagePerMob, spell.OutcomeMeleeSpecialHitAndCrit)
 			spell.DealBatchedAoeDamage(sim)
 		},
 	}))

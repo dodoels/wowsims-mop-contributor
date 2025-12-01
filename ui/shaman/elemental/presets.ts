@@ -13,7 +13,6 @@ import { Stats } from '../../core/proto_utils/stats';
 import { defaultRaidBuffMajorDamageCooldowns } from '../../core/proto_utils/utils';
 import AoEApl from './apls/aoe.apl.json';
 import CleaveApl from './apls/cleave.apl.json';
-import DefaultApl from './apls/default.apl.json';
 import P3Apl from './apls/p3.apl.json';
 import P1Gear from './gear_sets/p1.gear.json';
 import P2Gear from './gear_sets/p2.gear.json';
@@ -25,18 +24,30 @@ import PreraidGear from './gear_sets/preraid.gear.json';
 // keep them in a separate file.
 
 export const PRERAID_PRESET = PresetUtils.makePresetGear('Pre-raid', PreraidGear);
-export const P1_PRESET = PresetUtils.makePresetGear('P1 - Default', P1Gear);
-export const P2_PRESET = PresetUtils.makePresetGear('P2 - Default', P2Gear);
-export const P3_PRESET = PresetUtils.makePresetGear('P3 - (WiP)', P3Gear);
+export const P1_GEAR_PRESET = PresetUtils.makePresetGear('P1 - Default', P1Gear);
+export const P2_GEAR_PRESET = PresetUtils.makePresetGear('P2 - Default', P2Gear);
+export const P3_GEAR_PRESET = PresetUtils.makePresetGear('P3 - Default', P3Gear);
 
-export const ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Default', DefaultApl);
-export const ROTATION_PRESET_P3 = PresetUtils.makePresetAPLRotation('P3 (WiP)', P3Apl);
+export const ROTATION_PRESET_P3 = PresetUtils.makePresetAPLRotation('Default', P3Apl);
 export const ROTATION_PRESET_CLEAVE = PresetUtils.makePresetAPLRotation('Cleave', CleaveApl);
 export const ROTATION_PRESET_AOE = PresetUtils.makePresetAPLRotation('AoE (3+)', AoEApl);
 
 // Preset options for EP weights
-export const EP_PRESET_DEFAULT = PresetUtils.makePresetEpWeights(
+export const EP_PRESET_P3 = PresetUtils.makePresetEpWeights(
 	'Default',
+	Stats.fromMap({
+		[Stat.StatIntellect]: 1.0,
+		[Stat.StatSpellPower]: 0.82,
+		[Stat.StatCritRating]: 0.41,
+		[Stat.StatHasteRating]: 0.46,
+		[Stat.StatHitRating]: 1.25,
+		[Stat.StatSpirit]: 1.25,
+		[Stat.StatMasteryRating]: 0.51,
+	}),
+);
+
+export const EP_PRESET_P2 = PresetUtils.makePresetEpWeights(
+	'P2',
 	Stats.fromMap({
 		[Stat.StatIntellect]: 1.0,
 		[Stat.StatSpellPower]: 0.82,
@@ -45,19 +56,6 @@ export const EP_PRESET_DEFAULT = PresetUtils.makePresetEpWeights(
 		[Stat.StatHitRating]: 1.1,
 		[Stat.StatSpirit]: 1.1,
 		[Stat.StatMasteryRating]: 0.44,
-	}),
-);
-
-export const EP_PRESET_P3 = PresetUtils.makePresetEpWeights(
-	'P3 (WiP)',
-	Stats.fromMap({
-		[Stat.StatIntellect]: 1.0,
-		[Stat.StatSpellPower]: 0.82,
-		[Stat.StatCritRating]: 0.41,
-		[Stat.StatHasteRating]: 0.46,
-		[Stat.StatHitRating]: 1.25,
-		[Stat.StatSpirit]: 1.25,
-		[Stat.StatMasteryRating]: 0.49,
 	}),
 );
 
@@ -76,18 +74,8 @@ export const EP_PRESET_AOE = PresetUtils.makePresetEpWeights(
 
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/mop-classic/talent-calc and copy the numbers in the url.
-export const StandardTalents = {
-	name: 'Default',
-	data: SavedTalents.create({
-		talentsString: '333121',
-		glyphs: Glyphs.create({
-			major1: ShamanMajorGlyph.GlyphOfSpiritwalkersGrace,
-		}),
-	}),
-};
-
 export const P3_TALENTS = {
-	name: 'P3 (WiP)',
+	name: 'Default',
 	data: SavedTalents.create({
 		talentsString: '333322',
 		glyphs: Glyphs.create({
@@ -101,7 +89,7 @@ export const TalentsCleave = {
 	data: SavedTalents.create({
 		talentsString: '333322',
 		glyphs: Glyphs.create({
-			...StandardTalents.data.glyphs,
+			...P3_TALENTS.data.glyphs,
 		}),
 	}),
 };
@@ -111,7 +99,7 @@ export const TalentsAoE = {
 	data: SavedTalents.create({
 		...TalentsCleave.data,
 		glyphs: Glyphs.create({
-			...StandardTalents.data.glyphs,
+			...P3_TALENTS.data.glyphs,
 			major2: ShamanMajorGlyph.GlyphOfChainLightning,
 		}),
 	}),
@@ -159,21 +147,14 @@ const ENCOUNTER_SINGLE_TARGET = PresetUtils.makePresetEncounter('Single Target D
 const ENCOUNTER_CLEAVE = PresetUtils.makePresetEncounter('Cleave', Encounter.defaultEncounterProto(2));
 const ENCOUNTER_AOE = PresetUtils.makePresetEncounter('AOE (4+)', Encounter.defaultEncounterProto(4));
 
-export const P1_PRESET_BUILD_DEFAULT = PresetUtils.makePresetBuild('Default', {
-	talents: StandardTalents,
-	rotation: ROTATION_PRESET_DEFAULT,
-	encounter: ENCOUNTER_SINGLE_TARGET,
-	epWeights: EP_PRESET_DEFAULT,
-});
-
-export const P1_PRESET_BUILD_CLEAVE = PresetUtils.makePresetBuild('Cleave', {
+export const PRESET_BUILD_CLEAVE = PresetUtils.makePresetBuild('Cleave', {
 	talents: TalentsCleave,
 	rotation: ROTATION_PRESET_CLEAVE,
 	encounter: ENCOUNTER_CLEAVE,
-	epWeights: EP_PRESET_DEFAULT,
+	epWeights: EP_PRESET_P3,
 });
 
-export const P1_PRESET_BUILD_AOE = PresetUtils.makePresetBuild('AoE (4+)', {
+export const PRESET_BUILD_AOE = PresetUtils.makePresetBuild('AoE (4+)', {
 	talents: TalentsAoE,
 	rotation: ROTATION_PRESET_AOE,
 	encounter: ENCOUNTER_AOE,
@@ -185,5 +166,5 @@ export const P3_PRESET_BUILD_DEFAULT = PresetUtils.makePresetBuild('P3 (WiP)', {
 	rotation: ROTATION_PRESET_P3,
 	encounter: ENCOUNTER_SINGLE_TARGET,
 	epWeights: EP_PRESET_P3,
-	gear: P3_PRESET,
+	gear: P3_GEAR_PRESET,
 });

@@ -58,7 +58,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecElementalShaman, {
 	gemStats: DEFAULT_HYBRID_CASTER_GEM_STATS,
 	defaults: {
 		// Default equipped gear.
-		gear: Presets.P3_PRESET.gear,
+		gear: Presets.P3_GEAR_PRESET.gear,
 		// Default EP weights for sorting gear in the gear picker.
 		epWeights: Presets.EP_PRESET_P3.epWeights,
 		// Default stat caps for the Reforge optimizer
@@ -95,15 +95,15 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecElementalShaman, {
 	},
 
 	presets: {
-		epWeights: [Presets.EP_PRESET_DEFAULT, Presets.EP_PRESET_AOE, Presets.EP_PRESET_P3],
+		epWeights: [Presets.EP_PRESET_P3,Presets.EP_PRESET_P2, Presets.EP_PRESET_AOE],
 		// Preset talents that the user can quickly select.
-		talents: [Presets.StandardTalents, Presets.TalentsAoE, Presets.P3_TALENTS],
+		talents: [Presets.P3_TALENTS, Presets.TalentsAoE],
 		// Preset rotations that the user can quickly select.
-		rotations: [Presets.ROTATION_PRESET_DEFAULT, Presets.ROTATION_PRESET_AOE, Presets.ROTATION_PRESET_CLEAVE, Presets.ROTATION_PRESET_P3],
+		rotations: [Presets.ROTATION_PRESET_P3, Presets.ROTATION_PRESET_AOE, Presets.ROTATION_PRESET_CLEAVE],
 		// Preset gear configurations that the user can quickly select.
-		gear: [Presets.PRERAID_PRESET, Presets.P1_PRESET, Presets.P2_PRESET, Presets.P3_PRESET],
+		gear: [Presets.PRERAID_PRESET, Presets.P1_GEAR_PRESET, Presets.P2_GEAR_PRESET, Presets.P3_GEAR_PRESET],
 
-		builds: [Presets.P1_PRESET_BUILD_DEFAULT, Presets.P1_PRESET_BUILD_CLEAVE, Presets.P1_PRESET_BUILD_AOE, Presets.P3_PRESET_BUILD_DEFAULT],
+		builds: [Presets.P3_PRESET_BUILD_DEFAULT, Presets.PRESET_BUILD_CLEAVE, Presets.PRESET_BUILD_AOE],
 	},
 
 	autoRotation: (_player: Player<Spec.SpecElementalShaman>): APLRotation => {
@@ -129,10 +129,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecElementalShaman, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.P3_PRESET.gear,
+					1: Presets.P3_GEAR_PRESET.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.P3_PRESET.gear,
+					1: Presets.P3_GEAR_PRESET.gear,
 				},
 			},
 			otherDefaults: Presets.OtherDefaults,
@@ -143,6 +143,14 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecElementalShaman, {
 export class ElementalShamanSimUI extends IndividualSimUI<Spec.SpecElementalShaman> {
 	constructor(parentElem: HTMLElement, player: Player<Spec.SpecElementalShaman>) {
 		super(parentElem, player, SPEC_CONFIG);
-		this.reforger = new ReforgeOptimizer(this);
+		this.reforger = new ReforgeOptimizer(this, {
+			getEPDefaults: player => {
+				const avgIlvl = player.getGear().getAverageItemLevel(false);
+				if (avgIlvl >= 518) {
+					return Presets.EP_PRESET_P3.epWeights;
+				}
+				return Presets.EP_PRESET_P2.epWeights;
+			},
+		});
 	}
 }
