@@ -38,7 +38,7 @@ func init() {
 			SpellSchool: core.SpellSchoolNature,
 			// @TODO: TEST ON PTR: See if weapon enchants can/cannot be procced by this spell.
 			ProcMask: core.ProcMaskMeleeProc,
-			Flags:    core.SpellFlagNoOnCastComplete,
+			Flags:    core.SpellFlagNoOnCastComplete | core.SpellFlagRanged,
 
 			MaxRange: 45,
 
