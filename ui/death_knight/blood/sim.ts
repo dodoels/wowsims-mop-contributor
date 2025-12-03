@@ -12,7 +12,7 @@ import { StatCap, Stats, UnitStat } from '../../core/proto_utils/stats';
 import { defaultRaidBuffMajorDamageCooldowns } from '../../core/proto_utils/utils';
 import * as Presets from './presets';
 
-const ExpertiseBreakpoints = [0.25, 0];
+const ExpertiseBreakpoints = [0.56, 0];
 const OffensiveExpertiseBreakpoints = [0.65, 0];
 
 const SPEC_CONFIG = registerSpecConfig(Spec.SpecBloodDeathKnight, {
