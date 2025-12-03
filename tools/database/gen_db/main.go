@@ -365,6 +365,11 @@ func processItems(instance *dbc.DBC,
 		if item.Flags2&0x10 != 0 && (item.StatAlloc[0] > 0 && item.StatAlloc[0] < 600) {
 			continue
 		}
+		// UIItem doesn't have the upgrade context so we need to apply the
+		// upgrade override before we convert it to an UIItem
+		if _, ok := database.ItemUpgradesDisallowList[int32(item.Id)]; ok {
+			item.UpgradeID = 0
+		}
 		item.UpgradePath = upgradePath[item.UpgradeID]
 		parsed := item.ToUIItem()
 		if parsed.Icon == "" {
