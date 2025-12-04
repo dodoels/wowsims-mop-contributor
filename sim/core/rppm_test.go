@@ -99,6 +99,7 @@ func TestHasteRatingMod(t *testing.T) {
 	char.PseudoStats.AttackSpeedMultiplier = 1
 	char.PseudoStats.MeleeSpeedMultiplier = 1.5
 	char.PseudoStats.CastSpeedMultiplier = 1
+	char.PseudoStats.RangedHasteMultiplier = 1
 	char.PseudoStats.RangedSpeedMultiplier = 1
 
 	expectedChance := 2.19
@@ -115,7 +116,14 @@ func TestHasteRatingMod(t *testing.T) {
 		t.Fatalf("Proc chance wrong. Expected %f, got %f", expectedChance, procChance)
 	}
 
-	char.PseudoStats.AttackSpeedMultiplier = 1.5
+	char.PseudoStats.CastSpeedMultiplier = 1.5
+	char.updateAttackSpeed()
+	procChance = proc.Chance(sim)
+	if math.Abs(procChance-expectedChance) > 0.001 {
+		t.Fatalf("Proc chance wrong. Expected %f, got %f", expectedChance, procChance)
+	}
+
+	char.PseudoStats.RangedHasteMultiplier = 1.5
 	char.updateAttackSpeed()
 	expectedChance = 5.715
 	procChance = proc.Chance(sim)
@@ -123,16 +131,17 @@ func TestHasteRatingMod(t *testing.T) {
 		t.Fatalf("Proc chance wrong. Expected %f, got %f", expectedChance, procChance)
 	}
 
-	char.PseudoStats.CastSpeedMultiplier = 1.5
-	char.updateCastSpeed()
+	char.PseudoStats.AttackSpeedMultiplier = 1.5
+	char.updateAttackSpeed()
+	expectedChance = 14.040000
 	procChance = proc.Chance(sim)
 	if math.Abs(procChance-expectedChance) > 0.001 {
 		t.Fatalf("Proc chance wrong. Expected %f, got %f", expectedChance, procChance)
 	}
 
-	char.PseudoStats.CastSpeedMultiplier = 2
-	char.updateCastSpeed()
-	expectedChance = 10.86
+	char.PseudoStats.AttackSpeedMultiplier = 2
+	char.updateAttackSpeed()
+	expectedChance = 26.010000
 	procChance = proc.Chance(sim)
 	if math.Abs(procChance-expectedChance) > 0.001 {
 		t.Fatalf("Proc chance wrong. Expected %f, got %f", expectedChance, procChance)

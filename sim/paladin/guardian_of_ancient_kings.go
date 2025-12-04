@@ -52,7 +52,8 @@ func (paladin *Paladin) registerHolyGuardian(duration time.Duration) {
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
 			paladin.AncientGuardian.Pet.Disable(sim)
 		},
-	}).AttachMultiplyCastSpeed(1.1)
+	}).AttachMultiplyCastSpeed(1.1).
+		AttachMultiplyAttackSpeed(1.1)
 
 	spell := paladin.RegisterSpell(core.SpellConfig{
 		ActionID:       actionID,

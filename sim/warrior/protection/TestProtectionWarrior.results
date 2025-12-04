@@ -177,9 +177,9 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-AllItems-CapacitivePrimalDiamond"
  value: {
-  dps: 262740.17185
-  tps: 1.54261664552e+06
-  dtps: 42039.26471
+  dps: 258592.56107
+  tps: 1.51883436275e+06
+  dtps: 42415.31131
  }
 }
 dps_results: {
@@ -697,16 +697,16 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-AllItems-EnchantWeapon-Colossus-4445"
  value: {
-  dps: 246188.37186
-  tps: 1.42606762915e+06
-  dtps: 41354.58733
+  dps: 246835.62285
+  tps: 1.42992199855e+06
+  dtps: 41587.86392
  }
 }
 dps_results: {
  key: "TestProtectionWarrior-AllItems-EnchantWeapon-ElementalForce-4443"
  value: {
-  dps: 247222.54526
-  tps: 1.42867948887e+06
+  dps: 247081.73179
+  tps: 1.42847815969e+06
   dtps: 42520.55109
  }
 }
@@ -721,9 +721,9 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-AllItems-EnchantWeapon-River'sSong-4446"
  value: {
-  dps: 249362.70465
-  tps: 1.44628893618e+06
-  dtps: 41944.48758
+  dps: 248913.6755
+  tps: 1.4431456818e+06
+  dtps: 42147.34478
  }
 }
 dps_results: {
@@ -817,9 +817,9 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-AllItems-Fen-Yu,FuryofXuen-102248"
  value: {
-  dps: 261034.25874
-  tps: 1.52820162007e+06
-  dtps: 42114.92934
+  dps: 260630.2564
+  tps: 1.52650641169e+06
+  dtps: 42194.11443
  }
 }
 dps_results: {
@@ -921,9 +921,9 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-AllItems-Gong-Lu,StrengthofXuen-102249"
  value: {
-  dps: 272472.09045
-  tps: 1.60009204162e+06
-  dtps: 42119.57669
+  dps: 272796.56087
+  tps: 1.6027947722e+06
+  dtps: 41532.88492
  }
 }
 dps_results: {
