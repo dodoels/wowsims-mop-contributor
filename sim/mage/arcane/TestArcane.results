@@ -131,8 +131,8 @@ dps_results: {
 dps_results: {
  key: "TestArcane-AllItems-EnchantWeapon-ElementalForce-4443"
  value: {
-  dps: 141626.52614
-  tps: 138820.18379
+  dps: 140957.09663
+  tps: 138138.52788
  }
 }
 dps_results: {
@@ -446,8 +446,8 @@ dps_results: {
 dps_results: {
  key: "TestArcane-AllItems-Xing-Ho,BreathofYu'lon-102246"
  value: {
-  dps: 181118.08309
-  tps: 176918.37386
+  dps: 179402.27387
+  tps: 175202.56464
  }
 }
 dps_results: {

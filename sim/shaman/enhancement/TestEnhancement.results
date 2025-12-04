@@ -152,8 +152,8 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-CapacitivePrimalDiamond"
  value: {
-  dps: 156295.24085
-  tps: 133341.10814
+  dps: 155646.28889
+  tps: 132562.43222
  }
 }
 dps_results: {
@@ -628,8 +628,8 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-EnchantWeapon-ElementalForce-4443"
  value: {
-  dps: 149040.54685
-  tps: 126710.84622
+  dps: 148539.59666
+  tps: 126306.21772
  }
 }
 dps_results: {
@@ -726,8 +726,8 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-Fen-Yu,FuryofXuen-102248"
  value: {
-  dps: 163954.83276
-  tps: 140453.45401
+  dps: 164066.92448
+  tps: 140680.34315
  }
 }
 dps_results: {
@@ -824,8 +824,8 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-Gong-Lu,StrengthofXuen-102249"
  value: {
-  dps: 159105.286
-  tps: 136681.70346
+  dps: 158413.5803
+  tps: 136053.36136
  }
 }
 dps_results: {
@@ -2371,8 +2371,8 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-Xing-Ho,BreathofYu'lon-102246"
  value: {
-  dps: 170394.03913
-  tps: 148390.20008
+  dps: 169373.66329
+  tps: 147369.82424
  }
 }
 dps_results: {

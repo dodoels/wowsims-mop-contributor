@@ -213,10 +213,10 @@ dps_results: {
 dps_results: {
  key: "TestBrewmaster-AllItems-CapacitivePrimalDiamond"
  value: {
-  dps: 263987.52734
-  tps: 1.14920920172e+06
-  dtps: 17017.55945
-  hps: 29026.61639
+  dps: 263703.9875
+  tps: 1.15199218815e+06
+  dtps: 16857.89899
+  hps: 29105.00543
  }
 }
 dps_results: {
@@ -798,17 +798,17 @@ dps_results: {
 dps_results: {
  key: "TestBrewmaster-AllItems-EnchantWeapon-Colossus-4445"
  value: {
-  dps: 256135.81896
-  tps: 1.10852074319e+06
-  dtps: 17706.98673
+  dps: 256136.88035
+  tps: 1.1085281729e+06
+  dtps: 17713.39962
   hps: 29151.2846
  }
 }
 dps_results: {
  key: "TestBrewmaster-AllItems-EnchantWeapon-ElementalForce-4443"
  value: {
-  dps: 256054.02544
-  tps: 1.10775368338e+06
+  dps: 255558.60929
+  tps: 1.10768363478e+06
   dtps: 17838.86738
   hps: 29370.65967
  }
@@ -825,10 +825,10 @@ dps_results: {
 dps_results: {
  key: "TestBrewmaster-AllItems-EnchantWeapon-River'sSong-4446"
  value: {
-  dps: 255479.24625
-  tps: 1.10489772907e+06
-  dtps: 17575.57308
-  hps: 29360.22926
+  dps: 255708.95053
+  tps: 1.10631182988e+06
+  dtps: 17734.25613
+  hps: 29428.86946
  }
 }
 dps_results: {
@@ -933,10 +933,10 @@ dps_results: {
 dps_results: {
  key: "TestBrewmaster-AllItems-Fen-Yu,FuryofXuen-102248"
  value: {
-  dps: 288101.35942
-  tps: 1.29181825327e+06
-  dtps: 16213.92901
-  hps: 29647.55009
+  dps: 286139.6084
+  tps: 1.27983374775e+06
+  dtps: 16736.17693
+  hps: 29592.88583
  }
 }
 dps_results: {
@@ -1068,10 +1068,10 @@ dps_results: {
 dps_results: {
  key: "TestBrewmaster-AllItems-Gong-Lu,StrengthofXuen-102249"
  value: {
-  dps: 285525.67981
-  tps: 1.28207345108e+06
-  dtps: 17471.41001
-  hps: 29604.7126
+  dps: 284106.58678
+  tps: 1.27234857962e+06
+  dtps: 17562.71913
+  hps: 29607.41324
  }
 }
 dps_results: {
@@ -1428,9 +1428,9 @@ dps_results: {
 dps_results: {
  key: "TestBrewmaster-AllItems-InscribedBagofHydra-Spawn-96828"
  value: {
-  dps: 260472.50947
-  tps: 1.1229098384e+06
-  dtps: 17085.54378
+  dps: 260472.63303
+  tps: 1.12291070332e+06
+  dtps: 17094.2222
   hps: 29824.16092
  }
 }
@@ -3030,8 +3030,8 @@ dps_results: {
 dps_results: {
  key: "TestBrewmaster-AllItems-Xing-Ho,BreathofYu'lon-102246"
  value: {
-  dps: 259649.27586
-  tps: 1.12054605503e+06
+  dps: 259616.66969
+  tps: 1.12031781181e+06
   dtps: 17330.42724
   hps: 28853.82276
  }

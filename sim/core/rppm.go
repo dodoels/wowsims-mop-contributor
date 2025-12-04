@@ -34,7 +34,8 @@ type rppmHasteMod struct{}
 
 func (r rppmHasteMod) GetCoefficient(proc *RPPMProc) float64 {
 	// as of 5.2 this should no longer include non 'True haste mods' so only i.E. Lust
-	return max(proc.character.TotalRealRangedHasteMultiplier(), proc.character.TotalRealHasteMultiplier(), proc.character.TotalSpellHasteMultiplier())
+	// We only need to look at Real "Ranged" Haste as it includes all true haste effects
+	return proc.character.TotalRealRangedHasteMultiplier()
 }
 
 func (r rppmHasteMod) IsStatic() bool {
