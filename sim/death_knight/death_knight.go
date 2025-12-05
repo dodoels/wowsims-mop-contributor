@@ -35,7 +35,6 @@ type DeathKnight struct {
 	Ghoul           *GhoulPet
 	ArmyGhoul       []*GhoulPet
 	FallenZandalari []*GhoulPet
-	AllGhoulPets    []*GhoulPet
 	RuneWeapon      *RuneWeaponPet
 
 	BloodPresenceSpell  *core.Spell
@@ -198,8 +197,8 @@ func NewDeathKnight(character *core.Character, inputs DeathKnightInputs, talents
 }
 
 func (dk *DeathKnight) GetAllActiveGhoulPets() []*core.Pet {
-	activePets := make([]*core.Pet, 0, len(dk.AllGhoulPets))
-	for _, pet := range dk.AllGhoulPets {
+	activePets := make([]*core.Pet, 0, len(dk.ArmyGhoul))
+	for _, pet := range dk.ArmyGhoul {
 		if pet.IsActive() {
 			activePets = append(activePets, pet.GetPet())
 		}

@@ -69,13 +69,19 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecBalanceDruid, {
 			return new Stats().withPseudoStat(PseudoStat.PseudoStatSpellHastePercent, Presets.BALANCE_T14_4P_BREAKPOINTS!.presets.get('12-tick MF/SF')!);
 		})(),
 		softCapBreakpoints: (() => {
-			const hasteSoftCapConfig = StatCap.fromPseudoStat(PseudoStat.PseudoStatSpellHastePercent, {
+			const hasteBreakpointConfig = StatCap.fromPseudoStat(PseudoStat.PseudoStatSpellHastePercent, {
 				breakpoints: [...Presets.BALANCE_BREAKPOINTS!.presets].map(([_, value]) => value),
 				capType: StatCapType.TypeThreshold,
 				postCapEPs: [0.47 * Mechanics.HASTE_RATING_PER_HASTE_PERCENT],
 			});
 
-			return [hasteSoftCapConfig];
+			const hasteSoftCapConfig = StatCap.fromPseudoStat(PseudoStat.PseudoStatSpellHastePercent, {
+				breakpoints: [33.78],
+				capType: StatCapType.TypeSoftCap,
+				postCapEPs: [0.24* Mechanics.HASTE_RATING_PER_HASTE_PERCENT],
+			});
+
+			return [hasteBreakpointConfig, hasteSoftCapConfig];
 		})(),
 		// Default consumes settings.
 		consumables: Presets.DefaultConsumables,
@@ -114,7 +120,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecBalanceDruid, {
 		rotations: [Presets.StandardRotation],
 		// Preset gear configurations that the user can quickly select.
 		gear: [Presets.PreraidPresetGear, Presets.T14PresetGear, Presets.T14UpgradedPresetGear, Presets.T15PresetGear /*, Presets.T16PresetGear*/],
-		builds: [Presets.PresetPreraidBuild, Presets.T14PresetBuild,Presets.T15PresetBuild /*, Presets.T16PresetBuild*/],
+		builds: [Presets.PresetPreraidBuild, Presets.T14PresetBuild, Presets.T15PresetBuild /*, Presets.T16PresetBuild*/],
 	},
 
 	autoRotation: (_player: Player<Spec.SpecBalanceDruid>): APLRotation => {
@@ -201,7 +207,9 @@ export class BalanceDruidSimUI extends IndividualSimUI<Spec.SpecBalanceDruid> {
 				const hasT144P = gear.getItemSetCount('Regalia of the Eternal Blossom') >= 4;
 
 				if (hasT144P) {
-					const softCapToModify = softCaps.find(sc => sc.unitStat.equalsPseudoStat(PseudoStat.PseudoStatSpellHastePercent));
+					const softCapToModify = softCaps.find(
+						sc => sc.unitStat.equalsPseudoStat(PseudoStat.PseudoStatSpellHastePercent) && sc.capType === StatCapType.TypeThreshold,
+					);
 					if (softCapToModify) {
 						softCapToModify.breakpoints = [...Presets.BALANCE_T14_4P_BREAKPOINTS!.presets].map(([_, value]) => value);
 					}

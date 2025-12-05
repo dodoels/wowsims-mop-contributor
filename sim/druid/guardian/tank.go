@@ -95,8 +95,9 @@ func (bear *GuardianDruid) ApplyTalents() {
 	bear.applyLeatherSpecialization()
 	bear.applyVengeance()
 
-	// MoP Classic balancing
-	bear.BearFormAura.AttachMultiplicativePseudoStatBuff(&bear.PseudoStats.DamageDealtMultiplier, 1.15)
+	// 2025-07-01 - Bear Form now increases all damage you deal by 15%.
+	// 2025-11-13 - Bear Form now increases all damage you deal by 8%.
+	bear.BearFormAura.AttachMultiplicativePseudoStatBuff(&bear.PseudoStats.DamageDealtMultiplier, 1.08)
 }
 
 func (bear *GuardianDruid) applyVengeance() {

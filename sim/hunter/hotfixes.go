@@ -26,13 +26,15 @@ func (hunt *Hunter) ApplyHotfixes() {
 	// -- From the spec-specific Hotfix Passives, can be removed at any time --
 
 	// SV: https://www.wowhead.com/mop-classic/spell=137017/hotfix-passive
-	if hunt.Spec == proto.Spec_SpecSurvivalHunter {
-		hunt.AddStaticMod(core.SpellModConfig{
-			Kind:       core.SpellMod_DamageDone_Pct,
-			ClassMask:  HunterSpellExplosiveShot,
-			FloatValue: -0.05,
-		})
-	}
+	// 2025-11-13: 5.5.0 reduction to Explosive Shot damage lowered to 0%. (was 5%)
+	// if hunt.Spec == proto.Spec_SpecSurvivalHunter {
+	// 	hunt.AddStaticMod(core.SpellModConfig{
+	// 		Kind:       core.SpellMod_DamageDone_Pct,
+	// 		ClassMask:  HunterSpellExplosiveShot,
+	// 		FloatValue: -0.05,
+	// 	})
+	// }
+
 	// MM: https://www.wowhead.com/mop-classic/spell=137016/hotfix-passive
 	if hunt.Spec == proto.Spec_SpecMarksmanshipHunter {
 		hunt.AddStaticMod(core.SpellModConfig{

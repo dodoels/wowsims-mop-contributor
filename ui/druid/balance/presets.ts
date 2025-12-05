@@ -14,7 +14,7 @@ import T16Gear from './gear_sets/t16.gear.json';
 export const PreraidPresetGear = PresetUtils.makePresetGear('Pre-raid', PreraidGear);
 export const T14PresetGear = PresetUtils.makePresetGear('T14', T14Gear);
 export const T14UpgradedPresetGear = PresetUtils.makePresetGear('T14 - Upgraded', T14UpgradedGear);
-export const T15PresetGear = PresetUtils.makePresetGear('T15 (WIP)', T15Gear);
+export const T15PresetGear = PresetUtils.makePresetGear('T15', T15Gear);
 export const T16PresetGear = PresetUtils.makePresetGear('T16 (WIP)', T16Gear);
 
 export const StandardRotation = PresetUtils.makePresetAPLRotation('Standard', StandardApl);
@@ -37,7 +37,7 @@ export const StandardEPWeights = PresetUtils.makePresetEpWeights(
 export const StandardTalents = {
 	name: 'Standard',
 	data: SavedTalents.create({
-		talentsString: '113222',
+		talentsString: '113223',
 		glyphs: Glyphs.create({
 			major1: DruidMajorGlyph.GlyphOfHealingTouch,
 			major2: DruidMajorGlyph.GlyphOfStampede,
@@ -117,9 +117,9 @@ export const BALANCE_BREAKPOINTS: UnitStatPresets = {
 		['9-tick MF/SF', 5.5618],
 		['10-tick MF/SF', 18.0272],
 		['11-tick MF/SF', 30.4347],
-		['12-tick MF/SF', 42.8444],
-		['13-tick MF/SF', 55.3489],
-		['14-tick MF/SF', 67.627],
+		// ['12-tick MF/SF', 42.8444],
+		// ['13-tick MF/SF', 55.3489],
+		// ['14-tick MF/SF', 67.627],
 	]),
 };
 
@@ -129,9 +129,9 @@ export const BALANCE_T14_4P_BREAKPOINTS: UnitStatPresets = {
 		['10-tick MF/SF', 3.2431],
 		['11-tick MF/SF', 14.1536],
 		['12-tick MF/SF', 24.9824],
-		['13-tick MF/SF', 35.9227],
-		['14-tick MF/SF', 46.7002],
-		['15-tick MF/SF', 57.6013],
-		['16-tick MF/SF', 68.4388],
+		// ['13-tick MF/SF', 35.9227],
+		// ['14-tick MF/SF', 46.7002],
+		// ['15-tick MF/SF', 57.6013],
+		// ['16-tick MF/SF', 68.4388],
 	]),
 };

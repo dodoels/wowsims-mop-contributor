@@ -538,20 +538,27 @@ func (unit *Unit) ApplyRealHaste(dur time.Duration) time.Duration {
 	return time.Duration(float64(dur) / unit.TotalRealHasteMultiplier())
 }
 
-func (unit *Unit) ApplyRealRangedHaste(dur time.Duration) time.Duration {
-	return time.Duration(float64(dur) / unit.TotalRealRangedHasteMultiplier())
-}
 func (unit *Unit) TotalMeleeHasteMultiplier() float64 {
 	return unit.PseudoStats.AttackSpeedMultiplier * unit.PseudoStats.MeleeSpeedMultiplier * (1 + (unit.stats[stats.HasteRating] / (HasteRatingPerHastePercent * 100)))
 }
 
-// Returns the melee haste multiplier only including equip haste and real haste modifiers like lust
+// Returns the real haste multiplier only including equip haste and real haste modifiers like lust
 // Same value for ranged and melee
+// Real Haste mods:
+// MELEE_SLOW
+// MOD_MELEE_HASTE
+// MOD_MELEE_RANGED_HASTE
+// MOD_RANGED_HASTE
+//
+// Not Real Haste mods:
+// MOD_MELEE_HASTE_2
+// MOD_MELEE_HASTE_3
+// MOD_MELEE_RANGED_HASTE_2
+// MOD_MELEE_RANGED_HASTE_3
+// MOD_RANGED_HASTE_2
+// MOD_RANGED_HASTE_3
+// MOD_CASTING_SPEED_NOT_STACK
 func (unit *Unit) TotalRealHasteMultiplier() float64 {
-	return unit.PseudoStats.AttackSpeedMultiplier * (1 + (unit.stats[stats.HasteRating] / (HasteRatingPerHastePercent * 100)))
-}
-
-func (unit *Unit) TotalRealRangedHasteMultiplier() float64 {
 	return unit.PseudoStats.AttackSpeedMultiplier * unit.PseudoStats.RangedHasteMultiplier * (1 + (unit.stats[stats.HasteRating] / (HasteRatingPerHastePercent * 100)))
 }
 

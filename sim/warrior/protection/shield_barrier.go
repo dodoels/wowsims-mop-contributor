@@ -14,7 +14,9 @@ func (war *ProtectionWarrior) registerShieldBarrier() {
 	rageMetrics := war.NewRageMetrics(actionID.WithTag(1))
 	maxRageSpent := 60.0
 	rageSpent := 20.0
-	apScaling := 2.0 // Beta changes 2025-06-16: Shield Barrier’s attack power modifier increased to 2.0 (was 1.8). [5.2 Revert]
+	// 2025-06-16: Shield Barrier’s attack power modifier increased to 2.0 (was 1.8). [5.2 Revert]
+	// 2025-11-13: Shield Barrier’s attack power modifier decreased to 1.8 (was 2.0).
+	apScaling := 1.8
 	staminaScaling := 2.50
 	newAbsorb := 0.0
 

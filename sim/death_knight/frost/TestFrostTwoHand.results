@@ -2751,8 +2751,8 @@ dps_results: {
 dps_results: {
  key: "TestFrostTwoHand-AllItems-Xing-Ho,BreathofYu'lon-102246"
  value: {
-  dps: 177332.37613
-  tps: 161215.23288
+  dps: 177335.40864
+  tps: 161218.26539
   hps: 2957.26942
  }
 }

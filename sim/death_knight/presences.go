@@ -33,7 +33,8 @@ func (dk *DeathKnight) registerBloodPresence() {
 		},
 	}).AttachMultiplicativePseudoStatBuff(
 		// 2025-06-24: Changed from 10% to 12% on the beta
-		&dk.PseudoStats.DamageTakenMultiplier, 0.88,
+		// 2025-11-20: Changed from 12% to 10% on the PTR
+		&dk.PseudoStats.DamageTakenMultiplier, 0.90,
 	).AttachMultiplicativePseudoStatBuff(
 		&dk.PseudoStats.ThreatMultiplier, 7.0,
 	).AttachStatDependency(

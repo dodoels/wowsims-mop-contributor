@@ -82,7 +82,6 @@ func (bdk *BloodDeathKnight) Initialize() {
 	bdk.registerScarletFever()
 	bdk.registerScentOfBlood()
 	bdk.registerVampiricBlood()
-	bdk.registerVeteranOfTheThirdWar()
 	bdk.registerWillOfTheNecropolis()
 
 	bdk.RuneWeapon.AddCopySpell(HeartStrikeActionID, bdk.registerDrwHeartStrike())
@@ -90,6 +89,8 @@ func (bdk *BloodDeathKnight) Initialize() {
 }
 
 func (bdk *BloodDeathKnight) ApplyTalents() {
+	bdk.registerVeteranOfTheThirdWar()
+
 	bdk.DeathKnight.ApplyTalents()
 	bdk.ApplyArmorSpecializationEffect(stats.Stamina, proto.ArmorType_ArmorTypePlate, 86537)
 
@@ -107,7 +108,7 @@ func (bdk *BloodDeathKnight) ApplyTalents() {
 		})
 	})
 
-	for _, ghoul := range bdk.AllGhoulPets {
+	for _, ghoul := range bdk.ArmyGhoul {
 		oldOnPetEnable := ghoul.OnPetEnable
 		ghoul.OnPetEnable = func(sim *core.Simulation) {
 			if oldOnPetEnable != nil {
