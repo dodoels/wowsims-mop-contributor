@@ -3102,28 +3102,28 @@ dps_results: {
 dps_results: {
  key: "TestProtection-Settings-BloodElf-p2_balanced-Seal of Insight-sha-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 1.10086833787e+06
-  tps: 7.64607501661e+06
-  dtps: 785470.05334
-  hps: 180343.34031
+  dps: 1.08798037709e+06
+  tps: 7.55603729112e+06
+  dtps: 784537.42565
+  hps: 180102.59866
  }
 }
 dps_results: {
  key: "TestProtection-Settings-BloodElf-p2_balanced-Seal of Insight-sha-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 162067.81641
-  tps: 1.12136206647e+06
-  dtps: 31698.55065
-  hps: 29997.94949
+  dps: 162348.7399
+  tps: 1.12333053096e+06
+  dtps: 31135.40808
+  hps: 29987.95622
  }
 }
 dps_results: {
  key: "TestProtection-Settings-BloodElf-p2_balanced-Seal of Insight-sha-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 182250.01549
-  tps: 1.20551061652e+06
-  dtps: 26904.33515
-  hps: 32902.66328
+  dps: 182186.44741
+  tps: 1.20506664e+06
+  dtps: 25825.95389
+  hps: 32903.37797
  }
 }
 dps_results: {
@@ -3156,25 +3156,25 @@ dps_results: {
 dps_results: {
  key: "TestProtection-Settings-BloodElf-p2_balanced-Seal of Righteousness-sha-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 1.40405527699e+06
-  tps: 9.77643068427e+06
-  dtps: 789792.85684
+  dps: 1.39981857453e+06
+  tps: 9.74696876702e+06
+  dtps: 788329.3917
  }
 }
 dps_results: {
  key: "TestProtection-Settings-BloodElf-p2_balanced-Seal of Righteousness-sha-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 155516.96559
-  tps: 1.07853649462e+06
-  dtps: 36618.35617
+  dps: 155788.40523
+  tps: 1.08043773216e+06
+  dtps: 35598.29985
  }
 }
 dps_results: {
  key: "TestProtection-Settings-BloodElf-p2_balanced-Seal of Righteousness-sha-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 183570.63936
-  tps: 1.23030760316e+06
-  dtps: 28290.10365
+  dps: 183880.84209
+  tps: 1.23248327227e+06
+  dtps: 27382.73652
  }
 }
 dps_results: {
@@ -3204,25 +3204,25 @@ dps_results: {
 dps_results: {
  key: "TestProtection-Settings-BloodElf-p2_balanced-Seal of Truth-sha-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 1.02318373659e+06
-  tps: 7.11079714223e+06
-  dtps: 792025.45518
+  dps: 1.01827402774e+06
+  tps: 7.07660898029e+06
+  dtps: 789037.93959
  }
 }
 dps_results: {
  key: "TestProtection-Settings-BloodElf-p2_balanced-Seal of Truth-sha-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 156645.43222
-  tps: 1.08643017099e+06
-  dtps: 36412.70987
+  dps: 157240.15469
+  tps: 1.09059454828e+06
+  dtps: 35595.81294
  }
 }
 dps_results: {
  key: "TestProtection-Settings-BloodElf-p2_balanced-Seal of Truth-sha-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 185003.38654
-  tps: 1.24030793291e+06
-  dtps: 28290.10365
+  dps: 185303.69278
+  tps: 1.24241432654e+06
+  dtps: 27391.59927
  }
 }
 dps_results: {

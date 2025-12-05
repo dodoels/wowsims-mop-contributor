@@ -411,7 +411,7 @@ dps_results: {
  value: {
   dps: 149154.2264
   tps: 252542.04258
-  hps: 11336.44231
+  hps: 11334.99263
  }
 }
 dps_results: {
@@ -801,9 +801,9 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-FearwurmRelic-84070"
  value: {
-  dps: 151816.37723
-  tps: 261596.0051
-  hps: 11229.35524
+  dps: 151855.58433
+  tps: 260082.24497
+  hps: 11245.23769
  }
 }
 dps_results: {
@@ -1145,9 +1145,9 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-GrievousGladiator'sInsigniaofDominance-103309"
  value: {
-  dps: 149190.69716
-  tps: 253810.34292
-  hps: 11603.75332
+  dps: 149348.07153
+  tps: 255116.69345
+  hps: 11605.42453
  }
 }
 dps_results: {
@@ -1883,7 +1883,7 @@ dps_results: {
  value: {
   dps: 148919.85759
   tps: 254587.38619
-  hps: 11865.69
+  hps: 11868.57947
  }
 }
 dps_results: {
@@ -1953,8 +1953,8 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-RelicofKypariZar-84075"
  value: {
-  dps: 151713.88611
-  tps: 255691.66488
+  dps: 151714.33057
+  tps: 255690.23874
   hps: 11229.2095
  }
 }
@@ -2361,9 +2361,9 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-Thousand-YearPickledEgg-257881"
  value: {
-  dps: 150805.85366
-  tps: 261909.44001
-  hps: 11402.02813
+  dps: 150661.26217
+  tps: 257515.66309
+  hps: 11454.35551
  }
 }
 dps_results: {
@@ -2585,9 +2585,9 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-TyrannicalGladiator'sInsigniaofDominance-100152"
  value: {
-  dps: 149144.845
-  tps: 253429.20738
-  hps: 11411.39372
+  dps: 149302.21936
+  tps: 254735.55791
+  hps: 11412.58672
  }
 }
 dps_results: {
@@ -2969,25 +2969,25 @@ dps_results: {
 dps_results: {
  key: "TestFeral-Settings-Troll-p1-WC-SotF-HotW-ExternalBleed-default-FullBuffs-24.0yards-LongMultiTarget"
  value: {
-  dps: 425833.63654
-  tps: 854276.13541
-  hps: 2951.45579
+  dps: 426388.07008
+  tps: 851584.59188
+  hps: 2923.69127
  }
 }
 dps_results: {
  key: "TestFeral-Settings-Troll-p1-WC-SotF-HotW-ExternalBleed-default-FullBuffs-24.0yards-LongSingleTarget"
  value: {
-  dps: 155477.71745
-  tps: 261911.35322
-  hps: 2854.05455
+  dps: 155785.96944
+  tps: 260897.8711
+  hps: 2859.80925
  }
 }
 dps_results: {
  key: "TestFeral-Settings-Troll-p1-WC-SotF-HotW-ExternalBleed-default-FullBuffs-24.0yards-ShortSingleTarget"
  value: {
-  dps: 204922.69171
-  tps: 174417.78824
-  hps: 2970.78975
+  dps: 207715.04679
+  tps: 177111.84911
+  hps: 3002.89805
  }
 }
 dps_results: {
@@ -3257,25 +3257,25 @@ dps_results: {
 dps_results: {
  key: "TestFeral-Settings-Troll-p3-WC-SotF-HotW-ExternalBleed-default-FullBuffs-24.0yards-LongMultiTarget"
  value: {
-  dps: 595265.09833
-  tps: 944802.45445
-  hps: 3615.75407
+  dps: 606118.22565
+  tps: 972707.27582
+  hps: 3586.09386
  }
 }
 dps_results: {
  key: "TestFeral-Settings-Troll-p3-WC-SotF-HotW-ExternalBleed-default-FullBuffs-24.0yards-LongSingleTarget"
  value: {
-  dps: 239619.42817
-  tps: 333210.8362
-  hps: 3524.82417
+  dps: 243301.16042
+  tps: 347603.03631
+  hps: 3554.51805
  }
 }
 dps_results: {
  key: "TestFeral-Settings-Troll-p3-WC-SotF-HotW-ExternalBleed-default-FullBuffs-24.0yards-ShortSingleTarget"
  value: {
-  dps: 331209.67384
-  tps: 278292.98019
-  hps: 3715.59457
+  dps: 334466.30347
+  tps: 281948.91598
+  hps: 3754.62153
  }
 }
 dps_results: {
@@ -3545,25 +3545,25 @@ dps_results: {
 dps_results: {
  key: "TestFeral-Settings-Troll-preraid-WC-SotF-HotW-ExternalBleed-default-FullBuffs-24.0yards-LongMultiTarget"
  value: {
-  dps: 373759.04514
-  tps: 746993.58034
-  hps: 2652.75597
+  dps: 381123.49504
+  tps: 773772.22019
+  hps: 2652.68177
  }
 }
 dps_results: {
  key: "TestFeral-Settings-Troll-preraid-WC-SotF-HotW-ExternalBleed-default-FullBuffs-24.0yards-LongSingleTarget"
  value: {
-  dps: 136277.85929
-  tps: 222042.09004
-  hps: 2574.87707
+  dps: 138281.03723
+  tps: 228683.05441
+  hps: 2576.98615
  }
 }
 dps_results: {
  key: "TestFeral-Settings-Troll-preraid-WC-SotF-HotW-ExternalBleed-default-FullBuffs-24.0yards-ShortSingleTarget"
  value: {
-  dps: 185182.29444
-  tps: 156732.91274
-  hps: 2687.32273
+  dps: 188340.11563
+  tps: 159942.20011
+  hps: 2702.26332
  }
 }
 dps_results: {
@@ -3833,25 +3833,25 @@ dps_results: {
 dps_results: {
  key: "TestFeral-Settings-Worgen-p1-WC-SotF-HotW-ExternalBleed-default-FullBuffs-24.0yards-LongMultiTarget"
  value: {
-  dps: 425894.95712
-  tps: 855979.27781
-  hps: 2888.57262
+  dps: 431532.13512
+  tps: 875409.65672
+  hps: 2965.81145
  }
 }
 dps_results: {
  key: "TestFeral-Settings-Worgen-p1-WC-SotF-HotW-ExternalBleed-default-FullBuffs-24.0yards-LongSingleTarget"
  value: {
-  dps: 155322.56597
-  tps: 261813.73043
-  hps: 2899.23714
+  dps: 157119.23214
+  tps: 266805.42397
+  hps: 2837.11174
  }
 }
 dps_results: {
  key: "TestFeral-Settings-Worgen-p1-WC-SotF-HotW-ExternalBleed-default-FullBuffs-24.0yards-ShortSingleTarget"
  value: {
-  dps: 205225.91963
-  tps: 174448.28978
-  hps: 3051.19191
+  dps: 209442.65144
+  tps: 178642.43403
+  hps: 3035.26917
  }
 }
 dps_results: {
@@ -4121,25 +4121,25 @@ dps_results: {
 dps_results: {
  key: "TestFeral-Settings-Worgen-p3-WC-SotF-HotW-ExternalBleed-default-FullBuffs-24.0yards-LongMultiTarget"
  value: {
-  dps: 606053.51489
-  tps: 995679.21581
-  hps: 3616.83768
+  dps: 607493.0394
+  tps: 957177.48586
+  hps: 3610.14362
  }
 }
 dps_results: {
  key: "TestFeral-Settings-Worgen-p3-WC-SotF-HotW-ExternalBleed-default-FullBuffs-24.0yards-LongSingleTarget"
  value: {
-  dps: 243677.49187
-  tps: 347638.9874
-  hps: 3540.04289
+  dps: 245275.78305
+  tps: 343925.94783
+  hps: 3567.75244
  }
 }
 dps_results: {
  key: "TestFeral-Settings-Worgen-p3-WC-SotF-HotW-ExternalBleed-default-FullBuffs-24.0yards-ShortSingleTarget"
  value: {
-  dps: 327178.55247
-  tps: 274644.74619
-  hps: 3734.19717
+  dps: 331752.12982
+  tps: 279115.79047
+  hps: 3772.61687
  }
 }
 dps_results: {
@@ -4409,25 +4409,25 @@ dps_results: {
 dps_results: {
  key: "TestFeral-Settings-Worgen-preraid-WC-SotF-HotW-ExternalBleed-default-FullBuffs-24.0yards-LongMultiTarget"
  value: {
-  dps: 377783.69285
-  tps: 749936.02347
-  hps: 2713.72936
+  dps: 380305.29869
+  tps: 752528.92174
+  hps: 2672.01329
  }
 }
 dps_results: {
  key: "TestFeral-Settings-Worgen-preraid-WC-SotF-HotW-ExternalBleed-default-FullBuffs-24.0yards-LongSingleTarget"
  value: {
-  dps: 137586.04117
-  tps: 229304.40979
-  hps: 2606.34894
+  dps: 138089.14534
+  tps: 224496.84282
+  hps: 2600.69964
  }
 }
 dps_results: {
  key: "TestFeral-Settings-Worgen-preraid-WC-SotF-HotW-ExternalBleed-default-FullBuffs-24.0yards-ShortSingleTarget"
  value: {
-  dps: 187025.71362
-  tps: 159382.16825
-  hps: 2850.6798
+  dps: 190367.83398
+  tps: 162744.77554
+  hps: 2880.82269
  }
 }
 dps_results: {
