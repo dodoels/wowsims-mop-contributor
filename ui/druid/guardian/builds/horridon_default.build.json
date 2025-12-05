@@ -30,7 +30,7 @@
     "class": "ClassDruid",
     "equipment": {
       "items": [
-        {"id":96596,"gems":[76895,76697],"reforging":165},
+        {"id":96596,"gems":[95344,76697],"reforging":165},
         {"id":96443,"gems":[76697],"reforging":166,"upgradeStep":"UpgradeStepTwo"},
         {"id":96598,"enchant":4805,"gems":[76659,76697],"reforging":139},
         {"id":96461,"enchant":4422,"gems":[76652],"reforging":165,"upgradeStep":"UpgradeStepTwo"},
