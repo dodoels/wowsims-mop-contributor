@@ -223,6 +223,26 @@ var ItemUpgradesDisallowList = map[int32]struct{}{
 	95199: {}, // Carnotaur Battlegloves
 	95200: {}, // Orndo Mando's Gloves
 	95201: {}, // Skullsmashing Gauntlets
+
+	// Crafted - ToT
+	94263: {}, // Haunted Steel Greaves
+	94264: {}, // Haunted Steel Headcover
+	94265: {}, // Haunted Steel Treads
+	94266: {}, // Haunted Steel Greathelm
+	94267: {}, // Haunted Steel Warboots
+	94268: {}, // Haunted Steel Headguard
+	94269: {}, // Quilen Hide Boots
+	94270: {}, // Quilen Hide Helm
+	94271: {}, // Dreadrunner Sabatons
+	94272: {}, // Dreadrunner Helm
+	94273: {}, // Spirit Keeper Footguards
+	94274: {}, // Spirit Keeper Helm
+	94275: {}, // Cloud Serpent Sabatons
+	94276: {}, // Cloud Serpent Helm
+	94277: {}, // Falling Blossom Treads
+	94278: {}, // Falling Blossom Cowl
+	94279: {}, // Falling Blossom Sandals
+	94280: {}, // Falling Blossom Hood
 }
 
 // Keep these sorted by item ID.
