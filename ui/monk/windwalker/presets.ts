@@ -6,10 +6,10 @@ import { Stats } from '../../core/proto_utils/stats';
 import DefaultApl from './apls/default.apl.json';
 import DefaultP2BisGear from './gear_sets/p2_bis.gear.json';
 import DefaultP3BisGear from './gear_sets/p3_bis.gear.json';
-import DefaultP1PrebisGear from './gear_sets/p1_prebis.gear.json';
+import DefaultPrebisGear from './gear_sets/prebis.gear.json';
 import { Player } from '../../core/player';
 
-export const P1_PREBIS_GEAR_PRESET = PresetUtils.makePresetGear('Pre-BIS', DefaultP1PrebisGear);
+export const PREBIS_GEAR_PRESET = PresetUtils.makePresetGear('Pre-BIS', DefaultPrebisGear);
 export const P2_BIS_GEAR_PRESET = PresetUtils.makePresetGear('P2 - BIS', DefaultP2BisGear, {
 	onLoad: (player: Player<Spec.SpecFuryWarrior>) => {
 		PresetUtils.makeSpecChangeWarningToast(
