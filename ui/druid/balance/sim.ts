@@ -72,13 +72,13 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecBalanceDruid, {
 			const hasteBreakpointConfig = StatCap.fromPseudoStat(PseudoStat.PseudoStatSpellHastePercent, {
 				breakpoints: [...Presets.BALANCE_BREAKPOINTS!.presets].map(([_, value]) => value),
 				capType: StatCapType.TypeThreshold,
-				postCapEPs: [0.47 * Mechanics.HASTE_RATING_PER_HASTE_PERCENT],
+				postCapEPs: [0.51 * Mechanics.HASTE_RATING_PER_HASTE_PERCENT],
 			});
 
 			const hasteSoftCapConfig = StatCap.fromPseudoStat(PseudoStat.PseudoStatSpellHastePercent, {
-				breakpoints: [33.78],
+				breakpoints: [Presets.BALANCE_BREAKPOINTS.presets.get('11-tick MF/SF')!],
 				capType: StatCapType.TypeSoftCap,
-				postCapEPs: [0.24* Mechanics.HASTE_RATING_PER_HASTE_PERCENT],
+				postCapEPs: [0.30 * Mechanics.HASTE_RATING_PER_HASTE_PERCENT],
 			});
 
 			return [hasteBreakpointConfig, hasteSoftCapConfig];
