@@ -165,15 +165,15 @@ export const simLaunchStatuses: Record<Spec, SimStatus> = {
 	// Warrior
 	[Spec.SpecArmsWarrior]: {
 		phase: Phase.Phase3,
-		status: LaunchStatus.Beta,
+		status: LaunchStatus.Launched,
 	},
 	[Spec.SpecFuryWarrior]: {
 		phase: Phase.Phase3,
-		status: LaunchStatus.Beta,
+		status: LaunchStatus.Launched,
 	},
 	[Spec.SpecProtectionWarrior]: {
 		phase: Phase.Phase3,
-		status: LaunchStatus.Beta,
+		status: LaunchStatus.Launched,
 	},
 };
 
