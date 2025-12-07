@@ -1,11 +1,11 @@
 {
 	"type": "TypeAPL",
 	"prepullActions": [
-	{"action":{"castSpell":{"spellId":{"spellId":24858}}},"doAtValue":{"const":{"val":"-300s"}}},
-	{"action":{"channelSpell":{"spellId":{"spellId":127663},"interruptIf":{"cmp":{"op":"OpGe","lhs":{"currentLunarEnergy":{}},"rhs":{"const":{"val":"75"}}}}}},"doAtValue":{"const":{"val":"-50s"}}},
-	{"action":{"castSpell":{"spellId":{"spellId":88747}}},"doAtValue":{"const":{"val":"-20s"}}},
-	{"action":{"castSpell":{"spellId":{"spellId":88747}}},"doAtValue":{"const":{"val":"-18s"}}},
+	{"action":{"castSpell":{"spellId":{"spellId":24858}}},"doAtValue":{"const":{"val":"-24s"}}},
+	{"action":{"channelSpell":{"spellId":{"spellId":127663},"interruptIf":{"cmp":{"op":"OpGe","lhs":{"currentLunarEnergy":{}},"rhs":{"const":{"val":"75"}}}}}},"doAtValue":{"const":{"val":"-22s"}}},
+	{"action":{"castSpell":{"spellId":{"spellId":88747}}},"doAtValue":{"const":{"val":"-17s"}}},
 	{"action":{"castSpell":{"spellId":{"spellId":88747}}},"doAtValue":{"const":{"val":"-16s"}}},
+	{"action":{"castSpell":{"spellId":{"spellId":88747}}},"doAtValue":{"const":{"val":"-15s"}}},
 	{"action":{"castSpell":{"spellId":{"spellId":5185}}},"doAtValue":{"const":{"val":"-14s"}}},
 	{"action":{"castSpell":{"spellId":{"spellId":132158}}},"doAtValue":{"const":{"val":"-11s"}}},
 	{"action":{"castSpell":{"spellId":{"spellId":48505}}},"doAtValue":{"const":{"val":"-4s"}}},
