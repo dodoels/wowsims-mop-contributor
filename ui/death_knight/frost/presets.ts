@@ -10,8 +10,6 @@ import P22hObliterateBuild from '../../death_knight/frost/builds/p2.2h-obliterat
 import P2MasterfrostBuild from '../../death_knight/frost/builds/p2.masterfrost.build.json';
 import P32hObliterateBuild from '../../death_knight/frost/builds/p3.2h-obliterate.build.json';
 import P3MasterfrostBuild from '../../death_knight/frost/builds/p3.masterfrost.build.json';
-import PrebisMasterfrostBuild from '../../death_knight/frost/builds/prebis.masterfrost.build.json';
-import Prebis2hObliterateBuild from '../../death_knight/frost/builds/prebis.2h-obliterate.build.json';
 import P22HObliterateGear from '../../death_knight/frost/gear_sets/p2.2h-obliterate.gear.json';
 import P2MasterfrostGear from '../../death_knight/frost/gear_sets/p2.masterfrost.gear.json';
 import P32HObliterateGear from '../../death_knight/frost/gear_sets/p3.2h-obliterate.gear.json';
@@ -88,7 +86,7 @@ export const DefaultOptions = FrostDeathKnight_Options.create({
 
 export const OtherDefaults = {
 	profession1: Profession.Engineering,
-	profession2: Profession.Blacksmithing,
+	profession2: Profession.Herbalism,
 	distanceFromTarget: 5,
 	race: Race.RaceTroll,
 	iterationCount: 25000,
@@ -117,16 +115,3 @@ export const PRESET_BUILD_P3_MASTERFROST = PresetUtils.makePresetBuildFromJSON('
 	epWeights: MASTERFROST_EP_PRESET,
 	rotationType: APLRotation_Type.TypeAuto,
 });
-export const PRESET_BUILD_PREBIS_MASTERFROST = PresetUtils.makePresetBuildFromJSON('Prebis - Masterfrost', Spec.SpecFrostDeathKnight, PrebisMasterfrostBuild, {
-	epWeights: MASTERFROST_EP_PRESET,
-	rotationType: APLRotation_Type.TypeAuto,
-});
-export const PRESET_BUILD_PREBIS_2H_OBLITERATE = PresetUtils.makePresetBuildFromJSON(
-	'Prebis - 2h Obliterate',
-	Spec.SpecFrostDeathKnight,
-	Prebis2hObliterateBuild,
-	{
-		epWeights: TWOHAND_OBLITERATE_EP_PRESET,
-		rotationType: APLRotation_Type.TypeAuto,
-	},
-);

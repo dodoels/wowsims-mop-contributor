@@ -108,9 +108,9 @@ export const DefaultOptions = UnholyDeathKnight_Options.create({
 
 export const OtherDefaults = {
 	profession1: Profession.Engineering,
-	profession2: Profession.Blacksmithing,
+	profession2: Profession.Herbalism,
 	distanceFromTarget: 5,
-	race: Race.RaceOrc,
+	race: Race.RaceTroll,
 	iterationCount: 25000,
 };
 

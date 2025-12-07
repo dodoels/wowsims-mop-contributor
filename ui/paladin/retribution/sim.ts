@@ -99,9 +99,9 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRetributionPaladin, {
 
 	defaults: {
 		// Default equipped gear.
-		gear: Presets.P2_GEAR_PRESET.gear,
+		gear: Presets.P3_GEAR_PRESET.gear,
 		// Default EP weights for sorting gear in the gear picker.
-		epWeights: Presets.P1_P2_EP_PRESET.epWeights,
+		epWeights: Presets.P3_EP_PRESET.epWeights,
 		// Default stat caps for the Reforge Optimizer
 		statCaps: getStatCaps(),
 		// Default consumes settings.
@@ -155,7 +155,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRetributionPaladin, {
 		talents: [Presets.DefaultTalents],
 		// Preset gear configurations that the user can quickly select.
 		gear: [Presets.P2_GEAR_PRESET, Presets.P3_GEAR_PRESET, Presets.PRERAID_GEAR_PRESET],
-		builds: [Presets.P2_BUILD_PRESET, Presets.P3_BUILD_PRESET, Presets.PRERAID_BUILD_PRESET],
+		builds: [Presets.P2_BUILD_PRESET, Presets.P3_BUILD_PRESET],
 	},
 
 	autoRotation: (_: Player<Spec.SpecRetributionPaladin>): APLRotation => {

@@ -54,7 +54,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecUnholyDeathKnight, {
 	),
 	defaults: {
 		// Default equipped gear.
-		gear: Presets.P2_BIS_GEAR_PRESET.gear,
+		gear: Presets.P3_BIS_GEAR_PRESET.gear,
 		// Default EP weights for sorting gear in the gear picker.
 		epWeights: Presets.DEFAULT_UNHOLY_EP_PRESET.epWeights,
 		// Default stat caps for the Reforge Optimizer
@@ -68,7 +68,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecUnholyDeathKnight, {
 		// Default consumes settings.
 		consumables: Presets.DefaultConsumables,
 		// Default talents.
-		talents: Presets.DefaultTalents.data,
+		talents: Presets.FesterblightTalents.data,
 		// Default spec-specific settings.
 		specOptions: Presets.DefaultOptions,
 		// Default raid/party buffs settings.
@@ -132,21 +132,25 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecUnholyDeathKnight, {
 	raidSimPresets: [
 		{
 			spec: Spec.SpecUnholyDeathKnight,
-			talents: Presets.DefaultTalents.data,
+			talents: Presets.FesterblightTalents.data,
 			specOptions: Presets.DefaultOptions,
 			consumables: Presets.DefaultConsumables,
 			defaultFactionRaces: {
 				[Faction.Unknown]: Race.RaceUnknown,
 				[Faction.Alliance]: Race.RaceWorgen,
-				[Faction.Horde]: Race.RaceOrc,
+				[Faction.Horde]: Race.RaceTroll,
 			},
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.P2_BIS_GEAR_PRESET.gear,
+					1: Presets.PREBIS_GEAR_PRESET.gear,
+					2: Presets.P2_BIS_GEAR_PRESET.gear,
+					3: Presets.P3_BIS_GEAR_PRESET.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.P2_BIS_GEAR_PRESET.gear,
+					1: Presets.PREBIS_GEAR_PRESET.gear,
+					2: Presets.P2_BIS_GEAR_PRESET.gear,
+					3: Presets.P3_BIS_GEAR_PRESET.gear,
 				},
 			},
 			otherDefaults: Presets.OtherDefaults,
