@@ -437,6 +437,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestCombat-AllItems-TickingEbonDetonator-105612"
+ value: {
+  dps: 113799.25881
+  tps: 80167.47163
+ }
+}
+dps_results: {
  key: "TestCombat-AllItems-TyrannicalPrimalDiamond"
  value: {
   dps: 97599.89563

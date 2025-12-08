@@ -430,6 +430,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestFury-AllItems-TickingEbonDetonator-105612"
+ value: {
+  dps: 247415.80583
+  tps: 157891.81821
+ }
+}
+dps_results: {
  key: "TestFury-AllItems-TyrannicalPrimalDiamond"
  value: {
   dps: 246898.01285

@@ -2383,6 +2383,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestWindwalker-AllItems-TickingEbonDetonator-105612"
+ value: {
+  dps: 272879.83044
+  tps: 260465.67919
+  hps: 8799.98283
+ }
+}
+dps_results: {
  key: "TestWindwalker-AllItems-TrailseekerIdolofRage-101054"
  value: {
   dps: 259007.77009

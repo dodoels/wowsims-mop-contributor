@@ -2343,6 +2343,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestShadow-AllItems-TickingEbonDetonator-105612"
+ value: {
+  dps: 84823.02398
+  tps: 79949.82801
+  hps: 1599.83015
+ }
+}
+dps_results: {
  key: "TestShadow-AllItems-TrailseekerIdolofRage-101054"
  value: {
   dps: 83637.97537

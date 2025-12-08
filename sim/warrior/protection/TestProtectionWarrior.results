@@ -2376,6 +2376,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestProtectionWarrior-AllItems-TickingEbonDetonator-105612"
+ value: {
+  dps: 246594.24886
+  tps: 1.43611311834e+06
+  dtps: 43653.42889
+ }
+}
+dps_results: {
  key: "TestProtectionWarrior-AllItems-TrailseekerIdolofRage-101054"
  value: {
   dps: 246395.0399

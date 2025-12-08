@@ -2439,6 +2439,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestFrostTwoHand-AllItems-TickingEbonDetonator-105612"
+ value: {
+  dps: 227497.48092
+  tps: 203741.78007
+  hps: 3435.03742
+ }
+}
+dps_results: {
  key: "TestFrostTwoHand-AllItems-TrailseekerIdolofRage-101054"
  value: {
   dps: 224726.00155

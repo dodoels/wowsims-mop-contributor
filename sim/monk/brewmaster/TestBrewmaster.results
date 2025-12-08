@@ -2659,6 +2659,15 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestBrewmaster-AllItems-TickingEbonDetonator-105612"
+ value: {
+  dps: 280443.12765
+  tps: 1.2080022053e+06
+  dtps: 13651.61794
+  hps: 31015.91987
+ }
+}
+dps_results: {
  key: "TestBrewmaster-AllItems-TrailseekerIdolofRage-101054"
  value: {
   dps: 266695.34441

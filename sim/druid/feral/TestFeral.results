@@ -2383,6 +2383,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestFeral-AllItems-TickingEbonDetonator-105612"
+ value: {
+  dps: 261983.38436
+  tps: 400182.85127
+  hps: 16053.35727
+ }
+}
+dps_results: {
  key: "TestFeral-AllItems-TrailseekerIdolofRage-101054"
  value: {
   dps: 236367.79981

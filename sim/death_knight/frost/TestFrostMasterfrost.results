@@ -2431,6 +2431,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestFrostMasterfrost-AllItems-TickingEbonDetonator-105612"
+ value: {
+  dps: 232038.22261
+  tps: 211708.4379
+  hps: 2091.59065
+ }
+}
+dps_results: {
  key: "TestFrostMasterfrost-AllItems-TrailseekerIdolofRage-101054"
  value: {
   dps: 227737.28435

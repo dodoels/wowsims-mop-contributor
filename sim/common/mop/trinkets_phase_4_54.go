@@ -411,4 +411,65 @@ func init() {
 			character.ItemSwap.RegisterProcWithSlots(itemID, statAura, eligibleSlots)
 		})
 	})
+
+	// Ticking Ebon Detonator
+	// Your melee and ranged attacks have a chance to grant you 19260 Agility for 10s. Every 0.5 sec this effect
+	// decrements by 963 Agility.
+	// (Approximately 1.00 procs per minute)
+	shared.ItemVersionMap{
+		shared.ItemVersionLFR:             105114,
+		shared.ItemVersionNormal:          102311,
+		shared.ItemVersionHeroic:          104616,
+		shared.ItemVersionWarforged:       105363,
+		shared.ItemVersionHeroicWarforged: 105612,
+		shared.ItemVersionFlexible:        104865,
+	}.RegisterAll(func(version shared.ItemVersion, itemID int32, versionLabel string) {
+		core.NewItemEffect(itemID, func(agent core.Agent, state proto.ItemLevelState) {
+			character := agent.GetCharacter()
+
+			statBuffAura := core.MakeStackingAura(character, core.StackingStatAura{
+				Aura: core.Aura{
+					Label:     fmt.Sprintf("Restless Agility (%s)", versionLabel),
+					ActionID:  core.ActionID{SpellID: 146310},
+					Duration:  time.Second * 10,
+					MaxStacks: 20,
+				},
+				BonusPerStack: stats.Stats{
+					stats.Agility: core.GetItemEffectScaling(itemID, 0.27030000091, state),
+				},
+			})
+
+			statBuffTriggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+				Name:     fmt.Sprintf("Ticking Ebon Detonator (%s) - Stat Trigger", versionLabel),
+				ICD:      time.Second * 10,
+				Outcome:  core.OutcomeLanded,
+				Callback: core.CallbackOnSpellHitDealt,
+
+				DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskDirect, core.RPPMConfig{
+					PPM: 1,
+				}),
+
+				Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
+					statBuffAura.Activate(sim)
+					statBuffAura.SetStacks(sim, statBuffAura.MaxStacks)
+					core.StartPeriodicAction(sim, core.PeriodicActionOptions{
+						Period:   time.Millisecond * 500,
+						NumTicks: 20,
+						OnAction: func(sim *core.Simulation) {
+							// Aura might not be active because of stuff like mage alter time being cast right before this aura being activated
+							if statBuffAura.IsActive() {
+								statBuffAura.RemoveStack(sim)
+							}
+						},
+					})
+				},
+			})
+
+			statBuffAura.Icd = statBuffTriggerAura.Icd
+
+			eligibleSlots := character.ItemSwap.EligibleSlotsForItem(itemID)
+			character.AddStatProcBuff(itemID, statBuffAura, false, eligibleSlots)
+			character.ItemSwap.RegisterProcWithSlots(itemID, statBuffTriggerAura, eligibleSlots)
+		})
+	})
 }

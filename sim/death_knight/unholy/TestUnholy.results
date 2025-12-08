@@ -2431,6 +2431,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestUnholy-AllItems-TickingEbonDetonator-105612"
+ value: {
+  dps: 225311.8343
+  tps: 159690.7748
+  hps: 2537.49634
+ }
+}
+dps_results: {
  key: "TestUnholy-AllItems-TrailseekerIdolofRage-101054"
  value: {
   dps: 220896.66765
