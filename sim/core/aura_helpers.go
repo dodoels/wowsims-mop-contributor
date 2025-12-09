@@ -168,6 +168,9 @@ func (procAura *Aura) AttachProcTriggerCallback(unit *Unit, config ProcTrigger) 
 			if icd.Duration != 0 && !icd.IsReady(sim) {
 				return
 			}
+			if config.ExtraCondition != nil && !config.ExtraCondition(sim, spell, nil) {
+				return
+			}
 			if config.ProcChance != 1 && sim.RandomFloat(config.Name) > config.ProcChance {
 				return
 			}
@@ -195,16 +198,13 @@ func (procAura *Aura) AttachProcTriggerCallback(unit *Unit, config ProcTrigger) 
 			if icd.Duration != 0 && !icd.IsReady(sim) {
 				return
 			}
-			if config.ProcChance != 1 && sim.RandomFloat(config.Name) > config.ProcChance {
-				return
-			}
 			emptyResult := spell.NewResult(target)
 			defer spell.DisposeResult(emptyResult)
-			if config.ExtraCondition != nil {
-				extraConditionMet := config.ExtraCondition(sim, spell, emptyResult)
-				if !extraConditionMet {
-					return
-				}
+			if config.ExtraCondition != nil && !config.ExtraCondition(sim, spell, emptyResult) {
+				return
+			}
+			if config.ProcChance != 1 && sim.RandomFloat(config.Name) > config.ProcChance {
+				return
 			}
 
 			if icd.Duration != 0 {

@@ -2476,43 +2476,43 @@ dps_results: {
 dps_results: {
  key: "TestSurvival-Settings-Orc-p3-Row4_Talent3-Basic-sv-FullBuffs-24.0yards-LongMultiTarget"
  value: {
-  dps: 394641.8634
-  tps: 348370.4717
+  dps: 396027.79436
+  tps: 349496.05499
  }
 }
 dps_results: {
  key: "TestSurvival-Settings-Orc-p3-Row4_Talent3-Basic-sv-FullBuffs-24.0yards-LongSingleTarget"
  value: {
-  dps: 232834.23976
-  tps: 186729.58377
+  dps: 232755.13004
+  tps: 186527.17766
  }
 }
 dps_results: {
  key: "TestSurvival-Settings-Orc-p3-Row4_Talent3-Basic-sv-FullBuffs-24.0yards-ShortSingleTarget"
  value: {
-  dps: 332646.71553
-  tps: 223501.18048
+  dps: 332092.94227
+  tps: 223348.0709
  }
 }
 dps_results: {
  key: "TestSurvival-Settings-Orc-p3-Row4_Talent3-Basic-sv-NoBuffs-24.0yards-LongMultiTarget"
  value: {
-  dps: 298558.29697
-  tps: 268176.33628
+  dps: 299485.47879
+  tps: 268850.61328
  }
 }
 dps_results: {
  key: "TestSurvival-Settings-Orc-p3-Row4_Talent3-Basic-sv-NoBuffs-24.0yards-LongSingleTarget"
  value: {
-  dps: 170773.06622
-  tps: 140976.27395
+  dps: 169712.40566
+  tps: 139582.22175
  }
 }
 dps_results: {
  key: "TestSurvival-Settings-Orc-p3-Row4_Talent3-Basic-sv-NoBuffs-24.0yards-ShortSingleTarget"
  value: {
-  dps: 207028.25608
-  tps: 151501.42052
+  dps: 205132.2259
+  tps: 149987.69996
  }
 }
 dps_results: {
