@@ -17,7 +17,7 @@ type readinessTrinketConfig struct {
 	buffAuraID       int32
 	buffedStat       stats.Stat
 	buffDuration     time.Duration
-	icd              time.Duration
+	buffIcd          time.Duration
 	cdrAuraIDs       map[proto.Spec]int32
 }
 
@@ -27,9 +27,14 @@ type multistrikeTrinketConfig struct {
 	buffAuraLabel    string
 	buffAuraID       int32
 	buffedStat       stats.Stat
-	buffDuration     time.Duration
-	icd              time.Duration
-	rppm             float64
+}
+
+type cleaveTrinketConfig struct {
+	itemVersionMap   shared.ItemVersionMap
+	baseTrinketLabel string
+	buffAuraLabel    string
+	buffAuraID       int32
+	buffedStat       stats.Stat
 }
 
 func init() {
@@ -65,7 +70,7 @@ func init() {
 				triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 					Name:       fmt.Sprintf("%s (%s) - Trigger", config.baseTrinketLabel, versionLabel),
 					ProcChance: 0.15,
-					ICD:        config.icd,
+					ICD:        config.buffIcd,
 					ProcMask:   core.ProcMaskDirect | core.ProcMaskProc,
 					Outcome:    core.OutcomeLanded,
 					Callback:   core.CallbackOnSpellHitDealt,
@@ -105,7 +110,7 @@ func init() {
 		buffAuraID:       146308,
 		buffedStat:       stats.Agility,
 		buffDuration:     time.Second * 20,
-		icd:              time.Second * 115,
+		buffIcd:          time.Second * 115,
 		cdrAuraIDs: map[proto.Spec]int32{
 			// Druid
 			// Missing: Bear Hug, Ironbark, Nature's Swiftness
@@ -157,7 +162,7 @@ func init() {
 		buffAuraID:       146245,
 		buffedStat:       stats.Strength,
 		buffDuration:     time.Second * 10,
-		icd:              time.Second * 55,
+		buffIcd:          time.Second * 55,
 		cdrAuraIDs: map[proto.Spec]int32{
 			// Death Knight
 			proto.Spec_SpecBloodDeathKnight:  145958,
@@ -176,7 +181,7 @@ func init() {
 		},
 	})
 
-	getMultistrikeSpell := func(character *core.Character, spellID int32, spellSchool core.SpellSchool) *core.Spell {
+	getTrinketSpell := func(character *core.Character, spellID int32, spellSchool core.SpellSchool) *core.Spell {
 		return character.GetOrRegisterSpell(core.SpellConfig{
 			ActionID:    core.ActionID{SpellID: spellID},
 			SpellSchool: spellSchool,
@@ -196,12 +201,12 @@ func init() {
 			physicalSpellID = 146061
 		}
 
-		physicalSpell := getMultistrikeSpell(character, physicalSpellID, core.SpellSchoolPhysical)
+		physicalSpell := getTrinketSpell(character, physicalSpellID, core.SpellSchoolPhysical)
 		magicSpell := physicalSpell
 
 		switch character.Class {
 		case proto.Class_ClassDruid:
-			magicSpell = getMultistrikeSpell(character, 146064, core.SpellSchoolArcane)
+			magicSpell = getTrinketSpell(character, 146064, core.SpellSchoolArcane)
 		case proto.Class_ClassMage:
 			var magicSpellID int32
 			var school core.SpellSchool
@@ -212,9 +217,9 @@ func init() {
 				magicSpellID = 146067
 				school = core.SpellSchoolFrostfire
 			}
-			magicSpell = getMultistrikeSpell(character, magicSpellID, school)
+			magicSpell = getTrinketSpell(character, magicSpellID, school)
 		case proto.Class_ClassMonk:
-			magicSpell = getMultistrikeSpell(character, 146075, core.SpellSchoolNature)
+			magicSpell = getTrinketSpell(character, 146075, core.SpellSchoolNature)
 		case proto.Class_ClassPriest:
 			var magicSpellID int32
 			var school core.SpellSchool
@@ -225,11 +230,11 @@ func init() {
 				magicSpellID = 146063
 				school = core.SpellSchoolHoly
 			}
-			magicSpell = getMultistrikeSpell(character, magicSpellID, school)
+			magicSpell = getTrinketSpell(character, magicSpellID, school)
 		case proto.Class_ClassShaman:
-			magicSpell = getMultistrikeSpell(character, 146071, core.SpellSchoolNature)
+			magicSpell = getTrinketSpell(character, 146071, core.SpellSchoolNature)
 		case proto.Class_ClassWarlock:
-			magicSpell = getMultistrikeSpell(character, 146065, core.SpellSchoolShadow)
+			magicSpell = getTrinketSpell(character, 146065, core.SpellSchoolShadow)
 		}
 
 		return physicalSpell, magicSpell
@@ -280,17 +285,17 @@ func init() {
 					fmt.Sprintf("%s (%s)", config.buffAuraLabel, versionLabel),
 					core.ActionID{SpellID: config.buffAuraID},
 					stats,
-					config.buffDuration,
+					time.Second*10,
 				)
 
 				statBuffTriggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 					Name:     fmt.Sprintf("%s (%s) - Stat Trigger", config.baseTrinketLabel, versionLabel),
-					ICD:      config.icd,
+					ICD:      time.Second * 10,
 					Outcome:  core.OutcomeLanded,
 					Callback: core.CallbackOnSpellHitDealt,
 
 					DPM: character.NewRPPMProcManager(itemID, false, false, core.ProcMaskDirect|core.ProcMaskProc, core.RPPMConfig{
-						PPM: config.rppm,
+						PPM: 0.92000001669,
 					}),
 
 					Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
@@ -326,9 +331,6 @@ func init() {
 		buffAuraLabel:    "Vicious",
 		buffAuraID:       148903,
 		buffedStat:       stats.Agility,
-		buffDuration:     time.Second * 10,
-		icd:              time.Second * 10,
-		rppm:             0.92000001669,
 	})
 
 	// Kardris' Toxic Totem
@@ -349,9 +351,6 @@ func init() {
 		buffAuraLabel:    "Toxic Power",
 		buffAuraID:       148906,
 		buffedStat:       stats.Intellect,
-		buffDuration:     time.Second * 10,
-		icd:              time.Second * 10,
-		rppm:             0.92000001669,
 	})
 
 	// Purified Bindings of Immerseus
@@ -471,5 +470,197 @@ func init() {
 			character.AddStatProcBuff(itemID, statBuffAura, false, eligibleSlots)
 			character.ItemSwap.RegisterProcWithSlots(itemID, statBuffTriggerAura, eligibleSlots)
 		})
+	})
+
+	getCleaveSpells := func(character *core.Character) (*core.Spell, *core.Spell) {
+		var physicalSpellID int32
+		if character.Class == proto.Class_ClassHunter {
+			physicalSpellID = 146162
+		} else {
+			physicalSpellID = 146137
+		}
+
+		physicalSpell := getTrinketSpell(character, physicalSpellID, core.SpellSchoolPhysical)
+
+		var magicSpell *core.Spell
+		switch character.Class {
+		case proto.Class_ClassDruid:
+			magicSpell = getTrinketSpell(character, 146158, core.SpellSchoolArcane)
+		case proto.Class_ClassMage:
+			var magicSpellID int32
+			var school core.SpellSchool
+			if character.Spec == proto.Spec_SpecArcaneMage {
+				magicSpellID = 146166
+				school = core.SpellSchoolArcane
+			} else {
+				magicSpellID = 146160
+				school = core.SpellSchoolFrostfire
+			}
+			magicSpell = getTrinketSpell(character, magicSpellID, school)
+		case proto.Class_ClassMonk:
+			magicSpell = getTrinketSpell(character, 146172, core.SpellSchoolNature)
+		case proto.Class_ClassPaladin:
+			magicSpell = getTrinketSpell(character, 146157, core.SpellSchoolHoly)
+		case proto.Class_ClassPriest:
+			var magicSpellID int32
+			var school core.SpellSchool
+			if character.Spec == proto.Spec_SpecShadowPriest {
+				magicSpellID = 146159
+				school = core.SpellSchoolShadow
+			} else {
+				magicSpellID = 146157
+				school = core.SpellSchoolHoly
+			}
+			magicSpell = getTrinketSpell(character, magicSpellID, school)
+		case proto.Class_ClassShaman:
+			magicSpell = getTrinketSpell(character, 146171, core.SpellSchoolNature)
+		case proto.Class_ClassWarlock:
+			magicSpell = getTrinketSpell(character, 146159, core.SpellSchoolShadow)
+		}
+
+		return physicalSpell, magicSpell
+	}
+
+	newCleaveTrinket := func(config *cleaveTrinketConfig) {
+		config.itemVersionMap.RegisterAll(func(version shared.ItemVersion, itemID int32, versionLabel string) {
+			core.NewItemEffect(itemID, func(agent core.Agent, state proto.ItemLevelState) {
+				character := agent.GetCharacter()
+
+				physicalSpell, magicSpell := getCleaveSpells(character)
+
+				var baseDamage float64
+				applyEffects := func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+					numTargets := min(5, sim.Environment.ActiveTargetCount()-1)
+					curTarget := sim.Environment.NextActiveTargetUnit(target)
+					var outcome core.OutcomeApplier
+					if character.Class == proto.Class_ClassHunter {
+						outcome = spell.OutcomeRangedHit
+					} else if spell.SpellSchool == core.SpellSchoolPhysical {
+						outcome = spell.OutcomeMeleeSpecialHit
+					} else {
+						outcome = spell.OutcomeMagicHit
+					}
+
+					for range numTargets {
+						spell.CalcAndDealDamage(sim, curTarget, baseDamage, outcome)
+						curTarget = sim.Environment.NextActiveTargetUnit(curTarget)
+					}
+				}
+
+				cleaveTriggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+					Name:               fmt.Sprintf("%s (%s) - Cleave Trigger", config.baseTrinketLabel, versionLabel),
+					ProcChance:         core.GetItemEffectScaling(itemID, 0.07859999686, state) / 10000,
+					Outcome:            core.OutcomeLanded,
+					Callback:           core.CallbackOnSpellHitDealt | core.CallbackOnPeriodicDamageDealt,
+					RequireDamageDealt: true,
+
+					ExtraCondition: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) bool {
+						return sim.Environment.ActiveTargetCount() > 1
+					},
+
+					Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+						baseDamage = result.Damage
+
+						if magicSpell == nil || !spell.ProcMask.Matches(core.ProcMaskSpellOrSpellProc) {
+							physicalSpell.ApplyEffects = applyEffects
+							physicalSpell.Cast(sim, result.Target)
+						} else {
+							magicSpell.ApplyEffects = applyEffects
+							magicSpell.Cast(sim, result.Target)
+						}
+					},
+				})
+
+				stats := stats.Stats{}
+				stats[config.buffedStat] = core.GetItemEffectScaling(itemID, 2.97300004959, state)
+
+				statBuffAura := character.NewTemporaryStatsAura(
+					fmt.Sprintf("%s (%s)", config.buffAuraLabel, versionLabel),
+					core.ActionID{SpellID: config.buffAuraID},
+					stats,
+					time.Second*15,
+				)
+
+				statBuffTriggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+					Name:       fmt.Sprintf("%s (%s) - Stat Trigger", config.baseTrinketLabel, versionLabel),
+					ICD:        time.Second * 85,
+					Outcome:    core.OutcomeLanded,
+					ProcMask:   core.ProcMaskDirect | core.ProcMaskProc,
+					Callback:   core.CallbackOnSpellHitDealt,
+					ProcChance: 0.15,
+
+					Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
+						statBuffAura.Activate(sim)
+					},
+				})
+
+				statBuffAura.Icd = statBuffTriggerAura.Icd
+
+				eligibleSlots := character.ItemSwap.EligibleSlotsForItem(itemID)
+				character.AddStatProcBuff(itemID, statBuffAura, false, eligibleSlots)
+				character.ItemSwap.RegisterProcWithSlots(itemID, statBuffTriggerAura, eligibleSlots)
+				character.ItemSwap.RegisterProcWithSlots(itemID, cleaveTriggerAura, eligibleSlots)
+			})
+		})
+	}
+
+	// Fusion-Fire Core
+	// Your attacks have a 0.01% chance to Cleave, dealing the same damage to up to 5 other nearby targets.
+	//
+	// Your attacks have a chance to grant you 14039 Strength for 15 sec.
+	// (15% chance, 85 sec cooldown) (Proc chance: 15%, 1.417m cooldown)
+	newCleaveTrinket(&cleaveTrinketConfig{
+		itemVersionMap: shared.ItemVersionMap{
+			shared.ItemVersionLFR:             104961,
+			shared.ItemVersionNormal:          102295,
+			shared.ItemVersionHeroic:          104463,
+			shared.ItemVersionWarforged:       105210,
+			shared.ItemVersionHeroicWarforged: 105459,
+			shared.ItemVersionFlexible:        104712,
+		},
+		baseTrinketLabel: "Fusion-Fire Core",
+		buffAuraLabel:    "Tenacious",
+		buffAuraID:       148899,
+		buffedStat:       stats.Strength,
+	})
+
+	// Sigil of Rampage
+	// Your attacks have a 0.01% chance to Cleave, dealing the same damage to up to 5 other nearby targets.
+	//
+	// Your attacks have a chance to grant you 14039 Agility for 15 sec.
+	// (15% chance, 85 sec cooldown) (Proc chance: 15%, 1.417m cooldown)
+	newCleaveTrinket(&cleaveTrinketConfig{
+		itemVersionMap: shared.ItemVersionMap{
+			shared.ItemVersionLFR:             105082,
+			shared.ItemVersionNormal:          102302,
+			shared.ItemVersionHeroic:          104584,
+			shared.ItemVersionWarforged:       105331,
+			shared.ItemVersionHeroicWarforged: 105580,
+			shared.ItemVersionFlexible:        104833,
+		},
+		baseTrinketLabel: "Sigil of Rampage",
+		buffAuraLabel:    "Ferocity",
+		buffAuraID:       148896,
+		buffedStat:       stats.Agility,
+	})
+
+	// Frenzied Crystal of Rage
+	// Your attacks have a 0.01% chance to Cleave, dealing the same damage to up to 5 other nearby targets.
+	//
+	// Your attacks have a chance to grant you 14039 Intellect for 15 sec.
+	// (15% chance, 85 sec cooldown) (Proc chance: 15%, 1.417m cooldown)
+	newCleaveTrinket(&cleaveTrinketConfig{
+		itemVersionMap: shared.ItemVersionMap{
+			shared.ItemVersionLFR:             105074,
+			shared.ItemVersionNormal:          102303,
+			shared.ItemVersionHeroic:          104576,
+			shared.ItemVersionWarforged:       105323,
+			shared.ItemVersionHeroicWarforged: 105572,
+			shared.ItemVersionFlexible:        104825,
+		},
+		baseTrinketLabel: "Frenzied Crystal of Rage",
+		buffAuraLabel:    "Extravagant Visions",
+		buffAuraID:       148897,
+		buffedStat:       stats.Intellect,
 	})
 }

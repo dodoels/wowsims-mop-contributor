@@ -220,6 +220,20 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestCombat-AllItems-FrenziedCrystalofRage-105572"
+ value: {
+  dps: 95393.69662
+  tps: 67221.70712
+ }
+}
+dps_results: {
+ key: "TestCombat-AllItems-Fusion-FireCore-105459"
+ value: {
+  dps: 100698.82405
+  tps: 70866.58912
+ }
+}
+dps_results: {
  key: "TestCombat-AllItems-GazeoftheTwins-96915"
  value: {
   dps: 100965.65945
@@ -385,6 +399,13 @@ dps_results: {
  value: {
   dps: 107623.30461
   tps: 75848.38378
+ }
+}
+dps_results: {
+ key: "TestCombat-AllItems-SigilofRampage-105580"
+ value: {
+  dps: 109672.6124
+  tps: 77134.0777
  }
 }
 dps_results: {

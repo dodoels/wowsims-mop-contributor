@@ -911,6 +911,22 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestMarksmanship-AllItems-FrenziedCrystalofRage-105572"
+ value: {
+  dps: 221475.22296
+  tps: 168635.22348
+  hps: 18.00409
+ }
+}
+dps_results: {
+ key: "TestMarksmanship-AllItems-Fusion-FireCore-105459"
+ value: {
+  dps: 221475.22296
+  tps: 168635.22348
+  hps: 18.00409
+ }
+}
+dps_results: {
  key: "TestMarksmanship-AllItems-GazeoftheTwins-96915"
  value: {
   dps: 226630.34718
@@ -2091,6 +2107,14 @@ dps_results: {
  value: {
   dps: 221475.22296
   tps: 168635.22348
+  hps: 18.00409
+ }
+}
+dps_results: {
+ key: "TestMarksmanship-AllItems-SigilofRampage-105580"
+ value: {
+  dps: 247319.01041
+  tps: 183852.71357
   hps: 18.00409
  }
 }

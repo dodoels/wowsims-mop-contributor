@@ -887,6 +887,22 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestDemonology-AllItems-FrenziedCrystalofRage-105572"
+ value: {
+  dps: 223648.92137
+  tps: 143280.52731
+  hps: 2240.07197
+ }
+}
+dps_results: {
+ key: "TestDemonology-AllItems-Fusion-FireCore-105459"
+ value: {
+  dps: 202049.22728
+  tps: 130320.06857
+  hps: 2245.06841
+ }
+}
+dps_results: {
  key: "TestDemonology-AllItems-GazeoftheTwins-96915"
  value: {
   dps: 207919.99058
@@ -2104,6 +2120,14 @@ dps_results: {
 }
 dps_results: {
  key: "TestDemonology-AllItems-SigilofPatience-83739"
+ value: {
+  dps: 202049.22728
+  tps: 130320.06857
+  hps: 2245.06841
+ }
+}
+dps_results: {
+ key: "TestDemonology-AllItems-SigilofRampage-105580"
  value: {
   dps: 202049.22728
   tps: 130320.06857

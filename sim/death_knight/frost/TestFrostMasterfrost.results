@@ -911,6 +911,22 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestFrostMasterfrost-AllItems-FrenziedCrystalofRage-105572"
+ value: {
+  dps: 224388.7969
+  tps: 204155.19634
+  hps: 2091.59065
+ }
+}
+dps_results: {
+ key: "TestFrostMasterfrost-AllItems-Fusion-FireCore-105459"
+ value: {
+  dps: 243837.03857
+  tps: 220549.29942
+  hps: 2082.09529
+ }
+}
+dps_results: {
  key: "TestFrostMasterfrost-AllItems-GazeoftheTwins-96915"
  value: {
   dps: 239510.05584
@@ -2171,6 +2187,14 @@ dps_results: {
  value: {
   dps: 226736.90263
   tps: 206503.30207
+  hps: 2091.59065
+ }
+}
+dps_results: {
+ key: "TestFrostMasterfrost-AllItems-SigilofRampage-105580"
+ value: {
+  dps: 224751.38167
+  tps: 204420.60105
   hps: 2091.59065
  }
 }

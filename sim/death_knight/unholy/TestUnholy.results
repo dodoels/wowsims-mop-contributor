@@ -903,6 +903,22 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestUnholy-AllItems-FrenziedCrystalofRage-105572"
+ value: {
+  dps: 217308.2038
+  tps: 153218.42235
+  hps: 2535.07542
+ }
+}
+dps_results: {
+ key: "TestUnholy-AllItems-Fusion-FireCore-105459"
+ value: {
+  dps: 247497.48106
+  tps: 171550.78521
+  hps: 2545.70807
+ }
+}
+dps_results: {
  key: "TestUnholy-AllItems-GazeoftheTwins-96915"
  value: {
   dps: 234431.44348
@@ -2172,6 +2188,14 @@ dps_results: {
   dps: 220429.32033
   tps: 155842.91435
   hps: 2540.69268
+ }
+}
+dps_results: {
+ key: "TestUnholy-AllItems-SigilofRampage-105580"
+ value: {
+  dps: 218237.94692
+  tps: 153990.3151
+  hps: 2539.65259
  }
 }
 dps_results: {

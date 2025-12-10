@@ -935,6 +935,22 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestWindwalker-AllItems-FrenziedCrystalofRage-105572"
+ value: {
+  dps: 226441.97426
+  tps: 215770.4498
+  hps: 7866.58261
+ }
+}
+dps_results: {
+ key: "TestWindwalker-AllItems-Fusion-FireCore-105459"
+ value: {
+  dps: 232872.58233
+  tps: 221310.34331
+  hps: 8265.22949
+ }
+}
+dps_results: {
  key: "TestWindwalker-AllItems-GazeoftheTwins-96915"
  value: {
   dps: 232503.79469
@@ -2124,6 +2140,14 @@ dps_results: {
   dps: 242369.56083
   tps: 231876.19473
   hps: 8095.52377
+ }
+}
+dps_results: {
+ key: "TestWindwalker-AllItems-SigilofRampage-105580"
+ value: {
+  dps: 245929.43141
+  tps: 232778.62122
+  hps: 8721.10738
  }
 }
 dps_results: {

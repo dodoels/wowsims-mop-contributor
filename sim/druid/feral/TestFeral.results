@@ -919,6 +919,22 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestFeral-AllItems-FrenziedCrystalofRage-105572"
+ value: {
+  dps: 222795.5613
+  tps: 336134.55718
+  hps: 15968.39202
+ }
+}
+dps_results: {
+ key: "TestFeral-AllItems-Fusion-FireCore-105459"
+ value: {
+  dps: 233547.38711
+  tps: 344680.2151
+  hps: 14651.79493
+ }
+}
+dps_results: {
  key: "TestFeral-AllItems-GazeoftheTwins-96915"
  value: {
   dps: 230029.33991
@@ -2124,6 +2140,14 @@ dps_results: {
   dps: 226956.1473
   tps: 348069.231
   hps: 14688.19078
+ }
+}
+dps_results: {
+ key: "TestFeral-AllItems-SigilofRampage-105580"
+ value: {
+  dps: 254783.833
+  tps: 380155.07795
+  hps: 15544.14087
  }
 }
 dps_results: {

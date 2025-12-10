@@ -33,25 +33,6 @@ func RegisterAllProcs() {
 	//       This can be ignored if the effect has already been implemented.
 	//       With next db run the item will be removed if implemented.
 	//
-	// Your attacks have a 0.01% chance to Cleave, dealing the same damage to up to 5 other nearby targets.
-	// shared.NewProcStatBonusEffectWithVariants(shared.ProcStatBonusEffect{
-	//	Callback:           core.CallbackOnSpellHitDealt | core.CallbackOnPeriodicDamageDealt,
-	//	ProcMask:           core.ProcMaskMeleeMHAuto | core.ProcMaskMeleeOHAuto | core.ProcMaskMeleeMHSpecial | core.ProcMaskMeleeOHSpecial | core.ProcMaskRangedAuto | core.ProcMaskRangedSpecial | core.ProcMaskSpellDamage | core.ProcMaskMeleeProc | core.ProcMaskRangedProc | core.ProcMaskSpellDamageProc,
-	//	Outcome:            core.OutcomeLanded,
-	//	RequireDamageDealt: false,
-	// }, []shared.ItemVariant{
-	//	{ItemID: 102295, ItemName: "Fusion-Fire Core (N)"},
-	//	{ItemID: 104463, ItemName: "Fusion-Fire Core (H)"},
-	//	{ItemID: 104712, ItemName: "Fusion-Fire Core (Flexible)"},
-	//	{ItemID: 104961, ItemName: "Fusion-Fire Core (LFR) (Celestial)"},
-	//	{ItemID: 105210, ItemName: "Fusion-Fire Core (Warforged)"},
-	//	{ItemID: 105459, ItemName: "Fusion-Fire Core (Heroic Warforged)"},
-	// })
-
-	// TODO: Manual implementation required
-	//       This can be ignored if the effect has already been implemented.
-	//       With next db run the item will be removed if implemented.
-	//
 	// Amplifies your Critical Strike damage and healing, Haste, Mastery, and Spirit by 1%.
 	// shared.NewProcStatBonusEffectWithVariants(shared.ProcStatBonusEffect{
 	//	Callback:           core.CallbackOnHealDealt | core.CallbackOnPeriodicHealDealt,
@@ -65,44 +46,6 @@ func RegisterAllProcs() {
 	//	{ItemID: 104976, ItemName: "Prismatic Prison of Pride (LFR) (Celestial)"},
 	//	{ItemID: 105225, ItemName: "Prismatic Prison of Pride (Warforged)"},
 	//	{ItemID: 105474, ItemName: "Prismatic Prison of Pride (Heroic Warforged)"},
-	// })
-
-	// TODO: Manual implementation required
-	//       This can be ignored if the effect has already been implemented.
-	//       With next db run the item will be removed if implemented.
-	//
-	// Your attacks have a 0.01% chance to Cleave, dealing the same damage to up to 5 other nearby targets.
-	// shared.NewProcStatBonusEffectWithVariants(shared.ProcStatBonusEffect{
-	//	Callback:           core.CallbackOnSpellHitDealt | core.CallbackOnPeriodicDamageDealt,
-	//	ProcMask:           core.ProcMaskMeleeMHAuto | core.ProcMaskMeleeOHAuto | core.ProcMaskMeleeMHSpecial | core.ProcMaskMeleeOHSpecial | core.ProcMaskRangedAuto | core.ProcMaskRangedSpecial | core.ProcMaskSpellDamage | core.ProcMaskMeleeProc | core.ProcMaskRangedProc | core.ProcMaskSpellDamageProc,
-	//	Outcome:            core.OutcomeLanded,
-	//	RequireDamageDealt: false,
-	// }, []shared.ItemVariant{
-	//	{ItemID: 102302, ItemName: "Sigil of Rampage (N)"},
-	//	{ItemID: 104584, ItemName: "Sigil of Rampage (H)"},
-	//	{ItemID: 104833, ItemName: "Sigil of Rampage (Flexible)"},
-	//	{ItemID: 105082, ItemName: "Sigil of Rampage (LFR) (Celestial)"},
-	//	{ItemID: 105331, ItemName: "Sigil of Rampage (Warforged)"},
-	//	{ItemID: 105580, ItemName: "Sigil of Rampage (Heroic Warforged)"},
-	// })
-
-	// TODO: Manual implementation required
-	//       This can be ignored if the effect has already been implemented.
-	//       With next db run the item will be removed if implemented.
-	//
-	// Your attacks have a 0.01% chance to Cleave, dealing the same damage to up to 5 other nearby targets.
-	// shared.NewProcStatBonusEffectWithVariants(shared.ProcStatBonusEffect{
-	//	Callback:           core.CallbackOnSpellHitDealt | core.CallbackOnPeriodicDamageDealt,
-	//	ProcMask:           core.ProcMaskMeleeMHAuto | core.ProcMaskMeleeOHAuto | core.ProcMaskMeleeMHSpecial | core.ProcMaskMeleeOHSpecial | core.ProcMaskRangedAuto | core.ProcMaskRangedSpecial | core.ProcMaskSpellDamage | core.ProcMaskMeleeProc | core.ProcMaskRangedProc | core.ProcMaskSpellDamageProc,
-	//	Outcome:            core.OutcomeLanded,
-	//	RequireDamageDealt: false,
-	// }, []shared.ItemVariant{
-	//	{ItemID: 102303, ItemName: "Frenzied Crystal of Rage (N)"},
-	//	{ItemID: 104576, ItemName: "Frenzied Crystal of Rage (H)"},
-	//	{ItemID: 104825, ItemName: "Frenzied Crystal of Rage (Flexible)"},
-	//	{ItemID: 105074, ItemName: "Frenzied Crystal of Rage (LFR) (Celestial)"},
-	//	{ItemID: 105323, ItemName: "Frenzied Crystal of Rage (Warforged)"},
-	//	{ItemID: 105572, ItemName: "Frenzied Crystal of Rage (Heroic Warforged)"},
 	// })
 
 	// TODO: Manual implementation required
