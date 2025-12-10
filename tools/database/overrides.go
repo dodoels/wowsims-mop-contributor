@@ -184,66 +184,7 @@ var ItemOverrides = []*proto.UIItem{
 	{Id: 72881, Phase: 4}, // Treads of the Past
 	{Id: 72884, Phase: 4}, // Writhing Wand
 }
-var ItemUpgradesDisallowList = map[int32]struct{}{
-	// World Boss - Oondasta
-	95147: {}, // Fancifully Frilled Tunic
-	95148: {}, // Vest of the Bordomorono
-	95149: {}, // Gorgoraptor Scale Chest
-	95150: {}, // Mail of the Mosschopper
-	95151: {}, // Scorched Spiritfire Drape
-	95152: {}, // Breastplate of the Iguanocolossus
-	95153: {}, // Tyrant King Battleplate
-	95163: {}, // Ring of Shamuru
-	95164: {}, // Eye of Oondasta
-	95165: {}, // Achillobator Ring
-	95166: {}, // Forzarra's Last Meal
-	95167: {}, // Ring of King Kangrom
-	95177: {}, // Choker of Stygimolochy
-	95178: {}, // Lootraptor's Amulet
-	95179: {}, // Necklace of the Hazillosaurus
-	95180: {}, // Overcompensating Chain of the Alpha Male
-	95181: {}, // Amulet of the Titanorex
-	95182: {}, // Robes of Zalmoxes
-	95183: {}, // Waistband of Elder Falcarius
-	95184: {}, // Girdle of Dimorphodontics
-	95185: {}, // Terrorful Weave
-	95186: {}, // Belt of Crushed Dreams
-	95187: {}, // Girdle of the Derrodoccus
-	95188: {}, // Belt of the Arch Avimimus
-	95189: {}, // Belt of the Dying Diemetradon
-	95190: {}, // Waistband of Furious Stomping
-	95191: {}, // Voolar's Bloodied Belt
-	95192: {}, // Belt of the Tyrannotitan
-	95193: {}, // Gloves of Varsoon the Greater
-	95194: {}, // Gloves of Tyranomancy
-	95195: {}, // Gloves of Unliving Fossil
-	95196: {}, // Gloves of Gastric Rumbling
-	95197: {}, // Therapsid Scale Gloves
-	95198: {}, // Vulcanodon Gauntlets
-	95199: {}, // Carnotaur Battlegloves
-	95200: {}, // Orndo Mando's Gloves
-	95201: {}, // Skullsmashing Gauntlets
-
-	// Crafted - ToT
-	94263: {}, // Haunted Steel Greaves
-	94264: {}, // Haunted Steel Headcover
-	94265: {}, // Haunted Steel Treads
-	94266: {}, // Haunted Steel Greathelm
-	94267: {}, // Haunted Steel Warboots
-	94268: {}, // Haunted Steel Headguard
-	94269: {}, // Quilen Hide Boots
-	94270: {}, // Quilen Hide Helm
-	94271: {}, // Dreadrunner Sabatons
-	94272: {}, // Dreadrunner Helm
-	94273: {}, // Spirit Keeper Footguards
-	94274: {}, // Spirit Keeper Helm
-	94275: {}, // Cloud Serpent Sabatons
-	94276: {}, // Cloud Serpent Helm
-	94277: {}, // Falling Blossom Treads
-	94278: {}, // Falling Blossom Cowl
-	94279: {}, // Falling Blossom Sandals
-	94280: {}, // Falling Blossom Hood
-}
+var ItemUpgradesDisallowList = map[int32]struct{}{}
 
 // Keep these sorted by item ID.
 var ItemAllowList = map[int32]struct{}{
