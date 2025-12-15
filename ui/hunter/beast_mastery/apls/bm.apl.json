@@ -217,7 +217,7 @@
 		},
 		{
 			"name": "CS Time",
-			"value": { "math": { "op": "OpSub", "lhs": { "const": { "val": "0" } }, "rhs": { "spellCastTime": { "spellId": { "spellId": 77767 } } } } }
+			"value": { "math": { "op": "OpSub", "lhs": { "const": { "val": "10ms" } }, "rhs": { "spellCastTime": { "spellId": { "spellId": 77767 } } } } }
 		}
 	]
 }

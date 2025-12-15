@@ -337,12 +337,16 @@
 		},
 		{
 			"name": "BA Time",
-			"value": { "math": { "op": "OpSub", "lhs": { "const": { "val": "0" } }, "rhs": { "spellTravelTime": { "spellId": { "spellId": 3674 } } } } }
+			"value": { "math": { "op": "OpSub", "lhs": { "const": { "val": "10ms" } }, "rhs": { "spellTravelTime": { "spellId": { "spellId": 3674 } } } } }
 		},
 		{
 			"name": "CS Time",
 			"value": {
-				"math": { "op": "OpSub", "lhs": { "variableRef": { "name": "BA Time" } }, "rhs": { "spellCastTime": { "spellId": { "spellId": 77767 } } } }
+				"math": {
+					"op": "OpSub",
+					"lhs": { "variableRef": { "name": "BA Time" } },
+					"rhs": { "math": { "op": "OpAdd", "lhs": { "spellCastTime": { "spellId": { "spellId": 77767 } } }, "rhs": { "const": { "val": "10ms" } } } }
+				}
 			}
 		}
 	]

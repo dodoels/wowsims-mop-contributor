@@ -353,13 +353,7 @@
 		},
 		{
 			"name": "SrS Time",
-			"value": {
-				"math": {
-					"op": "OpSub",
-					"lhs": { "const": { "val": "0" } },
-					"rhs": { "min": { "vals": [{ "spellTravelTime": { "spellId": { "spellId": 1978 } } }, { "const": { "val": "1s" } }] } }
-				}
-			}
+			"value": { "math": { "op": "OpSub", "lhs": { "const": { "val": "10ms" } }, "rhs": { "spellTravelTime": { "spellId": { "spellId": 1978 } } } } }
 		},
 		{ "name": "Fervor Time", "value": { "math": { "op": "OpAdd", "lhs": { "variableRef": { "name": "SrS Time" } }, "rhs": { "inputDelay": {} } } } },
 		{
@@ -368,7 +362,7 @@
 				"math": {
 					"op": "OpSub",
 					"lhs": { "variableRef": { "name": "SrS Time" } },
-					"rhs": { "max": { "vals": [{ "spellCastTime": { "spellId": { "spellId": 19434 } } }, { "const": { "val": "1s" } }] } }
+					"rhs": { "math": { "op": "OpAdd", "lhs": { "spellCastTime": { "spellId": { "spellId": 19434 } } }, "rhs": { "const": { "val": "10ms" } } } }
 				}
 			}
 		}
