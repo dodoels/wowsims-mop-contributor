@@ -7,7 +7,7 @@ import minimist from 'minimist';
 import path from 'path';
 import { build } from 'vite';
 
-import { BASE_PATH, getBaseConfig } from './vite.config.mjs';
+import { BASE_PATH, OUT_DIR, getBaseConfig } from './vite.config.mjs';
 
 const WORKER_BASE_PATH = path.resolve(BASE_PATH, 'worker');
 
@@ -15,6 +15,7 @@ const workers = {
 	local_worker: path.resolve(WORKER_BASE_PATH, 'local_worker.ts'),
 	net_worker: path.resolve(WORKER_BASE_PATH, 'net_worker.ts'),
 	sim_worker: path.resolve(WORKER_BASE_PATH, 'sim_worker.ts'),
+	reforge_worker: path.resolve(WORKER_BASE_PATH, 'reforge_worker.ts'),
 };
 
 const args = minimist(process.argv.slice(2), { boolean: ['watch'] });
@@ -43,6 +44,16 @@ const buildWorkers = async () => {
 		);
 	}
 	const wasmFile = await fs.readFile(wasmExecutablePath, 'utf8');
+
+	// Copy HiGHS WASM file to output directory
+	const highsWasmSrc = path.resolve(WORKER_BASE_PATH, 'highs.wasm');
+	const highsWasmDest = path.resolve(OUT_DIR, 'highs.wasm');
+	try {
+		await fs.copyFile(highsWasmSrc, highsWasmDest);
+		console.log('Copied highs.wasm to output directory');
+	} catch (err) {
+		console.error('Failed to copy highs.wasm:', err);
+	}
 
 	Object.entries(workers).forEach(async ([name, sourcePath]) => {
 		const baseConfig = getBaseConfig({ command: 'build', mode: 'production' });

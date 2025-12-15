@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import tippy, { hideAll } from 'tippy.js';
 import { ref } from 'tsx-vanilla';
-import { Constraint, greaterEq, lessEq, Model, Options, Solution, solve } from 'yalps';
+import { Constraint, greaterEq, lessEq } from 'yalps';
 
 import i18n from '../../i18n/config.js';
 import * as Mechanics from '../constants/mechanics.js';
@@ -26,10 +26,36 @@ import { NumberPicker, NumberPickerConfig } from './pickers/number_picker';
 import { renderSavedEPWeights } from './saved_data_managers/ep_weights';
 import Toast from './toast';
 import { trackEvent, trackPageView } from '../../tracking/utils';
+import { getReforgeWorkerPool } from '../reforge_worker_pool.js';
+import type { LPModel, LPSolution, SerializedConstraints, SerializedVariables, SerializedConstraint } from '../../worker/reforge_types';
 
 type YalpsCoefficients = Map<string, number>;
 type YalpsVariables = Map<string, YalpsCoefficients>;
 type YalpsConstraints = Map<string, Constraint>;
+
+function serializeVariables(variables: YalpsVariables): SerializedVariables {
+	const result: SerializedVariables = {};
+	for (const [key, coefficients] of variables.entries()) {
+		result[key] = Object.fromEntries(coefficients.entries());
+	}
+	return result;
+}
+
+function deserializeVariables(serialized: SerializedVariables): YalpsVariables {
+	const result = new Map<string, YalpsCoefficients>();
+	for (const [key, coefficients] of Object.entries(serialized)) {
+		result.set(key, new Map(Object.entries(coefficients)));
+	}
+	return result;
+}
+
+function serializeConstraints(constraints: YalpsConstraints): SerializedConstraints {
+	const result: SerializedConstraints = {};
+	for (const [key, constraint] of constraints.entries()) {
+		result[key] = { ...constraint };
+	}
+	return result;
+}
 
 type GemData = {
 	gem: Gem;
@@ -265,6 +291,9 @@ export class ReforgeOptimizer {
 		this._statCaps = this.defaults.statCaps || new Stats();
 		this.enableBreakpointLimits = !!options?.enableBreakpointLimits;
 		this.relativeStatCapStat = options?.defaultRelativeStatCap ?? -1;
+
+		// Pre-warm the worker pool
+		getReforgeWorkerPool().warmUp();
 
 		const startReforgeOptimizationEntry: ActionGroupItem = {
 			label: i18n.t('sidebar.buttons.suggest_reforges.title'),
@@ -599,7 +628,7 @@ export class ReforgeOptimizer {
 	}
 	setRelativeStatCap(eventID: EventID, newValue: number) {
 		this.relativeStatCapStat = newValue;
-		if ((this.relativeStatCapStat === -1) || !RelativeStatCap.hasRoRo(this.player)) {
+		if (this.relativeStatCapStat === -1 || !RelativeStatCap.hasRoRo(this.player)) {
 			this.relativeStatCap = null;
 		} else {
 			this.relativeStatCap = new RelativeStatCap(this.relativeStatCapStat, this.player, this.playerClass);
@@ -1209,14 +1238,7 @@ export class ReforgeOptimizer {
 	}
 
 	async optimizeReforges(batchRun?: boolean) {
-		if (isDevMode()) console.log('Starting Reforge optimization...');
-
 		// First, clear all existing Reforges
-		if (isDevMode()) {
-			console.log('Clearing existing Reforges...');
-			console.log('The following slots will not be cleared:');
-			console.log(Array.from(this.frozenItemSlots.keys()).filter(key => this.getFrozenItemSlot(key)));
-		}
 		this.previousGear = this.player.getGear();
 		this.previousReforges = this.previousGear.getAllReforges();
 		let baseGear = this.previousGear.withoutReforges(this.player.canDualWield2H(), this.frozenItemSlots);
@@ -1235,11 +1257,6 @@ export class ReforgeOptimizer {
 				PseudoStat.PseudoStatMeleeHastePercent,
 				reforgeCaps.getPseudoStat(PseudoStat.PseudoStatMeleeHastePercent) / 1.5,
 			);
-		}
-
-		if (isDevMode()) {
-			console.log('Stat caps for Reforge contribution:');
-			console.log(reforgeCaps);
 		}
 
 		// Do the same for any soft cap breakpoints that were configured
@@ -1680,39 +1697,26 @@ export class ReforgeOptimizer {
 		maxIterations: number,
 		maxSeconds: number,
 	): Promise<number> {
-		// Calculate EP scores for each Reforge option
-		if (isDevMode()) {
-			console.log('Stat weights for this iteration:');
-			console.log(weights);
-		}
 		const updatedVariables = this.updateReforgeScores(variables, weights);
-		if (isDevMode()) {
-			console.log('Optimization variables and constraints for this iteration:');
-			console.log(updatedVariables);
-			console.log(constraints);
-		}
 
-		// Set up and solve YALPS model
-		const model: Model = {
+		const model: LPModel = {
 			direction: 'maximize',
 			objective: 'score',
-			constraints: constraints,
-			variables: updatedVariables,
+			constraints: serializeConstraints(constraints),
+			variables: serializeVariables(updatedVariables),
 			binaries: true,
 		};
-		const options: Options = {
+
+		const startTimeMs: number = Date.now();
+
+		const workerPool = getReforgeWorkerPool();
+		const solution: LPSolution = await workerPool.solve(model, {
 			timeout: maxSeconds * 1000,
 			maxIterations: maxIterations,
 			tolerance: 0.01,
-		};
-		const startTimeMs: number = Date.now();
-		const solution = solve(model, options);
-		const elapsedSeconds: number = (Date.now() - startTimeMs) / 1000;
+		});
 
-		if (isDevMode()) {
-			console.log('LP solution for this iteration:');
-			console.log(solution);
-		}
+		const elapsedSeconds: number = (Date.now() - startTimeMs) / 1000;
 
 		if (isNaN(solution.result) || (solution.status == 'timedout' && maxIterations < 4000000 && elapsedSeconds < maxSeconds)) {
 			if (maxIterations > 4000000 || elapsedSeconds > maxSeconds) {
@@ -1724,7 +1728,6 @@ export class ReforgeOptimizer {
 					throw solution.status;
 				}
 			} else {
-				if (isDevMode()) console.log('No optimal solution was found, doubling max iterations...');
 				return await this.solveModel(
 					gear,
 					weights,
@@ -1754,10 +1757,8 @@ export class ReforgeOptimizer {
 		);
 
 		if (!anyCapsExceeded) {
-			if (isDevMode()) console.log('Reforge optimization has finished!');
 			return solution.result;
 		} else {
-			if (isDevMode()) console.log('One or more stat caps were exceeded, starting constrained iteration...');
 			await sleep(100);
 			return await this.solveModel(
 				updatedGear,
@@ -1802,7 +1803,7 @@ export class ReforgeOptimizer {
 		return updatedVariables;
 	}
 
-	async applyLPSolution(gear: Gear, solution: Solution): Promise<Gear> {
+	async applyLPSolution(gear: Gear, solution: LPSolution): Promise<Gear> {
 		let updatedGear = gear.withoutReforges(this.player.canDualWield2H(), this.frozenItemSlots);
 
 		if (this.includeGems) {
@@ -1840,7 +1841,7 @@ export class ReforgeOptimizer {
 	}
 
 	checkCaps(
-		solution: Solution,
+		solution: LPSolution,
 		reforgeCaps: Stats,
 		reforgeSoftCaps: StatCap[],
 		variables: YalpsVariables,
@@ -1862,11 +1863,6 @@ export class ReforgeOptimizer {
 			}
 		}
 
-		if (isDevMode()) {
-			console.log('Total stat contribution from Reforging:');
-			console.log(reforgeStatContribution);
-		}
-
 		// Then check whether any unconstrained stats exceed their cap
 		let anyCapsExceeded = false;
 		const updatedConstraints = new Map<string, Constraint>(constraints);
@@ -1878,7 +1874,6 @@ export class ReforgeOptimizer {
 
 			if (cap !== 0 && value > cap && !constraints.has(statName)) {
 				anyCapsExceeded = true;
-				if (isDevMode()) console.log('Cap exceeded for: %s', statName);
 
 				// Set EP to 0 for hard capped stats unless they are treated as upper bounds.
 				if (this.undershootCaps.getUnitStat(unitStat)) {
@@ -1903,7 +1898,6 @@ export class ReforgeOptimizer {
 					updatedConstraints.set(statName, greaterEq(breakpoint));
 					updatedWeights = updatedWeights.withUnitStat(unitStat, nextSoftCap.postCapEPs[idx]);
 					anyCapsExceeded = true;
-					if (isDevMode()) console.log('Breakpoint exceeded for: %s', statName);
 					break;
 				}
 
@@ -2092,8 +2086,6 @@ export class ReforgeOptimizer {
 	}
 
 	onReforgeError(error: any) {
-		if (isDevMode()) console.log(error);
-
 		if (this.previousGear) this.updateGear(this.previousGear);
 		trackEvent({
 			action: 'settings',
