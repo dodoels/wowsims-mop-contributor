@@ -461,23 +461,26 @@ func init() {
 		shared.ItemVersionHeroicWarforged: 105612,
 		shared.ItemVersionFlexible:        104865,
 	}.RegisterAll(func(version shared.ItemVersion, itemID int32, versionLabel string) {
+		label := "Ticking Ebon Detonator"
+
 		core.NewItemEffect(itemID, func(agent core.Agent, state proto.ItemLevelState) {
 			character := agent.GetCharacter()
 
-			statBuffAura := core.MakeStackingAura(character, core.StackingStatAura{
-				Aura: core.Aura{
-					Label:     fmt.Sprintf("Restless Agility (%s)", versionLabel),
-					ActionID:  core.ActionID{SpellID: 146310},
-					Duration:  time.Second * 10,
-					MaxStacks: 20,
-				},
-				BonusPerStack: stats.Stats{
-					stats.Agility: core.GetItemEffectScaling(itemID, 0.27030000091, state),
-				},
+			statValue := core.GetItemEffectScaling(itemID, 0.27030000091, state)
+			statBuffAura, aura := character.NewTemporaryStatBuffWithStacks(core.TemporaryStatBuffWithStacksConfig{
+				AuraLabel:            fmt.Sprintf("Item - Proc Agility (%s)", versionLabel),
+				ActionID:             core.ActionID{SpellID: 146311},
+				StackingAuraLabel:    fmt.Sprintf("Restless Agility (%s)", versionLabel),
+				StackingAuraActionID: core.ActionID{SpellID: 146310},
+				Duration:             time.Second * 10,
+				MaxStacks:            20,
+				TimePerStack:         time.Millisecond * 500,
+				BonusPerStack:        stats.Stats{stats.Agility: statValue},
+				DecrementStacks:      true,
 			})
 
 			statBuffTriggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
-				Name:     fmt.Sprintf("Ticking Ebon Detonator (%s) - Stat Trigger", versionLabel),
+				Name:     fmt.Sprintf("%s (%s) - Stat Trigger", label, versionLabel),
 				ICD:      time.Second * 10,
 				Outcome:  core.OutcomeLanded,
 				Callback: core.CallbackOnSpellHitDealt,
@@ -487,18 +490,7 @@ func init() {
 				}),
 
 				Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
-					statBuffAura.Activate(sim)
-					statBuffAura.SetStacks(sim, statBuffAura.MaxStacks)
-					core.StartPeriodicAction(sim, core.PeriodicActionOptions{
-						Period:   time.Millisecond * 500,
-						NumTicks: 20,
-						OnAction: func(sim *core.Simulation) {
-							// Aura might not be active because of stuff like mage alter time being cast right before this aura being activated
-							if statBuffAura.IsActive() {
-								statBuffAura.RemoveStack(sim)
-							}
-						},
-					})
+					aura.Activate(sim)
 				},
 			})
 
