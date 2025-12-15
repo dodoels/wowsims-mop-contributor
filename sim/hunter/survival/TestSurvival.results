@@ -89,8 +89,8 @@ dps_results: {
 dps_results: {
  key: "TestSurvival-AllItems-BattlegearoftheUnblinkingVigil"
  value: {
-  dps: 208353.64527
-  tps: 160680.72788
+  dps: 209441.8486
+  tps: 161067.43518
  }
 }
 dps_results: {
@@ -719,8 +719,8 @@ dps_results: {
 dps_results: {
  key: "TestSurvival-AllItems-Fen-Yu,FuryofXuen-102248"
  value: {
-  dps: 254478.85759
-  tps: 194408.75723
+  dps: 254173.68984
+  tps: 194276.83632
  }
 }
 dps_results: {
@@ -831,8 +831,8 @@ dps_results: {
 dps_results: {
  key: "TestSurvival-AllItems-Gong-Lu,StrengthofXuen-102249"
  value: {
-  dps: 241361.12642
-  tps: 184954.99814
+  dps: 241288.30438
+  tps: 184956.45302
  }
 }
 dps_results: {
@@ -1531,8 +1531,8 @@ dps_results: {
 dps_results: {
  key: "TestSurvival-AllItems-PhaseFingers-4697"
  value: {
-  dps: 239556.84885
-  tps: 180789.32023
+  dps: 239645.40076
+  tps: 180742.6831
  }
 }
 dps_results: {
@@ -2042,8 +2042,8 @@ dps_results: {
 dps_results: {
  key: "TestSurvival-AllItems-SynapseSprings(MarkII)-4898"
  value: {
-  dps: 242894.90284
-  tps: 183020.10095
+  dps: 242996.37309
+  tps: 182999.91982
  }
 }
 dps_results: {
@@ -2371,8 +2371,8 @@ dps_results: {
 dps_results: {
  key: "TestSurvival-AllItems-Xing-Ho,BreathofYu'lon-102246"
  value: {
-  dps: 231008.50676
-  tps: 174884.91502
+  dps: 231144.17675
+  tps: 174931.00797
  }
 }
 dps_results: {
