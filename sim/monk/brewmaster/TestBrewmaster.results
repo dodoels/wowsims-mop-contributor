@@ -2677,6 +2677,15 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestBrewmaster-AllItems-Thok'sTailTip-105609"
+ value: {
+  dps: 274129.77714
+  tps: 1.17067264412e+06
+  dtps: 16907.49969
+  hps: 31203.994
+ }
+}
+dps_results: {
  key: "TestBrewmaster-AllItems-Thousand-YearPickledEgg-257881"
  value: {
   dps: 258803.76401

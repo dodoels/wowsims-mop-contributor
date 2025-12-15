@@ -2695,6 +2695,15 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestGuardian-AllItems-Thok'sTailTip-105609"
+ value: {
+  dps: 321573.77592
+  tps: 1.94307006131e+06
+  dtps: 46335.7281
+  hps: 30599.88822
+ }
+}
+dps_results: {
  key: "TestGuardian-AllItems-Thousand-YearPickledEgg-257881"
  value: {
   dps: 310202.21622

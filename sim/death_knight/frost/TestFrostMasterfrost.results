@@ -2447,6 +2447,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestFrostMasterfrost-AllItems-Thok'sTailTip-105609"
+ value: {
+  dps: 256740.37593
+  tps: 231396.07812
+  hps: 2111.09547
+ }
+}
+dps_results: {
  key: "TestFrostMasterfrost-AllItems-Thousand-YearPickledEgg-257881"
  value: {
   dps: 225006.81888

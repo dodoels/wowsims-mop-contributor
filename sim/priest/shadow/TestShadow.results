@@ -2359,6 +2359,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestShadow-AllItems-Thok'sTailTip-105609"
+ value: {
+  dps: 86082.24336
+  tps: 81002.37018
+  hps: 1629.5762
+ }
+}
+dps_results: {
  key: "TestShadow-AllItems-Thousand-YearPickledEgg-257881"
  value: {
   dps: 89457.11581

@@ -2455,6 +2455,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestFrostTwoHand-AllItems-Thok'sTailTip-105609"
+ value: {
+  dps: 252086.94226
+  tps: 221352.50799
+  hps: 3521.52442
+ }
+}
+dps_results: {
  key: "TestFrostTwoHand-AllItems-Thousand-YearPickledEgg-257881"
  value: {
   dps: 224480.18167

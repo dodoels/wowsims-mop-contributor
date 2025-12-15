@@ -458,6 +458,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestSubtlety-AllItems-Thok'sTailTip-105609"
+ value: {
+  dps: 107399.67754
+  tps: 75613.59462
+ }
+}
+dps_results: {
  key: "TestSubtlety-AllItems-TickingEbonDetonator-105612"
  value: {
   dps: 120398.36981

@@ -2096,6 +2096,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestEnhancement-AllItems-Thok'sTailTip-105609"
+ value: {
+  dps: 152481.97489
+  tps: 129171.54612
+ }
+}
+dps_results: {
  key: "TestEnhancement-AllItems-Thousand-YearPickledEgg-257881"
  value: {
   dps: 140014.55407

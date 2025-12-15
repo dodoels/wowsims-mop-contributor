@@ -2392,6 +2392,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestProtectionWarrior-AllItems-Thok'sTailTip-105609"
+ value: {
+  dps: 269872.11398
+  tps: 1.56038644942e+06
+  dtps: 41893.97196
+ }
+}
+dps_results: {
  key: "TestProtectionWarrior-AllItems-Thousand-YearPickledEgg-257881"
  value: {
   dps: 246393.07095

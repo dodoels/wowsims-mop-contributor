@@ -71,25 +71,6 @@ func RegisterAllProcs() {
 	//       This can be ignored if the effect has already been implemented.
 	//       With next db run the item will be removed if implemented.
 	//
-	// Amplifies your Critical Strike damage and healing, Haste, Mastery, and Spirit by 1%.
-	// shared.NewProcStatBonusEffectWithVariants(shared.ProcStatBonusEffect{
-	//	Callback:           core.CallbackOnSpellHitDealt,
-	//	ProcMask:           core.ProcMaskMeleeMHAuto | core.ProcMaskMeleeOHAuto | core.ProcMaskMeleeMHSpecial | core.ProcMaskMeleeOHSpecial | core.ProcMaskRangedSpecial | core.ProcMaskSpellDamage | core.ProcMaskMeleeProc | core.ProcMaskRangedProc | core.ProcMaskSpellDamageProc,
-	//	Outcome:            core.OutcomeLanded,
-	//	RequireDamageDealt: false,
-	// }, []shared.ItemVariant{
-	//	{ItemID: 102305, ItemName: "Thok's Tail Tip (N)"},
-	//	{ItemID: 104613, ItemName: "Thok's Tail Tip (H)"},
-	//	{ItemID: 104862, ItemName: "Thok's Tail Tip (Flexible)"},
-	//	{ItemID: 105111, ItemName: "Thok's Tail Tip (LFR) (Celestial)"},
-	//	{ItemID: 105360, ItemName: "Thok's Tail Tip (Warforged)"},
-	//	{ItemID: 105609, ItemName: "Thok's Tail Tip (Heroic Warforged)"},
-	// })
-
-	// TODO: Manual implementation required
-	//       This can be ignored if the effect has already been implemented.
-	//       With next db run the item will be removed if implemented.
-	//
 	// Your heals have a chance to grant you 19260 Spirit for 10s. Every 0.5 sec, this effect is reduced by 963
 	// Spirit. (Approximately 0.92 procs per minute)
 	// shared.NewProcStatBonusEffectWithVariants(shared.ProcStatBonusEffect{

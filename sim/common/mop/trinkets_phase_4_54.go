@@ -37,6 +37,14 @@ type cleaveTrinketConfig struct {
 	buffedStat       stats.Stat
 }
 
+type statAmplificationTrinketConfig struct {
+	itemVersionMap   shared.ItemVersionMap
+	baseTrinketLabel string
+	buffAuraLabel    string
+	buffAuraID       int32
+	buffedStat       stats.Stat
+}
+
 func init() {
 	newReadinessTrinket := func(config *readinessTrinketConfig) {
 		config.itemVersionMap.RegisterAll(func(version shared.ItemVersion, itemID int32, versionLabel string) {
@@ -353,62 +361,92 @@ func init() {
 		buffedStat:       stats.Intellect,
 	})
 
-	// Purified Bindings of Immerseus
-	// Your attacks have a chance to grant 606 Intellect for 20 sec.
-	// (Proc chance: 15%, 1.917m cooldown)
-	// Amplifies your Critical Strike damage and healing, Haste, Mastery, and Spirit by 1%.
-	shared.ItemVersionMap{
-		shared.ItemVersionLFR:             104924,
-		shared.ItemVersionNormal:          102293,
-		shared.ItemVersionHeroic:          104426,
-		shared.ItemVersionWarforged:       105173,
-		shared.ItemVersionHeroicWarforged: 105422,
-		shared.ItemVersionFlexible:        104675,
-	}.RegisterAll(func(version shared.ItemVersion, itemID int32, versionLabel string) {
-		label := "Purified Bindings of Immerseus"
+	newStatAmplificationTrinket := func(config *statAmplificationTrinketConfig) {
+		config.itemVersionMap.RegisterAll(func(version shared.ItemVersion, itemID int32, versionLabel string) {
+			core.NewItemEffect(itemID, func(agent core.Agent, state proto.ItemLevelState) {
+				character := agent.GetCharacter()
 
-		core.NewItemEffect(itemID, func(agent core.Agent, state proto.ItemLevelState) {
-			character := agent.GetCharacter()
-			statValue := core.GetItemEffectScaling(itemID, 2.97300004959, state)
+				critDamageValue := 1 + core.GetItemEffectScaling(itemID, 0.00088499999, state)/100
+				hasteValue := 1 + core.GetItemEffectScaling(itemID, 0.00176999997, state)/100
+				masteryValue := 1 + core.GetItemEffectScaling(itemID, 0.00176999997, state)/100
+				spiritValue := 1 + core.GetItemEffectScaling(itemID, 0.00176999997, state)/100
 
-			critDamageValue := 1 + core.GetItemEffectScaling(itemID, 0.00088499999, state)/100
-			hasteValue := 1 + core.GetItemEffectScaling(itemID, 0.00176999997, state)/100
-			masteryValue := 1 + core.GetItemEffectScaling(itemID, 0.00176999997, state)/100
-			spiritValue := 1 + core.GetItemEffectScaling(itemID, 0.00176999997, state)/100
+				statAura := core.MakePermanent(character.RegisterAura(core.Aura{
+					Label:      fmt.Sprintf("Amplification (%s)", versionLabel),
+					ActionID:   core.ActionID{SpellID: 146051},
+					BuildPhase: core.CharacterBuildPhaseGear,
+				})).
+					AttachStatDependency(character.NewDynamicMultiplyStat(stats.HasteRating, hasteValue)).
+					AttachStatDependency(character.NewDynamicMultiplyStat(stats.MasteryRating, masteryValue)).
+					AttachStatDependency(character.NewDynamicMultiplyStat(stats.Spirit, spiritValue)).
+					AttachMultiplicativePseudoStatBuff(&character.PseudoStats.CritDamageMultiplier, critDamageValue)
 
-			statAura := core.MakePermanent(character.RegisterAura(core.Aura{
-				Label:      fmt.Sprintf("Amplification (%s)", versionLabel),
-				ActionID:   core.ActionID{SpellID: 146051},
-				BuildPhase: core.CharacterBuildPhaseGear,
-			})).
-				AttachStatDependency(character.NewDynamicMultiplyStat(stats.HasteRating, hasteValue)).
-				AttachStatDependency(character.NewDynamicMultiplyStat(stats.MasteryRating, masteryValue)).
-				AttachStatDependency(character.NewDynamicMultiplyStat(stats.Spirit, spiritValue)).
-				AttachMultiplicativePseudoStatBuff(&character.PseudoStats.CritDamageMultiplier, critDamageValue)
+				stats := stats.Stats{}
+				stats[config.buffedStat] = core.GetItemEffectScaling(itemID, 2.97300004959, state)
 
-			aura := character.NewTemporaryStatsAura(
-				fmt.Sprintf("Expanded Mind (%s)", versionLabel),
-				core.ActionID{SpellID: 146046},
-				stats.Stats{stats.Intellect: statValue},
-				time.Second*20,
-			)
+				aura := character.NewTemporaryStatsAura(
+					fmt.Sprintf("%s (%s)", config.buffAuraLabel, versionLabel),
+					core.ActionID{SpellID: config.buffAuraID},
+					stats,
+					time.Second*20,
+				)
 
-			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
-				Name:       fmt.Sprintf("%s (%s)", label, versionLabel),
-				ICD:        time.Second * 115,
-				ProcChance: 0.15,
-				Outcome:    core.OutcomeLanded,
-				Callback:   core.CallbackOnSpellHitDealt,
-				Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
-					aura.Activate(sim)
-				},
+				triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
+					Name:       fmt.Sprintf("%s (%s)", config.baseTrinketLabel, versionLabel),
+					Callback:   core.CallbackOnSpellHitDealt,
+					Outcome:    core.OutcomeLanded,
+					ICD:        time.Second * 115,
+					ProcChance: 0.15,
+
+					Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
+						aura.Activate(sim)
+					},
+				})
+
+				eligibleSlots := character.ItemSwap.EligibleSlotsForItem(itemID)
+				character.AddStatProcBuff(itemID, aura, false, eligibleSlots)
+				character.ItemSwap.RegisterProcWithSlots(itemID, triggerAura, eligibleSlots)
+				character.ItemSwap.RegisterProcWithSlots(itemID, statAura, eligibleSlots)
 			})
-
-			eligibleSlots := character.ItemSwap.EligibleSlotsForItem(itemID)
-			character.AddStatProcBuff(itemID, aura, false, eligibleSlots)
-			character.ItemSwap.RegisterProcWithSlots(itemID, triggerAura, eligibleSlots)
-			character.ItemSwap.RegisterProcWithSlots(itemID, statAura, eligibleSlots)
 		})
+	}
+
+	// Thok's Tail Tip
+	// Your attacks have a chance to grant you 14039 Strength for 20 sec.
+	// (15% chance, 115 sec cooldown) (Proc chance: 15%, 1.917m cooldown)
+	// Amplifies your Critical Strike damage and healing, Haste, Mastery, and Spirit by 1%.
+	newStatAmplificationTrinket(&statAmplificationTrinketConfig{
+		itemVersionMap: shared.ItemVersionMap{
+			shared.ItemVersionLFR:             105111,
+			shared.ItemVersionNormal:          102305,
+			shared.ItemVersionHeroic:          104613,
+			shared.ItemVersionWarforged:       105360,
+			shared.ItemVersionHeroicWarforged: 105609,
+			shared.ItemVersionFlexible:        104862,
+		},
+		baseTrinketLabel: "Thok's Tail Tip",
+		buffAuraLabel:    "Determination",
+		buffAuraID:       146250,
+		buffedStat:       stats.Strength,
+	})
+
+	// Purified Bindings of Immerseus
+	// Your attacks have a chance to grant 14039 Intellect for 20 sec.
+	// (15% chance, 115 sec cooldown) (Proc chance: 15%, 1.917m cooldown)
+	// Amplifies your Critical Strike damage and healing, Haste, Mastery, and Spirit by 1%.
+	newStatAmplificationTrinket(&statAmplificationTrinketConfig{
+		itemVersionMap: shared.ItemVersionMap{
+			shared.ItemVersionLFR:             104924,
+			shared.ItemVersionNormal:          102293,
+			shared.ItemVersionHeroic:          104426,
+			shared.ItemVersionWarforged:       105173,
+			shared.ItemVersionHeroicWarforged: 105422,
+			shared.ItemVersionFlexible:        104675,
+		},
+		baseTrinketLabel: "Purified Bindings of Immerseus",
+		buffAuraLabel:    "Expanded Mind",
+		buffAuraID:       146046,
+		buffedStat:       stats.Intellect,
 	})
 
 	// Ticking Ebon Detonator

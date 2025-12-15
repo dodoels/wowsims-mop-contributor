@@ -2383,6 +2383,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestDemonology-AllItems-Thok'sTailTip-105609"
+ value: {
+  dps: 213010.77406
+  tps: 138286.14559
+  hps: 2306.69121
+ }
+}
+dps_results: {
  key: "TestDemonology-AllItems-Thousand-YearPickledEgg-257881"
  value: {
   dps: 215441.92957

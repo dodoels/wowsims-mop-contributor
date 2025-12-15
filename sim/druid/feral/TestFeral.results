@@ -2399,6 +2399,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestFeral-AllItems-Thok'sTailTip-105609"
+ value: {
+  dps: 244889.07034
+  tps: 365029.97011
+  hps: 14973.42529
+ }
+}
+dps_results: {
  key: "TestFeral-AllItems-Thousand-YearPickledEgg-257881"
  value: {
   dps: 222932.97847

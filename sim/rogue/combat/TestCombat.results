@@ -458,6 +458,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestCombat-AllItems-Thok'sTailTip-105609"
+ value: {
+  dps: 105844.34626
+  tps: 74462.00738
+ }
+}
+dps_results: {
  key: "TestCombat-AllItems-TickingEbonDetonator-105612"
  value: {
   dps: 113799.25881

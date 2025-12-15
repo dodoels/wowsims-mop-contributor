@@ -2383,6 +2383,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestAffliction-AllItems-Thok'sTailTip-105609"
+ value: {
+  dps: 225949.37018
+  tps: 156919.64571
+  hps: 2981.12763
+ }
+}
+dps_results: {
  key: "TestAffliction-AllItems-Thousand-YearPickledEgg-257881"
  value: {
   dps: 226314.6211

@@ -2447,6 +2447,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestUnholy-AllItems-Thok'sTailTip-105609"
+ value: {
+  dps: 253481.52708
+  tps: 175046.05169
+  hps: 2612.06585
+ }
+}
+dps_results: {
  key: "TestUnholy-AllItems-Thousand-YearPickledEgg-257881"
  value: {
   dps: 219457.2176

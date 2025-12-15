@@ -2075,6 +2075,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestBeastMastery-AllItems-Thok'sTailTip-105609"
+ value: {
+  dps: 218340.68491
+  tps: 102957.6923
+ }
+}
+dps_results: {
  key: "TestBeastMastery-AllItems-Thousand-YearPickledEgg-257881"
  value: {
   dps: 213531.08237
