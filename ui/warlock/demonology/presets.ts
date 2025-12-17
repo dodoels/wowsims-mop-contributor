@@ -100,11 +100,23 @@ export const PRESET_BUILD_P2 = PresetUtils.makePresetBuild('T14', {
 	gear: P2_PRESET,
 	talents: DemonologyTalentsDefault,
 	rotation: APL_Default,
+	settings: {
+		name: 'T14',
+		playerOptions: OtherDefaults,
+	},
 });
 export const PRESET_BUILD_P3 = PresetUtils.makePresetBuild('T15', {
 	gear: P3_PRESET,
 	talents: DemonologyTalentsDefault,
 	rotation: APL_UVLS,
+	settings: {
+		name: 'T15',
+		playerOptions: {
+			...OtherDefaults,
+			profession1: Profession.Engineering,
+			profession2: Profession.Herbalism,
+		},
+	},
 });
 
 export const DEMONOLOGY_BREAKPOINTS = {
