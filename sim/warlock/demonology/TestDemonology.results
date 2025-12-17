@@ -97,9 +97,9 @@ dps_results: {
 dps_results: {
  key: "TestDemonology-AllItems-BlackBloodofY'Shaarj-105648"
  value: {
-  dps: 242078.89392
-  tps: 155291.81066
-  hps: 2386.63429
+  dps: 226494.69098
+  tps: 141448.18361
+  hps: 2374.97593
  }
 }
 dps_results: {
@@ -2161,9 +2161,9 @@ dps_results: {
 dps_results: {
  key: "TestDemonology-AllItems-Skeer'sBloodsoakedTalisman-105632"
  value: {
-  dps: 200501.19605
-  tps: 129007.63257
-  hps: 2259.50258
+  dps: 191485.04998
+  tps: 121375.44016
+  hps: 2285.03995
  }
 }
 dps_results: {
@@ -2425,9 +2425,9 @@ dps_results: {
 dps_results: {
  key: "TestDemonology-AllItems-Time-LostArtifact-103678"
  value: {
-  dps: 203915.16085
-  tps: 131488.88153
-  hps: 2259.50258
+  dps: 194727.8325
+  tps: 123695.00844
+  hps: 2285.03995
  }
 }
 dps_results: {
