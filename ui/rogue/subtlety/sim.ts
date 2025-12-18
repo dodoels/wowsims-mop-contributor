@@ -146,10 +146,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecSubtletyRogue, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.P2_T14_GEARSET.gear,
+					1: Presets.P3_T15_GEARSET.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.P2_T14_GEARSET.gear,
+					1: Presets.P3_T15_GEARSET.gear,
 				},
 			},
 			otherDefaults: Presets.OtherDefaults,

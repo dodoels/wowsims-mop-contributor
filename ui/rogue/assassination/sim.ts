@@ -144,10 +144,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecAssassinationRogue, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.P2_GEARSET.gear,
+					1: Presets.P3_GEARSET.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.P2_GEARSET.gear,
+					1: Presets.P3_GEARSET.gear,
 				},
 			},
 			otherDefaults: Presets.OtherDefaults,
