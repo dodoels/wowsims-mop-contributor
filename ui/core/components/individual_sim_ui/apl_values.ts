@@ -555,7 +555,6 @@ const valueKindFactories: { [f in ValidAPLValueKind]: ValueKindConfig<APLValueIm
 		submenu: ['logic'],
 		shortDescription: i18n.t('rotation_tab.apl.values.compare.tooltip'),
 		newValue: APLValueCompare.create,
-		includeIf: (_: Player<any>, isPrepull: boolean) => !isPrepull,
 		fields: [valueFieldConfig('lhs'), comparisonOperatorFieldConfig('op'), valueFieldConfig('rhs')],
 	}),
 	math: inputBuilder({
@@ -920,7 +919,7 @@ const valueKindFactories: { [f in ValidAPLValueKind]: ValueKindConfig<APLValueIm
 		submenu: ['resources', 'eclipse'],
 		shortDescription: i18n.t('rotation_tab.apl.values.solar_energy.tooltip'),
 		newValue: APLValueCurrentSolarEnergy.create,
-		includeIf: (player: Player<any>, isPrepull: boolean) => !isPrepull && player.getSpec() == Spec.SpecBalanceDruid,
+		includeIf: (player: Player<any>, _isPrepull: boolean) =>  player.getSpec() == Spec.SpecBalanceDruid,
 		fields: [],
 	}),
 	currentLunarEnergy: inputBuilder({
@@ -928,7 +927,7 @@ const valueKindFactories: { [f in ValidAPLValueKind]: ValueKindConfig<APLValueIm
 		submenu: ['resources', 'eclipse'],
 		shortDescription: i18n.t('rotation_tab.apl.values.lunar_energy.tooltip'),
 		newValue: APLValueCurrentLunarEnergy.create,
-		includeIf: (player: Player<any>, isPrepull: boolean) => !isPrepull && player.getSpec() == Spec.SpecBalanceDruid,
+		includeIf: (player: Player<any>, _isPrepull: boolean) =>  player.getSpec() == Spec.SpecBalanceDruid,
 		fields: [],
 	}),
 	druidCurrentEclipsePhase: inputBuilder({
@@ -936,7 +935,7 @@ const valueKindFactories: { [f in ValidAPLValueKind]: ValueKindConfig<APLValueIm
 		submenu: ['resources', 'eclipse'],
 		shortDescription: i18n.t('rotation_tab.apl.values.current_eclipse_phase.tooltip'),
 		newValue: APLValueCurrentEclipsePhase.create,
-		includeIf: (player: Player<any>, isPrepull: boolean) => !isPrepull && player.getSpec() == Spec.SpecBalanceDruid,
+		includeIf: (player: Player<any>, _isPrepull: boolean) =>  player.getSpec() == Spec.SpecBalanceDruid,
 		fields: [AplHelpers.eclipseTypeFieldConfig('eclipsePhase')],
 	}),
 	currentGenericResource: inputBuilder({
