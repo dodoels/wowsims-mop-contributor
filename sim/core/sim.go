@@ -469,7 +469,7 @@ func (sim *Simulation) PrePull() {
 
 	sim.AddPendingAction(&PendingAction{
 		NextActionAt: 0,
-		Priority:     ActionPriorityPrePull + ActionPriority(len(sim.prepullActions)+1),
+		Priority:     ActionPriorityHigh,
 		OnAction: func(sim *Simulation) {
 			for _, unit := range sim.Environment.AllUnits {
 				if unit.enabled {
