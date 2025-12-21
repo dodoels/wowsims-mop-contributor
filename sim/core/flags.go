@@ -216,6 +216,7 @@ const (
 	SpellSchoolShadowFrost SpellSchool = SpellSchoolFrost | SpellSchoolShadow
 	SpellSchoolPlague      SpellSchool = SpellSchoolNature | SpellSchoolShadow
 	SpellSchoolFirestorm   SpellSchool = SpellSchoolFire | SpellSchoolNature
+	SpellSchoolFrostfire   SpellSchool = SpellSchoolFire | SpellSchoolFrost
 	SpellSchoolElemental   SpellSchool = SpellSchoolFire | SpellSchoolNature | SpellSchoolFrost
 )
 

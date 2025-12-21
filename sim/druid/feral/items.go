@@ -86,7 +86,7 @@ func (cat *FeralDruid) registerFeralRage() {
 			}
 
 			if spell.Matches(druid.DruidSpellSavageRoar) || resultLanded {
-				aura.Unit.AddComboPoints(sim, 3, cpMetrics)
+				aura.Unit.AddComboPoints(sim, 3, aura.Unit.CurrentComboTarget, cpMetrics)
 				resultLanded = false
 				aura.Deactivate(sim)
 			}

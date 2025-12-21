@@ -3,12 +3,11 @@ package priest
 import (
 	"time"
 
-	"github.com/wowsims/mop/sim/common/mop"
 	"github.com/wowsims/mop/sim/core"
 )
 
-const SwpScaleCoeff = 0.743 // Revert 5.4 changes due to Beta changes from June 16th
-const SwpSpellCoeff = 0.366
+const SwpScaleCoeff = 0.629660992297
+const SwpSpellCoeff = 0.310169488695
 
 func (priest *Priest) registerShadowWordPainSpell() {
 	priest.ShadowWordPain = priest.RegisterSpell(core.SpellConfig{
@@ -54,20 +53,16 @@ func (priest *Priest) registerShadowWordPainSpell() {
 
 		ThreatMultiplier: 1,
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			result := spell.CalcPeriodicDamage(sim, target, priest.CalcScalingSpellDmg(SwpScaleCoeff), spell.OutcomeMagicHitAndCrit)
+			result := spell.CalcAndDealOutcome(sim, target, spell.OutcomeMagicHit)
 			if result.Landed() {
-				spell.Dot(target).Apply(sim)
-				spell.DealOutcome(sim, result)
+				dot := spell.Dot(target)
+				dot.Apply(sim)
+				dot.TickOnce(sim)
 
-				// Failsave for Unerring Vision custom code for shadow
-				unerringAura := priest.GetAuraByID(core.ActionID{SpellID: mop.UnerringVisionBuffId})
-				if unerringAura != nil && unerringAura.IsActive() {
-					priest.UnerringFaded[target.Index].Swp = spell.Dot(target).ExpiresAt()
-				} else {
-					// make sure we reset here to not have edge cases where we refresh the dot before
-					// it's expiration and did not update the expiration time, so it will be decreased by 100%
-					priest.UnerringFaded[target.Index].VT = 1<<63 - 1
-				}
+				// Custom code for tracking T15 2PC extension logic
+				// which recalculates the snapshot if you extend after
+				// the initial duration.
+				priest.T15_2PC_ExtensionTracker[target.Index].Swp = spell.Dot(target).ExpiresAt()
 			}
 		},
 

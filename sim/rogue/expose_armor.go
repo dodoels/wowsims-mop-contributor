@@ -49,7 +49,7 @@ func (rogue *Rogue) registerExposeArmorSpell() {
 					debuffAura.AddStack(sim)
 				}
 
-				rogue.AddComboPointsOrAnticipation(sim, 1, cpMetric)
+				rogue.AddComboPointsOrAnticipation(sim, 1, target, cpMetric)
 			} else {
 				spell.IssueRefund(sim)
 			}

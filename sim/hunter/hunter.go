@@ -1,8 +1,6 @@
 package hunter
 
 import (
-	"time"
-
 	"github.com/wowsims/mop/sim/core"
 	"github.com/wowsims/mop/sim/core/proto"
 	"github.com/wowsims/mop/sim/core/stats"
@@ -15,33 +13,23 @@ type Hunter struct {
 
 	ClassSpellScaling float64
 
-	Talents             *proto.HunterTalents
-	Options             *proto.HunterOptions
-	BeastMasteryOptions *proto.BeastMasteryHunter_Options
-	MarksmanshipOptions *proto.MarksmanshipHunter_Options
-	SurvivalOptions     *proto.SurvivalHunter_Options
+	Talents *proto.HunterTalents
+	Options *proto.HunterOptions
 
 	Pet          *HunterPet
 	StampedePet  []*HunterPet
 	DireBeastPet *HunterPet
 	Thunderhawks []*ThunderhawkPet
 
-	// The most recent time at which moving could have started, for trap weaving.
-	mayMoveAt time.Duration
-
-	AspectOfTheHawk *core.Spell
-
 	// Hunter spells
-	SerpentSting         *core.Spell
+	AspectOfTheHawk      *core.Spell
 	ExplosiveTrap        *core.Spell
-	ExplosiveShot        *core.Spell
+	HuntersMarkSpell     *core.Spell
 	ImprovedSerpentSting *core.Spell
 	RapidFire            *core.Spell
+	SerpentSting         *core.Spell
 
 	BestialWrathAura *core.Aura
-
-	// Fake spells to encapsulate weaving logic.
-	HuntersMarkSpell *core.Spell
 }
 
 func (hunter *Hunter) GetCharacter() *core.Character {
@@ -66,15 +54,10 @@ func NewHunter(character *core.Character, options *proto.Player, hunterOptions *
 	kindredSpritsBonusFocus := core.TernaryFloat64(hunter.Spec == proto.Spec_SpecBeastMasteryHunter, 20, 0)
 	hunter.EnableFocusBar(100+kindredSpritsBonusFocus, focusPerSecond, true, nil, true)
 
-	hunter.PseudoStats.CanParry = true
-
-	// Passive bonus (used to be from quiver).
-	//hunter.PseudoStats.RangedSpeedMultiplier *= 1.15
 	rangedWeapon := hunter.WeaponFromRanged(0)
 
 	hunter.EnableAutoAttacks(hunter, core.AutoAttackOptions{
-		Ranged: rangedWeapon,
-		//ReplaceMHSwing:  hunter.TryRaptorStrike, //Todo: Might be weaving
+		Ranged:          rangedWeapon,
 		AutoSwingRanged: true,
 		AutoSwingMelee:  false,
 	})
@@ -97,12 +80,16 @@ func NewHunter(character *core.Character, options *proto.Player, hunterOptions *
 		hunter.StampedePet[index] = hunter.NewStampedePet(index)
 	}
 
-	hunter.DireBeastPet = hunter.NewDireBeastPet()
+	if hunter.Talents.DireBeast {
+		hunter.DireBeastPet = hunter.NewDireBeastPet()
+	}
 
-	// Add 10 just to be protected against weird good luck :)
-	hunter.Thunderhawks = make([]*ThunderhawkPet, 10)
-	for index := range 10 {
-		hunter.Thunderhawks[index] = hunter.NewThunderhawkPet(index)
+	if hunter.CouldHaveSetBonus(SaurokStalker, 2) {
+		// Add 10 just to be protected against weird good luck :)
+		hunter.Thunderhawks = make([]*ThunderhawkPet, 10)
+		for index := range 10 {
+			hunter.Thunderhawks[index] = hunter.NewThunderhawkPet(index)
+		}
 	}
 
 	return hunter
@@ -110,14 +97,8 @@ func NewHunter(character *core.Character, options *proto.Player, hunterOptions *
 
 func (hunter *Hunter) Initialize() {
 	hunter.AutoAttacks.RangedConfig().CritMultiplier = hunter.DefaultCritMultiplier()
-	// hunter.addBloodthirstyGloves()
-	// Add Stampede pets
-
-	// Add Dire Beast pet
-	// hunter.ApplyGlyphs()
 
 	hunter.RegisterSpells()
-
 }
 
 func (hunter *Hunter) GetBaseDamageFromCoeff(coeff float64) float64 {
@@ -128,9 +109,9 @@ func (hunter *Hunter) ApplyTalents() {
 	hunter.applyThrillOfTheHunt()
 	hunter.ApplyHotfixes()
 	hunter.addBloodthirstyGloves()
+	hunter.applyAutoShotTriggers()
 
 	if hunter.Pet != nil {
-
 		hunter.Pet.ApplyTalents()
 	}
 
@@ -167,20 +148,11 @@ func (hunter *Hunter) AddStatDependencies() {
 func (hunter *Hunter) AddRaidBuffs(raidBuffs *proto.RaidBuffs) {
 	raidBuffs.TrueshotAura = true
 
-	// if hunter.Talents.FerociousInspiration && hunter.Options.PetType != proto.HunterOptions_PetNone {
-	// 	raidBuffs.FerociousInspiration = true
-	// }
-
-	if hunter.Options.PetType == proto.HunterOptions_CoreHound {
-		raidBuffs.Bloodlust = true
-	}
 	switch hunter.Options.PetType {
 	case proto.HunterOptions_CoreHound:
 		raidBuffs.Bloodlust = true
-
 	case proto.HunterOptions_ShaleSpider:
 		raidBuffs.EmbraceOfTheShaleSpider = true
-
 	case proto.HunterOptions_Wolf:
 		raidBuffs.FuriousHowl = true
 	case proto.HunterOptions_Devilsaur:
@@ -198,19 +170,6 @@ func (hunter *Hunter) AddRaidBuffs(raidBuffs *proto.RaidBuffs) {
 	case proto.HunterOptions_SpiritBeast:
 		raidBuffs.SpiritBeastBlessing = true
 	}
-	// if hunter.Options.PetType == proto.HunterOptions_ShaleSpider {
-	// 	raidBuffs.BlessingOfKings = true
-	// }
-
-	// if hunter.Options.PetType == proto.HunterOptions_Wolf || hunter.Options.PetType == proto.HunterOptions_Devilsaur {
-	// 	raidBuffs.FuriousHowl = true
-	// }
-
-	// TODO: Fix this to work with the new talent system.
-	//
-	//	if hunter.Talents.HuntingParty {
-	//		raidBuffs.HuntingParty = true
-	//	}
 }
 
 func (hunter *Hunter) AddPartyBuffs(_ *proto.PartyBuffs) {
@@ -224,10 +183,39 @@ func (hunter *Hunter) HasMinorGlyph(glyph proto.HunterMinorGlyph) bool {
 }
 
 func (hunter *Hunter) Reset(_ *core.Simulation) {
-	hunter.mayMoveAt = 0
 }
 
 func (hunter *Hunter) OnEncounterStart(sim *core.Simulation) {
+}
+
+func (hunter *Hunter) applyAutoShotTriggers() {
+	prepullCheck := func(sim *core.Simulation, _ *core.Spell, _ *core.SpellResult) bool {
+		return sim.CurrentTime < 0 && !hunter.SpellInFlight(hunter.AutoAttacks.RangedAuto())
+	}
+
+	enableAutoShot := func(sim *core.Simulation, _ *core.Spell, _ *core.SpellResult) {
+		hunter.AutoAttacks.EnableRangedSwing(sim, true)
+	}
+
+	hunter.MakeProcTriggerAura(core.ProcTrigger{
+		Name:               "Initiate auto shot on spell cast complete",
+		Callback:           core.CallbackOnCastComplete,
+		ClassSpellMask:     HunterSpellsAutoOnCastComplete,
+		TriggerImmediately: true,
+
+		ExtraCondition: prepullCheck,
+		Handler:        enableAutoShot,
+	})
+
+	hunter.MakeProcTriggerAura(core.ProcTrigger{
+		Name:               "Initiate auto shot on spell cast",
+		Callback:           core.CallbackOnApplyEffects,
+		ClassSpellMask:     HunterSpellsAutoOnCast,
+		TriggerImmediately: true,
+
+		ExtraCondition: prepullCheck,
+		Handler:        enableAutoShot,
+	})
 }
 
 const (
@@ -263,6 +251,13 @@ const (
 		HunterSpellExplosiveTrap | HunterSpellBlackArrow | HunterSpellMultiShot | HunterSpellAimedShot |
 		HunterSpellSerpentSting | HunterSpellKillShot | HunterSpellRapidFire | HunterSpellBestialWrath
 	HunterSpellsTalents = HunterSpellFervor | HunterSpellDireBeast | HunterSpellAMurderOfCrows | HunterSpellLynxRush | HunterSpellGlaiveToss | HunterSpellPowershot | HunterSpellBarrage
+
+	// These spells trigger auto shot when their cast time finishes
+	HunterSpellsAutoOnCastComplete = HunterSpellCobraShot | HunterSpellAimedShot
+
+	// These spells trigger auto shot when they are cast
+	HunterSpellsAutoOnCast = HunterSpellSteadyShot | HunterSpellArcaneShot | HunterSpellChimeraShot |
+		HunterSpellExplosiveShot | HunterSpellBlackArrow | HunterSpellMultiShot | HunterSpellSerpentSting | HunterSpellKillShot
 )
 
 // Agent is a generic way to access underlying hunter on any of the agents.

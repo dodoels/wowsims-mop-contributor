@@ -44,7 +44,7 @@ func (comRogue *CombatRogue) registerRevealingStrike() {
 			OnSpellHitTaken: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 				if result.Landed() && spell.ClassSpellMask == rogue.RogueSpellSinisterStrike {
 					if sim.Proc(0.2, "Revealing Strike Extra Combo Point") {
-						comRogue.AddComboPointsOrAnticipation(sim, 1, cpMetric)
+						comRogue.AddComboPointsOrAnticipation(sim, 1, aura.Unit, cpMetric)
 
 						if comRogue.T16EnergyAura != nil {
 							comRogue.T16EnergyAura.Activate(sim)
@@ -88,7 +88,7 @@ func (comRogue *CombatRogue) registerRevealingStrike() {
 
 			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
 			if result.Landed() {
-				comRogue.AddComboPointsOrAnticipation(sim, 1, spell.ComboPointMetrics())
+				comRogue.AddComboPointsOrAnticipation(sim, 1, target, spell.ComboPointMetrics())
 				aura := rvsAura.Get(target)
 				if aura.IsActive() {
 					aura.Duration = aura.RemainingDuration(sim)%clipInterval + baseDuration

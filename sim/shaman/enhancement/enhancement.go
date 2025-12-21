@@ -116,7 +116,7 @@ func (enh *EnhancementShaman) Initialize() {
 	// Mastery: Enhanced Elements
 	masteryMod := enh.AddDynamicMod(core.SpellModConfig{
 		Kind:              core.SpellMod_DamageDone_Pct,
-		School:            core.SpellSchoolFire | core.SpellSchoolFrost | core.SpellSchoolNature,
+		School:            core.SpellSchoolElemental,
 		ShouldApplyToPets: true,
 	})
 

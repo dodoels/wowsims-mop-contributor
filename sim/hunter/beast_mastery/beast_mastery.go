@@ -130,6 +130,8 @@ func (hunter *BeastMasteryHunter) getMasteryBonus(masteryRating float64) float64
 
 type BeastMasteryHunter struct {
 	*hunter.Hunter
+
+	BeastMasteryOptions *proto.BeastMasteryHunter_Options
 }
 
 func (bmHunter *BeastMasteryHunter) GetHunter() *hunter.Hunter {

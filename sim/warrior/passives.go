@@ -12,9 +12,6 @@ func (war *Warrior) registerEnrage() {
 	actionID := core.ActionID{SpellID: 12880}
 	rageMetrics := war.NewRageMetrics(actionID)
 	duration := time.Second * 6
-	if war.Spec == proto.Spec_SpecFuryWarrior {
-		duration = time.Second * 8
-	}
 
 	war.EnrageAura = war.RegisterAura(core.Aura{
 		Label:    "Enrage",

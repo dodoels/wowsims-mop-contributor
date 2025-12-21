@@ -100,9 +100,12 @@ var ItemSetBattleplateOfTheLastMogu = core.NewItemSet(core.ItemSet{
 
 			setBonusAura.AttachProcTrigger(core.ProcTrigger{
 				Name:           "Item - Warrior T15 DPS 4P Bonus",
-				ClassSpellMask: SpellMaskSkullBanner,
+				ClassSpellMask: SpellMaskRecklessness,
 				Callback:       core.CallbackOnCastComplete,
 				Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
+					if war.StanceMatches(DefensiveStance) {
+						return
+					}
 					aura.Activate(sim)
 				},
 			})

@@ -151,10 +151,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecBrewmasterMonk, {
 		],
 		// Preset gear configurations that the user can quickly select.
 		gear: [
+			Presets.PREBIS_GEAR_PRESET,
 			Presets.P2_BIS_DW_GEAR_PRESET,
 			Presets.P2_BIS_OFFENSIVE_DW_GEAR_PRESET,
 			Presets.P2_BIS_OFFENSIVE_TIERLESS_DW_GEAR_PRESET,
-			Presets.P3_PROG_DW_GEAR_PRESET,
 			Presets.P3_BIS_DW_GEAR_PRESET,
 			Presets.P3_BIS_OFFENSIVE_DW_GEAR_PRESET,
 		],

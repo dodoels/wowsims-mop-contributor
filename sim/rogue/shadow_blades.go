@@ -39,7 +39,7 @@ func (rogue *Rogue) registerShadowBladesCD() {
 
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			if result.Landed() && spell.Flags.Matches(SpellFlagBuilder) {
-				rogue.AddComboPointsOrAnticipation(sim, 1, cpMetrics)
+				rogue.AddComboPointsOrAnticipation(sim, 1, result.Target, cpMetrics)
 			}
 		},
 	})

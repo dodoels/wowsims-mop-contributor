@@ -184,6 +184,7 @@ var ItemOverrides = []*proto.UIItem{
 	{Id: 72881, Phase: 4}, // Treads of the Past
 	{Id: 72884, Phase: 4}, // Writhing Wand
 }
+var ItemUpgradesDisallowList = map[int32]struct{}{}
 
 // Keep these sorted by item ID.
 var ItemAllowList = map[int32]struct{}{
@@ -684,11 +685,60 @@ var ItemDenyList = map[int32]struct{}{
 	103050: {},
 
 	// MOP
+	// MSV / HOF / TOES
 	87080: {}, // HC Trash Jade Magistrate Figurine - 502
 	87079: {}, // HC Trash Jade Bandit Figurine - 502
 	87082: {}, // HC Trash Jade Charioteer Figurine - 502
 	87081: {}, // HC Trash Jade Courteasan Figurine - 502
 	87083: {}, // HC Trash Jade Warlord Figurine - 502
+
+	// TOT - Trash loot - Heroic (Thunderforged)
+	96702: {}, // Necklace of the Terra-Cotta Archer (Heroic)
+	96703: {}, // Spiderweb Tabi (Heroic)
+	96704: {}, // Scalehide Spurs (Heroic)
+	96705: {}, // Abandoned Zandalari Firecord (Heroic)
+	96706: {}, // Abandoned Zandalari Shadowgirdle (Heroic)
+	96707: {}, // Silentflame Sandals (Heroic)
+	96708: {}, // Necklace of the Terra-Cotta Invoker (Heroic)
+	96709: {}, // Home-Warding Slippers (Heroic)
+	96710: {}, // Deeproot Treads (Heroic)
+	96711: {}, // Spiritbound Boots (Heroic)
+	96712: {}, // Vaultwalker Sabatons (Heroic)
+	96713: {}, // Necklace of the Terra-Cotta Mender (Heroic)
+	96714: {}, // Abandoned Zandalari Silentbelt (Heroic)
+	96715: {}, // Abandoned Zandalari Moonstrap (Heroic)
+	96716: {}, // Abandoned Zandalari Arrowlinks (Heroic)
+	96717: {}, // Abandoned Zandalari Waterchain (Heroic)
+	96718: {}, // Abandoned Zandalari Greatbelt (Heroic)
+	96719: {}, // Abandoned Zandalari Goreplate (Heroic)
+	96720: {}, // Abandoned Zandalari Bucklebreaker (Heroic)
+	96721: {}, // Necklace of the Terra-Cotta Vanquisher (Heroic)
+	96722: {}, // Locksmasher Greaves (Heroic)
+	96723: {}, // Columnbreaker Stompers (Heroic)
+	96724: {}, // Necklace of the Terra-Cotta Protector (Heroic)
+	97074: {}, // Necklace of the Terra-Cotta Archer (Heroic Thunderforged)
+	97075: {}, // Spiderweb Tabi (Heroic Thunderforged)
+	97076: {}, // Scalehide Spurs (Heroic Thunderforged)
+	97077: {}, // Abandoned Zandalari Firecord (Heroic Thunderforged)
+	97078: {}, // Abandoned Zandalari Shadowgirdle (Heroic Thunderforged)
+	97079: {}, // Silentflame Sandals (Heroic Thunderforged)
+	97080: {}, // Necklace of the Terra-Cotta Invoker (Heroic Thunderforged)
+	97081: {}, // Home-Warding Slippers (Heroic Thunderforged)
+	97082: {}, // Deeproot Treads (Heroic Thunderforged)
+	97083: {}, // Spiritbound Boots (Heroic Thunderforged)
+	97084: {}, // Vaultwalker Sabatons (Heroic Thunderforged)
+	97085: {}, // Necklace of the Terra-Cotta Mender (Heroic Thunderforged)
+	97086: {}, // Abandoned Zandalari Silentbelt (Heroic Thunderforged)
+	97087: {}, // Abandoned Zandalari Moonstrap (Heroic Thunderforged)
+	97088: {}, // Abandoned Zandalari Arrowlinks (Heroic Thunderforged)
+	97089: {}, // Abandoned Zandalari Waterchain (Heroic Thunderforged)
+	97090: {}, // Abandoned Zandalari Greatbelt (Heroic Thunderforged)
+	97091: {}, // Abandoned Zandalari Goreplate (Heroic Thunderforged)
+	97092: {}, // Abandoned Zandalari Bucklebreaker (Heroic Thunderforged)
+	97093: {}, // Necklace of the Terra-Cotta Vanquisher (Heroic Thunderforged)
+	97094: {}, // Locksmasher Greaves (Heroic Thunderforged)
+	97095: {}, // Columnbreaker Stompers (Heroic Thunderforged)
+	97096: {}, // Necklace of the Terra-Cotta Protector (Heroic Thunderforged)
 
 	// MOP - Brewfest - Old items
 	87571:  {}, // Brawler's Statue
@@ -1082,32 +1132,6 @@ var GemAllowList = map[int32]struct{}{
 	//36766: {}, // Bright Dragon's Eye
 	//36767: {}, // Solid Dragon's Eye
 }
-var EnchantDenyListSpells = map[int32]struct{}{
-	141168: {},
-	141973: {},
-	142173: {},
-	142175: {},
-	141170: {},
-	141974: {},
-	142177: {},
-	141868: {},
-	141984: {},
-	141177: {},
-	141981: {},
-	141176: {},
-	141978: {},
-	141173: {},
-	141975: {},
-	141862: {},
-	141983: {},
-	141175: {},
-	141977: {},
-}
-var EnchantDenyListItems = map[int32]struct{}{
-	87583: {},
-	89717: {},
-	79061: {},
-}
 var GemDenyList = map[int32]struct{}{
 	// pvp non-unique gems not in game currently.
 	32735: {},
@@ -1168,6 +1192,33 @@ var GemDenyList = map[int32]struct{}{
 	77138: {},
 	77136: {},
 	76655: {},
+}
+
+var EnchantDenyListSpells = map[int32]struct{}{
+	141168: {},
+	141973: {},
+	142173: {},
+	142175: {},
+	141170: {},
+	141974: {},
+	142177: {},
+	141868: {},
+	141984: {},
+	141177: {},
+	141981: {},
+	141176: {},
+	141978: {},
+	141173: {},
+	141975: {},
+	141862: {},
+	141983: {},
+	141175: {},
+	141977: {},
+}
+var EnchantDenyListItems = map[int32]struct{}{
+	87583: {},
+	89717: {},
+	79061: {},
 }
 
 var EnchantDenyList = map[int32]struct{}{

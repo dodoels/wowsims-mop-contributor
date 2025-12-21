@@ -36,6 +36,7 @@ type PetConfig struct {
 	HasDynamicMeleeSpeedInheritance bool
 	HasDynamicCastSpeedInheritance  bool
 	HasResourceRegenInheritance     bool
+	StartsAtOwnerDistance           bool
 }
 
 // Pet is an extension of Character, for any entity created by a player that can
@@ -85,6 +86,7 @@ type Pet struct {
 }
 
 func NewPet(config PetConfig) Pet {
+	distanceFromTarget := TernaryFloat64(config.StartsAtOwnerDistance, config.Owner.StartDistanceFromTarget, MaxMeleeRange)
 	pet := Pet{
 		Character: Character{
 			Unit: Unit{
@@ -100,7 +102,8 @@ func NewPet(config PetConfig) Pet {
 
 				ReactionTime: config.Owner.ReactionTime,
 
-				StartDistanceFromTarget: MaxMeleeRange, // TODO: Match to owner and add movement logic to pet rotations
+				StartDistanceFromTarget: distanceFromTarget,
+				DistanceFromTarget:      distanceFromTarget,
 			},
 			Name:       config.Name,
 			Party:      config.Owner.Party,

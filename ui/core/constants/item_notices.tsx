@@ -54,9 +54,22 @@ export const ITEM_NOTICES = new Map<number, ItemNoticeData>([
 		{
 			[Spec.SpecUnknown]: (
 				<>
-					<p>The Agility proc on this trinket has been implemented, but the Voodoo Gnomes are <span className="fw-bold">not</span> currently implemented!</p>
-					<p>PTR testing is required in order to fit out accurate damage parameters for the Voodoo Gnomes.</p>
-					<WantToHelpMessage />
+					<p>
+						The Agility proc on this trinket has been implemented, but the Voodoo Gnomes are <span className="fw-bold">not</span> implemented. The DPS gain of these is around ~40 DPS.
+					</p>
+				</>
+			),
+		},
+	]),
+
+	...[105150, 102310, 104652, 105399, 105648, 104901].map((itemID): [number, ItemNoticeData] => [
+		itemID,
+		{
+			[Spec.SpecUnknown]: (
+				<>
+					<p>
+						The proc has been implemented but currently does not work correctly with Mages Alter Time.
+					</p>
 				</>
 			),
 		},
@@ -68,17 +81,12 @@ export const GENERIC_MISSING_SET_BONUS_NOTICE_DATA = new Map<number, string>([
 	[4, 'Not yet implemented'],
 ]);
 
-const ELE_T15_SET_BONUS_NOTICE_DATA = new Map<number, string>([
-	[4, 'Implementation needs testing on PTR'],
-]);
-
 const ELE_T16_SET_BONUS_NOTICE_DATA = new Map<number, string>([
 	[2, 'Implementation needs testing on PTR'],
 	[4, 'Not yet implemented'],
 ]);
 
 export const SET_BONUS_NOTICES = new Map<number, SetBonusNoticeData>([
-	[1170, ELE_T15_SET_BONUS_NOTICE_DATA], // Elemental T15
 	[1182, ELE_T16_SET_BONUS_NOTICE_DATA], // Elemental T16
-	[1196, null],                          // Guardian T16
+	[1196, null], // Guardian T16
 ]);

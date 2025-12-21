@@ -54,7 +54,7 @@ type ShadowPriest struct {
 	*priest.Priest
 	options      *proto.ShadowPriest_Options
 	ShadowOrbs   core.SecondaryResourceBar
-	orbsConsumed int32 // Number of orbs consumed by the last devouring plague cast
+	orbsConsumed float64 // Number of orbs consumed by the last devouring plague cast
 
 	// Shadow Spells
 	DevouringPlague *core.Spell
@@ -93,9 +93,11 @@ func (spriest *ShadowPriest) OnEncounterStart(sim *core.Simulation) {
 func (spriest *ShadowPriest) ApplyTalents() {
 	spriest.Priest.ApplyTalents()
 
-	// apply shadow spec specific auras
+	// Apply shadow spec specific auras
+	// 2025-07-01 - Shadowform’s damage increase increased to 35% (was 25%).
+	// 2025-11-13 - Shadowform’s damage decreased to 32% (was 35%).
 	spriest.AddStaticMod(core.SpellModConfig{
-		FloatValue: 0.3 + 0.05, // 2025-07-01 - Shadowform damage increase raised to 35% (was 30%)
+		FloatValue: 0.25 + 0.07,
 		School:     core.SpellSchoolShadow,
 		Kind:       core.SpellMod_DamageDone_Pct,
 	})
@@ -116,4 +118,5 @@ func (spriest *ShadowPriest) ApplyTalents() {
 	spriest.registerHalo()
 	spriest.registerCascade()
 	spriest.registerDivineStar()
+	spriest.registerHotfixes()
 }

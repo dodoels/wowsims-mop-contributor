@@ -122,22 +122,22 @@ func (rogue *Rogue) GetRogue() *Rogue {
 func (rogue *Rogue) AddRaidBuffs(_ *proto.RaidBuffs)   {}
 func (rogue *Rogue) AddPartyBuffs(_ *proto.PartyBuffs) {}
 
-func (rogue *Rogue) AddComboPointsOrAnticipation(sim *core.Simulation, numPoints int32, metric *core.ResourceMetrics) {
+func (rogue *Rogue) AddComboPointsOrAnticipation(sim *core.Simulation, numPoints int32, target *core.Unit, metric *core.ResourceMetrics) {
 	if rogue.Talents.Anticipation && rogue.ComboPoints()+numPoints > 5 {
 		realPoints := 5 - rogue.ComboPoints()
 		antiPoints := rogue.AnticipationAura.GetStacks() + numPoints - realPoints
 
-		rogue.AddComboPoints(sim, realPoints, metric)
+		rogue.AddComboPoints(sim, realPoints, target, metric)
 
 		rogue.AnticipationAura.Activate(sim)
 		rogue.AnticipationAura.Refresh(sim)
 		rogue.AnticipationAura.SetStacks(sim, antiPoints)
 		if antiPoints > 5 {
 			// run AddComboPoints again to report the overcapping into UI
-			rogue.AddComboPoints(sim, antiPoints-5, metric)
+			rogue.AddComboPoints(sim, antiPoints-5, target, metric)
 		}
 	} else {
-		rogue.AddComboPoints(sim, numPoints, metric)
+		rogue.AddComboPoints(sim, numPoints, target, metric)
 	}
 }
 
@@ -149,7 +149,7 @@ func (rogue *Rogue) ApplyFinisher(sim *core.Simulation, spell *core.Spell) {
 	if rogue.Spec == proto.Spec_SpecCombatRogue {
 		// Ruthlessness
 		if sim.Proc(0.2*float64(numPoints), "Ruthlessness") {
-			rogue.AddComboPoints(sim, 1, rogue.ruthlessnessMetrics)
+			rogue.AddComboPoints(sim, 1, rogue.CurrentComboTarget, rogue.ruthlessnessMetrics)
 		}
 
 		// Restless Blades

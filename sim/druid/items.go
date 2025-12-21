@@ -166,7 +166,7 @@ var ItemSetBattlegearOfTheHauntedForest = core.NewItemSet(core.ItemSet{
 				procChance := 0.15 * float64(cpSnapshot)
 
 				if sim.Proc(procChance, "2pT15") && (resultLanded || isRoar) {
-					unit.AddComboPoints(sim, 1, cpMetrics)
+					unit.AddComboPoints(sim, 1, unit.CurrentComboTarget, cpMetrics)
 				}
 
 				cpSnapshot = 0

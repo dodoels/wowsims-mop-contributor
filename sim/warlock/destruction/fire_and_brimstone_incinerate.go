@@ -61,7 +61,7 @@ func (destruction *DestructionWarlock) registerFireAndBrimstoneIncinerate() {
 					emberGain += 1
 				}
 
-				destruction.BurningEmbers.Gain(sim, emberGain, spell.ActionID)
+				destruction.BurningEmbers.Gain(sim, float64(emberGain), spell.ActionID)
 
 				spell.WaitTravelTime(sim, func(sim *core.Simulation) {
 					spell.DealDamage(sim, result)

@@ -604,42 +604,45 @@ func FullCharacterTestSuiteGenerator(configs []CharacterSuiteConfig) []TestGener
 				generator: &SingleCharacterStatsTestGenerator{
 					Name: "Default",
 					Request: &proto.ComputeStatsRequest{
-						Raid: defaultRaid,
+						Raid:      defaultRaid,
+						Encounter: Ternary(config.Encounter.Encounter != nil, config.Encounter.Encounter, nil),
 					},
 				},
 			})
 		}
-		generator.subgenerators = append(generator.subgenerators, SubGenerator{
-			name: "Settings",
-			generator: &SettingsCombos{
-				Class:        config.Class,
-				Races:        allRaces,
-				GearSets:     allGearSets,
-				TalentSets:   allTalentSets,
-				SpecOptions:  allSpecOptions,
-				Rotations:    allRotations,
-				ItemSwapSets: allItemSwapSets,
-				Buffs: []BuffsCombo{
-					{
-						Label: "NoBuffs",
+		if config.Encounter.Encounter == nil {
+			generator.subgenerators = append(generator.subgenerators, SubGenerator{
+				name: "Settings",
+				generator: &SettingsCombos{
+					Class:        config.Class,
+					Races:        allRaces,
+					GearSets:     allGearSets,
+					TalentSets:   allTalentSets,
+					SpecOptions:  allSpecOptions,
+					Rotations:    allRotations,
+					ItemSwapSets: allItemSwapSets,
+					Buffs: []BuffsCombo{
+						{
+							Label: "NoBuffs",
+						},
+						{
+							Label:       "FullBuffs",
+							Raid:        FullRaidBuffs,
+							Party:       FullPartyBuffs,
+							Debuffs:     FullDebuffs,
+							Player:      FullIndividualBuffs,
+							Consumables: config.Consumables,
+						},
 					},
-					{
-						Label:       "FullBuffs",
-						Raid:        FullRaidBuffs,
-						Party:       FullPartyBuffs,
-						Debuffs:     FullDebuffs,
-						Player:      FullIndividualBuffs,
-						Consumables: config.Consumables,
-					},
+					IsHealer:          config.IsHealer,
+					IsTank:            config.IsTank,
+					Encounters:        MakeDefaultEncounterCombos(),
+					SimOptions:        DefaultSimTestOptions,
+					Cooldowns:         config.Cooldowns,
+					StartingDistances: allStartingDistances,
 				},
-				IsHealer:          config.IsHealer,
-				IsTank:            config.IsTank,
-				Encounters:        MakeDefaultEncounterCombos(),
-				SimOptions:        DefaultSimTestOptions,
-				Cooldowns:         config.Cooldowns,
-				StartingDistances: allStartingDistances,
-			},
-		})
+			})
+		}
 		// We only run these tests for the first test
 		if testIndex == 0 {
 			generator.subgenerators = append(generator.subgenerators, SubGenerator{

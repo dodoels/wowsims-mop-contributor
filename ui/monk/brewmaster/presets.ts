@@ -11,9 +11,9 @@ import HorridonApl from './apls/horridon.apl.json';
 import GarajalBuild from './builds/garajal_encounter_only.build.json';
 import ShaBuild from './builds/sha_encounter_only.build.json';
 import HorridonBuild from './builds/horridon_encounter_only.build.json';
+import PreBISGear from './gear_sets/prebis.gear.json';
 import P1BISDWGear from './gear_sets/p1_bis_dw.gear.json';
 import P2BISDWGear from './gear_sets/p2_bis_dw.gear.json';
-import P3ProgDWGear from './gear_sets/p3_prog_dw.gear.json';
 import P3BISDWGear from './gear_sets/p3_bis_dw.gear.json';
 import P3OffensiveDWGear from './gear_sets/p3_bis_offensive_dw.gear.json';
 import P3OffensiveRoRoDWGear from './gear_sets/p3_bis_offensive_dw_roro.default.json';
@@ -24,14 +24,14 @@ import P2BISOffensiveTierlessDWGear from './gear_sets/p2_bis_offensive_tierless_
 // Eventually we will import these values for the raid sim too, so its good to
 // keep them in a separate file.
 
+export const PREBIS_GEAR_PRESET = PresetUtils.makePresetGear('Pre-BIS (Balanced)', PreBISGear);
 export const P1_BIS_DW_GEAR_PRESET = PresetUtils.makePresetGear('P1 - BIS (Balanced)', P1BISDWGear);
 export const P2_BIS_DW_GEAR_PRESET = PresetUtils.makePresetGear('P2 - BIS (Balanced)', P2BISDWGear);
 export const P2_BIS_OFFENSIVE_DW_GEAR_PRESET = PresetUtils.makePresetGear('P2 - BIS (Offensive - 2PC)', P2BISOffensiveDWGear);
 export const P2_BIS_OFFENSIVE_TIERLESS_DW_GEAR_PRESET = PresetUtils.makePresetGear('P2 - BIS (Offensive - No Tier)', P2BISOffensiveTierlessDWGear);
-export const P3_PROG_DW_GEAR_PRESET = PresetUtils.makePresetGear('Tentative - P3 - Prog (Balanced)', P3ProgDWGear);
-export const P3_BIS_DW_GEAR_PRESET = PresetUtils.makePresetGear('Tentative - P3 - BIS (Balanced)', P3BISDWGear);
-export const P3_BIS_OFFENSIVE_DW_GEAR_PRESET = PresetUtils.makePresetGear('Tentative - P3 - BIS (Offensive)', P3OffensiveDWGear);
-export const P3_BIS_OFFENSIVE_DW_RORO_GEAR_PRESET = PresetUtils.makePresetGear('Tentative - P3 - BIS (Offensive - RoRo)', P3OffensiveRoRoDWGear);
+export const P3_BIS_DW_GEAR_PRESET = PresetUtils.makePresetGear('P3 - BIS (Balanced)', P3BISDWGear);
+export const P3_BIS_OFFENSIVE_DW_GEAR_PRESET = PresetUtils.makePresetGear('P3 - BIS (Offensive)', P3OffensiveDWGear);
+export const P3_BIS_OFFENSIVE_DW_RORO_GEAR_PRESET = PresetUtils.makePresetGear('P3 - BIS (Offensive - RoRo)', P3OffensiveRoRoDWGear);
 
 export const ROTATION_PRESET = PresetUtils.makePresetAPLRotation('Generic', DefaultApl);
 export const ROTATION_GARAJAL_PRESET = PresetUtils.makePresetAPLRotation("Gara'jal", GarajalApl);
@@ -93,21 +93,21 @@ export const P3_BALANCED_EP_PRESET = PresetUtils.makePresetEpWeights(
 	Stats.fromMap(
 		{
 			[Stat.StatAgility]: 1,
-			[Stat.StatStamina]: 0.52,
-			[Stat.StatHitRating]: 1.26,
-			[Stat.StatCritRating]: 0.68,
-			[Stat.StatHasteRating]: 0.59,
-			[Stat.StatExpertiseRating]: 0.90,
-			[Stat.StatDodgeRating]: 0.34,
-			[Stat.StatParryRating]: 0.40,
-			[Stat.StatMasteryRating]: 0.66,
+			[Stat.StatStamina]: 0.53,
+			[Stat.StatHitRating]: 1.31,
+			[Stat.StatCritRating]: 0.71,
+			[Stat.StatHasteRating]: 0.61,
+			[Stat.StatExpertiseRating]: 0.95,
+			[Stat.StatDodgeRating]: 0.32,
+			[Stat.StatParryRating]: 0.41,
+			[Stat.StatMasteryRating]: 0.69,
 			[Stat.StatAttackPower]: 0.18,
-			[Stat.StatArmor]: 0.38,
-			[Stat.StatBonusArmor]: 0.38,
+			[Stat.StatArmor]: 0.4,
+			[Stat.StatBonusArmor]: 0.4,
 		},
 		{
-			[PseudoStat.PseudoStatMainHandDps]: 1.08,
-			[PseudoStat.PseudoStatOffHandDps]: 0.68,
+			[PseudoStat.PseudoStatMainHandDps]: 1.79,
+			[PseudoStat.PseudoStatOffHandDps]: 1.38,
 		},
 	),
 );
@@ -117,21 +117,21 @@ export const P3_OFFENSIVE_EP_PRESET = PresetUtils.makePresetEpWeights(
 	Stats.fromMap(
 		{
 			[Stat.StatAgility]: 1,
-			[Stat.StatStamina]: 0.37,
-			[Stat.StatHitRating]: 1.49,
-			[Stat.StatCritRating]: 0.77,
-			[Stat.StatHasteRating]: 0.63,
-			[Stat.StatExpertiseRating]: 1.04,
-			[Stat.StatDodgeRating]: 0.23,
-			[Stat.StatParryRating]: 0.31,
-			[Stat.StatMasteryRating]: 0.43,
-			[Stat.StatAttackPower]: 0.21,
+			[Stat.StatStamina]: 0.35,
+			[Stat.StatHitRating]: 1.56,
+			[Stat.StatCritRating]: 0.8,
+			[Stat.StatHasteRating]: 0.65,
+			[Stat.StatExpertiseRating]: 1.1,
+			[Stat.StatDodgeRating]: 0.21,
+			[Stat.StatParryRating]: 0.3,
+			[Stat.StatMasteryRating]: 0.42,
+			[Stat.StatAttackPower]: 0.22,
 			[Stat.StatArmor]: 0.26,
 			[Stat.StatBonusArmor]: 0.26,
 		},
 		{
-			[PseudoStat.PseudoStatMainHandDps]: 1.27,
-			[PseudoStat.PseudoStatOffHandDps]: 0.76,
+			[PseudoStat.PseudoStatMainHandDps]: 1.78,
+			[PseudoStat.PseudoStatOffHandDps]: 1.24,
 		},
 	),
 );

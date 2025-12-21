@@ -18,7 +18,7 @@ func (monk *Monk) registerStormEarthAndFire() {
 	var sefTarget *core.Unit
 	damageMultiplier := []float64{1, 0.70 - 0.1, 0.55 - 0.1} // 2025-07-21 - Storm, Earth, and Fire damage multiplier reduced by 10%
 
-	sefAura := monk.RegisterAura(core.Aura{
+	monk.SEFAura = monk.RegisterAura(core.Aura{
 		Label:     "Storm, Earth, and Fire",
 		ActionID:  core.ActionID{SpellID: SEFSpellID},
 		Duration:  core.NeverExpires,
@@ -27,18 +27,10 @@ func (monk *Monk) registerStormEarthAndFire() {
 			monk.SefController.CastCopySpell(sim, spell)
 		},
 		OnStacksChange: func(aura *core.Aura, sim *core.Simulation, oldStacks int32, newStacks int32) {
-			// We only care if stacks are increasing
-			// as decreasing would mean disabling SEF
 			if newStacks > oldStacks {
 				monk.SefController.PickClone(sim, sefTarget)
-				newDamageMultiplier := (damageMultiplier[newStacks]) / (damageMultiplier[oldStacks])
-				monk.PseudoStats.DamageDealtMultiplier *= newDamageMultiplier
-				monk.SefController.UpdateCloneDamageMultiplier(newDamageMultiplier)
-				return
 			}
-
-			aura.Deactivate(sim)
-			newDamageMultiplier := 1 / damageMultiplier[oldStacks]
+			newDamageMultiplier := (damageMultiplier[newStacks]) / (damageMultiplier[oldStacks])
 			monk.PseudoStats.DamageDealtMultiplier *= newDamageMultiplier
 			monk.SefController.UpdateCloneDamageMultiplier(newDamageMultiplier)
 		},
@@ -64,13 +56,13 @@ func (monk *Monk) registerStormEarthAndFire() {
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, _ *core.Spell) {
 			// If we have 2 clones already, disable SEF
-			if sefAura.GetStacks() == 2 {
-				sefAura.Deactivate(sim)
+			if monk.SEFAura.GetStacks() == 2 {
+				monk.SEFAura.Deactivate(sim)
 				return
 			}
 			sefTarget = target
-			sefAura.Activate(sim)
-			sefAura.AddStack(sim)
+			monk.SEFAura.Activate(sim)
+			monk.SEFAura.AddStack(sim)
 		},
 	})
 }
@@ -107,8 +99,13 @@ func (controller *StormEarthAndFireController) CastCopySpell(sim *core.Simulatio
 		return
 	}
 	for _, pet := range controller.activeClones {
+		if !pet.CurrentTarget.IsEnabled() {
+			pet.owner.SefController.deactivateClone(sim, pet)
+			continue
+		}
 		petSpellActionID := spell.ActionID.WithTag(SEFSpellID)
 		copySpell := pet.spells[petSpellActionID]
+
 		if copySpell == nil {
 			copySpell = pet.GetSpell(petSpellActionID)
 			pet.spells[petSpellActionID] = copySpell
@@ -167,6 +164,7 @@ func (controller *StormEarthAndFireController) enableClone(sim *core.Simulation,
 func (controller *StormEarthAndFireController) deactivateClone(sim *core.Simulation, clone *StormEarthAndFirePet) {
 	clone.Disable(sim)
 	controller.updateActiveClones()
+	clone.owner.SEFAura.RemoveStack(sim)
 }
 
 func (controller *StormEarthAndFireController) updateActiveClones() {
@@ -336,8 +334,7 @@ func (sefClone *StormEarthAndFirePet) Reset(_ *core.Simulation) {
 func (sefClone *StormEarthAndFirePet) OnEncounterStart(_ *core.Simulation) {
 }
 
-func (sefClone *StormEarthAndFirePet) ExecuteCustomRotation(_ *core.Simulation) {
-}
+func (sefClone *StormEarthAndFirePet) ExecuteCustomRotation(sim *core.Simulation) {}
 
 func (sefClone *StormEarthAndFirePet) enable(sim *core.Simulation) {
 	if sefClone.AutoAttacks.IsDualWielding {

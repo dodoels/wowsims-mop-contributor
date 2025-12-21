@@ -36,7 +36,7 @@ func (shaman *Shaman) newElementalBlastSpellConfig(isElementalOverload bool) cor
 
 	spellConfig := core.SpellConfig{
 		ActionID:       core.ActionID{SpellID: 117014},
-		SpellSchool:    core.SpellSchoolFire | core.SpellSchoolFrost | core.SpellSchoolNature,
+		SpellSchool:    core.SpellSchoolElemental,
 		ProcMask:       mask,
 		Flags:          flags,
 		MissileSpeed:   40,

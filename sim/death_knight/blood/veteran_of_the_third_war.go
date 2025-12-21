@@ -11,7 +11,7 @@ func (bdk *BloodDeathKnight) registerVeteranOfTheThirdWar() {
 		Label:      "Veteran of the Third War" + bdk.Label,
 		ActionID:   core.ActionID{SpellID: 50029},
 		BuildPhase: core.CharacterBuildPhaseTalents,
-	})).AttachMultiplicativePseudoStatBuff(
+	})).AttachAdditivePseudoStatBuff(
 		&bdk.PseudoStats.BaseDodgeChance, 0.02,
 	).AttachStatDependency(
 		bdk.NewDynamicMultiplyStat(stats.Stamina, 1.09),

@@ -84,18 +84,15 @@ export class ActionId {
 					name += ' (Main Hand)';
 				} else if (this.tag == 2) {
 					name += ' (Off Hand)';
-				} else if (this.tag == 41570) {
-					name += ' (Magmaw)';
-				} else if (this.tag == 49416) {
-					name += ' (Blazing Bone Construct)';
-				} else if (this.tag == 56427) {
-					name += ' (Warmaster Blackhorn)';
-				} else if (this.tag == 56781) {
-					name += ' (Goriona)';
 				} else if (this.tag == 68476) {
-					name += ' (Horridon)'
+					name += ' (Horridon)';
 				} else if (this.tag == 69374) {
-					name += ' (War-God Jalak)'
+					name += ' (War-God Jalak)';
+				} else if (this.tag == 99999) {
+					name += ' (Boss)';
+				} else if (this.tag == 99998) {
+					console.log(this, this.tag)
+					name += ' (Add)';
 				} else if (this.tag > 6445300) {
 					name += ` (Set'thik Windblade ${(this.tag - 6445300).toFixed(0)})`;
 				} else if (this.tag > 4191800) {
@@ -691,6 +688,7 @@ export class ActionId {
 				}
 				break;
 			case 'Immolate':
+			case 'Chaos Bolt':
 				if (tag == 1) {
 					name += ' (DoT)';
 				}
@@ -882,6 +880,11 @@ export class ActionId {
 			case 'Corruption':
 				if (tag == 1) {
 					name += ' (Malefic)';
+				}
+				break;
+			case 'Metamorphosis':
+				if (tag == 1) {
+					name += ' (Cancel)';
 				}
 				break;
 			case 'Holy Prism':
@@ -1222,6 +1225,9 @@ const spellIdTooltipOverrides: Map<string, ActionIdOverride> = new Map([
 	// Warlock - Immolation Aura
 	[JSON.stringify({ spellId: 104025, tag: 2 }), { spellId: 129476 }],
 	[JSON.stringify({ spellId: 47897, tag: 1 }), { spellId: 47960 }], // Shadowflame Dot
+	[JSON.stringify({ spellId: 30108, tag: 1 }), { spellId: 131736 }], // Malefic Grasp - Unstable Affliction
+	[JSON.stringify({ spellId: 980, tag: 1 }), { spellId: 131737 }], // Malefic Grasp - Agony
+	[JSON.stringify({ spellId: 172, tag: 1 }), { spellId: 131740 }], // Malefic Grasp - Corruption
 ]);
 
 export const defaultTargetIcon = 'https://wow.zamimg.com/images/wow/icons/large/spell_shadow_metamorphosis.jpg';

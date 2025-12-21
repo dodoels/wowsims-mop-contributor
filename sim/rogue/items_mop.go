@@ -282,11 +282,11 @@ var FangsOfTheFather = core.NewItemSet(core.ItemSet{
 				ActionID: core.ActionID{SpellID: 109949},
 				Duration: time.Second * 6,
 				OnGain: func(aura *core.Aura, sim *core.Simulation) {
-					aura.Unit.AddComboPoints(sim, 5, cpMetrics)
+					aura.Unit.AddComboPoints(sim, 5, aura.Unit.CurrentComboTarget, cpMetrics)
 				},
 				OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
 					if spell.Flags.Matches(SpellFlagFinisher) {
-						aura.Unit.AddComboPoints(sim, 5, cpMetrics)
+						aura.Unit.AddComboPoints(sim, 5, aura.Unit.CurrentComboTarget, cpMetrics)
 					}
 				},
 				OnExpire: func(aura *core.Aura, sim *core.Simulation) {

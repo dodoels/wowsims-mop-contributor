@@ -7,8 +7,7 @@ import { Stats } from '../../core/proto_utils/stats';
 import DefaultFuryApl from './apls/default.apl.json';
 import P2FurySMFGear from './gear_sets/p2_fury_smf.gear.json';
 import P2FuryTGGear from './gear_sets/p2_fury_tg.gear.json';
-import P1FurySMFGear from './gear_sets/p1_fury_smf.gear.json';
-import P1FuryTGGear from './gear_sets/p1_fury_tg.gear.json';
+import P3FuryTGGear from './gear_sets/p3_fury_tg.gear.json';
 import PreraidFurySMFGear from './gear_sets/preraid_fury_smf.gear.json';
 import PreraidFuryTGGear from './gear_sets/preraid_fury_tg.gear.json';
 
@@ -46,18 +45,17 @@ const FURY_TG_PRESET_OPTIONS = {
 	},
 };
 
-export const P1_PRERAID_FURY_SMF_PRESET = PresetUtils.makePresetGear('Preraid - SMF', PreraidFurySMFGear, FURY_SMF_PRESET_OPTIONS);
-export const P1_PRERAID_FURY_TG_PRESET = PresetUtils.makePresetGear('Preraid - TG', PreraidFuryTGGear, FURY_TG_PRESET_OPTIONS);
-export const P1_BIS_FURY_SMF_PRESET = PresetUtils.makePresetGear('P1 - SMF', P1FurySMFGear, FURY_SMF_PRESET_OPTIONS);
-export const P1_BIS_FURY_TG_PRESET = PresetUtils.makePresetGear('P1 - TG', P1FuryTGGear, FURY_TG_PRESET_OPTIONS);
-export const P2_BIS_FURY_SMF_PRESET = PresetUtils.makePresetGear('P2 - SMF', P2FurySMFGear, FURY_SMF_PRESET_OPTIONS);
-export const P2_BIS_FURY_TG_PRESET = PresetUtils.makePresetGear('P2 - TG', P2FuryTGGear, FURY_TG_PRESET_OPTIONS);
+export const PRERAID_FURY_SMF_PRESET = PresetUtils.makePresetGear('Pre-BIS - 1H', PreraidFurySMFGear, FURY_SMF_PRESET_OPTIONS);
+export const PRERAID_FURY_TG_PRESET = PresetUtils.makePresetGear('Pre-BIS - 2H', PreraidFuryTGGear, FURY_TG_PRESET_OPTIONS);
+export const P2_BIS_FURY_SMF_PRESET = PresetUtils.makePresetGear('P2 - 1H', P2FurySMFGear, FURY_SMF_PRESET_OPTIONS);
+export const P2_BIS_FURY_TG_PRESET = PresetUtils.makePresetGear('P2 - 2H', P2FuryTGGear, FURY_TG_PRESET_OPTIONS);
+export const P3_BIS_FURY_TG_PRESET = PresetUtils.makePresetGear('P3 - 2H', P3FuryTGGear, FURY_TG_PRESET_OPTIONS);
 
 export const FURY_DEFAULT_ROTATION = PresetUtils.makePresetAPLRotation('Default', DefaultFuryApl);
 
 // Preset options for EP weights
-export const P1_FURY_SMF_EP_PRESET = PresetUtils.makePresetEpWeights(
-	'P1 - SMF',
+export const P2_FURY_SMF_EP_PRESET = PresetUtils.makePresetEpWeights(
+	'P2 - SMF',
 	Stats.fromMap(
 		{
 			[Stat.StatStrength]: 1.0,
@@ -77,8 +75,8 @@ export const P1_FURY_SMF_EP_PRESET = PresetUtils.makePresetEpWeights(
 	FURY_SMF_PRESET_OPTIONS,
 );
 
-export const P1_FURY_TG_EP_PRESET = PresetUtils.makePresetEpWeights(
-	'P1 - TG',
+export const P2_FURY_TG_EP_PRESET = PresetUtils.makePresetEpWeights(
+	'P2 - TG',
 	Stats.fromMap(
 		{
 			[Stat.StatStrength]: 1.0,
@@ -93,6 +91,27 @@ export const P1_FURY_TG_EP_PRESET = PresetUtils.makePresetEpWeights(
 		{
 			[PseudoStat.PseudoStatMainHandDps]: 2.59,
 			[PseudoStat.PseudoStatOffHandDps]: 1.11,
+		},
+	),
+	FURY_TG_PRESET_OPTIONS,
+);
+
+export const P3_FURY_TG_EP_PRESET = PresetUtils.makePresetEpWeights(
+	'P3 - TG',
+	Stats.fromMap(
+		{
+			[Stat.StatStrength]: 1.0,
+			[Stat.StatAgility]: 0.07,
+			[Stat.StatAttackPower]: 0.45,
+			[Stat.StatExpertiseRating]: 1.89,
+			[Stat.StatHitRating]: 2.15,
+			[Stat.StatCritRating]: 0.96,
+			[Stat.StatHasteRating]: 0.53,
+			[Stat.StatMasteryRating]: 0.9,
+		},
+		{
+			[PseudoStat.PseudoStatMainHandDps]: 2.56,
+			[PseudoStat.PseudoStatOffHandDps]: 1.3,
 		},
 	),
 	FURY_TG_PRESET_OPTIONS,
@@ -146,14 +165,14 @@ export const OtherDefaults = {
 	distanceFromTarget: 25,
 };
 
-export const P1_PRESET_BUILD_SMF = PresetUtils.makePresetBuild('P1 - SMF', {
-	gear: P1_BIS_FURY_SMF_PRESET,
+export const P2_PRESET_BUILD_SMF = PresetUtils.makePresetBuild('P2 - SMF', {
+	gear: P2_BIS_FURY_SMF_PRESET,
 	talents: FurySMFTalents,
-	epWeights: P1_FURY_SMF_EP_PRESET,
+	epWeights: P2_FURY_SMF_EP_PRESET,
 });
 
-export const P1_PRESET_BUILD_TG = PresetUtils.makePresetBuild('P1 - TG', {
-	gear: P1_BIS_FURY_TG_PRESET,
+export const P2_PRESET_BUILD_TG = PresetUtils.makePresetBuild('P2 - TG', {
+	gear: P2_BIS_FURY_TG_PRESET,
 	talents: FuryTGTalents,
-	epWeights: P1_FURY_TG_EP_PRESET,
+	epWeights: P2_FURY_TG_EP_PRESET,
 });

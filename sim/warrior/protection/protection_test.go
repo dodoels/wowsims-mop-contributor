@@ -8,6 +8,7 @@ import (
 	"github.com/wowsims/mop/sim/core/proto"
 	"github.com/wowsims/mop/sim/encounters/msv"
 	"github.com/wowsims/mop/sim/encounters/toes"
+	"github.com/wowsims/mop/sim/encounters/tot"
 )
 
 func init() {
@@ -15,6 +16,7 @@ func init() {
 	common.RegisterAllEffects()
 	msv.Register()
 	toes.Register()
+	tot.Register()
 }
 
 func TestProtectionWarrior(t *testing.T) {

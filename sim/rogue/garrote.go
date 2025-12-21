@@ -55,7 +55,7 @@ func (rogue *Rogue) registerGarrote() {
 			rogue.BreakStealth(sim)
 			result := spell.CalcOutcome(sim, target, spell.OutcomeMeleeSpecialNoBlockDodgeParryNoCrit)
 			if result.Landed() {
-				rogue.AddComboPointsOrAnticipation(sim, 1, spell.ComboPointMetrics())
+				rogue.AddComboPointsOrAnticipation(sim, 1, target, spell.ComboPointMetrics())
 				spell.Dot(target).Apply(sim)
 			} else {
 				spell.IssueRefund(sim)

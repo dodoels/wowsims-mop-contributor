@@ -1,41 +1,142 @@
 import * as PresetUtils from '../../core/preset_utils.js';
-import { APLRotation_Type } from '../../core/proto/apl.js';
 import { ConsumesSpec, Glyphs, Profession, PseudoStat, Spec, Stat } from '../../core/proto/common.js';
 import { BloodDeathKnight_Options, DeathKnightMajorGlyph, DeathKnightMinorGlyph } from '../../core/proto/death_knight';
 import { SavedTalents } from '../../core/proto/ui.js';
 import { Stats } from '../../core/proto_utils/stats';
-import DefaultApl from './apls/defensive.apl.json';
-import P1BloodGear from './gear_sets/p1.gear.json';
+import ShaApl from './apls/sha.apl.json';
+import HorridonApl from './apls/horridon.apl.json';
+import P2BalancedBloodGear from './gear_sets/p2.gear.json';
+import P2OffensiveBloodGear from './gear_sets/p2_offensive.gear.json';
+import P3BalancedBloodGear from './gear_sets/p3.gear.json';
+import P3ProgBloodGear from './gear_sets/p3_prog.gear.json';
+import P3OffensiveBloodGear from './gear_sets/p3_offensive.gear.json';
 import DefaultBuild from './builds/sha_default.build.json';
-import ShaBuild from './builds/sha_without_gear.build.json';
+import ShaBuild from './builds/sha_encounter_only.build.json';
+import HorridonBuild from './builds/horridon_encounter_only.build.json';
 // import PreRaidBloodGear from './gear_sets/preraid.gear.json';
 
 // export const PRERAID_BLOOD_PRESET = PresetUtils.makePresetGear('Pre-Raid', PreRaidBloodGear);
-export const P1_BLOOD_PRESET = PresetUtils.makePresetGear('Pre-ToES BiS', P1BloodGear);
+export const P2_BALANCED_BLOOD_PRESET = PresetUtils.makePresetGear('P2 - BIS (Balanced)', P2BalancedBloodGear);
+export const P2_OFFENSIVE_BLOOD_PRESET = PresetUtils.makePresetGear('P2 - BIS (Offensive)', P2OffensiveBloodGear);
+export const P3_PROG_BLOOD_PRESET = PresetUtils.makePresetGear('P3 - Prog (Survival)', P3ProgBloodGear);
+export const P3_BALANCED_BLOOD_PRESET = PresetUtils.makePresetGear('P3 - BIS (Balanced)', P3BalancedBloodGear);
+export const P3_OFFENSIVE_BLOOD_PRESET = PresetUtils.makePresetGear('P3 - BIS (Offensive)', P3OffensiveBloodGear);
 
-export const BLOOD_ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Sha of Fear', DefaultApl);
+export const BLOOD_ROTATION_PRESET_SHA = PresetUtils.makePresetAPLRotation('Sha of Fear', ShaApl);
+export const BLOOD_ROTATION_PRESET_HORRIDON = PresetUtils.makePresetAPLRotation('Horridon', HorridonApl);
 
 // Preset options for EP weights
-export const P1_BLOOD_EP_PRESET = PresetUtils.makePresetEpWeights(
-	'P1 Balanced',
+export const P2_BALANCED_EP_PRESET = PresetUtils.makePresetEpWeights(
+	'P2 - Balanced',
 	Stats.fromMap(
 		{
-			[Stat.StatStrength]: 1.00,
-			[Stat.StatStamina]: 1.54,
-			[Stat.StatAttackPower]: 0.29,
-			[Stat.StatHitRating]: 1.11,
-			[Stat.StatCritRating]: 0.64,
-			[Stat.StatHasteRating]: 0.56,
-			[Stat.StatExpertiseRating]: 1.01,
-			[Stat.StatArmor]: 0.79,
-			[Stat.StatDodgeRating]: 0.50,
-			[Stat.StatParryRating]: 0.65,
-			[Stat.StatBonusArmor]: 0.79,
-			[Stat.StatMasteryRating]: 0.19,
+			[Stat.StatStrength]: 1.0,
+			[Stat.StatStamina]: 1.02,
+			[Stat.StatHitRating]: 1.17,
+			[Stat.StatCritRating]: 0.6,
+			[Stat.StatHasteRating]: 0.59,
+			[Stat.StatExpertiseRating]: 1.02,
+			[Stat.StatDodgeRating]: 0.74,
+			[Stat.StatParryRating]: 0.75,
+			[Stat.StatMasteryRating]: 0.47,
+			[Stat.StatAttackPower]: 0.25,
+			[Stat.StatArmor]: 0.54,
+			[Stat.StatBonusArmor]: 0.54,
 		},
 		{
-			[PseudoStat.PseudoStatMainHandDps]: 1.76,
-			[PseudoStat.PseudoStatOffHandDps]: 0.0,
+			[PseudoStat.PseudoStatMainHandDps]: 2.7,
+		},
+	),
+);
+
+export const P2_OFFENSIVE_EP_PRESET = PresetUtils.makePresetEpWeights(
+	'P2 - Offensive',
+	Stats.fromMap(
+		{
+			[Stat.StatStrength]: 1.0,
+			[Stat.StatStamina]: 0.56,
+			[Stat.StatHitRating]: 1.42,
+			[Stat.StatCritRating]: 0.75,
+			[Stat.StatHasteRating]: 0.71,
+			[Stat.StatExpertiseRating]: 1.25,
+			[Stat.StatDodgeRating]: 0.65,
+			[Stat.StatParryRating]: 0.66,
+			[Stat.StatMasteryRating]: 0.26,
+			[Stat.StatAttackPower]: 0.32,
+			[Stat.StatArmor]: 0.3,
+			[Stat.StatBonusArmor]: 0.35,
+		},
+		{
+			[PseudoStat.PseudoStatMainHandDps]: 2.9,
+		},
+	),
+);
+
+export const P3_SURVIVAL_EP_PRESET = PresetUtils.makePresetEpWeights(
+	'P3 - Survival',
+	Stats.fromMap(
+		{
+			[Stat.StatStrength]: 1.0,
+			[Stat.StatStamina]: 1.38,
+			[Stat.StatHitRating]: 1.5,
+			[Stat.StatCritRating]: 0.65,
+			[Stat.StatHasteRating]: 0.83,
+			[Stat.StatExpertiseRating]: 1.18,
+			[Stat.StatDodgeRating]: 0.95,
+			[Stat.StatParryRating]: 0.97,
+			[Stat.StatMasteryRating]: 1.35,
+			[Stat.StatAttackPower]: 0.17,
+			[Stat.StatArmor]: 0.77,
+			[Stat.StatBonusArmor]: 0.77,
+		},
+		{
+			[PseudoStat.PseudoStatMainHandDps]: 1.84,
+		},
+	),
+);
+
+export const P3_BALANCED_EP_PRESET = PresetUtils.makePresetEpWeights(
+	'P3 - Balanced',
+	Stats.fromMap(
+		{
+			[Stat.StatStrength]: 1.0,
+			[Stat.StatStamina]: 1.02,
+			[Stat.StatHitRating]: 1.77,
+			[Stat.StatCritRating]: 0.85,
+			[Stat.StatHasteRating]: 0.89,
+			[Stat.StatExpertiseRating]: 1.5,
+			[Stat.StatDodgeRating]: 0.97,
+			[Stat.StatParryRating]: 0.99,
+			[Stat.StatMasteryRating]: 0.98,
+			[Stat.StatAttackPower]: 0.23,
+			[Stat.StatArmor]: 0.57,
+			[Stat.StatBonusArmor]: 0.57,
+		},
+		{
+			[PseudoStat.PseudoStatMainHandDps]: 1.94,
+		},
+	),
+);
+
+export const P3_OFFENSIVE_EP_PRESET = PresetUtils.makePresetEpWeights(
+	'P3 - Offensive',
+	Stats.fromMap(
+		{
+			[Stat.StatStrength]: 1.0,
+			[Stat.StatStamina]: 0.35,
+			[Stat.StatHitRating]: 2.27,
+			[Stat.StatCritRating]: 1.24,
+			[Stat.StatHasteRating]: 0.99,
+			[Stat.StatExpertiseRating]: 2.08,
+			[Stat.StatDodgeRating]: 1.0,
+			[Stat.StatParryRating]: 1.03,
+			[Stat.StatMasteryRating]: 0.29,
+			[Stat.StatAttackPower]: 0.33,
+			[Stat.StatArmor]: 0.2,
+			[Stat.StatBonusArmor]: 0.2,
+		},
+		{
+			[PseudoStat.PseudoStatMainHandDps]: 2.15,
 		},
 	),
 );
@@ -46,7 +147,7 @@ export const P1_BLOOD_EP_PRESET = PresetUtils.makePresetEpWeights(
 export const BloodTalents = {
 	name: 'Default',
 	data: SavedTalents.create({
-		talentsString: "231111",
+		talentsString: '231111',
 		glyphs: Glyphs.create({
 			major1: DeathKnightMajorGlyph.GlyphOfLoudHorn,
 			major2: DeathKnightMajorGlyph.GlyphOfRegenerativeMagic,
@@ -76,5 +177,6 @@ export const OtherDefaults = {
 	iterationCount: 25000,
 };
 
-export const PRESET_BUILD_DEFAULT = PresetUtils.makePresetBuildFromJSON("Default", Spec.SpecBloodDeathKnight, DefaultBuild);
-export const PRESET_BUILD_SHA = PresetUtils.makePresetBuildFromJSON("Sha of Fear P2", Spec.SpecBloodDeathKnight, ShaBuild);
+export const PRESET_BUILD_DEFAULT = PresetUtils.makePresetBuildFromJSON('Default', Spec.SpecBloodDeathKnight, DefaultBuild);
+export const PRESET_BUILD_SHA = PresetUtils.makePresetBuildFromJSON('Sha of Fear P2', Spec.SpecBloodDeathKnight, ShaBuild);
+export const PRESET_BUILD_HORRIDON = PresetUtils.makePresetBuildFromJSON('Horridon P2', Spec.SpecBloodDeathKnight, HorridonBuild);

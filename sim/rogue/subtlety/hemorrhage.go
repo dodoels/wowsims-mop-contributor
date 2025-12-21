@@ -83,7 +83,7 @@ func (subRogue *SubtletyRogue) registerHemorrhageSpell() {
 			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
 
 			if result.Landed() {
-				subRogue.AddComboPointsOrAnticipation(sim, 1, spell.ComboPointMetrics())
+				subRogue.AddComboPointsOrAnticipation(sim, 1, target, spell.ComboPointMetrics())
 				lastHemoDamage = result.Damage
 
 				if hasMinorGlyph { // Prevents triggering the DoT unless Garrote/Rupture/Crimson Tempest are active

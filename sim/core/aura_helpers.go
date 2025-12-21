@@ -80,8 +80,13 @@ func (procAura *Aura) AttachProcTriggerCallback(unit *Unit, config ProcTrigger) 
 		pa.NextActionAt = sim.CurrentTime + SpellBatchWindow
 		pa.Priority = ActionPriorityDOT
 
+		// Due to the result struct possibly being disposed of after this handler is triggered
+		// we need to clone the result to make sure the values don't get overwritten
+		newResult := spell.CloneResult(result)
+
 		pa.OnAction = func(sim *Simulation) {
-			handler(sim, spell, result)
+			handler(sim, spell, newResult)
+			spell.DisposeResult(newResult)
 		}
 
 		sim.AddPendingAction(pa)
@@ -163,6 +168,9 @@ func (procAura *Aura) AttachProcTriggerCallback(unit *Unit, config ProcTrigger) 
 			if icd.Duration != 0 && !icd.IsReady(sim) {
 				return
 			}
+			if config.ExtraCondition != nil && !config.ExtraCondition(sim, spell, nil) {
+				return
+			}
 			if config.ProcChance != 1 && sim.RandomFloat(config.Name) > config.ProcChance {
 				return
 			}
@@ -190,16 +198,13 @@ func (procAura *Aura) AttachProcTriggerCallback(unit *Unit, config ProcTrigger) 
 			if icd.Duration != 0 && !icd.IsReady(sim) {
 				return
 			}
-			if config.ProcChance != 1 && sim.RandomFloat(config.Name) > config.ProcChance {
-				return
-			}
 			emptyResult := spell.NewResult(target)
 			defer spell.DisposeResult(emptyResult)
-			if config.ExtraCondition != nil {
-				extraConditionMet := config.ExtraCondition(sim, spell, emptyResult)
-				if !extraConditionMet {
-					return
-				}
+			if config.ExtraCondition != nil && !config.ExtraCondition(sim, spell, emptyResult) {
+				return
+			}
+			if config.ProcChance != 1 && sim.RandomFloat(config.Name) > config.ProcChance {
+				return
 			}
 
 			if icd.Duration != 0 {
@@ -321,6 +326,7 @@ type TemporaryStatBuffWithStacksConfig struct {
 	TimePerStack         time.Duration
 	Duration             time.Duration
 	TickImmediately      bool
+	DecrementStacks      bool // Set to true if the aura should start at MaxStacks and decrement by 1 each tick
 }
 
 func (character *Character) NewTemporaryStatBuffWithStacks(config TemporaryStatBuffWithStacksConfig) (*StatBuffAura, *Aura) {
@@ -341,6 +347,11 @@ func (character *Character) NewTemporaryStatBuffWithStacks(config TemporaryStatB
 			Duration: config.Duration,
 			OnGain: func(aura *Aura, sim *Simulation) {
 				stackingAura.Activate(sim)
+
+				if config.DecrementStacks {
+					stackingAura.SetStacks(sim, config.MaxStacks)
+				}
+
 				StartPeriodicAction(sim, PeriodicActionOptions{
 					Period:          config.TimePerStack,
 					NumTicks:        int(config.MaxStacks),
@@ -348,7 +359,11 @@ func (character *Character) NewTemporaryStatBuffWithStacks(config TemporaryStatB
 					OnAction: func(sim *Simulation) {
 						// Aura might not be active because of stuff like mage alter time being cast right before this aura being activated
 						if stackingAura.IsActive() {
-							stackingAura.AddStack(sim)
+							if config.DecrementStacks {
+								stackingAura.RemoveStack(sim)
+							} else {
+								stackingAura.AddStack(sim)
+							}
 						}
 					},
 				})
@@ -358,7 +373,6 @@ func (character *Character) NewTemporaryStatBuffWithStacks(config TemporaryStatB
 	}
 
 	return stackingAura, nil
-
 }
 
 // Helper for the common case of making an aura that adds stats.

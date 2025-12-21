@@ -50,6 +50,7 @@ $spell-school-colors: (
 	holy: #ffff8f,
 	nature: #d1fa99,
 	shadow: #b8a8f0,
+	chaos: #a330c9,
 );
 
 $multi-spell-school-colors: (
@@ -61,6 +62,7 @@ $multi-spell-school-colors: (
 	shadowfrost: linear-gradient(90deg, map-get($spell-school-colors, shadow), map-get($spell-school-colors, frost)),
 	plague: linear-gradient(90deg, map-get($spell-school-colors, shadow), map-get($spell-school-colors, nature)),
 	firestorm: linear-gradient(90deg, map-get($spell-school-colors, fire), map-get($spell-school-colors, nature)),
+	elemental: linear-gradient(90deg, map-get($spell-school-colors, frost), map-get($spell-school-colors, nature), map-get($spell-school-colors, fire)),
 );
 
 $theme-colors: map-merge($theme-colors, $spell-school-colors);
@@ -158,6 +160,7 @@ $damage-hit: green;
 $damage-crit: blue;
 $damage-partial: yellow;
 $damage-miss: red;
+$damage-cancel: #e68066;
 $damage-dps: #ed5653;
 $damage-threat: #b56d07;
 
@@ -168,6 +171,7 @@ $damage-colors: (
 	crit: $damage-crit,
 	partial: $damage-partial,
 	miss: $damage-miss,
+	cancel: $damage-cancel,
 );
 $theme-colors: map-merge($theme-colors, $damage-colors);
 

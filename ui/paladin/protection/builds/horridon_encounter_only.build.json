@@ -1,0 +1,161 @@
+{
+  "apiVersion": 2,
+  "raidBuffs": {
+    "trueshotAura": true,
+    "serpentsSwiftness": true,
+    "arcaneBrilliance": true,
+    "elementalOath": true,
+    "blessingOfMight": true,
+    "blessingOfKings": true,
+    "powerWordFortitude": true,
+    "bloodlust": true,
+    "stormlashTotemCount": 4,
+    "skullBannerCount": 2
+  },
+  "debuffs": {
+    "weakenedBlows": true,
+    "physicalVulnerability": true,
+    "weakenedArmor": true,
+    "curseOfElements": true
+  },
+  "tanks": [
+    {
+    },
+    {
+      "type": "Player"
+    }
+  ],
+  "partyBuffs": {
+  },
+  "player": {
+    "name": "Player",
+    "race": "RaceBloodElf",
+    "class": "ClassPaladin",
+    "consumables": {
+      "potId": 76090,
+      "flaskId": 76087,
+      "foodId": 74656,
+      "conjuredId": 5512
+    },
+    "bonusStats": {
+      "apiVersion": 2,
+      "stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+      "pseudoStats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    },
+    "itemSwap": {"items":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],"prepullBonusStats":{"apiVersion":2,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"pseudoStats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},
+    "buffs": {
+      "vigilanceCount": 2
+    },
+    "protectionPaladin": {
+      "options": {
+        "classOptions": {
+          "seal": "Insight"
+        }
+      }
+    },
+    "talentsString": "313213",
+    "glyphs": {
+      "major1": 41101,
+      "major2": 45744,
+      "major3": 41096,
+      "minor1": 80581
+    },
+    "profession1": "Blacksmithing",
+    "profession2": "Engineering",
+    "cooldowns": {
+      "hpPercentForDefensives": 0.3
+    },
+    "rotation": {
+      "type": "TypeAPL",
+      "simple": {
+        "cooldowns": {
+          "hpPercentForDefensives": 0.3
+        }
+      },
+      "prepullActions": [
+        {"action":{"castSpell":{"spellId":{"spellId":20925}}},"doAtValue":{"const":{"val":"-1.6s"}}},
+        {"action":{"castSpell":{"spellId":{"otherId":"OtherActionPotion"}}},"doAtValue":{"const":{"val":"-0.1s"}}}
+      ],
+      "priorityList": [
+        {"action":{"condition":{"cmp":{"op":"OpGt","lhs":{"currentTime":{}},"rhs":{"const":{"val":"36s"}}}},"castSpell":{"spellId":{"spellId":31884}}}},
+        {"action":{"condition":{"and":{"vals":[{"or":{"vals":[{"and":{"vals":[{"bossCurrentTarget":{"targetUnit":{"type":"Target"}}},{"cmp":{"op":"OpLe","lhs":{"bossSpellTimeToReady":{"targetUnit":{"type":"Target"},"spellId":{"spellId":136767}}},"rhs":{"const":{"val":"1s"}}}}]}},{"bossSpellIsCasting":{"targetUnit":{"type":"Target"},"spellId":{"spellId":137458}}},{"cmp":{"op":"OpLe","lhs":{"bossSpellTimeToReady":{"targetUnit":{"type":"Target","index":1},"spellId":{"spellId":136817}}},"rhs":{"const":{"val":"1s"}}}}]}}]}},"castSpell":{"spellId":{"spellId":498}}}},
+        {"action":{"condition":{"and":{"vals":[{"not":{"val":{"spellIsReady":{"spellId":{"spellId":498}}}}},{"auraIsInactive":{"auraId":{"spellId":498},"includeReactionTime":true}},{"cmp":{"op":"OpLe","lhs":{"currentHealthPercent":{}},"rhs":{"const":{"val":"60%"}}}},{"or":{"vals":[{"and":{"vals":[{"bossCurrentTarget":{"targetUnit":{"type":"Target"}}},{"cmp":{"op":"OpEq","lhs":{"bossSpellTimeToReady":{"targetUnit":{"type":"Target"},"spellId":{"spellId":136767}}},"rhs":{"const":{"val":"0s"}}}}]}},{"cmp":{"op":"OpEq","lhs":{"bossSpellTimeToReady":{"targetUnit":{"type":"Target","index":1},"spellId":{"spellId":136817}}},"rhs":{"const":{"val":"0s"}}}}]}}]}},"castSpell":{"spellId":{"spellId":86659}}}},
+        {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpLe","lhs":{"currentHealthPercent":{}},"rhs":{"const":{"val":"60%"}}}},{"or":{"vals":[{"bossCurrentTarget":{"targetUnit":{"type":"Target"}}},{"bossCurrentTarget":{"targetUnit":{"type":"Target","index":1}}}]}},{"auraIsInactive":{"auraId":{"spellId":86659},"includeReactionTime":true}},{"not":{"val":{"spellIsReady":{"spellId":{"spellId":86659}}}}}]}},"castSpell":{"spellId":{"spellId":31850}}}},
+        {"action":{"schedule":{"schedule":"42s","innerAction":{"castSpell":{"spellId":{"otherId":"OtherActionPotion"}}}}}},
+        {"action":{"schedule":{"schedule":"0s,60s","innerAction":{"castSpell":{"spellId":{"itemId":89079}}}}}},
+        {"action":{"condition":{"and":{"vals":[{"auraIsInactive":{"auraId":{"spellId":132403},"includeReactionTime":true}},{"cmp":{"op":"OpGe","lhs":{"currentTime":{}},"rhs":{"const":{"val":"76s"}}}}]}},"castSpell":{"spellId":{"spellId":114030,"tag":-1}}}},
+        {"action":{"condition":{"and":{"vals":[{"or":{"vals":[{"bossCurrentTarget":{"targetUnit":{"type":"Target"}}},{"bossCurrentTarget":{"targetUnit":{"type":"Target","index":1}}}]}},{"cmp":{"op":"OpLt","lhs":{"currentHealthPercent":{}},"rhs":{"const":{"val":"50%"}}}}]}},"castSpell":{"spellId":{"itemId":5512}}}},
+        {"action":{"autocastOtherCooldowns":{}}},
+        {"action":{"castSpell":{"spellId":{"spellId":53600}}}},
+        {"action":{"condition":{"cmp":{"op":"OpGe","lhs":{"currentTime":{}},"rhs":{"const":{"val":"14s"}}}},"castSpell":{"spellId":{"spellId":105809}}}},
+        {"action":{"castSpell":{"spellId":{"spellId":35395}}}},
+        {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpGt","lhs":{"spellTimeToReady":{"spellId":{"spellId":35395}}},"rhs":{"const":{"val":"0"}}}},{"cmp":{"op":"OpLe","lhs":{"spellTimeToReady":{"spellId":{"spellId":35395}}},"rhs":{"const":{"val":"0.5s"}}}}]}},"wait":{"duration":{"spellTimeToReady":{"spellId":{"spellId":35395}}}}}},
+        {"action":{"castSpell":{"spellId":{"spellId":20271}}}},
+        {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpGt","lhs":{"spellTimeToReady":{"spellId":{"spellId":20271}}},"rhs":{"const":{"val":"0"}}}},{"cmp":{"op":"OpLe","lhs":{"spellTimeToReady":{"spellId":{"spellId":20271}}},"rhs":{"const":{"val":"0.5s"}}}},{"cmp":{"op":"OpGe","lhs":{"math":{"op":"OpSub","lhs":{"spellTimeToReady":{"spellId":{"spellId":35395}}},"rhs":{"spellTimeToReady":{"spellId":{"spellId":20271}}}}},"rhs":{"const":{"val":"0.5s"}}}}]}},"wait":{"duration":{"spellTimeToReady":{"spellId":{"spellId":20271}}}}}},
+        {"action":{"castSpell":{"spellId":{"spellId":31935}}}},
+        {"action":{"condition":{"cmp":{"op":"OpLt","lhs":{"auraRemainingTime":{"auraId":{"spellId":20925}}},"rhs":{"const":{"val":"5s"}}}},"castSpell":{"spellId":{"spellId":20925}}}},
+        {"action":{"castSpell":{"spellId":{"spellId":119072}}}},
+        {"action":{"castSpell":{"spellId":{"spellId":114916}}}},
+        {"action":{"castSpell":{"spellId":{"spellId":24275}}}},
+        {"action":{"condition":{"not":{"val":{"dotIsActive":{"spellId":{"spellId":26573}}}}},"castSpell":{"spellId":{"spellId":26573}}}},
+        {"action":{"castSpell":{"spellId":{"spellId":20925}}}}
+      ]
+    },
+    "reactionTimeMs": 250,
+    "inFrontOfTarget": true,
+    "distanceFromTarget": 5,
+    "healingModel": {
+      "hps": 91787,
+      "cadenceSeconds": 0.37,
+      "cadenceVariation": 1.31,
+      "absorbFrac": 0.14,
+      "burstWindow": 6
+    }
+  },
+  "encounter": {
+    "apiVersion": 2,
+    "duration": 93,
+    "durationVariation": 23,
+    "executeProportion20": 0.2,
+    "executeProportion25": 0.25,
+    "executeProportion35": 0.35,
+    "executeProportion45": 0.45,
+    "executeProportion90": 0.9,
+    "targets": [
+      {
+        "id": 68476,
+        "name": "Horridon 25 H",
+        "level": 93,
+        "mobType": "MobTypeBeast",
+        "stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24835,0,1962616500,0,0],
+        "minBaseDamage": 512867,
+        "damageSpread": 0.5508,
+        "swingSpeed": 2,
+        "targetInputs": [
+          {
+            "inputType": "Number",
+            "label": "Jalak death time",
+            "tooltip": "Simulation time (in seconds) at which to disable War-God Jalak and trigger the Rampage buff on Horridon. If set longer than the simulated fight length, then Jalak will be tanked the entire time and Rampage will never be triggered.",
+            "numberValue": 33
+          },
+          {
+            "label": "Taunt swap for Triple Puncture",
+            "tooltip": "If checked, taunt swap upon Jalak's death and on every other Triple Puncture application afterwards in order to limit stack accumulation on a single tank.",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "id": 69374,
+        "name": "War-God Jalak 25 H",
+        "level": 93,
+        "mobType": "MobTypeHumanoid",
+        "stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24835,0,78504660,0,0],
+        "minBaseDamage": 485334,
+        "damageSpread": 0.4668,
+        "swingSpeed": 2,
+        "tankIndex": 1
+      }
+    ]
+  }
+}

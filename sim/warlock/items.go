@@ -264,7 +264,7 @@ var ItemSetRegaliaOfTheHornedNightmare = core.NewItemSet(core.ItemSet{
 
 				warlock.GetSecondaryResourceBar().RegisterOnGain(func(
 					sim *core.Simulation,
-					gain, realGain int32,
+					_, realGain float64,
 					actionID core.ActionID,
 				) {
 					if realGain == 0 || buff.Icd.IsReady(sim) {

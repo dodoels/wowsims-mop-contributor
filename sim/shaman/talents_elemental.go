@@ -12,18 +12,20 @@ func (shaman *Shaman) ApplyElementalTalents() {
 
 	// MoP Classic Changes "https://us.forums.blizzard.com/en/wow/t/feedback-mists-of-pandaria-class-changes/2117387/1"
 	// 5.5.1 : 10%->20%
+	// 5.5.3 : 20%->5%
 	shaman.AddStaticMod(core.SpellModConfig{
 		ClassMask:  SpellMaskLightningBolt | SpellMaskLightningBoltOverload,
 		Kind:       core.SpellMod_DamageDone_Pct,
-		FloatValue: 0.2,
+		FloatValue: 0.05,
 	})
 
-	// 5.5.1 changes
-	shaman.AddStaticMod(core.SpellModConfig{
-		ClassMask:  SpellMaskChainLightning | SpellMaskChainLightningOverload | SpellMaskFulmination,
-		Kind:       core.SpellMod_DamageDone_Pct,
-		FloatValue: 0.1,
-	})
+	// 5.5.1 : 0% -> 10%
+	// 5.5.3 : 10%-> 0%
+	// shaman.AddStaticMod(core.SpellModConfig{
+	// 	ClassMask:  SpellMaskChainLightning | SpellMaskChainLightningOverload | SpellMaskFulmination,
+	// 	Kind:       core.SpellMod_DamageDone_Pct,
+	// 	FloatValue: 0,
+	// })
 
 	//Elemental Precision
 	shaman.AddStat(stats.HitRating, -shaman.GetBaseStats()[stats.Spirit])
@@ -153,7 +155,7 @@ func (shaman *Shaman) ApplyElementalTalents() {
 		Duration:  time.Second * 15,
 		MaxStacks: maxStacks,
 		OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
-			if !spell.Matches(canConsumeSpells) {
+			if !spell.Matches(canConsumeSpells) || spell.Flags.Matches(SpellFlagIsEcho) {
 				return
 			}
 			if spell == triggeringSpell && sim.CurrentTime == triggerTime {
@@ -167,7 +169,7 @@ func (shaman *Shaman) ApplyElementalTalents() {
 		FloatValue: -0.25,
 	}).AttachSpellMod(core.SpellModConfig{
 		Kind:       core.SpellMod_DamageDone_Pct,
-		School:     core.SpellSchoolFire | core.SpellSchoolFrost | core.SpellSchoolNature,
+		School:     core.SpellSchoolElemental,
 		FloatValue: 0.2,
 	}).AttachSpellMod(core.SpellModConfig{
 		Kind:       core.SpellMod_DamageDone_Pct,
@@ -235,7 +237,7 @@ func (shaman *Shaman) ApplyElementalTalents() {
 			}
 		},
 		OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
-			if !spell.Matches(SpellMaskLavaBurst) || !procAura.IsActive() {
+			if !spell.Matches(SpellMaskLavaBurst) || spell.Flags.Matches(SpellFlagIsEcho) || !procAura.IsActive() {
 				return
 			}
 			//If lava surge procs during LvB cast time, it is not consumed and lvb does not go on cd

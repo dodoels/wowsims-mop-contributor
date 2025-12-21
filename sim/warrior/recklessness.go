@@ -9,7 +9,7 @@ import (
 func (war *Warrior) registerRecklessness() {
 	actionID := core.ActionID{SpellID: 1719}
 
-	reckAura := war.RegisterAura(core.Aura{
+	war.RecklessnessAura = war.RegisterAura(core.Aura{
 		Label:    "Recklessness",
 		ActionID: actionID,
 		Duration: time.Second * 12,
@@ -39,10 +39,10 @@ func (war *Warrior) registerRecklessness() {
 		},
 
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
-			reckAura.Activate(sim)
+			war.RecklessnessAura.Activate(sim)
 		},
 
-		RelatedSelfBuff: reckAura,
+		RelatedSelfBuff: war.RecklessnessAura,
 	})
 
 	war.AddMajorCooldown(core.MajorCooldown{

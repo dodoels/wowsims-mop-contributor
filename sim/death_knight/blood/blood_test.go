@@ -17,13 +17,14 @@ func init() {
 
 func TestBlood(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
+		core.GetTestBuildFromJSON(proto.Class_ClassDeathKnight, "../../../ui/death_knight/blood/builds", "horridon_default", ItemFilter, nil, nil),
 		core.GetTestBuildFromJSON(proto.Class_ClassDeathKnight, "../../../ui/death_knight/blood/builds", "sha_default", ItemFilter, nil, nil),
 		{
 			Class:      proto.Class_ClassDeathKnight,
 			Race:       proto.Race_RaceOrc,
 			OtherRaces: []proto.Race{proto.Race_RaceWorgen},
 
-			GearSet: core.GetGearSet("../../../ui/death_knight/blood/gear_sets", "p1"),
+			GearSet: core.GetGearSet("../../../ui/death_knight/blood/gear_sets", "p2"),
 
 			Talents: BloodTalents,
 			Glyphs:  BloodDefaultGlyphs,
@@ -33,7 +34,7 @@ func TestBlood(t *testing.T) {
 
 			Consumables: FullConsumesSpec,
 			SpecOptions: core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsBlood},
-			Rotation:    core.GetAplRotation("../../../ui/death_knight/blood/apls", "defensive"),
+			Rotation:    core.GetAplRotation("../../../ui/death_knight/blood/apls", "sha"),
 			Profession1: proto.Profession_Engineering,
 			Profession2: proto.Profession_Blacksmithing,
 

@@ -2544,6 +2544,54 @@
                     "label",
                     "tooltip"
                   ]
+                },
+                "adds_respawn_time": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "tooltip": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "tooltip"
+                  ]
+                },
+                "adds_lifetime": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "tooltip": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "tooltip"
+                  ]
+                },
+                "adds_spawn_delay": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "tooltip": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "tooltip"
+                  ]
                 }
               },
               "additionalProperties": false,
@@ -2555,7 +2603,10 @@
                 "taunt_swap_for_triple_puncture",
                 "movement_interval",
                 "reaction_time",
-                "yards"
+                "yards",
+                "adds_respawn_time",
+                "adds_lifetime",
+                "adds_spawn_delay"
               ]
             },
             "duration": {
@@ -3867,6 +3918,22 @@
                     "tooltip"
                   ]
                 },
+                "cancel_cast": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "tooltip": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "tooltip"
+                  ]
+                },
                 "cast_at_player": {
                   "type": "object",
                   "properties": {
@@ -4513,6 +4580,7 @@
               "additionalProperties": false,
               "required": [
                 "cast",
+                "cancel_cast",
                 "cast_at_player",
                 "multi_dot",
                 "strict_multi_dot",
@@ -5485,6 +5553,22 @@
                     "tooltip"
                   ]
                 },
+                "remaining_cast_time": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "tooltip": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "tooltip"
+                  ]
+                },
                 "spell_known": {
                   "type": "object",
                   "properties": {
@@ -5602,6 +5686,22 @@
                   ]
                 },
                 "cpm": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "tooltip": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "tooltip"
+                  ]
+                },
+                "is_casting": {
                   "type": "object",
                   "properties": {
                     "label": {
@@ -6309,7 +6409,23 @@
                     "tooltip"
                   ]
                 },
-				"affliction_current_snapshot": {
+                "affliction_current_snapshot": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "tooltip": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "tooltip"
+                  ]
+                },
+                "affliction_exhale_window": {
                   "type": "object",
                   "properties": {
                     "label": {
@@ -6358,22 +6474,6 @@
                   ]
                 },
                 "protection_paladin_damage_taken_last_global": {
-                  "type": "object",
-                  "properties": {
-                    "label": {
-                      "type": "string"
-                    },
-                    "tooltip": {
-                      "type": "string"
-                    }
-                  },
-                  "additionalProperties": false,
-                  "required": [
-                    "label",
-                    "tooltip"
-                  ]
-                },
-				"affliction_exhale_window": {
                   "type": "object",
                   "properties": {
                     "label": {
@@ -6517,6 +6617,7 @@
                 "gcd_is_ready",
                 "gcd_time_to_ready",
                 "time_to_next_auto",
+                "remaining_cast_time",
                 "spell_known",
                 "current_cost",
                 "can_cast",
@@ -6525,6 +6626,7 @@
                 "cast_time",
                 "travel_time",
                 "cpm",
+                "is_casting",
                 "is_channeling",
                 "channeled_ticks",
                 "number_of_charges",
@@ -6544,11 +6646,13 @@
                 "aura_should_refresh",
                 "all_trinket_stat_procs_active",
                 "any_trinket_stat_procs_active",
+                "any_trinket_stat_procs_available",
                 "trinket_procs_min_remaining_time",
                 "trinket_procs_max_remaining_icd",
                 "num_equipped_stat_proc_trinkets",
                 "num_stat_buff_cooldowns",
                 "any_stat_buff_cooldowns_active",
+                "any_stat_buff_cooldowns_min_duration",
                 "dot_is_active",
                 "dot_is_active_on_all_targets",
                 "dot_remaining_time",
@@ -6565,14 +6669,15 @@
                 "cat_new_savage_roar_duration",
                 "warlock_hand_of_guldan_in_flight",
                 "warlock_haunt_in_flight",
+                "affliction_current_snapshot",
+                "affliction_exhale_window",
                 "mage_current_combustion_dot_estimate",
                 "brewmaster_monk_current_stagger_percent",
                 "protection_paladin_damage_taken_last_global",
                 "aura_remaining_icd",
                 "aura_icd_is_ready",
                 "aura_icd_is_ready_with_reaction_time",
-                "overlap",
-                "affliction_exhale_window"
+                "overlap"
               ]
             },
             "operators": {
@@ -7711,9 +7816,17 @@
                         "tooltip"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "exhale_window"
+                  ]
                 }
-              }
+              },
+              "additionalProperties": false,
+              "required": [
+                "affliction"
+              ]
             },
             "hunter": {
               "type": "object",
@@ -7910,6 +8023,7 @@
             "guardian",
             "rogue",
             "shaman",
+            "warlock",
             "hunter"
           ]
         }

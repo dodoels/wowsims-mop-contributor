@@ -11,52 +11,38 @@ func (hunter *Hunter) applyThrillOfTheHunt() {
 		return
 	}
 
-	actionID := core.ActionID{SpellID: 109306}
-	procChance := 0.30
-
-	tothMod := hunter.AddDynamicMod(core.SpellModConfig{
+	var tothAura *core.Aura
+	tothAura = core.BlockPrepull(hunter.RegisterAura(core.Aura{
+		Label:     "Thrill of the Hunt",
+		ActionID:  core.ActionID{SpellID: 109306},
+		Duration:  time.Second * 12,
+		MaxStacks: 3,
+	})).AttachSpellMod(core.SpellModConfig{
 		Kind:      core.SpellMod_PowerCost_Flat,
 		ClassMask: HunterSpellMultiShot | HunterSpellArcaneShot,
 		IntValue:  -20,
+	}).AttachProcTrigger(core.ProcTrigger{
+		Callback:           core.CallbackOnCastComplete,
+		ClassSpellMask:     HunterSpellMultiShot | HunterSpellArcaneShot,
+		TriggerImmediately: true,
+
+		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+			tothAura.RemoveStack(sim)
+		},
 	})
 
-	tothAura := core.BlockPrepull(hunter.RegisterAura(core.Aura{
-		Label:     "Thrill of the Hunt",
-		ActionID:  actionID,
-		Duration:  time.Second * 12,
-		MaxStacks: 3,
-		OnGain: func(aura *core.Aura, sim *core.Simulation) {
-			tothMod.Activate()
+	hunter.MakeProcTriggerAura(core.ProcTrigger{
+		Name:       "Thrill of the Hunt Proccer",
+		Callback:   core.CallbackOnCastComplete,
+		ProcChance: 0.3,
 
+		ExtraCondition: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) bool {
+			return spell.CurCast.Cost > 0
 		},
-		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			tothMod.Deactivate()
 
-		},
-		OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
-			if spell.Matches(HunterSpellMultiShot) || spell.Matches(HunterSpellArcaneShot) {
-				aura.RemoveStack(sim)
-
-			}
-		},
-	}))
-
-	hunter.RegisterAura(core.Aura{
-		Label:    "Thrill of the Hunt Proccer",
-		Duration: core.NeverExpires,
-		OnReset: func(aura *core.Aura, sim *core.Simulation) {
-			aura.Activate(sim)
-		},
-		OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
-			// Needs to cost Focus to proc
-			if spell.CurCast.Cost <= 0 {
-				return
-			}
-
-			if sim.RandomFloat("Thrill of the Hunt") < procChance {
-				tothAura.Activate(sim)
-				tothAura.SetStacks(sim, 3)
-			}
+		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+			tothAura.Activate(sim)
+			tothAura.SetStacks(sim, 3)
 		},
 	})
 }

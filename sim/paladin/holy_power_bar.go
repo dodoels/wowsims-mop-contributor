@@ -10,7 +10,7 @@ type HolyPowerBar struct {
 }
 
 // Spend implements core.SecondaryResourceBar.
-func (h HolyPowerBar) Spend(sim *core.Simulation, amount int32, action core.ActionID) {
+func (h HolyPowerBar) Spend(sim *core.Simulation, amount float64, action core.ActionID) {
 	if h.paladin.DivinePurposeAura.IsActive() {
 		return
 	}
@@ -19,7 +19,7 @@ func (h HolyPowerBar) Spend(sim *core.Simulation, amount int32, action core.Acti
 }
 
 // SpendUpTo implements core.SecondaryResourceBar.
-func (h HolyPowerBar) SpendUpTo(sim *core.Simulation, limit int32, action core.ActionID) int32 {
+func (h HolyPowerBar) SpendUpTo(sim *core.Simulation, limit float64, action core.ActionID) float64 {
 	if h.paladin.DivinePurposeAura.IsActive() {
 		return 3
 	}
@@ -28,7 +28,7 @@ func (h HolyPowerBar) SpendUpTo(sim *core.Simulation, limit int32, action core.A
 }
 
 // Value implements core.SecondaryResourceBar.
-func (h HolyPowerBar) Value() int32 {
+func (h HolyPowerBar) Value() float64 {
 	if h.paladin.DivinePurposeAura.IsActive() {
 		return 5
 	}
@@ -36,7 +36,7 @@ func (h HolyPowerBar) Value() int32 {
 	return h.DefaultSecondaryResourceBarImpl.Value()
 }
 
-func (h HolyPowerBar) CanSpend(amount int32) bool {
+func (h HolyPowerBar) CanSpend(amount float64) bool {
 	if h.paladin.DivinePurposeAura.IsActive() {
 		return true
 	}

@@ -13,7 +13,7 @@
 		{ "id": 96872, "gems": [76696], "reforging": 137 },
 		{ "id": 95022, "gems": [76684], "reforging": 159 },
 		{ "id": 96842, "reforging": 137 },
-		{ "id": 94508, "reforging": 159, "upgradeStep": "UpgradeStepTwo" },
+		{ "id": 94508, "reforging": 159 },
 		{ "id": 96991, "enchant": 3368, "gems": [76697, 76697] },
 		{}
 	]

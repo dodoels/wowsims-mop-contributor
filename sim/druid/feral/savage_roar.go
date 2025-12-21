@@ -9,7 +9,10 @@ import (
 	"github.com/wowsims/mop/sim/druid"
 )
 
-const SavageRoarMultiplier = 1.45 // including buff from class balancing
+// 2025-07-01 - Savage Roar’s damage increase increased to 45% (was 40%).
+// 2025-11-13 - Savage Roar’s damage increase decreased to 40% (was 45%).
+// 2025-11-20 - Savage Roar’s damage increase increased to 43% (was 40%).
+const SavageRoarMultiplier = 1.43
 
 func (cat *FeralDruid) registerSavageRoarSpell() {
 	isGlyphed := cat.HasMajorGlyph(proto.DruidMajorGlyph_GlyphOfSavagery)

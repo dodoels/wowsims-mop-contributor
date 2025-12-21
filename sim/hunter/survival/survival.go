@@ -71,6 +71,10 @@ func NewSurvivalHunter(character *core.Character, options *proto.Player) *Surviv
 
 type SurvivalHunter struct {
 	*hunter.Hunter
+
+	SurvivalOptions *proto.SurvivalHunter_Options
+
+	explosiveShot *core.Spell
 }
 
 func (svHunter *SurvivalHunter) GetHunter() *hunter.Hunter {

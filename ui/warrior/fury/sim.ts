@@ -13,6 +13,9 @@ import * as WarriorInputs from '../inputs';
 import * as FuryInputs from './inputs';
 import * as Presets from './presets';
 
+const P2HitPostCapEPs = [0, 0];
+const P3HitPostCapEPs = [0.42 * Mechanics.PHYSICAL_HIT_RATING_PER_HIT_PERCENT, 0];
+
 const SPEC_CONFIG = registerSpecConfig(Spec.SpecFuryWarrior, {
 	cssClass: 'fury-warrior-sim-ui',
 	cssScheme: PlayerClasses.getCssClass(PlayerClasses.Warrior),
@@ -53,7 +56,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFuryWarrior, {
 		// Default equipped gear.
 		gear: Presets.P2_BIS_FURY_TG_PRESET.gear,
 		// Default EP weights for sorting gear in the gear picker.
-		epWeights: Presets.P1_FURY_TG_EP_PRESET.epWeights,
+		epWeights: Presets.P2_FURY_TG_EP_PRESET.epWeights,
 		// Stat caps for reforge optimizer
 		statCaps: (() => {
 			const expCap = new Stats().withStat(Stat.StatExpertiseRating, 7.5 * 4 * Mechanics.EXPERTISE_PER_QUARTER_PERCENT_REDUCTION);
@@ -63,7 +66,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFuryWarrior, {
 			const meleeHitSoftCapConfig = StatCap.fromPseudoStat(PseudoStat.PseudoStatPhysicalHitPercent, {
 				breakpoints: [7.5, 27],
 				capType: StatCapType.TypeSoftCap,
-				postCapEPs: [0, 0],
+				postCapEPs: P2HitPostCapEPs,
 			});
 
 			return [meleeHitSoftCapConfig];
@@ -110,31 +113,29 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFuryWarrior, {
 			OtherInputs.InputDelay,
 			OtherInputs.TankAssignment,
 			OtherInputs.InFrontOfTarget,
-			FuryInputs.AssumePrepullMasteryElixir,
 		],
 	},
-	itemSwapSlots: [ItemSlot.ItemSlotTrinket1, ItemSlot.ItemSlotTrinket2, ItemSlot.ItemSlotMainHand, ItemSlot.ItemSlotOffHand],
+	itemSwapSlots: [ItemSlot.ItemSlotMainHand, ItemSlot.ItemSlotOffHand],
 	encounterPicker: {
 		// Whether to include 'Execute Duration (%)' in the 'Encounter' section of the settings tab.
 		showExecuteProportion: true,
 	},
 
 	presets: {
-		epWeights: [Presets.P1_FURY_SMF_EP_PRESET, Presets.P1_FURY_TG_EP_PRESET, Presets.P1_FURY_SMF_EP_PRESET, Presets.P1_FURY_TG_EP_PRESET],
+		epWeights: [Presets.P2_FURY_SMF_EP_PRESET, Presets.P2_FURY_TG_EP_PRESET, Presets.P3_FURY_TG_EP_PRESET],
 		// Preset talents that the user can quickly select.
 		talents: [Presets.FurySMFTalents, Presets.FuryTGTalents],
 		// Preset rotations that the user can quickly select.
 		rotations: [Presets.FURY_DEFAULT_ROTATION],
 		// Preset gear configurations that the user can quickly select.
 		gear: [
-			Presets.P1_PRERAID_FURY_SMF_PRESET,
-			Presets.P1_PRERAID_FURY_TG_PRESET,
-			Presets.P1_BIS_FURY_SMF_PRESET,
-			Presets.P1_BIS_FURY_TG_PRESET,
+			Presets.PRERAID_FURY_SMF_PRESET,
+			Presets.PRERAID_FURY_TG_PRESET,
 			Presets.P2_BIS_FURY_SMF_PRESET,
 			Presets.P2_BIS_FURY_TG_PRESET,
+			Presets.P3_BIS_FURY_TG_PRESET,
 		],
-		builds: [Presets.P1_PRESET_BUILD_SMF, Presets.P1_PRESET_BUILD_TG],
+		builds: [Presets.P2_PRESET_BUILD_SMF, Presets.P2_PRESET_BUILD_TG],
 	},
 
 	autoRotation: (_player: Player<Spec.SpecFuryWarrior>): APLRotation => {
@@ -155,16 +156,16 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFuryWarrior, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.P1_BIS_FURY_SMF_PRESET.gear,
-					2: Presets.P1_BIS_FURY_TG_PRESET.gear,
-					3: Presets.P1_PRERAID_FURY_SMF_PRESET.gear,
-					4: Presets.P1_PRERAID_FURY_TG_PRESET.gear,
+					1: Presets.P2_BIS_FURY_SMF_PRESET.gear,
+					2: Presets.P2_BIS_FURY_TG_PRESET.gear,
+					3: Presets.PRERAID_FURY_SMF_PRESET.gear,
+					4: Presets.PRERAID_FURY_TG_PRESET.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.P1_BIS_FURY_SMF_PRESET.gear,
-					2: Presets.P1_BIS_FURY_TG_PRESET.gear,
-					3: Presets.P1_PRERAID_FURY_SMF_PRESET.gear,
-					4: Presets.P1_PRERAID_FURY_TG_PRESET.gear,
+					1: Presets.P2_BIS_FURY_SMF_PRESET.gear,
+					2: Presets.P2_BIS_FURY_TG_PRESET.gear,
+					3: Presets.PRERAID_FURY_SMF_PRESET.gear,
+					4: Presets.PRERAID_FURY_TG_PRESET.gear,
 				},
 			},
 			otherDefaults: Presets.OtherDefaults,
@@ -177,16 +178,29 @@ export class FuryWarriorSimUI extends IndividualSimUI<Spec.SpecFuryWarrior> {
 		super(parentElem, player, SPEC_CONFIG);
 
 		this.reforger = new ReforgeOptimizer(this, {
-			getEPDefaults: (player: Player<Spec.SpecFuryWarrior>) => {
-				const hasP1Setup = player
-					.getGear()
-					.getEquippedItems()
-					.some(item => (item?.item.phase || 0) >= 3);
+			updateSoftCaps: softCaps => {
+				const avgIlvl = player.getGear().getAverageItemLevel(false);
 
-				// if (player.getEquippedItem(ItemSlot.ItemSlotMainHand)?.item.handType === HandType.HandTypeOneHand || !player.getTalents().titansGrip) {
-				// 	return hasP1Setup ? Presets.P1_FURY_SMF_EP_PRESET.epWeights : Presets.P1_FURY_SMF_EP_PRESET.epWeights;
-				// }
-				return hasP1Setup ? Presets.P1_FURY_TG_EP_PRESET.epWeights : Presets.P1_FURY_TG_EP_PRESET.epWeights;
+				this.individualConfig.defaults.softCapBreakpoints!.forEach(softCap => {
+					const softCapToModify = softCaps.find(sc => sc.unitStat.equals(softCap.unitStat));
+					if (softCap.unitStat.equalsPseudoStat(PseudoStat.PseudoStatPhysicalHitPercent) && softCapToModify) {
+						if (avgIlvl >= 517) {
+							softCapToModify.postCapEPs = P3HitPostCapEPs;
+						} else {
+							softCapToModify.postCapEPs = P2HitPostCapEPs;
+						}
+					}
+
+					// TODO: Setup Crit soft cap for P3
+					// if (softCap.unitStat.equalsPseudoStat(PseudoStat.PseudoStatPhysicalCritPercent) && softCapToModify) {
+					// 	if (avgIlvl >= 517) {
+					// 		softCapToModify.postCapEPs = P3CritPostCapEPs;
+					// 	} else {
+					// 		softCapToModify.postCapEPs = P2CritPostCapEPs;
+					// 	}
+					// }
+				});
+				return softCaps;
 			},
 		});
 	}

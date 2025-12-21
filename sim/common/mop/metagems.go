@@ -33,12 +33,18 @@ func init() {
 		character := agent.GetCharacter()
 		var target *core.Unit
 
+		isHunter := character.Class == proto.Class_ClassHunter
+		flags := core.SpellFlagNoOnCastComplete
+		if isHunter {
+			flags |= core.SpellFlagRanged
+		}
+
 		lightningStrike := character.RegisterSpell(core.SpellConfig{
-			ActionID:    core.ActionID{SpellID: 137597},
+			ActionID:    core.ActionID{SpellID: core.TernaryInt32(isHunter, 141004, 137597)},
 			SpellSchool: core.SpellSchoolNature,
 			// @TODO: TEST ON PTR: See if weapon enchants can/cannot be procced by this spell.
-			ProcMask: core.ProcMaskMeleeProc,
-			Flags:    core.SpellFlagNoOnCastComplete,
+			ProcMask: core.Ternary(isHunter, core.ProcMaskRangedProc, core.ProcMaskMeleeProc),
+			Flags:    flags,
 
 			MaxRange: 45,
 
@@ -48,9 +54,9 @@ func init() {
 
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 				baseDamage := sim.Roll(core.CalcScalingSpellEffectVarianceMinMax(proto.Class_ClassUnknown, 0.13300000131, 0.15000000596))
-				apDamage := 0.75 * core.Ternary(spell.IsRanged(), spell.RangedAttackPower(), spell.MeleeAttackPower())
+				apDamage := 0.75 * core.Ternary(isHunter, spell.RangedAttackPower(), spell.MeleeAttackPower())
 
-				outcome := core.Ternary(spell.IsRanged(), spell.OutcomeRangedHitAndCritNoBlock, spell.OutcomeMeleeSpecialNoBlockDodgeParry)
+				outcome := core.Ternary(isHunter, spell.OutcomeRangedHitAndCritNoBlock, spell.OutcomeMeleeSpecialNoBlockDodgeParry)
 				spell.CalcAndDealDamage(sim, target, baseDamage+apDamage, outcome)
 			},
 		})

@@ -8,20 +8,19 @@ import (
 )
 
 func (svHunter *SurvivalHunter) registerBlackArrowSpell() {
-	actionID := core.ActionID{SpellID: 3674}
-
 	svHunter.Hunter.RegisterSpell(core.SpellConfig{
-		ActionID:       actionID,
+		ActionID:       core.ActionID{SpellID: 3674},
 		SpellSchool:    core.SpellSchoolShadow,
 		ProcMask:       core.ProcMaskRangedSpecial,
 		ClassSpellMask: hunter.HunterSpellBlackArrow,
 		Flags:          core.SpellFlagMeleeMetrics | core.SpellFlagAPL | core.SpellFlagReadinessTrinket | core.SpellFlagRanged,
+		MissileSpeed:   40,
+		MinRange:       0,
+		MaxRange:       40,
+
 		FocusCost: core.FocusCostOptions{
 			Cost: 35,
 		},
-		MissileSpeed: 40,
-		MinRange:     0,
-		MaxRange:     40,
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
 				GCD: time.Second,
@@ -32,6 +31,7 @@ func (svHunter *SurvivalHunter) registerBlackArrowSpell() {
 				Duration: time.Second * 24, // 24 with trap mastery for survival
 			},
 		},
+
 		DamageMultiplier: 1.3,
 		ThreatMultiplier: 1,
 		CritMultiplier:   svHunter.DefaultCritMultiplier(),

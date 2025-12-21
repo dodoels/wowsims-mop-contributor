@@ -77,10 +77,20 @@ const WeakenedBlowsDuration = time.Second * 30
 
 // –10% Physical damage dealt
 func WeakenedBlowsAura(target *Unit) *Aura {
+	return physDamageDealtAura(target, "Weakened Blows", 115798, WeakenedBlowsDuration)
+}
+func DemoralizingScreech(target *Unit) *Aura {
+	return physDamageDealtAura(target, "Demoralizing Screech", 24423, time.Second*10)
+}
+func DemoralizingRoar(target *Unit) *Aura {
+	return physDamageDealtAura(target, "Demoralizing Roar", 50256, time.Second*15)
+}
+
+func physDamageDealtAura(target *Unit, label string, spellID int32, duration time.Duration) *Aura {
 	aura := target.GetOrRegisterAura(Aura{
-		Label:    "Weakened Blows",
-		ActionID: ActionID{SpellID: 115798},
-		Duration: WeakenedBlowsDuration,
+		Label:    label,
+		ActionID: ActionID{SpellID: spellID},
+		Duration: duration,
 	})
 	PhysDamageReductionEffect(aura, 0.1)
 	return aura
@@ -88,10 +98,26 @@ func WeakenedBlowsAura(target *Unit) *Aura {
 
 // +4% Physical damage taken
 func PhysVulnerabilityAura(target *Unit) *Aura {
+	return physVulnerabilityAura(target, "Physical Vulnerability", 81326, time.Second*30)
+}
+func AcidSpitAura(target *Unit) *Aura {
+	return physVulnerabilityAura(target, "Acid Spit", 55749, time.Second*25)
+}
+func StampedeAura(target *Unit) *Aura {
+	return physVulnerabilityAura(target, "Stampede", 57386, time.Second*30)
+}
+func RavageAura(target *Unit) *Aura {
+	return physVulnerabilityAura(target, "Ravage", 50518, time.Second*25)
+}
+func GoreAura(target *Unit) *Aura {
+	return physVulnerabilityAura(target, "Gore", 35290, time.Second*30)
+}
+
+func physVulnerabilityAura(target *Unit, label string, spellID int32, duration time.Duration) *Aura {
 	aura := target.GetOrRegisterAura(Aura{
-		Label:    "Physical Vulnerability",
-		ActionID: ActionID{SpellID: 81326},
-		Duration: time.Second * 30,
+		Label:    label,
+		ActionID: ActionID{SpellID: spellID},
+		Duration: duration,
 	})
 	PhysDamageTakenEffect(aura, 1.04)
 	return aura
@@ -147,23 +173,25 @@ func majorHealingReductionAura(target *Unit, label string, spellID int32, multip
 
 // Casting‐speed‐reduction sources
 func NecroticStrikeAura(target *Unit) *Aura {
-	return castSpeedReductionAura(target, "Necrotic Strike", 73975, 1.5)
+	return castSpeedReductionAura(target, "Necrotic Strike", 73975, 1.5, time.Second*10)
 }
 func LavaBreathAura(target *Unit) *Aura {
-	return castSpeedReductionAura(target, "Lava Breath", 58604, 1.5)
+	return castSpeedReductionAura(target, "Lava Breath", 58604, 1.5, time.Second*10)
 }
-func SporeCloud(target *Unit) *Aura { return castSpeedReductionAura(target, "Spore Cloud", 50274, 1.5) }
+func SporeCloud(target *Unit) *Aura {
+	return castSpeedReductionAura(target, "Spore Cloud", 50274, 1.5, time.Second*10)
+}
 func MindNumbingPoisonAura(target *Unit) *Aura {
-	return castSpeedReductionAura(target, "Mind-numbing Poison", 5761, 1.5)
+	return castSpeedReductionAura(target, "Mind-numbing Poison", 5760, 1.5, time.Second*10)
 }
 func CurseOfEnfeeblement(target *Unit) *Aura {
-	return castSpeedReductionAura(target, "Curse of Enfeeblement", 109466, 1.5)
+	return castSpeedReductionAura(target, "Curse of Enfeeblement", 109466, 1.5, time.Second*30)
 }
 func SlowAura(target *Unit) *Aura {
-	return castSpeedReductionAura(target, "Slow", 31589, 1.5)
+	return castSpeedReductionAura(target, "Slow", 31589, 1.5, time.Second*15)
 }
-func castSpeedReductionAura(target *Unit, label string, spellID int32, multiplier float64) *Aura {
-	aura := target.GetOrRegisterAura(Aura{Label: label, ActionID: ActionID{SpellID: spellID}, Duration: time.Second * 30})
+func castSpeedReductionAura(target *Unit, label string, spellID int32, multiplier float64, duration time.Duration) *Aura {
+	aura := target.GetOrRegisterAura(Aura{Label: label, ActionID: ActionID{SpellID: spellID}, Duration: duration})
 	aura.NewExclusiveEffect("CastSpdReduction", false, ExclusiveEffect{
 		Priority: multiplier,
 		OnGain: func(ee *ExclusiveEffect, sim *Simulation) {

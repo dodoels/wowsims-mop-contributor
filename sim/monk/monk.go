@@ -54,6 +54,9 @@ type Monk struct {
 
 	SummonHealingSphere func(sim *core.Simulation)
 
+	// Windwalker
+	SEFAura *core.Aura
+
 	// Brewmaster
 	ElusiveBrewAura   *core.Aura
 	ElusiveBrewStacks int32
@@ -112,7 +115,7 @@ func (monk *Monk) RegisterOnStanceChanged(onStanceChanged OnStanceChanged) {
 }
 
 func (monk *Monk) AddChi(sim *core.Simulation, spell *core.Spell, pointsToAdd int32, metrics *core.ResourceMetrics) {
-	monk.AddComboPoints(sim, pointsToAdd, metrics)
+	monk.AddComboPoints(sim, pointsToAdd, &monk.Unit, metrics)
 
 	if spell != nil && spell.Flags.Matches(SpellFlagBuilder) {
 		// TODO: Verify that RJW can trigger Power Strikes

@@ -7,22 +7,25 @@ import (
 	"github.com/wowsims/mop/sim/core"
 	"github.com/wowsims/mop/sim/core/proto"
 	"github.com/wowsims/mop/sim/encounters/toes"
+	"github.com/wowsims/mop/sim/encounters/tot"
 )
 
 func init() {
 	RegisterProtectionPaladin()
 	common.RegisterAllEffects()
 	toes.Register()
+	tot.Register()
 }
 
 func TestProtection(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
+		core.GetTestBuildFromJSON(proto.Class_ClassPaladin, "../../../ui/paladin/protection/builds", "horridon_default", ItemFilter, nil, nil),
 		core.GetTestBuildFromJSON(proto.Class_ClassPaladin, "../../../ui/paladin/protection/builds", "sha_default", ItemFilter, nil, nil),
 		{
 			Class: proto.Class_ClassPaladin,
 			Race:  proto.Race_RaceBloodElf,
 
-			GearSet:     core.GetGearSet("../../../ui/paladin/protection/gear_sets", "p1-balanced"),
+			GearSet:     core.GetGearSet("../../../ui/paladin/protection/gear_sets", "p2_balanced"),
 			Talents:     StandardTalents,
 			Glyphs:      StandardGlyphs,
 			Consumables: FullConsumesSpec,
@@ -31,7 +34,7 @@ func TestProtection(t *testing.T) {
 				{Label: "Seal of Righteousness", SpecOptions: SealOfRighteousness},
 				{Label: "Seal of Truth", SpecOptions: SealOfTruth},
 			},
-			Rotation: core.GetAplRotation("../../../ui/paladin/protection/apls", "default"),
+			Rotation: core.GetAplRotation("../../../ui/paladin/protection/apls", "sha"),
 
 			IsTank:          true,
 			InFrontOfTarget: true,
