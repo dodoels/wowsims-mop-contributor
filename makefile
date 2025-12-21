@@ -231,8 +231,10 @@ endif
 
 wowsimmop-windows.exe: binary_dist_standalone binary_dist/dist.go
 # go build only considers syso files when invoked without specifying .go files: https://github.com/golang/go/issues/16090
+# Use standalone build with VITE_STANDALONE_BUILD flag
+# -H windowsgui hides console window for better user experience
 	cp ./assets/favicon_io/icon-windows_amd64.syso ./sim/web/icon-windows_amd64.syso
-	cd ./sim/web/ && GOOS=windows GOARCH=amd64 GOAMD64=v2 go build -o wowsimmop-windows.exe -ldflags="-X 'main.Version=$(VERSION)' -s -w"
+	cd ./sim/web/ && GOOS=windows GOARCH=amd64 GOAMD64=v2 go build -o wowsimmop-windows.exe -ldflags="-H windowsgui -X 'main.Version=$(VERSION)' -s -w -X 'main.BuildTime=$(shell date -u +%Y-%m-%dT%H:%M:%SZ)' -X 'main.GitCommit=$(shell git rev-parse --short HEAD)'"
 	cd ./cmd/wowsimcli && GOOS=windows GOARCH=amd64 GOAMD64=v2 go build -o wowsimcli-windows.exe --tags=with_db -ldflags="-X 'main.Version=$(VERSION)' -s -w"
 	rm ./sim/web/icon-windows_amd64.syso
 	mv ./sim/web/wowsimmop-windows.exe ./wowsimmop-windows.exe
