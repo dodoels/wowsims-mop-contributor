@@ -125,7 +125,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecUnholyDeathKnight, {
 		// Preset rotations that the user can quickly select.
 		rotations: [Presets.DEFAULT_ROTATION_PRESET, Presets.FESTERBLIGHT_ROTATION_PRESET],
 		// Preset gear configurations that the user can quickly select.
-		gear: [Presets.PREBIS_GEAR_PRESET, Presets.P2_BIS_GEAR_PRESET, Presets.P3_BIS_GEAR_PRESET],
+		gear: [Presets.PREBIS_GEAR_PRESET, Presets.P2_BIS_GEAR_PRESET, Presets.P3_BIS_GEAR_PRESET, Presets.P5_BIS_GEAR_PRESET],
 		builds: [Presets.PREBIS_PRESET, Presets.P2_PRESET, Presets.P3_PRESET],
 	},
 
@@ -146,11 +146,13 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecUnholyDeathKnight, {
 					1: Presets.PREBIS_GEAR_PRESET.gear,
 					2: Presets.P2_BIS_GEAR_PRESET.gear,
 					3: Presets.P3_BIS_GEAR_PRESET.gear,
+					5: Presets.P5_BIS_GEAR_PRESET.gear,
 				},
 				[Faction.Horde]: {
 					1: Presets.PREBIS_GEAR_PRESET.gear,
 					2: Presets.P2_BIS_GEAR_PRESET.gear,
 					3: Presets.P3_BIS_GEAR_PRESET.gear,
+					5: Presets.P5_BIS_GEAR_PRESET.gear,
 				},
 			},
 			otherDefaults: Presets.OtherDefaults,

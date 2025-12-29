@@ -52,6 +52,7 @@ type DeathKnight struct {
 	RaiseDeadAura          *core.Aura
 	ThreatOfThassarianAura *core.Aura
 	KillingMachineAura     *core.Aura
+	DarkTransformationAura *core.Aura
 
 	// Diseases
 	FrostFeverSpell  *core.Spell

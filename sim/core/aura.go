@@ -227,6 +227,10 @@ func (aura *Aura) RemoveStacks(sim *Simulation, stacks int32) {
 }
 
 func (aura *Aura) UpdateExpires(newExpires time.Duration) {
+	if aura == nil {
+		return
+	}
+
 	aura.expires = newExpires
 }
 

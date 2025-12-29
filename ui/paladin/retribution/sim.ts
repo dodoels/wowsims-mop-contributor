@@ -154,7 +154,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRetributionPaladin, {
 		// Preset talents that the user can quickly select.
 		talents: [Presets.DefaultTalents],
 		// Preset gear configurations that the user can quickly select.
-		gear: [Presets.P2_GEAR_PRESET, Presets.P3_GEAR_PRESET, Presets.PRERAID_GEAR_PRESET],
+		gear: [Presets.P2_GEAR_PRESET, Presets.P3_GEAR_PRESET, Presets.P5_GEAR_PRESET, Presets.PRERAID_GEAR_PRESET],
 		builds: [Presets.P2_BUILD_PRESET, Presets.P3_BUILD_PRESET],
 	},
 
@@ -179,11 +179,13 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRetributionPaladin, {
 					1: Presets.PRERAID_GEAR_PRESET.gear,
 					2: Presets.P2_GEAR_PRESET.gear,
 					3: Presets.P3_GEAR_PRESET.gear,
+					5: Presets.P5_GEAR_PRESET.gear,
 				},
 				[Faction.Horde]: {
 					1: Presets.PRERAID_GEAR_PRESET.gear,
 					2: Presets.P2_GEAR_PRESET.gear,
 					3: Presets.P3_GEAR_PRESET.gear,
+					5: Presets.P5_GEAR_PRESET.gear,
 				},
 			},
 		},

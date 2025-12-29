@@ -7,12 +7,14 @@ import { Stats } from '../../core/proto_utils/stats';
 import DefaultApl from './apls/default.apl.json';
 import P2_Gear from './gear_sets/p2.gear.json';
 import P3_Gear from './gear_sets/p3.gear.json';
+import P5_Gear from './gear_sets/p5.gear.json';
 import Preraid_Gear from './gear_sets/preraid.gear.json';
 import P2RetBuild from './builds/p2.build.json';
 import P3RetBuild from './builds/p3.build.json';
 
 export const P2_GEAR_PRESET = PresetUtils.makePresetGear('P2', P2_Gear);
 export const P3_GEAR_PRESET = PresetUtils.makePresetGear('P3', P3_Gear);
+export const P5_GEAR_PRESET = PresetUtils.makePresetGear('P5 (WiP)', P5_Gear);
 export const PRERAID_GEAR_PRESET = PresetUtils.makePresetGear('Pre-raid', Preraid_Gear);
 
 export const APL_PRESET = PresetUtils.makePresetAPLRotation('Default', DefaultApl);
