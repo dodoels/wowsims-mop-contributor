@@ -67,6 +67,12 @@ func (unit *Unit) SetRotationTimer(sim *Simulation, rotationReadyAt time.Duratio
 
 // Call this when reacting to events that occur before the next scheduled rotation action
 func (unit *Unit) ReactToEvent(sim *Simulation, randomizeReactionTime bool) {
+	// If you are channeling return early because channeling has it's own
+	// interrupt handling.
+	if unit.IsChanneling() {
+		return
+	}
+
 	// If the next rotation action was already scheduled for this timestep then execute it now
 	unit.Rotation.DoNextAction(sim)
 

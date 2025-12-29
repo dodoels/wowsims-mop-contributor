@@ -525,9 +525,6 @@ func init() {
 			)
 			// Manually override Crit % to Crit Rating
 			statBuffAura.BuffedStatTypes = []stats.Stat{stats.CritRating}
-			statBuffAura.Aura.ApplyOnGain(func(aura *core.Aura, sim *core.Simulation) {
-				character.ReactToEvent(sim, false)
-			})
 
 			triggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 				Name: fmt.Sprintf("%s (%s)", label, versionLabel),
@@ -542,6 +539,7 @@ func init() {
 				RequireDamageDealt: true,
 				Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
 					statBuffAura.Activate(sim)
+					character.ReactToEvent(sim, false)
 				},
 			})
 

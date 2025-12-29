@@ -141,6 +141,8 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFrostDeathKnight, {
 			Presets.P2_2H_OBLITERATE_GEAR_PRESET,
 			Presets.P3_MASTERFROST_GEAR_PRESET,
 			Presets.P3_2H_OBLITERATE_GEAR_PRESET,
+			Presets.P5_MASTERFROST_GEAR_PRESET,
+			Presets.P5_2H_OBLITERATE_GEAR_PRESET,
 		],
 		builds: [
 			Presets.PRESET_BUILD_P2_MASTERFROST,
@@ -167,11 +169,13 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFrostDeathKnight, {
 					1: Presets.PREBIS_MASTERFROST_GEAR_PRESET.gear,
 					2: Presets.P2_MASTERFROST_GEAR_PRESET.gear,
 					3: Presets.P3_MASTERFROST_GEAR_PRESET.gear,
+					5: Presets.P5_MASTERFROST_GEAR_PRESET.gear,
 				},
 				[Faction.Horde]: {
 					1: Presets.PREBIS_MASTERFROST_GEAR_PRESET.gear,
 					2: Presets.P2_MASTERFROST_GEAR_PRESET.gear,
 					3: Presets.P3_MASTERFROST_GEAR_PRESET.gear,
+					5: Presets.P5_MASTERFROST_GEAR_PRESET.gear,
 				},
 			},
 			otherDefaults: Presets.OtherDefaults,

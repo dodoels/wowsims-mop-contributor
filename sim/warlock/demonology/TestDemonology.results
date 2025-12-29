@@ -2427,8 +2427,8 @@ dps_results: {
 dps_results: {
  key: "TestDemonology-Average-Default"
  value: {
-  dps: 265119.20989
-  tps: 156090.59666
+  dps: 265113.75758
+  tps: 156083.52053
  }
 }
 dps_results: {
@@ -2455,8 +2455,8 @@ dps_results: {
 dps_results: {
  key: "TestDemonology-Settings-Goblin-p3-Demonology Warlock-uvls-NoBuffs-25.0yards-LongMultiTarget"
  value: {
-  dps: 431619.40201
-  tps: 272178.07735
+  dps: 429919.46142
+  tps: 270966.5343
  }
 }
 dps_results: {
@@ -2483,8 +2483,8 @@ dps_results: {
 dps_results: {
  key: "TestDemonology-Settings-Human-p3-Demonology Warlock-uvls-FullBuffs-25.0yards-LongSingleTarget"
  value: {
-  dps: 260467.64625
-  tps: 156164.14901
+  dps: 260409.62529
+  tps: 156054.36706
  }
 }
 dps_results: {
@@ -2525,8 +2525,8 @@ dps_results: {
 dps_results: {
  key: "TestDemonology-Settings-Orc-p3-Demonology Warlock-uvls-FullBuffs-25.0yards-LongSingleTarget"
  value: {
-  dps: 266468.72789
-  tps: 158363.5337
+  dps: 266399.78905
+  tps: 158248.80452
  }
 }
 dps_results: {
@@ -2602,7 +2602,7 @@ dps_results: {
 dps_results: {
  key: "TestDemonology-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 263463.73938
-  tps: 158504.87661
+  dps: 263387.49208
+  tps: 158390.14743
  }
 }
