@@ -1913,8 +1913,8 @@ dps_results: {
 dps_results: {
  key: "TestShadow-AllItems-RegaliaofTernionGlory"
  value: {
-  dps: 98352.13758
-  tps: 91585.64984
+  dps: 100940.76279
+  tps: 94174.27505
   hps: 1950.439
  }
 }
@@ -2737,9 +2737,9 @@ dps_results: {
 dps_results: {
  key: "TestShadow-AllItems-Xing-Ho,BreathofYu'lon-102246"
  value: {
-  dps: 109321.37608
-  tps: 103824.13119
-  hps: 1759.81811
+  dps: 98203.47539
+  tps: 92758.18331
+  hps: 1763.24998
  }
 }
 dps_results: {

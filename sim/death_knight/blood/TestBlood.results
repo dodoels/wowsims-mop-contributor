@@ -3183,8 +3183,8 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-Xing-Ho,BreathofYu'lon-102246"
  value: {
-  dps: 213846.33161
-  tps: 1.08569398657e+06
+  dps: 212948.44989
+  tps: 1.08019487124e+06
   dtps: 67813.38211
   hps: 83796.77159
  }

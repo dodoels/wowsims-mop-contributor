@@ -2825,8 +2825,8 @@ dps_results: {
 dps_results: {
  key: "TestFrostMasterfrost-AllItems-Xing-Ho,BreathofYu'lon-102246"
  value: {
-  dps: 235800.2993
-  tps: 214480.01668
+  dps: 236229.8706
+  tps: 214914.68353
   hps: 2200.61331
  }
 }

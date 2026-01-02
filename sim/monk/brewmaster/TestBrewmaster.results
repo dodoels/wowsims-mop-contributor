@@ -3102,8 +3102,8 @@ dps_results: {
 dps_results: {
  key: "TestBrewmaster-AllItems-Xing-Ho,BreathofYu'lon-102246"
  value: {
-  dps: 259616.66969
-  tps: 1.12031781181e+06
+  dps: 258264.07751
+  tps: 1.10918490846e+06
   dtps: 17330.42724
   hps: 28853.82276
  }

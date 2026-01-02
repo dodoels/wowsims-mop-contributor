@@ -2737,9 +2737,9 @@ dps_results: {
 dps_results: {
  key: "TestDestruction-AllItems-Xing-Ho,BreathofYu'lon-102246"
  value: {
-  dps: 265335.41244
-  tps: 211398.58105
-  hps: 1445.63515
+  dps: 244251.32683
+  tps: 190679.60395
+  hps: 1445.06171
  }
 }
 dps_results: {

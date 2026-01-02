@@ -2777,8 +2777,8 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-Xing-Ho,BreathofYu'lon-102246"
  value: {
-  dps: 251070.24682
-  tps: 378120.66293
+  dps: 250178.48549
+  tps: 376640.81762
   hps: 15951.53449
  }
 }

@@ -585,9 +585,9 @@ dps_results: {
 dps_results: {
  key: "TestBalance-AllItems-Xing-Ho,BreathofYu'lon-102246"
  value: {
-  dps: 285794.33055
-  tps: 286274.08827
-  hps: 28994.00598
+  dps: 260277.16856
+  tps: 260447.34449
+  hps: 29034.27947
  }
 }
 dps_results: {
