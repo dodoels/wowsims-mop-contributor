@@ -1182,11 +1182,13 @@ export class CastLog extends SimLog {
 				if (abilityCastsCancelled) {
 					const cancelledCast =
 						abilityCastsCancelled.find(
-							cancelLog => cancelLog.timestamp >= cbLog.timestamp && cancelLog.timestamp <= abilityCastsBegan[cbIdx + 1].timestamp,
+							cancelLog =>
+								cancelLog.timestamp >= cbLog.timestamp &&
+								(!abilityCastsBegan[cbIdx + 1] || cancelLog.timestamp <= abilityCastsBegan[cbIdx + 1].timestamp),
 						) || null;
 					if (cancelledCast) {
 						cCancelLog = cancelledCast;
-						castSkipIdx--
+						castSkipIdx--;
 					}
 				}
 				if (cbLog.actionId?.spellId === 2912) {
