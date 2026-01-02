@@ -97,8 +97,8 @@ dps_results: {
 dps_results: {
  key: "TestRetribution-AllItems-BattlegearofWingedTriumph"
  value: {
-  dps: 220107.38712
-  tps: 209301.73722
+  dps: 219578.18026
+  tps: 208740.3494
   hps: 22.01849
  }
 }
@@ -1745,16 +1745,16 @@ dps_results: {
 dps_results: {
  key: "TestRetribution-AllItems-PlateofWingedTriumph"
  value: {
-  dps: 198300.26187
-  tps: 187581.66327
+  dps: 197237.50605
+  tps: 186416.08954
   hps: 21.68227
  }
 }
 dps_results: {
  key: "TestRetribution-AllItems-PlateoftheLightningEmperor"
  value: {
-  dps: 190509.13643
-  tps: 180288.19267
+  dps: 190598.81848
+  tps: 180354.55575
   hps: 21.68227
  }
 }
@@ -2665,16 +2665,16 @@ dps_results: {
 dps_results: {
  key: "TestRetribution-AllItems-VestmentsofWingedTriumph"
  value: {
-  dps: 151014.33863
-  tps: 143678.78136
+  dps: 152149.58139
+  tps: 144779.5247
   hps: 22.01849
  }
 }
 dps_results: {
  key: "TestRetribution-AllItems-VestmentsoftheLightningEmperor"
  value: {
-  dps: 151965.57664
-  tps: 144293.14055
+  dps: 152869.65999
+  tps: 145120.88518
   hps: 22.93067
  }
 }
@@ -2737,16 +2737,16 @@ dps_results: {
 dps_results: {
  key: "TestRetribution-AllItems-WhiteTigerPlate"
  value: {
-  dps: 178038.64323
-  tps: 168609.79115
+  dps: 178172.69382
+  tps: 168653.57855
   hps: 21.68227
  }
 }
 dps_results: {
  key: "TestRetribution-AllItems-WhiteTigerVestments"
  value: {
-  dps: 151840.08141
-  tps: 144401.87523
+  dps: 152414.48109
+  tps: 144858.06661
   hps: 22.93067
  }
 }
