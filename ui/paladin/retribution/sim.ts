@@ -6,7 +6,8 @@ import { Player } from '../../core/player.js';
 import { PlayerClasses } from '../../core/player_classes';
 import { APLRotation, APLRotation_Type } from '../../core/proto/apl.js';
 import { Debuffs, Faction, IndividualBuffs, PartyBuffs, PseudoStat, Race, RaidBuffs, Spec, Stat, UnitStats } from '../../core/proto/common.js';
-import { Stats, UnitStat } from '../../core/proto_utils/stats.js';
+import { StatCapType } from '../../core/proto/ui.js';
+import { StatCap, Stats, UnitStat } from '../../core/proto_utils/stats.js';
 import { defaultRaidBuffMajorDamageCooldowns } from '../../core/proto_utils/utils';
 import * as PaladinInputs from '../inputs.js';
 import * as Presets from './presets.js';
@@ -104,6 +105,15 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRetributionPaladin, {
 		epWeights: Presets.P3_EP_PRESET.epWeights,
 		// Default stat caps for the Reforge Optimizer
 		statCaps: getStatCaps(),
+		softCapBreakpoints: (() => {
+			return [
+				StatCap.fromPseudoStat(PseudoStat.PseudoStatMeleeHastePercent, {
+					breakpoints: [50],
+					capType: StatCapType.TypeSoftCap,
+					postCapEPs: [0],
+				}),
+			];
+		})(),
 		// Default consumes settings.
 		consumables: Presets.DefaultConsumables,
 		// Default talents.
@@ -149,7 +159,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRetributionPaladin, {
 	},
 
 	presets: {
-		epWeights: [Presets.P1_P2_EP_PRESET, Presets.P3_EP_PRESET, Presets.PRERAID_EP_PRESET],
+		epWeights: [Presets.P1_P2_EP_PRESET, Presets.P3_EP_PRESET, Presets.P5_EP_PRESET, Presets.PRERAID_EP_PRESET],
 		rotations: [Presets.APL_PRESET],
 		// Preset talents that the user can quickly select.
 		talents: [Presets.DefaultTalents],
@@ -196,6 +206,18 @@ export class RetributionPaladinSimUI extends IndividualSimUI<Spec.SpecRetributio
 	constructor(parentElem: HTMLElement, player: Player<Spec.SpecRetributionPaladin>) {
 		super(parentElem, player, SPEC_CONFIG);
 
-		this.reforger = new ReforgeOptimizer(this);
+		this.reforger = new ReforgeOptimizer(this, {
+			updateSoftCaps: softCaps => {
+				const hasteCap = softCaps.find(v => v.unitStat.equalsPseudoStat(PseudoStat.PseudoStatMeleeHastePercent));
+				if (hasteCap) {
+					const hasteWeights = player.getEpWeights().getStat(Stat.StatHasteRating);
+					const critWeights = player.getEpWeights().getStat(Stat.StatCritRating);
+					const masteryWeights = player.getEpWeights().getStat(Stat.StatMasteryRating);
+					const postCap = Math.max(0.01, Math.min(hasteWeights, critWeights, masteryWeights) - 0.01);
+					hasteCap.postCapEPs = [postCap * Mechanics.HASTE_RATING_PER_HASTE_PERCENT];
+				}
+				return softCaps;
+			},
+		});
 	}
 }

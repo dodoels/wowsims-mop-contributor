@@ -55,6 +55,24 @@ export const P3_EP_PRESET = PresetUtils.makePresetEpWeights(
 	),
 );
 
+export const P5_EP_PRESET = PresetUtils.makePresetEpWeights(
+	'P5 (WiP)',
+	Stats.fromMap(
+		{
+			[Stat.StatStrength]: 1.0,
+			[Stat.StatHitRating]: 0.76,
+			[Stat.StatExpertiseRating]: 0.76,
+			[Stat.StatHasteRating]: 0.75,
+			[Stat.StatMasteryRating]: 0.74,
+			[Stat.StatCritRating]: 0.73,
+			[Stat.StatAttackPower]: 0.44,
+		},
+		{
+			[PseudoStat.PseudoStatMainHandDps]: 1.8,
+		},
+	),
+);
+
 export const PRERAID_EP_PRESET = PresetUtils.makePresetEpWeights(
 	'Pre-raid',
 	Stats.fromMap(
