@@ -81,9 +81,9 @@ dps_results: {
 dps_results: {
  key: "TestBalance-AllItems-BlackBloodofY'Shaarj-105648"
  value: {
-  dps: 281981.07338
-  tps: 281688.42448
-  hps: 29682.01227
+  dps: 281982.6101
+  tps: 281689.91918
+  hps: 29682.09054
  }
 }
 dps_results: {
@@ -257,9 +257,9 @@ dps_results: {
 dps_results: {
  key: "TestBalance-AllItems-FrenziedCrystalofRage-105572"
  value: {
-  dps: 263977.82583
-  tps: 263755.96113
-  hps: 28647.13945
+  dps: 263978.74358
+  tps: 263756.85051
+  hps: 28647.17383
  }
 }
 dps_results: {
@@ -297,8 +297,8 @@ dps_results: {
 dps_results: {
  key: "TestBalance-AllItems-Haromm'sTalisman-105527"
  value: {
-  dps: 248370.55429
-  tps: 248935.99087
+  dps: 248365.17755
+  tps: 248930.61413
   hps: 27522.67768
  }
 }
@@ -306,7 +306,7 @@ dps_results: {
  key: "TestBalance-AllItems-Horridon'sLastGasp-96757"
  value: {
   dps: 248071.89578
-  tps: 248538.53104
+  tps: 248538.53081
   hps: 28646.78505
  }
 }
@@ -345,9 +345,9 @@ dps_results: {
 dps_results: {
  key: "TestBalance-AllItems-Kardris'ToxicTotem-105540"
  value: {
-  dps: 273631.91398
-  tps: 273347.46866
-  hps: 28897.07136
+  dps: 273632.79693
+  tps: 273348.32158
+  hps: 28897.1128
  }
 }
 dps_results: {
@@ -393,9 +393,9 @@ dps_results: {
 dps_results: {
  key: "TestBalance-AllItems-PurifiedBindingsofImmerseus-105422"
  value: {
-  dps: 276220.03889
-  tps: 275754.80633
-  hps: 29838.90515
+  dps: 276221.03817
+  tps: 275755.77442
+  hps: 29838.94537
  }
 }
 dps_results: {
@@ -498,7 +498,7 @@ dps_results: {
  key: "TestBalance-AllItems-SoothingTalismanoftheShado-PanAssault-94509"
  value: {
   dps: 245786.74026
-  tps: 246268.90961
+  tps: 246268.90962
   hps: 28519.6566
  }
 }
@@ -577,9 +577,9 @@ dps_results: {
 dps_results: {
  key: "TestBalance-AllItems-Wushoolay'sFinalChoice-96785"
  value: {
-  dps: 254011.76422
-  tps: 254098.48583
-  hps: 28648.23108
+  dps: 254015.87299
+  tps: 254102.48421
+  hps: 28648.4396
  }
 }
 dps_results: {
@@ -601,9 +601,9 @@ dps_results: {
 dps_results: {
  key: "TestBalance-AllItems-ZenAlchemistStone-75274"
  value: {
-  dps: 246835.73137
-  tps: 247085.98532
-  hps: 28298.33615
+  dps: 246836.72567
+  tps: 247086.95007
+  hps: 28298.38724
  }
 }
 dps_results: {

@@ -870,19 +870,19 @@ dps_results: {
 dps_results: {
  key: "TestProtection-AllItems-EvilEyeofGalakras-105491"
  value: {
-  dps: 242192.38209
-  tps: 1.52504818124e+06
-  dtps: 33103.86942
-  hps: 38442.17299
+  dps: 242209.46687
+  tps: 1.52516906533e+06
+  dtps: 32662.144
+  hps: 38422.01338
  }
 }
 dps_results: {
  key: "TestProtection-AllItems-FabledFeatherofJi-Kun-96842"
  value: {
-  dps: 241871.84768
-  tps: 1.51659141065e+06
-  dtps: 35262.00819
-  hps: 38305.69831
+  dps: 241873.55992
+  tps: 1.51660158654e+06
+  dtps: 35261.88534
+  hps: 38305.936
  }
 }
 dps_results: {
@@ -1032,10 +1032,10 @@ dps_results: {
 dps_results: {
  key: "TestProtection-AllItems-Fusion-FireCore-105459"
  value: {
-  dps: 249215.71832
-  tps: 1.56531723068e+06
-  dtps: 32810.56048
-  hps: 38791.79317
+  dps: 249216.03371
+  tps: 1.56531904635e+06
+  dtps: 32810.54025
+  hps: 38791.83209
  }
 }
 dps_results: {
@@ -1311,8 +1311,8 @@ dps_results: {
 dps_results: {
  key: "TestProtection-AllItems-Haromm'sTalisman-105527"
  value: {
-  dps: 248378.21714
-  tps: 1.56902323013e+06
+  dps: 248362.18448
+  tps: 1.5689110015e+06
   dtps: 37372.63976
   hps: 37122.3974
  }
@@ -1548,7 +1548,7 @@ dps_results: {
   dps: 239127.17452
   tps: 1.50657032785e+06
   dtps: 35644.95976
-  hps: 39845.74447
+  hps: 39845.74295
  }
 }
 dps_results: {
@@ -2139,10 +2139,10 @@ dps_results: {
 dps_results: {
  key: "TestProtection-AllItems-Primordius'TalismanofRage-96873"
  value: {
-  dps: 248807.94985
-  tps: 1.56466343955e+06
-  dtps: 36001.06318
-  hps: 38068.03208
+  dps: 248808.79252
+  tps: 1.5646685164e+06
+  dtps: 36001.00609
+  hps: 38068.16411
  }
 }
 dps_results: {
@@ -2438,17 +2438,17 @@ dps_results: {
  value: {
   dps: 235835.32988
   tps: 1.48122301929e+06
-  dtps: 37801.8792
+  dtps: 37801.87876
   hps: 37122.3974
  }
 }
 dps_results: {
  key: "TestProtection-AllItems-SparkofZandalar-96770"
  value: {
-  dps: 233171.48957
-  tps: 1.45701922026e+06
-  dtps: 34759.90669
-  hps: 39809.02511
+  dps: 233171.46914
+  tps: 1.45701908307e+06
+  dtps: 34759.90868
+  hps: 39809.02146
  }
 }
 dps_results: {
@@ -2679,10 +2679,10 @@ dps_results: {
 dps_results: {
  key: "TestProtection-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 234943.10117
-  tps: 1.45666722976e+06
-  dtps: 32699.67418
-  hps: 39797.79909
+  dps: 234943.43118
+  tps: 1.45666902023e+06
+  dtps: 32699.64772
+  hps: 39797.84771
  }
 }
 dps_results: {
@@ -3156,10 +3156,10 @@ dps_results: {
 dps_results: {
  key: "TestProtection-AllItems-ZenAlchemistStone-75274"
  value: {
-  dps: 238391.98533
-  tps: 1.49760180217e+06
-  dtps: 34392.73827
-  hps: 37658.05019
+  dps: 238392.42607
+  tps: 1.49760450784e+06
+  dtps: 34392.68849
+  hps: 37658.11109
  }
 }
 dps_results: {

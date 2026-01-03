@@ -40,8 +40,8 @@ dps_results: {
 dps_results: {
  key: "TestSubtlety-AllItems-AssuranceofConsequence-105472"
  value: {
-  dps: 127577.46673
-  tps: 89744.06389
+  dps: 127514.12134
+  tps: 89699.07796
  }
 }
 dps_results: {
@@ -187,15 +187,15 @@ dps_results: {
 dps_results: {
  key: "TestSubtlety-AllItems-EvilEyeofGalakras-105491"
  value: {
-  dps: 105352.17131
-  tps: 74164.285
+  dps: 105352.33059
+  tps: 74164.39443
  }
 }
 dps_results: {
  key: "TestSubtlety-AllItems-FabledFeatherofJi-Kun-96842"
  value: {
-  dps: 106218.84285
-  tps: 74810.44279
+  dps: 106219.67594
+  tps: 74811.01814
  }
 }
 dps_results: {
@@ -236,8 +236,8 @@ dps_results: {
 dps_results: {
  key: "TestSubtlety-AllItems-Fusion-FireCore-105459"
  value: {
-  dps: 105535.03587
-  tps: 74291.21617
+  dps: 105535.20159
+  tps: 74291.33007
  }
 }
 dps_results: {
@@ -271,8 +271,8 @@ dps_results: {
 dps_results: {
  key: "TestSubtlety-AllItems-Haromm'sTalisman-105527"
  value: {
-  dps: 124561.48531
-  tps: 87605.28103
+  dps: 124547.16282
+  tps: 87595.10143
  }
 }
 dps_results: {
@@ -313,8 +313,8 @@ dps_results: {
 dps_results: {
  key: "TestSubtlety-AllItems-Kardris'ToxicTotem-105540"
  value: {
-  dps: 106317.31172
-  tps: 74953.7275
+  dps: 106316.99062
+  tps: 74953.49952
  }
 }
 dps_results: {
@@ -355,8 +355,8 @@ dps_results: {
 dps_results: {
  key: "TestSubtlety-AllItems-Primordius'TalismanofRage-96873"
  value: {
-  dps: 106204.66033
-  tps: 74834.22508
+  dps: 106205.10384
+  tps: 74834.53666
  }
 }
 dps_results: {
@@ -383,8 +383,8 @@ dps_results: {
 dps_results: {
  key: "TestSubtlety-AllItems-Renataki'sSoulCharm-96741"
  value: {
-  dps: 113737.05202
-  tps: 80020.87986
+  dps: 113739.34667
+  tps: 80022.46489
  }
 }
 dps_results: {
@@ -411,8 +411,8 @@ dps_results: {
 dps_results: {
  key: "TestSubtlety-AllItems-SigilofRampage-105580"
  value: {
-  dps: 119923.81203
-  tps: 84310.70814
+  dps: 119924.34116
+  tps: 84311.07314
  }
 }
 dps_results: {
@@ -446,8 +446,8 @@ dps_results: {
 dps_results: {
  key: "TestSubtlety-AllItems-SparkofZandalar-96770"
  value: {
-  dps: 106018.17004
-  tps: 74766.56512
+  dps: 106018.14938
+  tps: 74766.55045
  }
 }
 dps_results: {
@@ -460,8 +460,8 @@ dps_results: {
 dps_results: {
  key: "TestSubtlety-AllItems-TalismanofBloodlust-96864"
  value: {
-  dps: 112313.29676
-  tps: 79174.24818
+  dps: 112505.60914
+  tps: 79310.78997
  }
 }
 dps_results: {
@@ -474,22 +474,22 @@ dps_results: {
 dps_results: {
  key: "TestSubtlety-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 109168.96933
-  tps: 76838.4725
+  dps: 109169.14608
+  tps: 76838.59363
  }
 }
 dps_results: {
  key: "TestSubtlety-AllItems-TickingEbonDetonator-105612"
  value: {
-  dps: 122978.66648
-  tps: 86532.85981
+  dps: 122974.25863
+  tps: 86529.80634
  }
 }
 dps_results: {
  key: "TestSubtlety-AllItems-Time-LostArtifact-103678"
  value: {
-  dps: 104744.18054
-  tps: 73794.40845
+  dps: 104823.55061
+  tps: 73850.7612
  }
 }
 dps_results: {
@@ -523,8 +523,8 @@ dps_results: {
 dps_results: {
  key: "TestSubtlety-AllItems-ZenAlchemistStone-75274"
  value: {
-  dps: 108703.21557
-  tps: 76525.81607
+  dps: 108703.84136
+  tps: 76526.24929
  }
 }
 dps_results: {

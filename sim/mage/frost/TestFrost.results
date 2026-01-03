@@ -54,8 +54,8 @@ dps_results: {
 dps_results: {
  key: "TestFrost-AllItems-BlackBloodofY'Shaarj-105648"
  value: {
-  dps: 175921.4442
-  tps: 128278.39579
+  dps: 175922.50483
+  tps: 128279.16303
  }
 }
 dps_results: {
@@ -215,8 +215,8 @@ dps_results: {
 dps_results: {
  key: "TestFrost-AllItems-FrenziedCrystalofRage-105572"
  value: {
-  dps: 169552.47232
-  tps: 123866.29038
+  dps: 169553.21445
+  tps: 123866.83061
  }
 }
 dps_results: {
@@ -250,8 +250,8 @@ dps_results: {
 dps_results: {
  key: "TestFrost-AllItems-Haromm'sTalisman-105527"
  value: {
-  dps: 152703.89181
-  tps: 113421.12474
+  dps: 152700.38466
+  tps: 113417.61759
  }
 }
 dps_results: {
@@ -292,8 +292,8 @@ dps_results: {
 dps_results: {
  key: "TestFrost-AllItems-Kardris'ToxicTotem-105540"
  value: {
-  dps: 175281.77637
-  tps: 130282.40053
+  dps: 175282.49277
+  tps: 130282.93633
  }
 }
 dps_results: {
@@ -334,8 +334,8 @@ dps_results: {
 dps_results: {
  key: "TestFrost-AllItems-PurifiedBindingsofImmerseus-105422"
  value: {
-  dps: 173956.57378
-  tps: 127107.62799
+  dps: 173957.27862
+  tps: 127108.15489
  }
 }
 dps_results: {
@@ -419,7 +419,7 @@ dps_results: {
  key: "TestFrost-AllItems-SoothingTalismanoftheShado-PanAssault-94509"
  value: {
   dps: 154572.93468
-  tps: 113147.65906
+  tps: 113147.65969
  }
 }
 dps_results: {
@@ -495,8 +495,8 @@ dps_results: {
 dps_results: {
  key: "TestFrost-AllItems-Wushoolay'sFinalChoice-96785"
  value: {
-  dps: 162926.33983
-  tps: 119024.13456
+  dps: 162929.76163
+  tps: 119026.63359
  }
 }
 dps_results: {
@@ -509,8 +509,8 @@ dps_results: {
 dps_results: {
  key: "TestFrost-AllItems-ZenAlchemistStone-75274"
  value: {
-  dps: 156571.18194
-  tps: 113210.98093
+  dps: 156572.02412
+  tps: 113211.60226
  }
 }
 dps_results: {

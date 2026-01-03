@@ -576,7 +576,7 @@ dps_results: {
   dps: 222739.7224
   tps: 1.13044091362e+06
   dtps: 64112.2525
-  hps: 74749.98296
+  hps: 74749.98987
  }
 }
 dps_results: {
@@ -879,19 +879,19 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-EvilEyeofGalakras-105491"
  value: {
-  dps: 230933.76023
-  tps: 1.16565939655e+06
+  dps: 230880.01968
+  tps: 1.16526912054e+06
   dtps: 60286.60136
-  hps: 73929.97616
+  hps: 73952.91105
  }
 }
 dps_results: {
  key: "TestBlood-AllItems-FabledFeatherofJi-Kun-96842"
  value: {
-  dps: 226904.52952
-  tps: 1.14308210049e+06
+  dps: 226906.96897
+  tps: 1.14309162323e+06
   dtps: 62460.0091
-  hps: 73748.98449
+  hps: 73749.03522
  }
 }
 dps_results: {
@@ -1041,10 +1041,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-Fusion-FireCore-105459"
  value: {
-  dps: 235052.91862
-  tps: 1.19014138196e+06
+  dps: 235046.72704
+  tps: 1.19015862642e+06
   dtps: 61978.63932
-  hps: 72465.98616
+  hps: 72453.97653
  }
 }
 dps_results: {
@@ -1320,8 +1320,8 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-Haromm'sTalisman-105527"
  value: {
-  dps: 225160.43114
-  tps: 1.15489304679e+06
+  dps: 225154.89418
+  tps: 1.15485428807e+06
   dtps: 65397.84033
   hps: 75076.03213
  }
@@ -1430,8 +1430,8 @@ dps_results: {
  value: {
   dps: 215597.7664
   tps: 1.09171733821e+06
-  dtps: 64168.01015
-  hps: 74912.57182
+  dtps: 64168.00549
+  hps: 74912.56975
  }
 }
 dps_results: {
@@ -2166,10 +2166,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-Primordius'TalismanofRage-96873"
  value: {
-  dps: 228701.17509
-  tps: 1.15619435285e+06
+  dps: 228702.29197
+  tps: 1.15619905137e+06
   dtps: 63454.62482
-  hps: 75234.00961
+  hps: 75234.03344
  }
 }
 dps_results: {
@@ -2508,7 +2508,7 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-Skeer'sBloodsoakedTalisman-105632"
  value: {
-  dps: 240900.31021
+  dps: 240898.80907
   tps: 1.21686119767e+06
   dtps: 63578.84611
   hps: 77017.45154
@@ -2537,17 +2537,17 @@ dps_results: {
  value: {
   dps: 218637.20391
   tps: 1.10992574481e+06
-  dtps: 64621.14536
-  hps: 77690.90857
+  dtps: 64621.14154
+  hps: 77690.90747
  }
 }
 dps_results: {
  key: "TestBlood-AllItems-SparkofZandalar-96770"
  value: {
-  dps: 224726.15677
-  tps: 1.13894431785e+06
+  dps: 224726.1219
+  tps: 1.13894415229e+06
   dtps: 64989.90605
-  hps: 75838.81869
+  hps: 75838.81786
  }
 }
 dps_results: {
@@ -2760,8 +2760,8 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-TalismanofBloodlust-96864"
  value: {
-  dps: 220512.53812
-  tps: 1.118073515e+06
+  dps: 220702.58407
+  tps: 1.1202403451e+06
   dtps: 65343.31209
   hps: 77459.40174
  }
@@ -2778,10 +2778,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 234441.99407
-  tps: 1.16684815274e+06
+  dps: 234442.55094
+  tps: 1.16684998645e+06
   dtps: 61978.86325
-  hps: 73970.58228
+  hps: 73970.5914
  }
 }
 dps_results: {
@@ -2805,10 +2805,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-Time-LostArtifact-103678"
  value: {
-  dps: 220557.71542
-  tps: 1.11728788381e+06
+  dps: 219985.1502
+  tps: 1.11614182376e+06
   dtps: 65405.42314
-  hps: 78786.51128
+  hps: 78687.31389
  }
 }
 dps_results: {
@@ -3201,10 +3201,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-ZenAlchemistStone-75274"
  value: {
-  dps: 223065.49112
-  tps: 1.13360445212e+06
+  dps: 223066.01888
+  tps: 1.13360669571e+06
   dtps: 63500.88741
-  hps: 76171.64364
+  hps: 76171.65611
  }
 }
 dps_results: {

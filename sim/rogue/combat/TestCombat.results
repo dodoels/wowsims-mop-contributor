@@ -40,8 +40,8 @@ dps_results: {
 dps_results: {
  key: "TestCombat-AllItems-AssuranceofConsequence-105472"
  value: {
-  dps: 128473.73529
-  tps: 90337.82427
+  dps: 128459.15229
+  tps: 90327.45801
  }
 }
 dps_results: {
@@ -187,15 +187,15 @@ dps_results: {
 dps_results: {
  key: "TestCombat-AllItems-EvilEyeofGalakras-105491"
  value: {
-  dps: 101961.44374
-  tps: 71816.01377
+  dps: 101961.61899
+  tps: 71816.13648
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-FabledFeatherofJi-Kun-96842"
  value: {
-  dps: 102157.69884
-  tps: 71975.70727
+  dps: 102158.56898
+  tps: 71976.31885
  }
 }
 dps_results: {
@@ -236,8 +236,8 @@ dps_results: {
 dps_results: {
  key: "TestCombat-AllItems-Fusion-FireCore-105459"
  value: {
-  dps: 102361.83329
-  tps: 72026.71867
+  dps: 102362.02262
+  tps: 72026.8488
  }
 }
 dps_results: {
@@ -271,8 +271,8 @@ dps_results: {
 dps_results: {
  key: "TestCombat-AllItems-Haromm'sTalisman-105527"
  value: {
-  dps: 116740.32365
-  tps: 82275.92328
+  dps: 116738.49229
+  tps: 82274.62014
  }
 }
 dps_results: {
@@ -313,8 +313,8 @@ dps_results: {
 dps_results: {
  key: "TestCombat-AllItems-Kardris'ToxicTotem-105540"
  value: {
-  dps: 101550.76674
-  tps: 71573.06329
+  dps: 101549.22747
+  tps: 71571.97041
  }
 }
 dps_results: {
@@ -355,8 +355,8 @@ dps_results: {
 dps_results: {
  key: "TestCombat-AllItems-Primordius'TalismanofRage-96873"
  value: {
-  dps: 103198.68363
-  tps: 72698.87774
+  dps: 103199.25484
+  tps: 72699.27923
  }
 }
 dps_results: {
@@ -383,8 +383,8 @@ dps_results: {
 dps_results: {
  key: "TestCombat-AllItems-Renataki'sSoulCharm-96741"
  value: {
-  dps: 107699.52309
-  tps: 75900.09755
+  dps: 107701.49644
+  tps: 75901.49014
  }
 }
 dps_results: {
@@ -411,8 +411,8 @@ dps_results: {
 dps_results: {
  key: "TestCombat-AllItems-SigilofRampage-105580"
  value: {
-  dps: 111907.81623
-  tps: 78694.80304
+  dps: 111908.25843
+  tps: 78695.10885
  }
 }
 dps_results: {
@@ -446,8 +446,8 @@ dps_results: {
 dps_results: {
  key: "TestCombat-AllItems-SparkofZandalar-96770"
  value: {
-  dps: 102670.32204
-  tps: 72379.11496
+  dps: 102670.29652
+  tps: 72379.09685
  }
 }
 dps_results: {
@@ -460,8 +460,8 @@ dps_results: {
 dps_results: {
  key: "TestCombat-AllItems-TalismanofBloodlust-96864"
  value: {
-  dps: 108750.05347
-  tps: 76657.38328
+  dps: 108865.66497
+  tps: 76739.46745
  }
 }
 dps_results: {
@@ -474,22 +474,22 @@ dps_results: {
 dps_results: {
  key: "TestCombat-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 104965.21554
-  tps: 73849.71814
+  dps: 104965.42533
+  tps: 73849.86138
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-TickingEbonDetonator-105612"
  value: {
-  dps: 114483.67397
-  tps: 80639.42058
+  dps: 114480.37734
+  tps: 80637.11368
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-Time-LostArtifact-103678"
  value: {
-  dps: 101036.16527
-  tps: 71211.60933
+  dps: 101067.0689
+  tps: 71239.65339
  }
 }
 dps_results: {
@@ -530,8 +530,8 @@ dps_results: {
 dps_results: {
  key: "TestCombat-AllItems-ZenAlchemistStone-75274"
  value: {
-  dps: 103441.34943
-  tps: 72845.20552
+  dps: 103441.90714
+  tps: 72845.59428
  }
 }
 dps_results: {

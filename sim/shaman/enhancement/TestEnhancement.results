@@ -61,8 +61,8 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-AssuranceofConsequence-105472"
  value: {
-  dps: 167863.52168
-  tps: 132843.46428
+  dps: 169818.3727
+  tps: 134778.35785
  }
 }
 dps_results: {
@@ -691,15 +691,15 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-EvilEyeofGalakras-105491"
  value: {
-  dps: 146060.02579
-  tps: 124241.31715
+  dps: 146060.24786
+  tps: 124241.48936
  }
 }
 dps_results: {
  key: "TestEnhancement-AllItems-FabledFeatherofJi-Kun-96842"
  value: {
-  dps: 147179.53093
-  tps: 125339.87845
+  dps: 147180.78978
+  tps: 125340.83247
  }
 }
 dps_results: {
@@ -817,8 +817,8 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-Fusion-FireCore-105459"
  value: {
-  dps: 147357.65146
-  tps: 125211.42083
+  dps: 147357.91917
+  tps: 125211.62716
  }
 }
 dps_results: {
@@ -1041,8 +1041,8 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-Haromm'sTalisman-105527"
  value: {
-  dps: 163815.36945
-  tps: 138884.94892
+  dps: 163808.74426
+  tps: 138878.18172
  }
 }
 dps_results: {
@@ -1230,8 +1230,8 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-Kardris'ToxicTotem-105540"
  value: {
-  dps: 146591.0929
-  tps: 126070.23131
+  dps: 146589.27694
+  tps: 126068.41535
  }
 }
 dps_results: {
@@ -1685,8 +1685,8 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-Primordius'TalismanofRage-96873"
  value: {
-  dps: 147374.12698
-  tps: 125703.14057
+  dps: 147374.80632
+  tps: 125703.68861
  }
 }
 dps_results: {
@@ -1776,8 +1776,8 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-Renataki'sSoulCharm-96741"
  value: {
-  dps: 151881.83537
-  tps: 128664.54633
+  dps: 151884.2935
+  tps: 128666.46086
  }
 }
 dps_results: {
@@ -1888,8 +1888,8 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-SigilofRampage-105580"
  value: {
-  dps: 158422.9487
-  tps: 133494.50391
+  dps: 158423.53603
+  tps: 133494.95075
  }
 }
 dps_results: {
@@ -1909,8 +1909,8 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-Skeer'sBloodsoakedTalisman-105632"
  value: {
-  dps: 152541.64681
-  tps: 129246.28735
+  dps: 152521.15709
+  tps: 129225.79763
  }
 }
 dps_results: {
@@ -1937,8 +1937,8 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-SparkofZandalar-96770"
  value: {
-  dps: 145139.91334
-  tps: 124050.0176
+  dps: 145139.88601
+  tps: 124049.99399
  }
 }
 dps_results: {
@@ -2098,8 +2098,8 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-TalismanofBloodlust-96864"
  value: {
-  dps: 151328.95487
-  tps: 128921.26332
+  dps: 151245.60727
+  tps: 128826.17303
  }
 }
 dps_results: {
@@ -2112,8 +2112,8 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 152744.2189
-  tps: 129247.41903
+  dps: 152744.51369
+  tps: 129247.6241
  }
 }
 dps_results: {
@@ -2126,15 +2126,15 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-TickingEbonDetonator-105612"
  value: {
-  dps: 163403.04752
-  tps: 137442.66741
+  dps: 163398.54351
+  tps: 137439.32321
  }
 }
 dps_results: {
  key: "TestEnhancement-AllItems-Time-LostArtifact-103678"
  value: {
-  dps: 144299.88584
-  tps: 123125.30069
+  dps: 144074.1007
+  tps: 122908.00112
  }
 }
 dps_results: {
@@ -2448,8 +2448,8 @@ dps_results: {
 dps_results: {
  key: "TestEnhancement-AllItems-ZenAlchemistStone-75274"
  value: {
-  dps: 148825.89618
-  tps: 126589.68834
+  dps: 148827.14755
+  tps: 126590.22329
  }
 }
 dps_results: {

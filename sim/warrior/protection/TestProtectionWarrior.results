@@ -777,17 +777,17 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-AllItems-EvilEyeofGalakras-105491"
  value: {
-  dps: 262317.78993
-  tps: 1.51471698082e+06
-  dtps: 40205.09093
+  dps: 263447.21496
+  tps: 1.5219501028e+06
+  dtps: 40435.12328
  }
 }
 dps_results: {
  key: "TestProtectionWarrior-AllItems-FabledFeatherofJi-Kun-96842"
  value: {
-  dps: 257182.88282
-  tps: 1.49044405775e+06
-  dtps: 42891.00813
+  dps: 257184.98019
+  tps: 1.49045476977e+06
+  dtps: 42890.99559
  }
 }
 dps_results: {
@@ -921,9 +921,9 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-AllItems-Fusion-FireCore-105459"
  value: {
-  dps: 265166.62559
-  tps: 1.53975557043e+06
-  dtps: 42770.9855
+  dps: 265167.06771
+  tps: 1.53975778561e+06
+  dtps: 42770.98289
  }
 }
 dps_results: {
@@ -1380,7 +1380,7 @@ dps_results: {
   dps: 246393.07095
   tps: 1.43405888914e+06
   dtps: 43814.78
-  hps: 378.33123
+  hps: 378.32923
  }
 }
 dps_results: {
@@ -1930,9 +1930,9 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-AllItems-Primordius'TalismanofRage-96873"
  value: {
-  dps: 261408.57421
-  tps: 1.52384824304e+06
-  dtps: 42773.52813
+  dps: 261409.46775
+  tps: 1.52385320286e+06
+  dtps: 42773.52036
  }
 }
 dps_results: {
@@ -2188,15 +2188,15 @@ dps_results: {
  value: {
   dps: 247006.40901
   tps: 1.43835239931e+06
-  dtps: 43113.02499
+  dtps: 43113.02413
  }
 }
 dps_results: {
  key: "TestProtectionWarrior-AllItems-SparkofZandalar-96770"
  value: {
-  dps: 251630.98617
-  tps: 1.46639950303e+06
-  dtps: 42555.48547
+  dps: 251630.96737
+  tps: 1.46639938321e+06
+  dtps: 42555.4856
  }
 }
 dps_results: {
@@ -2410,9 +2410,9 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 270123.51747
-  tps: 1.56176081323e+06
-  dtps: 41893.97524
+  dps: 270124.03024
+  tps: 1.56176340022e+06
+  dtps: 41893.97196
  }
 }
 dps_results: {
@@ -2794,9 +2794,9 @@ dps_results: {
 dps_results: {
  key: "TestProtectionWarrior-AllItems-ZenAlchemistStone-75274"
  value: {
-  dps: 254083.54968
-  tps: 1.47429150982e+06
-  dtps: 42990.78008
+  dps: 254024.77187
+  tps: 1.47450312482e+06
+  dtps: 42761.17878
  }
 }
 dps_results: {
@@ -2860,7 +2860,7 @@ dps_results: {
  value: {
   dps: 3.38114442664e+06
   tps: 2.05525129492e+07
-  dtps: 526477.38679
+  dtps: 526477.3846
  }
 }
 dps_results: {
@@ -2868,7 +2868,7 @@ dps_results: {
  value: {
   dps: 197807.07623
   tps: 1.28439622434e+06
-  dtps: 12881.08069
+  dtps: 12881.07913
  }
 }
 dps_results: {
@@ -2876,7 +2876,7 @@ dps_results: {
  value: {
   dps: 194212.84587
   tps: 1.23978771518e+06
-  dtps: 16675.43021
+  dtps: 16675.42769
  }
 }
 dps_results: {
@@ -2884,7 +2884,7 @@ dps_results: {
  value: {
   dps: 3.27569433557e+06
   tps: 1.992724453612e+07
-  dtps: 654526.14689
+  dtps: 654526.1447
  }
 }
 dps_results: {
@@ -2892,7 +2892,7 @@ dps_results: {
  value: {
   dps: 171872.91776
   tps: 1.11814287734e+06
-  dtps: 14958.15856
+  dtps: 14958.15698
  }
 }
 dps_results: {
@@ -2900,7 +2900,7 @@ dps_results: {
  value: {
   dps: 159179.53764
   tps: 1.0475014805e+06
-  dtps: 19741.06192
+  dtps: 19741.05831
  }
 }
 dps_results: {
@@ -2956,7 +2956,7 @@ dps_results: {
  value: {
   dps: 3.28858814412e+06
   tps: 1.989195568369e+07
-  dtps: 524109.04782
+  dtps: 524109.04562
  }
 }
 dps_results: {
@@ -2964,7 +2964,7 @@ dps_results: {
  value: {
   dps: 199241.5691
   tps: 1.29283757697e+06
-  dtps: 12783.4363
+  dtps: 12783.43476
  }
 }
 dps_results: {
@@ -2972,7 +2972,7 @@ dps_results: {
  value: {
   dps: 196598.09806
   tps: 1.25258418361e+06
-  dtps: 16317.91072
+  dtps: 16317.9082
  }
 }
 dps_results: {
@@ -2980,7 +2980,7 @@ dps_results: {
  value: {
   dps: 3.34884821565e+06
   tps: 2.041270241638e+07
-  dtps: 656135.92804
+  dtps: 656135.92584
  }
 }
 dps_results: {
@@ -2988,7 +2988,7 @@ dps_results: {
  value: {
   dps: 172320.44646
   tps: 1.12529536838e+06
-  dtps: 14277.59767
+  dtps: 14277.59607
  }
 }
 dps_results: {
@@ -2996,7 +2996,7 @@ dps_results: {
  value: {
   dps: 161829.37218
   tps: 1.05795919345e+06
-  dtps: 19400.29984
+  dtps: 19400.29601
  }
 }
 dps_results: {
