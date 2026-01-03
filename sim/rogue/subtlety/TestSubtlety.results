@@ -362,8 +362,8 @@ dps_results: {
 dps_results: {
  key: "TestSubtlety-AllItems-PurifiedBindingsofImmerseus-105422"
  value: {
-  dps: 103159.7394
-  tps: 72690.77583
+  dps: 104143.82708
+  tps: 73394.46044
  }
 }
 dps_results: {
@@ -474,8 +474,8 @@ dps_results: {
 dps_results: {
  key: "TestSubtlety-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 108200.98907
-  tps: 76145.38343
+  dps: 109169.14608
+  tps: 76838.59363
  }
 }
 dps_results: {

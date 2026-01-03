@@ -1929,9 +1929,9 @@ dps_results: {
 dps_results: {
  key: "TestUnholy-AllItems-PurifiedBindingsofImmerseus-105422"
  value: {
-  dps: 225715.95142
-  tps: 159412.01859
-  hps: 2614.42257
+  dps: 225580.43504
+  tps: 159245.02815
+  hps: 2642.48736
  }
 }
 dps_results: {
@@ -2465,9 +2465,9 @@ dps_results: {
 dps_results: {
  key: "TestUnholy-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 253481.52708
-  tps: 175046.05169
-  hps: 2612.06585
+  dps: 252511.72443
+  tps: 174076.39906
+  hps: 2619.82608
  }
 }
 dps_results: {

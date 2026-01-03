@@ -54,7 +54,7 @@ func init() {
 				auraID, exists := config.cdrAuraIDs[character.Spec]
 				var cdrAura *core.Aura
 				if exists {
-					cdr := 1.0 / (1.0 + core.GetItemEffectScaling(itemID, 0.00989999995, state)/100)
+					cdr := 1.0 / (1.0 + core.GetItemEffectScalingStatValue(itemID, 0.00989999995, state)/100)
 					cdrAura = core.MakePermanent(character.RegisterAura(core.Aura{
 						Label:    fmt.Sprintf("Readiness (%s)", versionLabel),
 						ActionID: core.ActionID{SpellID: auraID},
@@ -66,7 +66,7 @@ func init() {
 				}
 
 				stats := stats.Stats{}
-				stats[config.buffedStat] = core.GetItemEffectScaling(itemID, 2.97300004959, state)
+				stats[config.buffedStat] = core.GetItemEffectScalingStatValue(itemID, 2.97300004959, state)
 
 				aura := character.NewTemporaryStatsAura(
 					fmt.Sprintf("%s (%s)", config.buffAuraLabel, versionLabel),
@@ -263,7 +263,7 @@ func init() {
 
 				multistrikeTriggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 					Name:               fmt.Sprintf("%s (%s) - Multistrike Trigger", config.baseTrinketLabel, versionLabel),
-					ProcChance:         core.GetItemEffectScaling(itemID, 0.03539999947, state) / 1000,
+					ProcChance:         core.GetItemEffectScalingStatValue(itemID, 0.03539999947, state) / 1000,
 					Outcome:            core.OutcomeLanded,
 					Callback:           core.CallbackOnSpellHitDealt | core.CallbackOnPeriodicDamageDealt,
 					RequireDamageDealt: true,
@@ -287,7 +287,7 @@ func init() {
 				})
 
 				stats := stats.Stats{}
-				stats[config.buffedStat] = core.GetItemEffectScaling(itemID, 2.97300004959, state)
+				stats[config.buffedStat] = core.GetItemEffectScalingStatValue(itemID, 2.97300004959, state)
 
 				statBuffAura := character.NewTemporaryStatsAura(
 					fmt.Sprintf("%s (%s)", config.buffAuraLabel, versionLabel),
@@ -382,7 +382,7 @@ func init() {
 					AttachMultiplicativePseudoStatBuff(&character.PseudoStats.CritDamageMultiplier, critDamageValue)
 
 				stats := stats.Stats{}
-				stats[config.buffedStat] = core.GetItemEffectScaling(itemID, 2.97300004959, state)
+				stats[config.buffedStat] = core.GetItemEffectScalingStatValue(itemID, 2.97300004959, state)
 
 				aura := character.NewTemporaryStatsAura(
 					fmt.Sprintf("%s (%s)", config.buffAuraLabel, versionLabel),
@@ -466,7 +466,7 @@ func init() {
 		core.NewItemEffect(itemID, func(agent core.Agent, state proto.ItemLevelState) {
 			character := agent.GetCharacter()
 
-			statValue := core.GetItemEffectScaling(itemID, 0.27030000091, state)
+			statValue := core.GetItemEffectScalingStatValue(itemID, 0.27030000091, state)
 			statBuffAura, aura := character.NewTemporaryStatBuffWithStacks(core.TemporaryStatBuffWithStacksConfig{
 				AuraLabel:            fmt.Sprintf("Item - Proc Agility (%s)", versionLabel),
 				ActionID:             core.ActionID{SpellID: 146311},
@@ -579,7 +579,7 @@ func init() {
 
 				cleaveTriggerAura := character.MakeProcTriggerAura(core.ProcTrigger{
 					Name:               fmt.Sprintf("%s (%s) - Cleave Trigger", config.baseTrinketLabel, versionLabel),
-					ProcChance:         core.GetItemEffectScaling(itemID, 0.07859999686, state) / 10000,
+					ProcChance:         core.GetItemEffectScalingStatValue(itemID, 0.07859999686, state) / 10000,
 					Outcome:            core.OutcomeLanded,
 					Callback:           core.CallbackOnSpellHitDealt | core.CallbackOnPeriodicDamageDealt,
 					RequireDamageDealt: true,
@@ -602,7 +602,7 @@ func init() {
 				})
 
 				stats := stats.Stats{}
-				stats[config.buffedStat] = core.GetItemEffectScaling(itemID, 2.97300004959, state)
+				stats[config.buffedStat] = core.GetItemEffectScalingStatValue(itemID, 2.97300004959, state)
 
 				statBuffAura := character.NewTemporaryStatsAura(
 					fmt.Sprintf("%s (%s)", config.buffAuraLabel, versionLabel),
@@ -703,7 +703,7 @@ func init() {
 		aura := character.NewTemporaryStatsAura(
 			"Winds of Time",
 			core.ActionID{SpellID: 148447},
-			stats.Stats{stats.HasteRating: core.GetItemEffectScaling(103678, 1.56799995899, state)},
+			stats.Stats{stats.HasteRating: core.GetItemEffectScalingStatValue(103678, 1.56799995899, state)},
 			time.Second*20,
 		)
 
@@ -744,7 +744,7 @@ func init() {
 		core.NewItemEffect(itemID, func(agent core.Agent, state proto.ItemLevelState) {
 			character := agent.GetCharacter()
 
-			statValue := core.GetItemEffectScaling(itemID, 0.29699999094, state)
+			statValue := core.GetItemEffectScalingStatValue(itemID, 0.29699999094, state)
 			statBuffAura, aura := character.NewTemporaryStatBuffWithStacks(core.TemporaryStatBuffWithStacksConfig{
 				AuraLabel:            fmt.Sprintf("Item - Proc Critical Strike (%s)", versionLabel),
 				ActionID:             core.ActionID{SpellID: 146286},
@@ -797,7 +797,7 @@ func init() {
 		core.NewItemEffect(itemID, func(agent core.Agent, state proto.ItemLevelState) {
 			character := agent.GetCharacter()
 
-			statValue := core.GetItemEffectScaling(itemID, 0.59399998188, state)
+			statValue := core.GetItemEffectScalingStatValue(itemID, 0.59399998188, state)
 			statBuffAura, aura := character.NewTemporaryStatBuffWithStacks(core.TemporaryStatBuffWithStacksConfig{
 				AuraLabel:            fmt.Sprintf("Item - Proc Intellect (%s)", versionLabel),
 				ActionID:             core.ActionID{SpellID: 146183},

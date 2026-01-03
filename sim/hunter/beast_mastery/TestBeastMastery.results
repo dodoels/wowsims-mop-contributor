@@ -1685,8 +1685,8 @@ dps_results: {
 dps_results: {
  key: "TestBeastMastery-AllItems-PurifiedBindingsofImmerseus-105422"
  value: {
-  dps: 218417.32926
-  tps: 102554.60594
+  dps: 218425.32085
+  tps: 102560.69183
  }
 }
 dps_results: {
@@ -2091,8 +2091,8 @@ dps_results: {
 dps_results: {
  key: "TestBeastMastery-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 218417.32926
-  tps: 102554.60594
+  dps: 218425.32085
+  tps: 102560.69183
  }
 }
 dps_results: {

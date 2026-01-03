@@ -362,8 +362,8 @@ dps_results: {
 dps_results: {
  key: "TestCombat-AllItems-PurifiedBindingsofImmerseus-105422"
  value: {
-  dps: 99499.38878
-  tps: 70128.68642
+  dps: 99000.57613
+  tps: 69777.32104
  }
 }
 dps_results: {
@@ -474,8 +474,8 @@ dps_results: {
 dps_results: {
  key: "TestCombat-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 105398.07574
-  tps: 74153.35669
+  dps: 104965.42533
+  tps: 73849.86138
  }
 }
 dps_results: {

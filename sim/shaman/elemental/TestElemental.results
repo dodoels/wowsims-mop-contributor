@@ -1685,8 +1685,8 @@ dps_results: {
 dps_results: {
  key: "TestElemental-AllItems-PurifiedBindingsofImmerseus-105422"
  value: {
-  dps: 160025.76688
-  tps: 114740.74717
+  dps: 160223.30241
+  tps: 114649.5341
  }
 }
 dps_results: {
@@ -2112,8 +2112,8 @@ dps_results: {
 dps_results: {
  key: "TestElemental-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 141121.59721
-  tps: 101968.17506
+  dps: 141415.74572
+  tps: 102066.8663
  }
 }
 dps_results: {

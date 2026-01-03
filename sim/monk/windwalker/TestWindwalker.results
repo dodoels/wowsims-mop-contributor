@@ -1945,9 +1945,9 @@ dps_results: {
 dps_results: {
  key: "TestWindwalker-AllItems-PurifiedBindingsofImmerseus-105422"
  value: {
-  dps: 235510.40985
-  tps: 224981.75575
-  hps: 7879.36834
+  dps: 237477.77624
+  tps: 226950.05456
+  hps: 7841.61783
  }
 }
 dps_results: {
@@ -2417,9 +2417,9 @@ dps_results: {
 dps_results: {
  key: "TestWindwalker-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 241853.54145
-  tps: 230564.86967
-  hps: 8225.08932
+  dps: 243619.64826
+  tps: 232338.08711
+  hps: 8203.42859
  }
 }
 dps_results: {

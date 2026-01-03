@@ -1664,8 +1664,8 @@ dps_results: {
 dps_results: {
  key: "TestDemonology-AllItems-PurifiedBindingsofImmerseus-105422"
  value: {
-  dps: 232865.01554
-  tps: 146258.04703
+  dps: 229787.2954
+  tps: 144859.85488
  }
 }
 dps_results: {
@@ -2105,8 +2105,8 @@ dps_results: {
 dps_results: {
  key: "TestDemonology-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 208680.27266
-  tps: 132007.84469
+  dps: 207100.77529
+  tps: 131438.43266
  }
 }
 dps_results: {

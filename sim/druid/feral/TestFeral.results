@@ -1937,9 +1937,9 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-PurifiedBindingsofImmerseus-105422"
  value: {
-  dps: 234204.32138
-  tps: 355503.18813
-  hps: 15955.52995
+  dps: 235536.37542
+  tps: 350281.30189
+  hps: 16433.98301
  }
 }
 dps_results: {
@@ -2417,9 +2417,9 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 246992.2408
-  tps: 367337.36845
-  hps: 14695.70853
+  dps: 246718.09762
+  tps: 360143.26964
+  hps: 15091.28461
  }
 }
 dps_results: {

@@ -334,8 +334,8 @@ dps_results: {
 dps_results: {
  key: "TestFrost-AllItems-PurifiedBindingsofImmerseus-105422"
  value: {
-  dps: 173993.54983
-  tps: 127165.32183
+  dps: 173957.27862
+  tps: 127108.15489
  }
 }
 dps_results: {
@@ -460,8 +460,8 @@ dps_results: {
 dps_results: {
  key: "TestFrost-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 151373.39423
-  tps: 110242.19464
+  dps: 151565.47197
+  tps: 110330.69036
  }
 }
 dps_results: {

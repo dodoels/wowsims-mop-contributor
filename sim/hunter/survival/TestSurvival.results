@@ -1678,8 +1678,8 @@ dps_results: {
 dps_results: {
  key: "TestSurvival-AllItems-PurifiedBindingsofImmerseus-105422"
  value: {
-  dps: 225101.1038
-  tps: 171789.57854
+  dps: 224838.83233
+  tps: 171644.02981
  }
 }
 dps_results: {
@@ -2084,8 +2084,8 @@ dps_results: {
 dps_results: {
  key: "TestSurvival-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 225101.1038
-  tps: 171789.57854
+  dps: 224838.83233
+  tps: 171644.02981
  }
 }
 dps_results: {

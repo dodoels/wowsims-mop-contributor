@@ -394,8 +394,8 @@ dps_results: {
 dps_results: {
  key: "TestAssassination-AllItems-PurifiedBindingsofImmerseus-105422"
  value: {
-  dps: 101277.29352
-  tps: 71264.12916
+  dps: 101283.72886
+  tps: 71268.50143
  }
 }
 dps_results: {
@@ -506,8 +506,8 @@ dps_results: {
 dps_results: {
  key: "TestAssassination-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 109317.22754
-  tps: 76778.59043
+  dps: 109353.09535
+  tps: 76803.79892
  }
 }
 dps_results: {

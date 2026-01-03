@@ -2175,10 +2175,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-PurifiedBindingsofImmerseus-105422"
  value: {
-  dps: 221038.23925
-  tps: 1.12998075584e+06
-  dtps: 65350.88916
-  hps: 75774.17892
+  dps: 222522.07303
+  tps: 1.13700032401e+06
+  dtps: 65501.94312
+  hps: 77051.43884
  }
 }
 dps_results: {
@@ -2778,10 +2778,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 235162.10111
-  tps: 1.17836885814e+06
-  dtps: 61829.69343
-  hps: 74675.65419
+  dps: 234442.55094
+  tps: 1.16684998645e+06
+  dtps: 61978.86325
+  hps: 73970.5914
  }
 }
 dps_results: {

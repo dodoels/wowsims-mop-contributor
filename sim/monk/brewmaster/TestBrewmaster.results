@@ -2175,10 +2175,10 @@ dps_results: {
 dps_results: {
  key: "TestBrewmaster-AllItems-PurifiedBindingsofImmerseus-105422"
  value: {
-  dps: 265416.04328
-  tps: 1.14594430119e+06
-  dtps: 16907.49969
-  hps: 30533.23891
+  dps: 265606.37767
+  tps: 1.14711764701e+06
+  dtps: 16938.29725
+  hps: 30546.91772
  }
 }
 dps_results: {
@@ -2697,10 +2697,10 @@ dps_results: {
 dps_results: {
  key: "TestBrewmaster-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 274129.77714
-  tps: 1.17067264412e+06
-  dtps: 16907.49969
-  hps: 31203.994
+  dps: 274326.26225
+  tps: 1.17187787385e+06
+  dtps: 16938.29725
+  hps: 31218.24697
  }
 }
 dps_results: {

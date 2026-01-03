@@ -1937,9 +1937,9 @@ dps_results: {
 dps_results: {
  key: "TestFrostTwoHand-AllItems-PurifiedBindingsofImmerseus-105422"
  value: {
-  dps: 231878.42616
-  tps: 207103.0317
-  hps: 3517.82943
+  dps: 232276.34849
+  tps: 207290.01726
+  hps: 3499.50485
  }
 }
 dps_results: {
@@ -2473,9 +2473,9 @@ dps_results: {
 dps_results: {
  key: "TestFrostTwoHand-AllItems-Thok'sTailTip-105609"
  value: {
-  dps: 251613.47133
-  tps: 221092.1543
-  hps: 3517.82943
+  dps: 251818.94755
+  tps: 221019.39547
+  hps: 3499.50485
  }
 }
 dps_results: {
