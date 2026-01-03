@@ -16,7 +16,6 @@ import P1BISDWGear from './gear_sets/p1_bis_dw.gear.json';
 import P2BISDWGear from './gear_sets/p2_bis_dw.gear.json';
 import P3BISDWGear from './gear_sets/p3_bis_dw.gear.json';
 import P3OffensiveDWGear from './gear_sets/p3_bis_offensive_dw.gear.json';
-import P3OffensiveRoRoDWGear from './gear_sets/p3_bis_offensive_dw_roro.default.json';
 import P2BISOffensiveDWGear from './gear_sets/p2_bis_offensive_dw.gear.json';
 import P2BISOffensiveTierlessDWGear from './gear_sets/p2_bis_offensive_tierless_dw.gear.json';
 
@@ -31,7 +30,6 @@ export const P2_BIS_OFFENSIVE_DW_GEAR_PRESET = PresetUtils.makePresetGear('P2 - 
 export const P2_BIS_OFFENSIVE_TIERLESS_DW_GEAR_PRESET = PresetUtils.makePresetGear('P2 - BIS (Offensive - No Tier)', P2BISOffensiveTierlessDWGear);
 export const P3_BIS_DW_GEAR_PRESET = PresetUtils.makePresetGear('P3 - BIS (Balanced)', P3BISDWGear);
 export const P3_BIS_OFFENSIVE_DW_GEAR_PRESET = PresetUtils.makePresetGear('P3 - BIS (Offensive)', P3OffensiveDWGear);
-export const P3_BIS_OFFENSIVE_DW_RORO_GEAR_PRESET = PresetUtils.makePresetGear('P3 - BIS (Offensive - RoRo)', P3OffensiveRoRoDWGear);
 
 export const ROTATION_PRESET = PresetUtils.makePresetAPLRotation('Generic', DefaultApl);
 export const ROTATION_GARAJAL_PRESET = PresetUtils.makePresetAPLRotation("Gara'jal", GarajalApl);
